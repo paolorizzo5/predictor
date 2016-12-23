@@ -1,0 +1,303 @@
+{
+	"001_1": "Risultato Finale - Vince la squadra di casa",
+	"003_2": "Risultato Finale - Vince la squadra ospite",
+	"002_X": "Risultato Finale - Pareggio",
+
+	"FULLTIME.1X2.004.HOME_TEAM_WINS_OR_DRAW.SHORT": "1X",
+	"FULLTIME.1X2.005.HOME_TEAM_WINS_OR_AWAY_TEAM_WINS.SHORT": "12",
+	"FULLTIME.1X2.006.DRAW_OR_AWAY_TEAM_WINS.SHORT": "X2",
+
+
+
+	"GNG": "Goal / No Goal",
+	"HA": "Segna Squadra",
+	"DC": "Doppia Chance",
+
+	"PREVIOUS.MATCHES": "Incontri Precedenti",
+	"DATE": "Data",
+	"SCORE": "Risultato",
+	"SHOTS": "Tiri",
+	"CORNERS": "Angoli",
+
+	"LAST5": "Ultime 5 Partite",
+	"STANDING": "Classifica",
+	"TEAM": "Squadra",
+	"POINTS.SHORT": "Pt.",
+	"PLAYED.SHORT": "Gioc.",
+	"WINS.SHORT": "V",
+	"DRAWS.SHORT": "N",
+	"LOSSES.SHORT": "P",
+	"HISTORY.BETWEEN.TEAMS": "Precedenti tra squadre",
+	"TEAMS.SEASONAL.TREND": "Andamento Stagionale",
+	"COMPARISON": "Testa a Testa",
+
+
+	"POINTS": "Punti",
+	"PLAYED": "Giocate",
+	"WINS": "Vittorie",
+	"DRAWS": "Pareggi",
+	"LOSSES": "Sconfitte",
+	"GOALS.FOR": "Reti Segnate",
+	"GOALS.AGAINST": "Reti Subite",
+	"ODDS": "Quote",
+
+
+
+	"001_1.SHORT": "1",
+	"003_2.SHORT": "2",
+	"002_X.SHORT": "X",
+	"HA.HOMEGOAL.SHORT": "Casa",
+	"HA.AWAYGOAL.SHORT": "Ospite",
+	"GNG.GOAL.SHORT": "Goal",
+	"GNG.NOGOAL.SHORT": "No-Goal",
+	"OVER05.SHORT": "0,5",
+	"OVER15.SHORT": "1,5",
+	"OVER25.SHORT": "2,5",
+	"OVER35.SHORT": "3,5",
+	"OVER45.SHORT": "4,5",
+	"OVER55.SHORT": "5,5",
+	"UNDER05.SHORT": "0,5",
+	"UNDER15.SHORT": "1,5",
+	"UNDER25.SHORT": "2,5",
+	"UNDER35.SHORT": "3,5",
+	"UNDER45.SHORT": "4,5",
+	"UNDER55.SHORT": "5,5",
+	"FULLTIME.HND.001.H2_1.SHORT": "Handicape Home 2 - 1",
+	"FULLTIME.HND.002.H2_X.SHORT": "Handicape Home 2 - X",
+	"FULLTIME.HND.003.H2_2.SHORT": "Handicape Home 2 - 2",
+	"FULLTIME.HND.004.H1_1.SHORT": "Handicape Home 1 - 1",
+	"FULLTIME.HND.005.H1_X.SHORT": "Handicape Home 1 - X",
+	"FULLTIME.HND.006.H1_2.SHORT": "Handicape Home 1 - 2",
+	"FULLTIME.HND.007.A1_1.SHORT": "Handicape Away 1 - 1",
+	"FULLTIME.HND.008.A1_X.SHORT": "Handicape Away 1 - X",
+	"FULLTIME.HND.009.A1_2.SHORT": "Handicape Away 1 - 2",
+	"FULLTIME.HND.010.A2_1.SHORT": "Handicape Away 2 - 1",
+	"FULLTIME.HND.011.A2_X.SHORT": "Handicape Away 2 - X",
+	"FULLTIME.HND.012.A2_2.SHORT": "Handicape Away 2 - 2",
+	"FULLTIME.HA.HOMEGOAL": "Risultato Finale - La squadra di casa segna almeno un goal",
+	"FULLTIME.HA.AWAYGOAL": "Risultato Finale - La squadra ospite segna almeno un goal",
+	"FULLTIME.GNG.BOTH_TEAM_SCORES": "Risultato Finale - Emtrambe le squadre segnano almeno un goal",
+	"FULLTIME.GNG.NO_BOTH_TEAM_SCORES": "Risultato Finale - Una delle 2 squadre non segna nemmeno un goal",
+	"FULLTIME.OVER_05": "Risultato Finale - piu di 0,5 goal segnati",
+	"FULLTIME.OVER_15": "Risultato Finale - piu di 1,5 goal segnati",
+	"FULLTIME.OVER_25": "Risultato Finale - piu di 2,5 goal segnati",
+	"FULLTIME.OVER_35": "Risultato Finale - piu di 3,5 goal segnati",
+	"FULLTIME.OVER_45": "Risultato Finale - piu di 4,5 goal segnati",
+	"FULLTIME.OVER_55": "Risultato Finale - piu di 5,5 goal segnati",
+	"FULLTIME.UNDER_05": "Risultato Finale - meno di 0,5 goal segnati",
+	"FULLTIME.UNDER_15": "Risultato Finale - meno di 1,5 goal segnati",
+	"FULLTIME.UNDER_25": "Risultato Finale - meno di 2,5 goal segnati",
+	"FULLTIME.UNDER_35": "Risultato Finale - meno di 3,5 goal segnati",
+	"FULLTIME.UNDER_45": "Risultato Finale - meno di 4,5 goal segnati",
+	"FULLTIME.UNDER_55": "Risultato Finale - meno di 5,5 goal segnati",
+
+
+	"DETAIL": "Dettaglio",
+
+	"GOAL": "Goal",
+	"UNDER": "Under",
+	"OVER": "Over",
+	"FINAL.RESULT": "Risultato Finale",
+	"NEXT.MATCHES": "Prossime Partite",
+	"RESULTS": "Risultati",
+	"DOUBLE.CHANCE": "Doppia Chance",
+
+	"HALFTIME.SHORT": "45°",
+	"FULLTIME.SHORT": "90°",
+	"Date.till.START": "Inizia Tra",
+
+	"SUMMARY": "Riepilogo",
+
+	"MANAGE": "Manage",
+	"AREA": "Area",
+	"MINIMIZE": "MInimize",
+	"EXPAND": "Expand",
+	"REFRESH": "Refresh",
+	"FULLSCREEN": "Full screen",
+	"OPEN_IN_LIGHTBOX": "Open in lightbox",
+	"ID": "Id",
+	"NAME": "Name",
+	"OPERATION": "Operation",
+	"DELETE": "Delete",
+	"ADD": "Add",
+	"MY": "My",
+	"TOURNAMENTS": "Tournaments",
+
+	"VIEW_DETAILS": "View Details",
+	"SUBSCRIBE": "Subscribe",
+	"SHOW_INFO": "Show Info",
+	"PLAY_1": "1",
+	"PLAY_X": "X",
+	"PLAY_2": "2",
+	"MORE": "More...",
+	"TOURNAMENT_FIXTURES_RET_0": "No Matches Found",
+	"SELECT_DAYS_FUTURE": "View fixtures for the next days",
+	"PLACE_BET": "Bet!",
+	"UNDO": "Undo",
+	"CREDITS_LEFT": "Credits Left",
+	"DAILY.MATCHES": "Palinsesto giornaliero",
+
+
+
+	"ITA_TOURNAMENT_YEAR_DESC": "Italian Serie a 2016 / 17 - One vs All",
+
+
+
+	"Menu": {
+		"SHORTCUTS": "Scorciatoie",
+		"COMPETITIONS": "Competizioni",
+		"DASHBOARD": "Dashboard",
+		"MAIL": "Mail",
+		"INBOX": "Inbox",
+		"COMPOSE_MAIL": "Compose Mail",
+		"SINGLE_MAIL": "Single Mail",
+		"FORM_STUFF": "Form Stuff",
+		"COMMON_ELEMENTS": "Common Elements",
+		"VALIDATION_ELEMENTS": "Validation Elements",
+		"FORM_WIZARD": "Form Wizard",
+		"FILE_UPLOAD": "File Upload",
+		"IMAGE_CROP": "Image Crop",
+		"UI_KIT": "UI Kit",
+		"GENERAL_ELEMENTS": "General Elements",
+		"BUTTONS_ICONS": "Buttons & Icons",
+		"TYPOGRAPHY": "Typography",
+		"NAVIGATION_ACCORDIONS": "Navigation & Accordions",
+		"MODALS": "Modals",
+		"TILES": "Tiles",
+		"PORTLETS": "Portlets",
+		"GRID": "Grid",
+		"WIDGETS": "Widgets",
+		"TREE": "Tree",
+		"LISTS": "Lists",
+		"ALERTS_NOTIFICATIONS": "Alerts & Notifications",
+		"MATERIAL_UI": "Material UI",
+		"SHOP": "Shop",
+		"ORDERS": "Orders",
+		"SINGLE_ORDER": "Single Order",
+		"PRODUCTS": "Products",
+		"SINGLE_PRODUCT": "Single Product",
+		"INVOICES": "Invoices",
+		"SINGLE_INVOICE": "Single Invoice",
+		"TABLES": "Tables",
+		"BOOTSTRAP_TABLES": "Bootstrap Tables",
+		"DATATABLES": "DataTables",
+		"UI_GRID": "UI Grid",
+		"NGTABLE": "ngTable",
+		"SMARTTABLE": "Smart Table",
+		"FOOTABLE": "FooTable",
+		"EXTRA_PAGES": "Extra Pages",
+		"LOGIN_PAGE": "Login Page",
+		"SIGNUP_PAGE": "Signup Page",
+		"FORGOT_PASSWORD_PAGE": "Forgot Password Page",
+		"PAGE_404": "Page 404",
+		"PAGE_500": "Page 500",
+		"PAGE_OFFLINE": "Page Offline",
+		"LOCKED_SCREEN": "Locked Screen",
+		"GALLERY": "Gallery",
+		"TIMELINE": "Timeline",
+		"CHAT": "Chat",
+		"SEARCH_RESULTS": "Search Results",
+		"PROFILE_PAGE": "Profile Page",
+		"LAYOUTS": "Layouts",
+		"BOXED_LAYOUT": "Boxed Layout",
+		"FULL_WIDTH_LAYOUT": "Full-width Layout",
+		"SMALL_SIDEBAR": "Small Sidebar",
+		"EXTRA_SMALL_SIDEBAR": "Extra-small Sidebar",
+		"OFFCANVAS_SIDEBAR": "Off-canvas Sidebar",
+		"HORIZONTAL_MENU": "Horizontal Menu",
+		"RTL_LAYOUT": "RTL Layout",
+		"FRONT_THEMES": "Front Themes",
+		"CORPORATE": "Corporate",
+		"COMMERCE": "Commerce",
+		"MAPS": "Maps",
+		"VECTOR_MAPS": "Vector Maps",
+		"GOOGLE_MAPS": "Google Maps",
+		"LEAFLET_MAPS": "Leaflet Maps",
+		"CALENDAR": "Calendar",
+		"CHARTS_GRAPHS": "Charts & Graphs",
+		"MENU_LEVELS": "Menu Levels",
+		"MENU_LEVEL": "Menu Level",
+		"DOCUMENTATION": "Documentation",
+		"MASONRY": "Masonry",
+		"INTRO": "Intro page",
+		"DRAGULA": "Dragula",
+		"CONFIGURATOR": "Configurator",
+		"PLAY": "Play",
+		"ADMIN_CHECK": "Admin Check",
+
+		"Admin_Check": {
+			"PERFORMANCES": "Performances",
+			"ALERTS": "Alerts"
+		},
+
+		"Configurator": {
+			"ADD_AREA": "Add Area",
+			"INSERT_AREA_NAME": "Insert area name",
+			"AREA": "Area Configurator",
+			"NATION": "Nation Configurator",
+			"COMPETITION": "Competition Configurator",
+			"TOURNAMENT": "Tournament Configurator",
+			"UPLOAD_COMPETITION": "Upload Competition"
+		},
+		"Tournament": {
+			"OVERVIEW": "Overview"
+		}
+
+
+	},
+
+	"Add.Area": {
+		"DESCRIPTION": "This form allows you to add a new area",
+		"TEXTLABEL": "Insert area name"
+
+	},
+	"Add.Nation": {
+		"SELECT_AREA": "Select Area",
+		"INSERT_NAME": "Insert Name"
+
+	},
+
+
+	"Manage.Area": {
+		"ADD_AREA": "Add Area",
+		"DESCRIPTION": "This form allows you to manage area",
+		"TEXTLABEL": "Insert area name",
+		"NAVIGATE": "View Area Details"
+
+	},
+
+	"Competition": {
+		"SELECT": "Select Competitions",
+		"SELECT_NATION": "Select Nation"
+	},
+
+	"Tournament": {
+		"CONFIGURATOR": "Tournament Configurator",
+		"ADD": "Add tournament",
+		"DELETE": "Delete tournament",
+		"LIST": "Tournaments",
+		"NAME": "Tournament Name",
+		"SELECT_COMPETITION_NAME": "Select competition associated with the tournament"
+	},
+
+	"LOGIN.ERROR": "Login Error",
+	"SUBMIT": "Submit",
+	"EUROPE": "Europe",
+	"ASIA": "Asia",
+	"ITALY": "Italy",
+	"SERIE_A_2016_17": "Serie a 2016 - 17",
+	"PLAY": "Play",
+	"MY_TOURNAMENTS": "My Tournaments",
+
+
+
+	"_AREA_LIST": "Retrieve List Of Areas",
+	"_USER_FINDBYEMAIL": "Find User By Email",
+	"_TOURNAMENT_LISTTOREGISTER": "Get List of tournaments To register in",
+	"_TOURNAMENT_GETBYIDWITHFIXTURESRANGE": "Get Tournament and fixtures by filter given by User",
+	"_SPORT_LIST": "Retrieve List of Sports",
+	"_COMPETITION_LIST": "Retrieve List of Competitions",
+	"_FIXTURE_FINDBYCOMPETITION": "Retrieve fixtures of Competitions",
+	"_USER_ISEMPTY": "Check if there are users in db on startup"
+
+}

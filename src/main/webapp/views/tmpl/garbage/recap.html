@@ -1,0 +1,790 @@
+<div  ng-controller="RecapCtrl">
+<section class="tile bg-success" fullscreen="isFullscreen02" id="section1x2" >
+
+	<!-- tile header -->
+	<div class="tile-header dvd dvd-btm">
+		<h1 class="custom-font">
+			<strong>{{'FINAL.RESULT' | translate}} </strong>
+		</h1>
+		<ul class="controls">
+			<li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+				<a href uib-dropdown-toggle class="dropdown-toggle settings">
+					<i class="fa fa-cog"/>
+				</a>
+
+				<ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+					<li>
+						<a href tile-control-toggle>
+							<span class="minimize">
+								<fa name="angle-down"/>&nbsp;&nbsp;&nbsp;Minimize</span>
+							<span class="expand">
+								<fa name="angle-up"/>&nbsp;&nbsp;&nbsp;Expand</span>
+						</a>
+					</li>
+					<li>
+						<a href tile-control-refresh ng-click="ajaxFaker()">
+							<fa name="refresh"/> Refresh
+						</a>
+					</li>
+					<li>
+						<a href tile-control-fullscreen ng-click="isFullscreen02 = !isFullscreen02">
+							<fa name="expand"/> Fullscreen
+						</a>
+					</li>
+					<li>
+						<a href tile-control-lightbox>
+							<fa name="magnet"/> Open in Lightbox
+						</a>
+					</li>
+
+				</ul>
+
+			</li>
+			<li class="remove">
+				<a href tile-control-close>
+					<i class="fa fa-times"/>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<!-- /tile header -->
+
+
+	<div class="row">
+				<div class="col-md-4">
+					<p class="text-center">
+						<a href ng-click="addBet('001_1',detail,(detail.homeTeam.teamStatsDto.home._1.success + detail.awayTeam.teamStatsDto.away._1.success) / (detail.homeTeam.teamStatsDto.home._1.total +  + detail.awayTeam.teamStatsDto.away._1.total) * 100);"><small>{{'001_1.SHORT' | translate}}</small></a>
+					</p> 
+					<p class="text-center">
+						<small>{{(detail.homeTeam.teamStatsDto.home._1.success + detail.awayTeam.teamStatsDto.away._1.success) / (detail.homeTeam.teamStatsDto.home._1.total +  + detail.awayTeam.teamStatsDto.away._1.total) * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{detail.homeTeam.teamStatsDto.home._1.success + detail.awayTeam.teamStatsDto.away._1.success}} / {{detail.homeTeam.teamStatsDto.home._1.total +  + detail.awayTeam.teamStatsDto.away._1.total}})</small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<a href ng-click="addBet('002_x',detail,(detail.homeTeam.teamStatsDto.home._x.success + detail.awayTeam.teamStatsDto.away._x.success) / (detail.homeTeam.teamStatsDto.home._x.total +  + detail.awayTeam.teamStatsDto.away._x.total) * 100);"><small>{{'002_X.SHORT' | translate}}</small></a>
+					</p> 
+					<p class="text-center">
+						<small>{{(detail.homeTeam.teamStatsDto.home._x.success + detail.awayTeam.teamStatsDto.away._x.success) / (detail.homeTeam.teamStatsDto.home._x.total +  + detail.awayTeam.teamStatsDto.away._x.total) * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{detail.homeTeam.teamStatsDto.home._x.success + detail.awayTeam.teamStatsDto.away._x.success}} / {{detail.homeTeam.teamStatsDto.home._x.total +  + detail.awayTeam.teamStatsDto.away._x.total}})</small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<a href ng-click="addBet('003_2',detail,(detail.homeTeam.teamStatsDto.home._x.success + detail.awayTeam.teamStatsDto.away._x.success) / (detail.homeTeam.teamStatsDto.home._2.total +  + detail.awayTeam.teamStatsDto.away._2.total) * 100);"><small>{{'003_2.SHORT' | translate}}</small></a>
+					</p> 
+					<p class="text-center">
+						<small>{{(detail.homeTeam.teamStatsDto.home._2.success + detail.awayTeam.teamStatsDto.away._2.success) / (detail.homeTeam.teamStatsDto.home._2.total +  + detail.awayTeam.teamStatsDto.away._2.total) * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{detail.homeTeam.teamStatsDto.home._2.success + detail.awayTeam.teamStatsDto.away._2.success}} / {{detail.homeTeam.teamStatsDto.home._2.total +  + detail.awayTeam.teamStatsDto.away._2.total}})</small>
+					</p>
+				</div>
+			</div>
+	
+
+
+</section>
+
+<section class="tile bg-success" fullscreen="isFullscreen02" id="sectionDoubleChance">
+
+	<!-- tile header -->
+	<div class="tile-header dvd dvd-btm">
+		<h1 class="custom-font">
+			<strong>{{'DOUBLE.CHANCE' | translate}} </strong>
+		</h1>
+		<ul class="controls">
+			<li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+				<a href uib-dropdown-toggle class="dropdown-toggle settings">
+					<i class="fa fa-cog"/>
+				</a>
+
+				<ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+					<li>
+						<a href tile-control-toggle>
+							<span class="minimize">
+								<fa name="angle-down"/>&nbsp;&nbsp;&nbsp;Minimize</span>
+							<span class="expand">
+								<fa name="angle-up"/>&nbsp;&nbsp;&nbsp;Expand</span>
+						</a>
+					</li>
+					<li>
+						<a href tile-control-refresh ng-click="ajaxFaker()">
+							<fa name="refresh"/> Refresh
+						</a>
+					</li>
+					<li>
+						<a href tile-control-fullscreen ng-click="isFullscreen02 = !isFullscreen02">
+							<fa name="expand"/> Fullscreen
+						</a>
+					</li>
+					<li>
+						<a href tile-control-lightbox>
+							<fa name="magnet"/> Open in Lightbox
+						</a>
+					</li>
+
+				</ul>
+
+			</li>
+			<li class="remove">
+				<a href tile-control-close>
+					<i class="fa fa-times"/>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<!-- /tile header -->
+
+
+	<div class="row">
+				<div class="col-md-4">
+					<p class="text-center">
+						<a href ng-click="addBet('FULLTIME.1X2.004.HOME_TEAM_WINS_OR_DRAW',detail,(detail.homeTeam.teamStatsDto.home._1.success + detail.homeTeam.teamStatsDto.home._x.success + detail.awayTeam.teamStatsDto.away._1.success + detail.awayTeam.teamStatsDto.away._x.success) / (detail.homeTeam.teamStatsDto.home._1.total + detail.awayTeam.teamStatsDto.away._1.total) * 100);"><small>{{'FULLTIME.1X2.004.HOME_TEAM_WINS_OR_DRAW.SHORT' | translate}}</small></a>
+					</p> 
+					<p class="text-center">
+						<small>{{(detail.homeTeam.teamStatsDto.home._1.success + detail.homeTeam.teamStatsDto.home._x.success + detail.awayTeam.teamStatsDto.away._1.success + detail.awayTeam.teamStatsDto.away._x.success) / (detail.homeTeam.teamStatsDto.home._1.total + detail.awayTeam.teamStatsDto.away._1.total) * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{detail.homeTeam.teamStatsDto.home._1.success + detail.homeTeam.teamStatsDto.home._x.success + detail.awayTeam.teamStatsDto.away._1.success + detail.awayTeam.teamStatsDto.away._x.success}} / {{detail.homeTeam.teamStatsDto.home._1.total + detail.awayTeam.teamStatsDto.away._1.total}})</small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<a href ng-click="addBet('FULLTIME.1X2.005.HOME_TEAM_WINS_OR_AWAY_TEAM_WINS',detail,(detail.homeTeam.teamStatsDto.home._1.success + detail.homeTeam.teamStatsDto.home._2.success + detail.awayTeam.teamStatsDto.away._1.success + detail.awayTeam.teamStatsDto.away._2.success) / (detail.homeTeam.teamStatsDto.home._1.total + detail.awayTeam.teamStatsDto.away._1.total) * 100);"><small>{{'FULLTIME.1X2.005.HOME_TEAM_WINS_OR_AWAY_TEAM_WINS.SHORT' | translate}}</small></a>
+					</p> 
+					<p class="text-center">
+						<small>{{(detail.homeTeam.teamStatsDto.home._1.success + detail.homeTeam.teamStatsDto.home._2.success + detail.awayTeam.teamStatsDto.away._1.success + detail.awayTeam.teamStatsDto.away._2.success) / (detail.homeTeam.teamStatsDto.home._1.total + detail.awayTeam.teamStatsDto.away._1.total) * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{detail.homeTeam.teamStatsDto.home._1.success + detail.homeTeam.teamStatsDto.home._2.success + detail.awayTeam.teamStatsDto.away._1.success + detail.awayTeam.teamStatsDto.away._2.success}} / {{detail.homeTeam.teamStatsDto.home._1.total + detail.awayTeam.teamStatsDto.away._1.total}})</small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<a href ng-click="addBet('FULLTIME.1X2.005.HOME_TEAM_WINS_OR_AWAY_TEAM_WINS',detail,(detail.homeTeam.teamStatsDto.home._x.success + detail.homeTeam.teamStatsDto.home._2.success + detail.awayTeam.teamStatsDto.away._x.success + detail.awayTeam.teamStatsDto.away._2.success) / (detail.homeTeam.teamStatsDto.home._1.total + detail.awayTeam.teamStatsDto.away._1.total) * 100);"><small>{{'FULLTIME.1X2.006.DRAW_OR_AWAY_TEAM_WINS.SHORT' | translate}}</small></a>
+					</p> 
+					<p class="text-center">
+						<small>{{(detail.homeTeam.teamStatsDto.home._x.success + detail.homeTeam.teamStatsDto.home._2.success + detail.awayTeam.teamStatsDto.away._x.success + detail.awayTeam.teamStatsDto.away._2.success) / (detail.homeTeam.teamStatsDto.home._1.total + detail.awayTeam.teamStatsDto.away._1.total) * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{detail.homeTeam.teamStatsDto.home._x.success + detail.homeTeam.teamStatsDto.home._2.success + detail.awayTeam.teamStatsDto.away._x.success + detail.awayTeam.teamStatsDto.away._2.success}} / {{detail.homeTeam.teamStatsDto.home._1.total + detail.awayTeam.teamStatsDto.away._1.total}})</small>
+					</p>
+				</div>
+				
+			</div>
+	
+
+
+</section>
+
+<section class="tile bg-success" fullscreen="isFullscreen02" id="sectionGoal">
+
+	<!-- tile header -->
+	<div class="tile-header dvd dvd-btm">
+		<h1 class="custom-font">
+			<strong>{{'GOAL' | translate}} </strong>
+		</h1>
+		<ul class="controls">
+			<li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+				<a href uib-dropdown-toggle class="dropdown-toggle settings">
+					<i class="fa fa-cog"/>
+				</a>
+
+				<ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+					<li>
+						<a href tile-control-toggle>
+							<span class="minimize">
+								<fa name="angle-down"/>&nbsp;&nbsp;&nbsp;Minimize</span>
+							<span class="expand">
+								<fa name="angle-up"/>&nbsp;&nbsp;&nbsp;Expand</span>
+						</a>
+					</li>
+					<li>
+						<a href tile-control-refresh ng-click="ajaxFaker()">
+							<fa name="refresh"/> Refresh
+						</a>
+					</li>
+					<li>
+						<a href tile-control-fullscreen ng-click="isFullscreen02 = !isFullscreen02">
+							<fa name="expand"/> Fullscreen
+						</a>
+					</li>
+					<li>
+						<a href tile-control-lightbox>
+							<fa name="magnet"/> Open in Lightbox
+						</a>
+					</li>
+
+				</ul>
+
+			</li>
+			<li class="remove">
+				<a href tile-control-close>
+					<i class="fa fa-times"/>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<!-- /tile header -->
+
+	<div class="row">
+		
+				<div class="col-md-3">
+					<p class="text-center">
+						<a href ng-click="addBet('GNG.GOAL',detail,(detail.homeTeam.teamStatsDto.home._goal.success + detail.awayTeam.teamStatsDto.away._goal.success) / (detail.homeTeam.teamStatsDto.home._goal.total + detail.awayTeam.teamStatsDto.away._goal.total)* 100);"><small>{{'GNG.GOAL.SHORT' | translate}}</small></a>
+					</p> 
+					<p class="text-center">
+						<small>{{(detail.homeTeam.teamStatsDto.home._goal.success + detail.awayTeam.teamStatsDto.away._goal.success) / (detail.homeTeam.teamStatsDto.home._goal.total + detail.awayTeam.teamStatsDto.away._goal.total)* 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{detail.homeTeam.teamStatsDto.home._goal.success + detail.awayTeam.teamStatsDto.away._goal.success}} / {{detail.homeTeam.teamStatsDto.home._goal.total + detail.awayTeam.teamStatsDto.away._goal.total}})</small>
+					</p>
+				</div>
+				<div class="col-md-3">
+					<p class="text-center">
+						<a href ng-click="addBet('GNG.NOGOAL',detail,(detail.homeTeam.teamStatsDto.home._nogoal.success + detail.awayTeam.teamStatsDto.away._nogoal.success) / (detail.homeTeam.teamStatsDto.home._nogoal.total + detail.awayTeam.teamStatsDto.away._nogoal.total)* 100);"><small>{{'GNG.NOGOAL.SHORT' | translate}}</small></a>
+					</p> 
+					<p class="text-center">
+						<small>{{(detail.homeTeam.teamStatsDto.home._nogoal.success + detail.awayTeam.teamStatsDto.away._nogoal.success) / (detail.homeTeam.teamStatsDto.home._nogoal.total + detail.awayTeam.teamStatsDto.away._nogoal.total)* 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{detail.homeTeam.teamStatsDto.home._nogoal.success + detail.awayTeam.teamStatsDto.away._nogoal.success}} / {{detail.homeTeam.teamStatsDto.home._nogoal.total + detail.awayTeam.teamStatsDto.away._nogoal.total}})</small>
+					</p>
+				</div>
+
+				<div class="col-md-3">
+					<p class="text-center">
+						<a href ng-click="addBet('HA.HOMEGOAL',detail,(detail.homeTeam.teamStatsDto.home._homeGoal.success + detail.awayTeam.teamStatsDto.away._homeGoal.success) / (detail.homeTeam.teamStatsDto.home._homeGoal.total + detail.awayTeam.teamStatsDto.away._homeGoal.total)* 100);"><small>{{'HA.HOMEGOAL.SHORT' | translate}}</small></a>
+					</p> 
+					<p class="text-center">
+						<small>{{(detail.homeTeam.teamStatsDto.home._homeGoal.success + detail.awayTeam.teamStatsDto.away._homeGoal.success) / (detail.homeTeam.teamStatsDto.home._homeGoal.total + detail.awayTeam.teamStatsDto.away._homeGoal.total)* 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{detail.homeTeam.teamStatsDto.home._homeGoal.success + detail.awayTeam.teamStatsDto.away._homeGoal.success}} / {{detail.homeTeam.teamStatsDto.home._homeGoal.total + detail.awayTeam.teamStatsDto.away._homeGoal.total}})</small>
+					</p>
+				</div>
+
+				<div class="col-md-3">
+					<p class="text-center">
+						<a href ng-click="addBet('HA.AWAYGOAL'(detail.homeTeam.teamStatsDto.home._awayGoal.success + detail.awayTeam.teamStatsDto.away._awayGoal.success) / (detail.homeTeam.teamStatsDto.home._awayGoal.total + detail.awayTeam.teamStatsDto.away._awayGoal.total)* 100);"><small>{{'HA.AWAYGOAL.SHORT' | translate}}</small></a>
+					</p> 
+					<p class="text-center">
+						<small>{{(detail.homeTeam.teamStatsDto.home._awayGoal.success + detail.awayTeam.teamStatsDto.away._awayGoal.success) / (detail.homeTeam.teamStatsDto.home._awayGoal.total + detail.awayTeam.teamStatsDto.away._awayGoal.total)* 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{detail.homeTeam.teamStatsDto.home._awayGoal.success + detail.awayTeam.teamStatsDto.away._awayGoal.success}} / {{detail.homeTeam.teamStatsDto.home._awayGoal.total + detail.awayTeam.teamStatsDto.away._awayGoal.total}})</small>
+					</p>
+				</div>
+
+			</div>
+		
+
+	<!-- /tile body -->
+
+
+
+</section>
+
+<section class="tile bg-success" fullscreen="isFullscreen02">
+
+	<!-- tile header -->
+	<div class="tile-header dvd dvd-btm">
+		<h1 class="custom-font">
+			<strong>{{'UNDER' | translate}} </strong>
+		</h1>
+		<ul class="controls">
+			<li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+				<a href uib-dropdown-toggle class="dropdown-toggle settings">
+					<i class="fa fa-cog"/>
+				</a>
+
+				<ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+					<li>
+						<a href tile-control-toggle>
+							<span class="minimize">
+								<fa name="angle-down"/>&nbsp;&nbsp;&nbsp;Minimize</span>
+							<span class="expand">
+								<fa name="angle-up"/>&nbsp;&nbsp;&nbsp;Expand</span>
+						</a>
+					</li>
+					<li>
+						<a href tile-control-refresh ng-click="ajaxFaker()">
+							<fa name="refresh"/> Refresh
+						</a>
+					</li>
+					<li>
+						<a href tile-control-fullscreen ng-click="isFullscreen02 = !isFullscreen02">
+							<fa name="expand"/> Fullscreen
+						</a>
+					</li>
+					<li>
+						<a href tile-control-lightbox>
+							<fa name="magnet"/> Open in Lightbox
+						</a>
+					</li>
+
+				</ul>
+
+			</li>
+			<li class="remove">
+				<a href tile-control-close>
+					<i class="fa fa-times"/>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<!-- /tile header -->
+
+	<div class="row">
+		
+				<div class="col-md-6">
+					<p class="text-center">
+						<a href ng-click="addBet('UNDER05',detail,(detail.homeTeam.teamStatsDto.home._under05.success + detail.awayTeam.teamStatsDto.away._under05.success) / (detail.homeTeam.teamStatsDto.home._under05.total + detail.awayTeam.teamStatsDto.away._under05.total) * 100);"><small>{{'UNDER05.SHORT' | translate}}</small></a>
+					</p> 
+					<p class="text-center">
+						<small>{{(detail.homeTeam.teamStatsDto.home._under05.success + detail.awayTeam.teamStatsDto.away._under05.success) / (detail.homeTeam.teamStatsDto.home._under05.total + detail.awayTeam.teamStatsDto.away._under05.total) * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{detail.homeTeam.teamStatsDto.home._under05.success + detail.awayTeam.teamStatsDto.away._under05.success}} / {{detail.homeTeam.teamStatsDto.home._under05.total + detail.awayTeam.teamStatsDto.away._under05.total}})</small>
+					</p>
+				</div>
+				<div class="col-md-6">
+					<p class="text-center">
+						<a href ng-click="addBet('UNDER15',detail,(detail.homeTeam.teamStatsDto.home._under15.success + detail.awayTeam.teamStatsDto.away._under15.success) / (detail.homeTeam.teamStatsDto.home._under15.total + detail.awayTeam.teamStatsDto.away._under15.total) * 100);"><small>{{'UNDER15.SHORT' | translate}}</small></a>
+					</p> 
+					<p class="text-center">
+						<small>{{(detail.homeTeam.teamStatsDto.home._under15.success + detail.awayTeam.teamStatsDto.away._under15.success) / (detail.homeTeam.teamStatsDto.home._under15.total + detail.awayTeam.teamStatsDto.away._under15.total) * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{detail.homeTeam.teamStatsDto.home._under15.success + detail.awayTeam.teamStatsDto.away._under15.success}} / {{detail.homeTeam.teamStatsDto.home._under15.total + detail.awayTeam.teamStatsDto.away._under15.total}})</small>
+					</p>
+
+				</div>
+
+				<div class="col-md-6">
+					<p class="text-center">
+						<a href ng-click="addBet('UNDER25',detail,(detail.homeTeam.teamStatsDto.home._under25.success + detail.awayTeam.teamStatsDto.away._under25.success) / (detail.homeTeam.teamStatsDto.home._under25.total + detail.awayTeam.teamStatsDto.away._under25.total) * 100);"><small>{{'UNDER25.SHORT' | translate}}</small></a>
+					</p> 
+					<p class="text-center">
+						<small>{{(detail.homeTeam.teamStatsDto.home._under25.success + detail.awayTeam.teamStatsDto.away._under25.success) / (detail.homeTeam.teamStatsDto.home._under25.total + detail.awayTeam.teamStatsDto.away._under25.total) * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{detail.homeTeam.teamStatsDto.home._under25.success + detail.awayTeam.teamStatsDto.away._under25.success}} / {{detail.homeTeam.teamStatsDto.home._under25.total + detail.awayTeam.teamStatsDto.away._under25.total}})</small>
+					</p>
+
+				</div>
+				<div class="col-md-6">
+					<p class="text-center">
+						<a href ng-click="addBet('UNDER35',detail,(detail.homeTeam.teamStatsDto.home._under35.success + detail.awayTeam.teamStatsDto.away._under35.success) / (detail.homeTeam.teamStatsDto.home._under35.total + detail.awayTeam.teamStatsDto.away._under35.total) * 100);"><small>{{'UNDER35.SHORT' | translate}}</small></a>
+					</p> 
+					<p class="text-center">
+						<small>{{(detail.homeTeam.teamStatsDto.home._under35.success + detail.awayTeam.teamStatsDto.away._under35.success) / (detail.homeTeam.teamStatsDto.home._under35.total + detail.awayTeam.teamStatsDto.away._under35.total) * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{detail.homeTeam.teamStatsDto.home._under35.success + detail.awayTeam.teamStatsDto.away._under35.success}} / {{detail.homeTeam.teamStatsDto.home._under35.total + detail.awayTeam.teamStatsDto.away._under35.total}})</small>
+					</p>
+
+				</div>
+
+
+				<div class="col-md-6">
+					<p class="text-center">
+						<a href ng-click="addBet('UNDER45',detail,(detail.homeTeam.teamStatsDto.home._under45.success + detail.awayTeam.teamStatsDto.away._under45.success) / (detail.homeTeam.teamStatsDto.home._under45.total + detail.awayTeam.teamStatsDto.away._under45.total) * 100);"><small>{{'UNDER45.SHORT' | translate}}</small></a>
+					</p> 
+					<p class="text-center">
+						<small>{{(detail.homeTeam.teamStatsDto.home._under45.success + detail.awayTeam.teamStatsDto.away._under45.success) / (detail.homeTeam.teamStatsDto.home._under45.total + detail.awayTeam.teamStatsDto.away._under45.total) * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{detail.homeTeam.teamStatsDto.home._under45.success + detail.awayTeam.teamStatsDto.away._under45.success}} / {{detail.homeTeam.teamStatsDto.home._under45.total + detail.awayTeam.teamStatsDto.away._under45.total}})</small>
+					</p>
+
+				</div>
+
+				<div class="col-md-6">
+					<p class="text-center">
+						<a href ng-click="addBet('UNDER55',detail,(detail.homeTeam.teamStatsDto.home._under55.success + detail.awayTeam.teamStatsDto.away._under55.success) / (detail.homeTeam.teamStatsDto.home._under55.total + detail.awayTeam.teamStatsDto.away._under55.total) * 100);"><small>{{'UNDER55.SHORT' | translate}}</small></a>
+					</p> 
+					<p class="text-center">
+						<small>{{(detail.homeTeam.teamStatsDto.home._under55.success + detail.awayTeam.teamStatsDto.away._under55.success) / (detail.homeTeam.teamStatsDto.home._under55.total + detail.awayTeam.teamStatsDto.away._under55.total) * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{detail.homeTeam.teamStatsDto.home._under55.success + detail.awayTeam.teamStatsDto.away._under55.success}} / {{detail.homeTeam.teamStatsDto.home._under55.total + detail.awayTeam.teamStatsDto.away._under55.total}})</small>
+					</p>
+				</div>
+
+			</div>
+
+	<!-- /tile body -->
+
+</section>
+
+<section class="tile bg-success" fullscreen="isFullscreen02">
+
+	<!-- tile header -->
+	<div class="tile-header dvd dvd-btm">
+		<h1 class="custom-font">
+			<strong>{{'OVER' | translate}} </strong>
+		</h1>
+		<ul class="controls">
+			<li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+				<a href uib-dropdown-toggle class="dropdown-toggle settings">
+					<i class="fa fa-cog"/>
+				</a>
+
+				<ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+					<li>
+						<a href tile-control-toggle>
+							<span class="minimize">
+								<fa name="angle-down"/>&nbsp;&nbsp;&nbsp;Minimize</span>
+							<span class="expand">
+								<fa name="angle-up"/>&nbsp;&nbsp;&nbsp;Expand</span>
+						</a>
+					</li>
+					<li>
+						<a href tile-control-refresh ng-click="ajaxFaker()">
+							<fa name="refresh"/> Refresh
+						</a>
+					</li>
+					<li>
+						<a href tile-control-fullscreen ng-click="isFullscreen02 = !isFullscreen02">
+							<fa name="expand"/> Fullscreen
+						</a>
+					</li>
+					<li>
+						<a href tile-control-lightbox>
+							<fa name="magnet"/> Open in Lightbox
+						</a>
+					</li>
+
+				</ul>
+
+			</li>
+			<li class="remove">
+				<a href tile-control-close>
+					<i class="fa fa-times"/>
+				</a>
+			</li>
+		</ul>
+	</div>
+
+	<div class="row">
+
+		<div class="row">
+		
+				<div class="col-md-6">
+					<p class="text-center">
+						<a href><small>{{'FULLTIME.OVER_05.SHORT' | translate}}</small></a>
+					</p> 
+					<p class="text-center">
+						<small>{{(detail.homeTeam.teamStatsDto.home._over05.success + detail.awayTeam.teamStatsDto.away._over05.success) / (detail.homeTeam.teamStatsDto.home._over05.total + detail.awayTeam.teamStatsDto.away._over05.total) * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{detail.homeTeam.teamStatsDto.home._over05.success + detail.awayTeam.teamStatsDto.away._over05.success}} / {{detail.homeTeam.teamStatsDto.home._over05.total + detail.awayTeam.teamStatsDto.away._over05.total}})</small>
+					</p>
+				</div>
+				<div class="col-md-6">
+					<p class="text-center">
+						<a href><small>{{'FULLTIME.OVER_15.SHORT' | translate}}</small></a>
+					</p> 
+					<p class="text-center">
+						<small>{{(detail.homeTeam.teamStatsDto.home._over15.success + detail.awayTeam.teamStatsDto.away._over15.success) / (detail.homeTeam.teamStatsDto.home._over15.total + detail.awayTeam.teamStatsDto.away._over15.total) * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{detail.homeTeam.teamStatsDto.home._over15.success + detail.awayTeam.teamStatsDto.away._over15.success}} / {{detail.homeTeam.teamStatsDto.home._over15.total + detail.awayTeam.teamStatsDto.away._over15.total}})</small>
+					</p>
+
+				</div>
+
+				<div class="col-md-6">
+					<p class="text-center">
+						<a href><small>{{'FULLTIME.OVER_25.SHORT' | translate}}</small></a>
+					</p> 
+					<p class="text-center">
+						<small>{{(detail.homeTeam.teamStatsDto.home._over25.success + detail.awayTeam.teamStatsDto.away._over25.success) / (detail.homeTeam.teamStatsDto.home._over25.total + detail.awayTeam.teamStatsDto.away._over25.total) * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{detail.homeTeam.teamStatsDto.home._over25.success + detail.awayTeam.teamStatsDto.away._over25.success}} / {{detail.homeTeam.teamStatsDto.home._over25.total + detail.awayTeam.teamStatsDto.away._over25.total}})</small>
+					</p>
+
+				</div>
+				<div class="col-md-6">
+					<p class="text-center">
+						<a href><small>{{'FULLTIME.OVER_35.SHORT' | translate}}</small></a>
+					</p> 
+					<p class="text-center">
+						<small>{{(detail.homeTeam.teamStatsDto.home._over35.success + detail.awayTeam.teamStatsDto.away._over35.success) / (detail.homeTeam.teamStatsDto.home._over35.total + detail.awayTeam.teamStatsDto.away._over35.total) * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{detail.homeTeam.teamStatsDto.home._over35.success + detail.awayTeam.teamStatsDto.away._over35.success}} / {{detail.homeTeam.teamStatsDto.home._over35.total + detail.awayTeam.teamStatsDto.away._over35.total}})</small>
+					</p>
+
+				</div>
+
+
+				<div class="col-md-6">
+					<p class="text-center">
+						<a href><small>{{'FULLTIME.OVER_45.SHORT' | translate}}</small></a>
+					</p> 
+					<p class="text-center">
+						<small>{{(detail.homeTeam.teamStatsDto.home._over45.success + detail.awayTeam.teamStatsDto.away._over45.success) / (detail.homeTeam.teamStatsDto.home._over45.total + detail.awayTeam.teamStatsDto.away._over45.total) * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{detail.homeTeam.teamStatsDto.home._over45.success + detail.awayTeam.teamStatsDto.away._over45.success}} / {{detail.homeTeam.teamStatsDto.home._over45.total + detail.awayTeam.teamStatsDto.away._over45.total}})</small>
+					</p>
+
+				</div>
+
+				<div class="col-md-6">
+					<p class="text-center">
+						<a href><small>{{'FULLTIME.OVER_55.SHORT' | translate}}</small></a>
+					</p> 
+					<p class="text-center">
+						<small>{{(detail.homeTeam.teamStatsDto.home._over55.success + detail.awayTeam.teamStatsDto.away._over55.success) / (detail.homeTeam.teamStatsDto.home._over55.total + detail.awayTeam.teamStatsDto.away._over55.total) * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{detail.homeTeam.teamStatsDto.home._over55.success + detail.awayTeam.teamStatsDto.away._over55.success}} / {{detail.homeTeam.teamStatsDto.home._over55.total + detail.awayTeam.teamStatsDto.away._over55.total}})</small>
+					</p>
+				</div>
+
+			</div>
+	</div>
+
+
+</section>
+
+<section class="tile bg-success" fullscreen="isFullscreen02">
+
+	<!-- tile header -->
+	<div class="tile-header dvd dvd-btm">
+		<h1 class="custom-font">
+			<strong>{{'HANDICAP' | translate}} </strong>
+		</h1>
+		<ul class="controls">
+			<li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+				<a href uib-dropdown-toggle class="dropdown-toggle settings">
+					<i class="fa fa-cog"/>
+				</a>
+
+				<ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+					<li>
+						<a href tile-control-toggle>
+							<span class="minimize">
+								<fa name="angle-down"/>&nbsp;&nbsp;&nbsp;Minimize</span>
+							<span class="expand">
+								<fa name="angle-up"/>&nbsp;&nbsp;&nbsp;Expand</span>
+						</a>
+					</li>
+					<li>
+						<a href tile-control-refresh ng-click="ajaxFaker()">
+							<fa name="refresh"/> Refresh
+						</a>
+					</li>
+					<li>
+						<a href tile-control-fullscreen ng-click="isFullscreen02 = !isFullscreen02">
+							<fa name="expand"/> Fullscreen
+						</a>
+					</li>
+					<li>
+						<a href tile-control-lightbox>
+							<fa name="magnet"/> Open in Lightbox
+						</a>
+					</li>
+
+				</ul>
+
+			</li>
+			<li class="remove">
+				<a href tile-control-close>
+					<i class="fa fa-times"/>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<!-- /tile header -->
+			<div class="row">
+				<div class="col-md-12">
+					<p class="text-center">
+					{{'FULLTIME.HANDICAPHOME2' | translate}}
+					</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<p class="text-center">
+						<a href><small>{{'001_1.SHORT' | translate}}</small></a>
+					</p> 
+					<p class="text-center">
+						<small>{{(detail.homeTeam.teamStatsDto.home._handicapHome2_1.success + detail.awayTeam.teamStatsDto.away._handicapHome2_1.success) / (detail.homeTeam.teamStatsDto.home._handicapHome2_1.total + detail.awayTeam.teamStatsDto.away._handicapHome2_1.total) * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{detail.homeTeam.teamStatsDto.home._handicapHome2_1.success + detail.awayTeam.teamStatsDto.away._handicapHome2_1.success}} / {{detail.homeTeam.teamStatsDto.home._handicapHome2_1.total + detail.awayTeam.teamStatsDto.away._handicapHome2_1.total}})</small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<a href><small>{{'002_X.SHORT' | translate}}</small></a>
+					</p> 
+					<p class="text-center">
+						<small>{{(detail.homeTeam.teamStatsDto.home._handicapHome2_x.success + detail.awayTeam.teamStatsDto.away._handicapHome2_x.success) / (detail.homeTeam.teamStatsDto.home._handicapHome2_x.total + detail.awayTeam.teamStatsDto.away._handicapHome2_x.total) * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{detail.homeTeam.teamStatsDto.home._handicapHome2_x.success + detail.awayTeam.teamStatsDto.away._handicapHome2_x.success}} / {{detail.homeTeam.teamStatsDto.home._handicapHome2_x.total + detail.awayTeam.teamStatsDto.away._handicapHome2_x.total}})</small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<a href><small>{{'003_2.SHORT' | translate}}</small></a>
+					</p> 
+					<p class="text-center">
+						<small>{{(detail.homeTeam.teamStatsDto.home._handicapHome2_2.success + detail.awayTeam.teamStatsDto.away._handicapHome2_2.success) / (detail.homeTeam.teamStatsDto.home._handicapHome2_2.total + detail.awayTeam.teamStatsDto.away._handicapHome2_2.total) * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{detail.homeTeam.teamStatsDto.home._handicapHome2_2.success + detail.awayTeam.teamStatsDto.away._handicapHome2_2.success}} / {{detail.homeTeam.teamStatsDto.home._handicapHome2_2.total + detail.awayTeam.teamStatsDto.away._handicapHome2_2.total}})</small>
+					</p>
+				</div>
+				
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<p class="text-center">
+					{{'FULLTIME.HANDICAPHOME1' | translate}}
+					</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<p class="text-center">
+						<a href><small>{{'001_1.SHORT' | translate}}</small></a>
+					</p> 
+					<p class="text-center">
+						<small>{{(detail.homeTeam.teamStatsDto.home._handicapHome1_1.success + detail.awayTeam.teamStatsDto.away._handicapHome1_1.success) / (detail.homeTeam.teamStatsDto.home._handicapHome1_1.total + detail.awayTeam.teamStatsDto.away._handicapHome1_1.total) * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{detail.homeTeam.teamStatsDto.home._handicapHome1_1.success + detail.awayTeam.teamStatsDto.away._handicapHome1_1.success}} / {{detail.homeTeam.teamStatsDto.home._handicapHome1_1.total + detail.awayTeam.teamStatsDto.away._handicapHome1_1.total}})</small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<a href><small>{{'002_X.SHORT' | translate}}</small></a>
+					</p> 
+					<p class="text-center">
+						<small>{{(detail.homeTeam.teamStatsDto.home._handicapHome1_x.success + detail.awayTeam.teamStatsDto.away._handicapHome1_x.success) / (detail.homeTeam.teamStatsDto.home._handicapHome1_x.total + detail.awayTeam.teamStatsDto.away._handicapHome1_x.total) * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{detail.homeTeam.teamStatsDto.home._handicapHome1_x.success + detail.awayTeam.teamStatsDto.away._handicapHome1_x.success}} / {{detail.homeTeam.teamStatsDto.home._handicapHome1_x.total + detail.awayTeam.teamStatsDto.away._handicapHome1_x.total}})</small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<a href><small>{{'003_2.SHORT' | translate}}</small></a>
+					</p> 
+					<p class="text-center">
+						<small>{{(detail.homeTeam.teamStatsDto.home._handicapHome1_2.success + detail.awayTeam.teamStatsDto.away._handicapHome1_2.success) / (detail.homeTeam.teamStatsDto.home._handicapHome1_2.total + detail.awayTeam.teamStatsDto.away._handicapHome1_2.total) * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{detail.homeTeam.teamStatsDto.home._handicapHome1_2.success + detail.awayTeam.teamStatsDto.away._handicapHome1_2.success}} / {{detail.homeTeam.teamStatsDto.home._handicapHome1_2.total + detail.awayTeam.teamStatsDto.away._handicapHome1_2.total}})</small>
+					</p>
+				</div>
+				
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<p class="text-center">
+					{{'FULLTIME.HANDICAPAWAY1' | translate}}
+					</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<p class="text-center">
+						<a href><small>{{'001_1.SHORT' | translate}}</small></a>
+					</p> 
+					<p class="text-center">
+						<small>{{(detail.homeTeam.teamStatsDto.home._handicapAway1_1.success + detail.awayTeam.teamStatsDto.away._handicapAway1_1.success) / (detail.homeTeam.teamStatsDto.home._handicapAway1_1.total + detail.awayTeam.teamStatsDto.away._handicapAway1_1.total) * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{detail.homeTeam.teamStatsDto.home._handicapAway1_1.success + detail.awayTeam.teamStatsDto.away._handicapAway1_1.success}} / {{detail.homeTeam.teamStatsDto.home._handicapAway1_1.total + detail.awayTeam.teamStatsDto.away._handicapAway1_1.total}})</small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<a href><small>{{'002_X.SHORT' | translate}}</small></a>
+					</p> 
+					<p class="text-center">
+						<small>{{(detail.homeTeam.teamStatsDto.home._handicapAway1_x.success + detail.awayTeam.teamStatsDto.away._handicapAway1_x.success) / (detail.homeTeam.teamStatsDto.home._handicapAway1_x.total + detail.awayTeam.teamStatsDto.away._handicapAway1_x.total) * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{detail.homeTeam.teamStatsDto.home._handicapAway1_x.success + detail.awayTeam.teamStatsDto.away._handicapAway1_x.success}} / {{detail.homeTeam.teamStatsDto.home._handicapAway1_x.total + detail.awayTeam.teamStatsDto.away._handicapAway1_x.total}})</small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<a href><small>{{'003_2.SHORT' | translate}}</small></a>
+					</p> 
+					<p class="text-center">
+						<small>{{(detail.homeTeam.teamStatsDto.home._handicapAway1_2.success + detail.awayTeam.teamStatsDto.away._handicapAway1_2.success) / (detail.homeTeam.teamStatsDto.home._handicapAway1_2.total + detail.awayTeam.teamStatsDto.away._handicapAway1_2.total) * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{detail.homeTeam.teamStatsDto.home._handicapAway1_2.success + detail.awayTeam.teamStatsDto.away._handicapAway1_2.success}} / {{detail.homeTeam.teamStatsDto.home._handicapAway1_2.total + detail.awayTeam.teamStatsDto.away._handicapAway1_2.total}})</small>
+					</p>
+				</div>
+				
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<p class="text-center">
+					{{'FULLTIME.HANDICAPAWAY2' | translate}}
+					</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<p class="text-center">
+						<a href><small>{{'001_1.SHORT' | translate}}</small></a>
+					</p> 
+					<p class="text-center">
+						<small>{{(detail.homeTeam.teamStatsDto.home._handicapAway2_1.success + detail.awayTeam.teamStatsDto.away._handicapAway2_1.success) / (detail.homeTeam.teamStatsDto.home._handicapAway2_1.total + detail.awayTeam.teamStatsDto.away._handicapAway2_1.total) * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{detail.homeTeam.teamStatsDto.home._handicapAway2_1.success + detail.awayTeam.teamStatsDto.away._handicapAway2_1.success}} / {{detail.homeTeam.teamStatsDto.home._handicapAway2_1.total + detail.awayTeam.teamStatsDto.away._handicapAway2_1.total}})</small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<a href><small>{{'002_X.SHORT' | translate}}</small></a>
+					</p> 
+					<p class="text-center">
+						<small>{{(detail.homeTeam.teamStatsDto.home._handicapAway2_x.success + detail.awayTeam.teamStatsDto.away._handicapAway2_x.success) / (detail.homeTeam.teamStatsDto.home._handicapAway2_x.total + detail.awayTeam.teamStatsDto.away._handicapAway2_x.total) * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{detail.homeTeam.teamStatsDto.home._handicapAway2_x.success + detail.awayTeam.teamStatsDto.away._handicapAway2_x.success}} / {{detail.homeTeam.teamStatsDto.home._handicapAway2_x.total + detail.awayTeam.teamStatsDto.away._handicapAway2_x.total}})</small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<a href><small>{{'003_2.SHORT' | translate}}</small></a>
+					</p> 
+					<p class="text-center">
+						<small>{{(detail.homeTeam.teamStatsDto.home._handicapAway2_2.success + detail.awayTeam.teamStatsDto.away._handicapAway2_2.success) / (detail.homeTeam.teamStatsDto.home._handicapAway2_2.total + detail.awayTeam.teamStatsDto.away._handicapAway2_2.total) * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{detail.homeTeam.teamStatsDto.home._handicapAway2_2.success + detail.awayTeam.teamStatsDto.away._handicapAway2_2.success}} / {{detail.homeTeam.teamStatsDto.home._handicapAway2_2.total + detail.awayTeam.teamStatsDto.away._handicapAway2_2.total}})</small>
+					</p>
+				</div>
+				
+			</div>
+
+
+</section>
+</div>

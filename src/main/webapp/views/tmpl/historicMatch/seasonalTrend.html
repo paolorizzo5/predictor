@@ -1,0 +1,1219 @@
+<div class="row">
+	<h3 align="center">{{'TEAMS.SEASONAL.TREND' | translate}}</h3>
+</div>
+
+
+<div class="row">
+	<div class="col-md-6">
+		<section class="tile bg-slategray" fullscreen="isFullscreen02"
+			id="sectionComparison" style="max-height: 320px; overflow: auto;"
+			slimscroll="{height: '100%'}">
+
+			<!-- tile header -->
+			<div class="tile-header dvd dvd-btm">
+				<h1 class="custom-font">
+					<strong>{{'COMPARISON' | translate}} </strong>
+				</h1>
+				<ul class="controls">
+					<li class="dropdown" uib-dropdown on-toggle="toggled(open)"><a
+						href uib-dropdown-toggle class="dropdown-toggle settings"> <i
+							class="fa fa-cog" />
+					</a>
+
+						<ul
+							class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+							<li><a href tile-control-toggle> <span class="minimize">
+										<fa name="angle-down" />&nbsp;&nbsp;&nbsp;Minimize
+								</span> <span class="expand"> <fa name="angle-up" />&nbsp;&nbsp;&nbsp;Expand
+								</span>
+							</a></li>
+							<li><a href tile-control-refresh ng-click="ajaxFaker()">
+									<fa name="refresh" /> Refresh
+							</a></li>
+							<li><a href tile-control-fullscreen
+								ng-click="isFullscreen02 = !isFullscreen02"> <fa
+										name="expand" /> Fullscreen
+							</a></li>
+							<li><a href tile-control-lightbox> <fa name="magnet" />
+									Open in Lightbox
+							</a></li>
+
+						</ul></li>
+					<li class="remove"><a href tile-control-close> <i
+							class="fa fa-times" />
+					</a></li>
+				</ul>
+			</div>
+			<!-- /tile header -->
+
+			<div class="row">
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{fixture.homeTeam.name}}</small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{'TEAM' | translate}}</small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{fixture.awayTeam.name}}</small>
+					</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{homeStanding.points}}</small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{'POINTS' | translate}}</small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{awayStanding.points}}</small>
+					</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{homeStanding.won}}</small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{'WINS' | translate}}</small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{awayStanding.won}}</small>
+					</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{homeStanding.draw}}</small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{'DRAWS' | translate}}</small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{awayStanding.draw}}</small>
+					</p>
+				</div>
+			</div>
+
+
+			<div class="row">
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{homeStanding.lost}}</small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{'LOSSES' | translate}}</small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{awayStanding.lost}}</small>
+					</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{homeStanding.goalsFor}}</small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{'GOALS.FOR' | translate}}</small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{awayStanding.goalsFor}}</small>
+					</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{homeStanding.goalsAgainst}}</small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{'GOALS.AGAINST' | translate}}</small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{awayStanding.goalsAgainst}}</small>
+					</p>
+				</div>
+			</div>
+
+
+
+		</section>
+	</div>
+	<div class="col-md-6">
+		<div class="col-md-6">
+			<section class="tile bg-slategray" fullscreen="isFullscreen02"
+				id="section1x2">
+
+				<!-- tile header -->
+				<div class="tile-header dvd dvd-btm">
+					<h1 class="custom-font">
+						<strong>{{'FINAL.RESULT' | translate}} </strong>
+					</h1>
+					<ul class="controls">
+						<li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+							<a href uib-dropdown-toggle class="dropdown-toggle settings">
+								<i class="fa fa-cog" />
+						</a>
+
+							<ul
+								class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+								<li><a href tile-control-toggle> <span class="minimize">
+											<fa name="angle-down" />&nbsp;&nbsp;&nbsp;Minimize
+									</span> <span class="expand"> <fa name="angle-up" />&nbsp;&nbsp;&nbsp;Expand
+									</span>
+								</a></li>
+								<li><a href tile-control-refresh ng-click="ajaxFaker()">
+										<fa name="refresh" /> Refresh
+								</a></li>
+								<li><a href tile-control-fullscreen
+									ng-click="isFullscreen02 = !isFullscreen02"> <fa
+											name="expand" /> Fullscreen
+								</a></li>
+								<li><a href tile-control-lightbox> <fa name="magnet" />
+										Open in Lightbox
+								</a></li>
+
+							</ul>
+
+						</li>
+						<li class="remove"><a href tile-control-close> <i
+								class="fa fa-times" />
+						</a></li>
+					</ul>
+				</div>
+				<!-- /tile header -->
+
+
+				<div class="row">
+					<div class="col-md-4">
+						<p class="text-center">
+							<small>{{'001_1.SHORT' | translate}}</small>
+						</p>
+						<p class="text-center">
+							<small>{{fixturePreviewThisSeason.homeWins /
+								fixturePreviewThisSeason.gamesPlayed * 100 | number:2}} %</small>
+						</p>
+						<p class="text-center">
+							<small>({{fixturePreviewThisSeason.homeWins}} /
+								{{fixturePreviewThisSeason.gamesPlayed}})</small>
+						</p>
+					</div>
+					<div class="col-md-4">
+						<p class="text-center">
+							<small>{{'002_X.SHORT' | translate}}</small>
+						</p>
+						<p class="text-center">
+							<small>{{fixturePreviewThisSeason.draws /
+								fixturePreviewThisSeason.gamesPlayed * 100 | number:2}} %</small>
+						</p>
+						<p class="text-center">
+							<small>({{fixturePreviewThisSeason.draws}} /
+								{{fixturePreviewThisSeason.gamesPlayed}})</small>
+						</p>
+					</div>
+					<div class="col-md-4">
+						<p class="text-center">
+							<small>{{'003_2.SHORT' | translate}}</small>
+						</p>
+						<p class="text-center">
+							<small>{{fixturePreviewThisSeason.awayWins /
+								fixturePreviewThisSeason.gamesPlayed * 100 | number:2}} %</small>
+						</p>
+						<p class="text-center">
+							<small>({{fixturePreviewThisSeason.awayWins}} /
+								{{fixturePreviewThisSeason.gamesPlayed}})</small>
+						</p>
+					</div>
+
+				</div>
+			</section>
+		</div>
+
+		<div class="col-md-6">
+			<section class="tile bg-slategray" fullscreen="isFullscreen02"
+				id="sectionDoubleChance">
+
+				<!-- tile header -->
+				<div class="tile-header dvd dvd-btm">
+					<h1 class="custom-font">
+						<strong>{{'DC' | translate}} </strong>
+					</h1>
+					<ul class="controls">
+						<li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+							<a href uib-dropdown-toggle class="dropdown-toggle settings">
+								<i class="fa fa-cog" />
+						</a>
+
+							<ul
+								class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+								<li><a href tile-control-toggle> <span class="minimize">
+											<fa name="angle-down" />&nbsp;&nbsp;&nbsp;Minimize
+									</span> <span class="expand"> <fa name="angle-up" />&nbsp;&nbsp;&nbsp;Expand
+									</span>
+								</a></li>
+								<li><a href tile-control-refresh ng-click="ajaxFaker()">
+										<fa name="refresh" /> Refresh
+								</a></li>
+								<li><a href tile-control-fullscreen
+									ng-click="isFullscreen02 = !isFullscreen02"> <fa
+											name="expand" /> Fullscreen
+								</a></li>
+								<li><a href tile-control-lightbox> <fa name="magnet" />
+										Open in Lightbox
+								</a></li>
+
+							</ul>
+
+						</li>
+						<li class="remove"><a href tile-control-close> <i
+								class="fa fa-times" />
+						</a></li>
+					</ul>
+				</div>
+				<!-- /tile header -->
+
+
+				<div class="row">
+					<div class="col-md-4">
+						<p class="text-center">
+							<small>{{'FULLTIME.1X2.004.HOME_TEAM_WINS_OR_DRAW.SHORT'
+								| translate}}</small>
+						</p>
+						<p class="text-center">
+							<small>{{(fixturePreviewThisSeason.homeWins +
+								fixturePreviewThisSeason.draws) /
+								fixturePreviewThisSeason.gamesPlayed * 100 | number:2}} %</small>
+						</p>
+						<p class="text-center">
+							<small>({{(fixturePreviewThisSeason.homeWins +
+								fixturePreviewThisSeason.draws)}} /
+								{{fixturePreviewThisSeason.gamesPlayed}})</small>
+						</p>
+					</div>
+					<div class="col-md-4">
+						<p class="text-center">
+							<small>{{'FULLTIME.1X2.005.HOME_TEAM_WINS_OR_AWAY_TEAM_WINS.SHORT'
+								| translate}}</small>
+						</p>
+						<p class="text-center">
+							<small>{{(fixturePreviewThisSeason.homeWins +
+								fixturePreviewThisSeason.awayWins) /
+								fixturePreviewThisSeason.gamesPlayed * 100 | number:2}} %</small>
+						</p>
+						<p class="text-center">
+							<small>({{(fixturePreviewThisSeason.homeWins +
+								fixturePreviewThisSeason.awayWins)}} /
+								{{fixturePreviewThisSeason.gamesPlayed}})</small>
+						</p>
+					</div>
+					<div class="col-md-4">
+						<p class="text-center">
+							<small>{{'FULLTIME.1X2.006.DRAW_OR_AWAY_TEAM_WINS.SHORT'
+								| translate}}</small>
+						</p>
+						<p class="text-center">
+							<small>{{(fixturePreviewThisSeason.draws +
+								fixturePreviewThisSeason.awayWins) /
+								fixturePreviewThisSeason.gamesPlayed * 100 | number:2}} %</small>
+						</p>
+						<p class="text-center">
+							<small>({{(fixturePreviewThisSeason.draws +
+								fixturePreviewThisSeason.awayWins)}} /
+								{{fixturePreviewThisSeason.gamesPlayed}})</small>
+						</p>
+					</div>
+
+				</div>
+			</section>
+		</div>
+
+		<div class="col-md-6">
+			<section class="tile bg-slategray" fullscreen="isFullscreen02"
+				id="sectionGoalNoGoal">
+
+				<!-- tile header -->
+				<div class="tile-header dvd dvd-btm">
+					<h1 class="custom-font">
+						<strong>{{'GNG' | translate}} </strong>
+					</h1>
+					<ul class="controls">
+						<li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+							<a href uib-dropdown-toggle class="dropdown-toggle settings">
+								<i class="fa fa-cog" />
+						</a>
+
+							<ul
+								class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+								<li><a href tile-control-toggle> <span class="minimize">
+											<fa name="angle-down" />&nbsp;&nbsp;&nbsp;Minimize
+									</span> <span class="expand"> <fa name="angle-up" />&nbsp;&nbsp;&nbsp;Expand
+									</span>
+								</a></li>
+								<li><a href tile-control-refresh ng-click="ajaxFaker()">
+										<fa name="refresh" /> Refresh
+								</a></li>
+								<li><a href tile-control-fullscreen
+									ng-click="isFullscreen02 = !isFullscreen02"> <fa
+											name="expand" /> Fullscreen
+								</a></li>
+								<li><a href tile-control-lightbox> <fa name="magnet" />
+										Open in Lightbox
+								</a></li>
+
+							</ul>
+
+						</li>
+						<li class="remove"><a href tile-control-close> <i
+								class="fa fa-times" />
+						</a></li>
+					</ul>
+				</div>
+				<!-- /tile header -->
+
+
+				<div class="row">
+					<div class="col-md-6">
+						<p class="text-center">
+							<small>{{'GNG.GOAL.SHORT' | translate}}</small>
+						</p>
+						<p class="text-center">
+							<small>{{fixturePreviewThisSeason.goal /
+								fixturePreviewThisSeason.gamesPlayed * 100 | number:2}} %</small>
+						</p>
+						<p class="text-center">
+							<small>({{fixturePreviewThisSeason.goal}} /
+								{{fixturePreviewThisSeason.gamesPlayed}})</small>
+						</p>
+					</div>
+					<div class="col-md-6">
+						<p class="text-center">
+							<small>{{'GNG.NOGOAL.SHORT' | translate}}</small>
+						</p>
+						<p class="text-center">
+							<small>{{fixturePreviewThisSeason.noGoal /
+								fixturePreviewThisSeason.gamesPlayed * 100 | number:2}} %</small>
+						</p>
+						<p class="text-center">
+							<small>({{fixturePreviewThisSeason.noGoal}} /
+								{{fixturePreviewThisSeason.gamesPlayed}})</small>
+						</p>
+					</div>
+
+				</div>
+
+
+			</section>
+
+		</div>
+		<div class="col-md-6">
+			<section class="tile bg-slategray" fullscreen="isFullscreen02"
+				id="sectionHomeAway">
+
+				<!-- tile header -->
+				<div class="tile-header dvd dvd-btm">
+					<h1 class="custom-font">
+						<strong>{{'HA' | translate}} </strong>
+					</h1>
+					<ul class="controls">
+						<li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+							<a href uib-dropdown-toggle class="dropdown-toggle settings">
+								<i class="fa fa-cog" />
+						</a>
+
+							<ul
+								class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+								<li><a href tile-control-toggle> <span class="minimize">
+											<fa name="angle-down" />&nbsp;&nbsp;&nbsp;Minimize
+									</span> <span class="expand"> <fa name="angle-up" />&nbsp;&nbsp;&nbsp;Expand
+									</span>
+								</a></li>
+								<li><a href tile-control-refresh ng-click="ajaxFaker()">
+										<fa name="refresh" /> Refresh
+								</a></li>
+								<li><a href tile-control-fullscreen
+									ng-click="isFullscreen02 = !isFullscreen02"> <fa
+											name="expand" /> Fullscreen
+								</a></li>
+								<li><a href tile-control-lightbox> <fa name="magnet" />
+										Open in Lightbox
+								</a></li>
+
+							</ul>
+
+						</li>
+						<li class="remove"><a href tile-control-close> <i
+								class="fa fa-times" />
+						</a></li>
+					</ul>
+				</div>
+				<!-- /tile header -->
+
+
+
+
+				<div class="row">
+					<div class="col-md-6">
+						<p class="text-center">
+							<small>{{'HA.HOMEGOAL.SHORT' | translate}}</small>
+						</p>
+						<p class="text-center">
+							<small>{{fixturePreviewThisSeason.homeGoal /
+								fixturePreviewThisSeason.gamesPlayed * 100 | number:2}} %</small>
+						</p>
+						<p class="text-center">
+							<small>({{fixturePreviewThisSeason.homeGoal}} /
+								{{fixturePreviewThisSeason.gamesPlayed}})</small>
+						</p>
+					</div>
+					<div class="col-md-6">
+						<p class="text-center">
+							<small>{{'HA.AWAYGOAL.SHORT' | translate}}</small>
+						</p>
+						<p class="text-center">
+							<small>{{fixturePreviewThisSeason.awayGoal /
+								fixturePreviewThisSeason.gamesPlayed * 100 | number:2}} %</small>
+						</p>
+						<p class="text-center">
+							<small>({{fixturePreviewThisSeason.awayGoal}} /
+								{{fixturePreviewThisSeason.gamesPlayed}})</small>
+						</p>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-6">
+		<div class="row">
+			<div class="col-md-12">
+				<section class="tile bg-slategray" fullscreen="isFullscreen02"
+					id="sectionUnder">
+
+					<!-- tile header -->
+					<div class="tile-header dvd dvd-btm">
+						<h1 class="custom-font">
+							<strong>{{'UNDER' | translate}} </strong>
+						</h1>
+						<ul class="controls">
+							<li class="dropdown" uib-dropdown on-toggle="toggled(open)"><a
+								href uib-dropdown-toggle class="dropdown-toggle settings"> <i
+									class="fa fa-cog" />
+							</a>
+
+								<ul
+									class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+									<li><a href tile-control-toggle> <span
+											class="minimize"> <fa name="angle-down" />&nbsp;&nbsp;&nbsp;Minimize
+										</span> <span class="expand"> <fa name="angle-up" />&nbsp;&nbsp;&nbsp;Expand
+										</span>
+									</a></li>
+									<li><a href tile-control-refresh ng-click="ajaxFaker()">
+											<fa name="refresh" /> Refresh
+									</a></li>
+									<li><a href tile-control-fullscreen
+										ng-click="isFullscreen02 = !isFullscreen02"> <fa
+												name="expand" /> Fullscreen
+									</a></li>
+									<li><a href tile-control-lightbox> <fa name="magnet" />
+											Open in Lightbox
+									</a></li>
+
+								</ul></li>
+							<li class="remove"><a href tile-control-close> <i
+									class="fa fa-times" />
+							</a></li>
+						</ul>
+					</div>
+					<!-- /tile header -->
+
+
+					<div class="row">
+						<div class="col-md-2">
+							<p class="text-center">
+								<small>{{'UNDER05.SHORT' | translate}}</small>
+							</p>
+							<p class="text-center">
+								<small>{{fixturePreviewThisSeason.under05 /
+									fixturePreviewThisSeason.gamesPlayed * 100 | number:2}} %</small>
+							</p>
+							<p class="text-center">
+								<small>({{fixturePreviewThisSeason.under05}} /
+									{{fixturePreviewThisSeason.gamesPlayed}})</small>
+							</p>
+						</div>
+						<div class="col-md-2">
+							<p class="text-center">
+								<small>{{'UNDER15.SHORT' | translate}}</small>
+							</p>
+							<p class="text-center">
+								<small>{{fixturePreviewThisSeason.under15 /
+									fixturePreviewThisSeason.gamesPlayed * 100 | number:2}} %</small>
+							</p>
+							<p class="text-center">
+								<small>({{fixturePreviewThisSeason.under15}} /
+									{{fixturePreviewThisSeason.gamesPlayed}})</small>
+							</p>
+						</div>
+						<div class="col-md-2">
+							<p class="text-center">
+								<small>{{'UNDER25.SHORT' | translate}}</small>
+							</p>
+							<p class="text-center">
+								<small>{{fixturePreviewThisSeason.under25 /
+									fixturePreviewThisSeason.gamesPlayed * 100 | number:2}} %</small>
+							</p>
+							<p class="text-center">
+								<small>({{fixturePreviewThisSeason.under25}} /
+									{{fixturePreviewThisSeason.gamesPlayed}})</small>
+							</p>
+						</div>
+						<div class="col-md-2">
+							<p class="text-center">
+								<small>{{'UNDER35.SHORT' | translate}}</small>
+							</p>
+							<p class="text-center">
+								<small>{{fixturePreviewThisSeason.under35 /
+									fixturePreviewThisSeason.gamesPlayed * 100 | number:2}} %</small>
+							</p>
+							<p class="text-center">
+								<small>({{fixturePreviewThisSeason.under35}} /
+									{{fixturePreviewThisSeason.gamesPlayed}})</small>
+							</p>
+						</div>
+						<div class="col-md-2">
+							<p class="text-center">
+								<small>{{'UNDER45.SHORT' | translate}}</small>
+							</p>
+							<p class="text-center">
+								<small>{{fixturePreviewThisSeason.under45 /
+									fixturePreviewThisSeason.gamesPlayed * 100 | number:2}} %</small>
+							</p>
+							<p class="text-center">
+								<small>({{fixturePreviewThisSeason.under45}} /
+									{{fixturePreviewThisSeason.gamesPlayed}})</small>
+							</p>
+						</div>
+						<div class="col-md-2">
+							<p class="text-center">
+								<small>{{'UNDER55.SHORT' | translate}}</small>
+							</p>
+							<p class="text-center">
+								<small>{{fixturePreviewThisSeason.under55 /
+									fixturePreviewThisSeason.gamesPlayed * 100 | number:2}} %</small>
+							</p>
+							<p class="text-center">
+								<small>({{fixturePreviewThisSeason.under55}} /
+									{{fixturePreviewThisSeason.gamesPlayed}})</small>
+							</p>
+						</div>
+					</div>
+
+
+				</section>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<section class="tile bg-slategray" fullscreen="isFullscreen02"
+					id="sectionOver">
+
+					<!-- tile header -->
+					<div class="tile-header dvd dvd-btm">
+						<h1 class="custom-font">
+							<strong>{{'OVER' | translate}} </strong>
+						</h1>
+						<ul class="controls">
+							<li class="dropdown" uib-dropdown on-toggle="toggled(open)"><a
+								href uib-dropdown-toggle class="dropdown-toggle settings"> <i
+									class="fa fa-cog" />
+							</a>
+
+								<ul
+									class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+									<li><a href tile-control-toggle> <span
+											class="minimize"> <fa name="angle-down" />&nbsp;&nbsp;&nbsp;Minimize
+										</span> <span class="expand"> <fa name="angle-up" />&nbsp;&nbsp;&nbsp;Expand
+										</span>
+									</a></li>
+									<li><a href tile-control-refresh ng-click="ajaxFaker()">
+											<fa name="refresh" /> Refresh
+									</a></li>
+									<li><a href tile-control-fullscreen
+										ng-click="isFullscreen02 = !isFullscreen02"> <fa
+												name="expand" /> Fullscreen
+									</a></li>
+									<li><a href tile-control-lightbox> <fa name="magnet" />
+											Open in Lightbox
+									</a></li>
+
+								</ul></li>
+							<li class="remove"><a href tile-control-close> <i
+									class="fa fa-times" />
+							</a></li>
+						</ul>
+					</div>
+					<div class="row">
+						<div class="col-md-2">
+							<p class="text-center">
+								<small>{{'OVER05.SHORT' | translate}}</small>
+							</p>
+							<p class="text-center">
+								<small>{{fixturePreviewThisSeason.over05 /
+									fixturePreviewThisSeason.gamesPlayed * 100 | number:2}} %</small>
+							</p>
+							<p class="text-center">
+								<small>({{fixturePreviewThisSeason.over05}} /
+									{{fixturePreviewThisSeason.gamesPlayed}})</small>
+							</p>
+						</div>
+						<div class="col-md-2">
+							<p class="text-center">
+								<small>{{'OVER15.SHORT' | translate}}</small>
+							</p>
+							<p class="text-center">
+								<small>{{fixturePreviewThisSeason.over15 /
+									fixturePreviewThisSeason.gamesPlayed * 100 | number:2}} %</small>
+							</p>
+							<p class="text-center">
+								<small>({{fixturePreviewThisSeason.over15}} /
+									{{fixturePreviewThisSeason.gamesPlayed}})</small>
+							</p>
+						</div>
+						<div class="col-md-2">
+							<p class="text-center">
+								<small>{{'OVER25.SHORT' | translate}}</small>
+							</p>
+							<p class="text-center">
+								<small>{{fixturePreviewThisSeason.over25 /
+									fixturePreviewThisSeason.gamesPlayed * 100 | number:2}} %</small>
+							</p>
+							<p class="text-center">
+								<small>({{fixturePreviewThisSeason.over25}} /
+									{{fixturePreviewThisSeason.gamesPlayed}})</small>
+							</p>
+						</div>
+						<div class="col-md-2">
+							<p class="text-center">
+								<small>{{'OVER35.SHORT' | translate}}</small>
+							</p>
+							<p class="text-center">
+								<small>{{fixturePreviewThisSeason.over35 /
+									fixturePreviewThisSeason.gamesPlayed * 100 | number:2}} %</small>
+							</p>
+							<p class="text-center">
+								<small>({{fixturePreviewThisSeason.over35}} /
+									{{fixturePreviewThisSeason.gamesPlayed}})</small>
+							</p>
+						</div>
+						<div class="col-md-2">
+							<p class="text-center">
+								<small>{{'OVER45.SHORT' | translate}}</small>
+							</p>
+							<p class="text-center">
+								<small>{{fixturePreviewThisSeason.over45 /
+									fixturePreviewThisSeason.gamesPlayed * 100 | number:2}} %</small>
+							</p>
+							<p class="text-center">
+								<small>({{fixturePreviewThisSeason.over45}} /
+									{{fixturePreviewThisSeason.gamesPlayed}})</small>
+							</p>
+						</div>
+						<div class="col-md-2">
+							<p class="text-center">
+								<small>{{'OVER55.SHORT' | translate}}</small>
+							</p>
+							<p class="text-center">
+								<small>{{fixturePreviewThisSeason.over55 /
+									fixturePreviewThisSeason.gamesPlayed * 100 | number:2}} %</small>
+							</p>
+							<p class="text-center">
+								<small>({{fixturePreviewThisSeason.over55}} /
+									{{fixturePreviewThisSeason.gamesPlayed}})</small>
+							</p>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="col-md-6">
+		<section class="tile bg-slategray" fullscreen="isFullscreen02"
+			id="sectionHandicap">
+
+			<!-- tile header -->
+			<div class="tile-header dvd dvd-btm">
+				<h1 class="custom-font">
+					<strong>{{'HANDICAP' | translate}} </strong>
+				</h1>
+				<ul class="controls">
+					<li class="dropdown" uib-dropdown on-toggle="toggled(open)"><a
+						href uib-dropdown-toggle class="dropdown-toggle settings"> <i
+							class="fa fa-cog" />
+					</a>
+
+						<ul
+							class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+							<li><a href tile-control-toggle> <span class="minimize">
+										<fa name="angle-down" />&nbsp;&nbsp;&nbsp;Minimize
+								</span> <span class="expand"> <fa name="angle-up" />&nbsp;&nbsp;&nbsp;Expand
+								</span>
+							</a></li>
+							<li><a href tile-control-refresh ng-click="ajaxFaker()">
+									<fa name="refresh" /> Refresh
+							</a></li>
+							<li><a href tile-control-fullscreen
+								ng-click="isFullscreen02 = !isFullscreen02"> <fa
+										name="expand" /> Fullscreen
+							</a></li>
+							<li><a href tile-control-lightbox> <fa name="magnet" />
+									Open in Lightbox
+							</a></li>
+
+						</ul></li>
+					<li class="remove"><a href tile-control-close> <i
+							class="fa fa-times" />
+					</a></li>
+				</ul>
+			</div>
+			<!-- /tile header -->
+
+
+			<div class="row">
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{'FULLTIME.HND.001.H2_1.SHORT' | translate}}</small>
+					</p>
+					<p class="text-center">
+						<small>{{fixturePreviewThisSeason.handicapHome2_1 /
+							fixturePreviewThisSeason.gamesPlayed * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{fixturePreviewThisSeason.handicapHome2_1}} /
+							{{fixturePreviewThisSeason.gamesPlayed}})</small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{'FULLTIME.HND.002.H2_X.SHORT' | translate}}</small>
+					</p>
+					<p class="text-center">
+						<small>{{fixturePreviewThisSeason.handicapHome2_X /
+							fixturePreviewThisSeason.gamesPlayed * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{fixturePreviewThisSeason.handicapHome2_X}} /
+							{{fixturePreviewThisSeason.gamesPlayed}})</small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{'FULLTIME.HND.003.H2_2.SHORT' | translate}}</small>
+					</p>
+					<p class="text-center">
+						<small>{{fixturePreviewThisSeason.handicapHome2_2 /
+							fixturePreviewThisSeason.gamesPlayed * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{fixturePreviewThisSeason.handicapHome2_2}} /
+							{{fixturePreviewThisSeason.gamesPlayed}})</small>
+					</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{'FULLTIME.HND.004.H1_1.SHORT' | translate}}</small>
+					</p>
+					<p class="text-center">
+						<small>{{fixturePreviewThisSeason.handicapHome1_1 /
+							fixturePreviewThisSeason.gamesPlayed * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{fixturePreviewThisSeason.handicapHome1_1}} /
+							{{fixturePreviewThisSeason.gamesPlayed}})</small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{'FULLTIME.HND.005.H1_X.SHORT' | translate}}</small>
+					</p>
+					<p class="text-center">
+						<small>{{fixturePreviewThisSeason.handicapHome1_X /
+							fixturePreviewThisSeason.gamesPlayed * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{fixturePreviewThisSeason.handicapHome1_X}} /
+							{{fixturePreviewThisSeason.gamesPlayed}})</small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{'FULLTIME.HND.006.H1_2.SHORT' | translate}}</small>
+					</p>
+					<p class="text-center">
+						<small>{{fixturePreviewThisSeason.handicapHome1_2 /
+							fixturePreviewThisSeason.gamesPlayed * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{fixturePreviewThisSeason.handicapHome1_2}} /
+							{{fixturePreviewThisSeason.gamesPlayed}})</small>
+					</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{'FULLTIME.HND.007.A1_1.SHORT' | translate}}</small>
+					</p>
+					<p class="text-center">
+						<small>{{fixturePreviewThisSeason.handicapAway1_1 /
+							fixturePreviewThisSeason.gamesPlayed * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{fixturePreviewThisSeason.handicapAway1_1}} /
+							{{fixturePreviewThisSeason.gamesPlayed}})</small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{'FULLTIME.HND.008.A1_X.SHORT' | translate}}</small>
+					</p>
+					<p class="text-center">
+						<small>{{fixturePreviewThisSeason.handicapAway1_X /
+							fixturePreviewThisSeason.gamesPlayed * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{fixturePreviewThisSeason.handicapAway1_X}} /
+							{{fixturePreviewThisSeason.gamesPlayed}})</small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{'FULLTIME.HND.009.A1_2.SHORT' | translate}}</small>
+					</p>
+					<p class="text-center">
+						<small>{{fixturePreviewThisSeason.handicapAway1_2 /
+							fixturePreviewThisSeason.gamesPlayed * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{fixturePreviewThisSeason.handicapAway1_2}} /
+							{{fixturePreviewThisSeason.gamesPlayed}})</small>
+					</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{'FULLTIME.HND.010.A2_1.SHORT' | translate}}</small>
+					</p>
+					<p class="text-center">
+						<small>{{fixturePreviewThisSeason.handicapAway2_1 /
+							fixturePreviewThisSeason.gamesPlayed * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{fixturePreviewThisSeason.handicapAway2_1}} /
+							{{fixturePreviewThisSeason.gamesPlayed}})</small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{'FULLTIME.HND.011.A2_X.SHORT' | translate}}</small>
+					</p>
+					<p class="text-center">
+						<small>{{fixturePreviewThisSeason.handicapAway2_X /
+							fixturePreviewThisSeason.gamesPlayed * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{fixturePreviewThisSeason.handicapAway_X}} /
+							{{fixturePreviewThisSeason.gamesPlayed}})</small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{'FULLTIME.HND.012.A2_2.SHORT' | translate}}</small>
+					</p>
+					<p class="text-center">
+						<small>{{fixturePreviewThisSeason.handicapAway_2 /
+							fixturePreviewThisSeason.gamesPlayed * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{fixturePreviewThisSeason.handicapAway_2}} /
+							{{fixturePreviewThisSeason.gamesPlayed}})</small>
+					</p>
+				</div>
+			</div>
+		</section>
+	</div>
+</div>
+
+<div class="row">
+
+	<div class="col-md-6">
+
+		<section class="tile bg-slategray" fullscreen="isFullscreen02"
+			id="sectionUnder" style="max-height: 320px; overflow: auto;"
+			slimscroll="{height: '100%'}">
+
+			<!-- tile header -->
+			<div class="tile-header dvd dvd-btm">
+				<h1 class="custom-font">
+					<strong>{{fixture.homeTeam.name}} - {{'LAST5' |
+						translate}} </strong>
+				</h1>
+				<ul class="controls">
+					<li class="dropdown" uib-dropdown on-toggle="toggled(open)"><a
+						href uib-dropdown-toggle class="dropdown-toggle settings"> <i
+							class="fa fa-cog" />
+					</a>
+
+						<ul
+							class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+							<li><a href tile-control-toggle> <span class="minimize">
+										<fa name="angle-down" />&nbsp;&nbsp;&nbsp;Minimize
+								</span> <span class="expand"> <fa name="angle-up" />&nbsp;&nbsp;&nbsp;Expand
+								</span>
+							</a></li>
+							<li><a href tile-control-refresh ng-click="ajaxFaker()">
+									<fa name="refresh" /> Refresh
+							</a></li>
+							<li><a href tile-control-fullscreen
+								ng-click="isFullscreen02 = !isFullscreen02"> <fa
+										name="expand" /> Fullscreen
+							</a></li>
+							<li><a href tile-control-lightbox> <fa name="magnet" />
+									Open in Lightbox
+							</a></li>
+
+						</ul></li>
+					<li class="remove"><a href tile-control-close> <i
+							class="fa fa-times" />
+					</a></li>
+				</ul>
+			</div>
+			<!-- /tile header -->
+
+			<div class="row">
+				<div class="col-md-3">
+					<p class="text-center">
+						<small>{{'DATE' | translate}}</small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{'TEAM' | translate}}</small>
+					</p>
+				</div>
+				<div class="col-md-1">
+					<p class="text-center">
+						<small>{{'SCORE' | translate}}</small>
+					</p>
+				</div>
+				<div class="col-md-2">
+					<p class="text-center">
+						<small>{{'SHOTS' | translate}}</small>
+					</p>
+				</div>
+				<div class="col-md-2">
+					<p class="text-center">
+						<small>{{'CORNERS' | translate}}</small>
+					</p>
+				</div>
+			</div>
+			<div class="row" ng-repeat="previousMatch in last5Home">
+				<div class="col-md-3">
+					<p class="text-center">
+						<small>{{previousMatch.date | date:'dd/MM/yyyy'}}</small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{previousMatch.homeTeam.name}} -
+							{{previousMatch.awayTeam.name}}</small>
+					</p>
+				</div>
+				<div class="col-md-1">
+					<p class="text-center">
+						<small>{{previousMatch.homeGoals}} -
+							{{previousMatch.awayGoals}}</small>
+					</p>
+				</div>
+				<div class="col-md-2">
+					<p class="text-center">
+						<small>{{previousMatch.homeShots}} -
+							{{previousMatch.awayShots}}</small>
+					</p>
+				</div>
+				<div class="col-md-2">
+					<p class="text-center">
+						<small>{{previousMatch.homeCorners}} -
+							{{previousMatch.awayCorners}}</small>
+					</p>
+				</div>
+
+			</div>
+
+
+		</section>
+	</div>
+
+	<div class="col-md-6">
+		<section class="tile bg-slategray" fullscreen="isFullscreen02"
+			id="sectionUnder" style="max-height: 320px; overflow: auto;"
+			slimscroll="{height: '100%'}">
+
+			<!-- tile header -->
+			<div class="tile-header dvd dvd-btm">
+				<h1 class="custom-font">
+					<strong>{{fixture.awayTeam.name}} - {{'LAST5' |
+						translate}} </strong>
+				</h1>
+				<ul class="controls">
+					<li class="dropdown" uib-dropdown on-toggle="toggled(open)"><a
+						href uib-dropdown-toggle class="dropdown-toggle settings"> <i
+							class="fa fa-cog" />
+					</a>
+
+						<ul
+							class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+							<li><a href tile-control-toggle> <span class="minimize">
+										<fa name="angle-down" />&nbsp;&nbsp;&nbsp;Minimize
+								</span> <span class="expand"> <fa name="angle-up" />&nbsp;&nbsp;&nbsp;Expand
+								</span>
+							</a></li>
+							<li><a href tile-control-refresh ng-click="ajaxFaker()">
+									<fa name="refresh" /> Refresh
+							</a></li>
+							<li><a href tile-control-fullscreen
+								ng-click="isFullscreen02 = !isFullscreen02"> <fa
+										name="expand" /> Fullscreen
+							</a></li>
+							<li><a href tile-control-lightbox> <fa name="magnet" />
+									Open in Lightbox
+							</a></li>
+
+						</ul></li>
+					<li class="remove"><a href tile-control-close> <i
+							class="fa fa-times" />
+					</a></li>
+				</ul>
+			</div>
+			<!-- /tile header -->
+
+			<div class="row">
+				<div class="col-md-3">
+					<p class="text-center">
+						<small ngStyle="previousMatch.rowStyle">{{'DATE' |
+							translate}}</small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{'TEAM' | translate}}</small>
+					</p>
+				</div>
+				<div class="col-md-1">
+					<p class="text-center">
+						<small>{{'SCORE' | translate}}</small>
+					</p>
+				</div>
+				<div class="col-md-2">
+					<p class="text-center">
+						<small>{{'SHOTS' | translate}}</small>
+					</p>
+				</div>
+				<div class="col-md-2">
+					<p class="text-center">
+						<small>{{'CORNERS' | translate}}</small>
+					</p>
+				</div>
+			</div>
+			<div class="row" ng-repeat="previousMatch in last5Away">
+				<div class="col-md-3">
+					<p class="text-center">
+						<small>{{previousMatch.date | date:'dd/MM/yyyy'}}</small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{previousMatch.homeTeam.name}} -
+							{{previousMatch.awayTeam.name}}</small>
+					</p>
+				</div>
+				<div class="col-md-1">
+					<p class="text-center">
+						<small>{{previousMatch.homeGoals}} -
+							{{previousMatch.awayGoals}}</small>
+					</p>
+				</div>
+				<div class="col-md-2">
+					<p class="text-center">
+						<small>{{previousMatch.homeShots}} -
+							{{previousMatch.awayShots}}</small>
+					</p>
+				</div>
+				<div class="col-md-2">
+					<p class="text-center">
+						<small>{{previousMatch.homeCorners}} -
+							{{previousMatch.awayCorners}}</small>
+					</p>
+				</div>
+
+			</div>
+
+
+		</section>
+
+	</div>
+
+</div>
+

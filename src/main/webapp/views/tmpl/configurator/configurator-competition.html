@@ -1,0 +1,362 @@
+<div ng-controller="ConfiguratorCompetitionCtrl">
+
+
+	<div class="page page-tiles">
+
+
+
+
+		<!-- page header -->
+		<div class="pageheader">
+			<h2>Competition Configurator</h2>
+		</div>
+		<!-- /page header -->
+
+		<!-- page content -->
+		<div class="pagecontent">
+
+			<div class="row">
+				<!-- col -->
+				<div class="col-md-8">
+					<section class="tile" fullscreen="isFullscreen01">
+						<div class="tile-header dvd dvd-btm">
+							<h1 class="custom-font">
+								<strong>Manage</strong> Competition
+							</h1>
+							<ul class="controls">
+								<li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+									<a href uib-dropdown-toggle class="dropdown-toggle settings"><i
+										class="fa fa-cog"></i></a>
+
+									<ul
+										class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+										<li><a href tile-control-toggle> <span
+												class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;{{
+													'MINIMIZE' | translate }}</span> <span class="expand"><fa
+														name="angle-up"></fa>&nbsp;&nbsp;&nbsp;{{ 'EXPAND' |
+													translate }}</span>
+										</a></li>
+										<li><a href tile-control-refresh ng-click="ajaxFaker()">
+												<fa name="refresh"></fa> {{ 'REFRESH' | translate }}
+										</a></li>
+										<li><a href tile-control-fullscreen
+											ng-click="isFullscreen01 = !isFullscreen01"> <fa
+													name="expand"></fa> {{ 'FULLSCREEN' | translate }}
+										</a></li>
+										<li><a href tile-control-lightbox> <fa name="magnet"></fa>
+												{{ 'OPEN_IN_LIGHTBOX' | translate }}
+										</a></li>
+									</ul>
+								</li>
+								<li class="remove"><a><i class="fa fa-times"></i></a></li>
+							</ul>
+						</div>
+						<div>
+							<div class="tile-widget"></div>
+							<!-- /tile widget -->
+
+							<!-- tile body -->
+							<div class="tile-body">
+								<table class="table" fixed-table-headers="scrollable-area">
+									<thead>
+										<tr>
+											<th>Id</th>
+											<th>Name</th>
+											<th>Nation</th>
+											<th>Start Date</th>
+											<th>End Date</th>
+											<th>Operation</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="competitionDto in competitionDtos">
+											<td class="col-md-1"><small>{{competitionDto.id}}</small></td>
+											<td class="col-md-2"><small>{{competitionDto.name}}</small></td>
+											<td class="col-md-1"><small>{{competitionDto.nationDto.name}}</small></td>
+											<td class="col-md-1"><small>{{competitionDto.startDate
+													| date:'dd/MM/yyyy'}}</small></td>
+											<td class="col-md-1"><small>{{competitionDto.endDate
+													| date:'dd/MM/yyyy'}}</small></td>
+											<td class="col-md-2">
+												<div class="row">
+													<button
+														class="btn btn-danger btn-rounded btn-ef btn-ef-5 btn-ef-5b mb-10 btn-sm"
+														ng-click="deleteCompetition(competitionDto.id)">
+														<i class="fa fa-trash"></i> <span>Delete</span>
+													</button>
+													<button
+														class="btn btn-primary btn-rounded btn-ef btn-ef-5 btn-ef-5b btn-sm mb-10"
+														ng-click="viewFixtures(competitionDto.id)">
+														<i class="fa fa-list"></i> <span>View Fixtures</span>
+													</button>
+												</div>
+												<div class="row">
+
+													<div class="col-md-8">
+														<input type="file" file-model="myFile"
+															title="1 - Carica Partite Selezionando un file excel" />
+													</div>
+													<div class="col-md-2">
+														<button ng-if="myFile != null"
+															ng-click="addFixtures(competitionDto.id,myFile)"
+															class="btn btn-success btn-rounded mb-10">+</button>
+													</div>
+												</div>
+											</td>
+										</tr>
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="tile-footer"></div>
+					</section>
+				</div>
+
+				<!-- col -->
+				<div class="col-md-4">
+					<section class="tile" fullscreen="isFullscreen01">
+						<div class="tile-header dvd dvd-btm">
+							<h1 class="custom-font">
+								<strong>Add</strong> Competition
+							</h1>
+							<ul class="controls">
+								<li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+									<a href uib-dropdown-toggle class="dropdown-toggle settings"><i
+										class="fa fa-cog"></i></a>
+
+									<ul
+										class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+										<li><a href tile-control-toggle> <span
+												class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;{{
+													'MINIMIZE' | translate }}</span> <span class="expand"><fa
+														name="angle-up"></fa>&nbsp;&nbsp;&nbsp;{{ 'EXPAND' |
+													translate }}</span>
+										</a></li>
+										<li><a href tile-control-refresh ng-click="ajaxFaker()">
+												<fa name="refresh"></fa> {{ 'REFRESH' | translate }}
+										</a></li>
+										<li><a href tile-control-fullscreen
+											ng-click="isFullscreen01 = !isFullscreen01"> <fa
+													name="expand"></fa> {{ 'FULLSCREEN' | translate }}
+										</a></li>
+										<li><a href tile-control-lightbox> <fa name="magnet"></fa>
+												{{ 'OPEN_IN_LIGHTBOX' | translate }}
+										</a></li>
+									</ul>
+								</li>
+								<li class="remove"><a><i class="fa fa-times"></i></a></li>
+							</ul>
+						</div>
+
+						<div class="tile-widget"></div>
+						<!-- /tile widget -->
+
+						<!-- tile body -->
+						<div class="tile-body">
+							<div class="form-horizontal">
+								<div class="form-group">
+									<div class="col-md-6">Insert competition Id</div>
+									<div class="col-md-6">
+										<input type="text" class="form-control"
+											ng-model="competitionId" maxlength="10">
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-md-6">Insert competition Name</div>
+									<div class="col-md-6">
+										<input type="text" class="form-control"
+											ng-model="competitionName">
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-md-6">Select Nation</div>
+									<div class="col-md-6">
+										<ui-select ng-model="nation" ng-disabled="disabled"
+											class="w-sm mb-4" on-select="selectNation(nation.name)">
+										<ui-select-match placeholder="">{{$select.selected.name}}</ui-select-match>
+										<ui-select-choices
+											repeat="nationDto in nationDtos | filter: $select.search">
+										<span
+											ng-bind-html="nationDto.name | highlight: $select.search"></span>
+										</ui-select-choices> </ui-select>
+									</div>
+
+								</div>
+								<div class="form-group">
+									<div class="col-md-6">Select Sport</div>
+									<div class="col-md-6">
+										<ui-select ng-model="sport" ng-disabled="disabled"
+											class="w-sm mb-4" on-select="selectSport(sport.id)">
+										<ui-select-match placeholder="">{{$select.selected.description}}</ui-select-match>
+										<ui-select-choices
+											repeat="sportDto in sportDtos | filter: $select.search">
+										<span
+											ng-bind-html="sportDto.description | highlight: $select.search"></span>
+										</ui-select-choices> </ui-select>
+									</div>
+
+								</div>
+								<div class="form-group" ng-controller="DatepickerDemoCtrl">
+									<div class="col-md-6">Insert start date</div>
+									<div class="col-md-6">
+										<div class="row">
+											<div class="col-md-9">
+												<input type="text" class="form-control"
+													uib-datepicker-popup="{{format}}"
+													data-ng-model="dates.startDate" is-open="opened"
+													min-date="minDate" datepicker-options="dateOptions"
+													ng-required="true" close-text="Close" /> <span
+													class="input-group-btn">
+											</div>
+											<div class="col-md-2">
+
+												<button type="button" class="btn btn-default"
+													ng-click="open($event)">
+													<i class="fa fa-calendar"></i>
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-group" ng-controller="DatepickerDemoCtrl">
+									<div class="col-md-6">Insert end date</div>
+									<div class="col-md-6">
+										<div class="row">
+											<div class="col-md-9">
+												<input type="text" class="form-control"
+													uib-datepicker-popup="{{format}}"
+													data-ng-model="dates.endDate" is-open="opened"
+													min-date="minDate" datepicker-options="dateOptions"
+													ng-required="true" close-text="Close" /> <span
+													class="input-group-btn">
+											</div>
+											<div class="col-md-2">
+												<button type="button" class="btn btn-default"
+													ng-click="open($event)">
+													<i class="fa fa-calendar"></i>
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="row"></div>
+									<div class="row">
+										<div class="col-md-5"></div>
+										<div class="col-md-2">
+											<button
+												class="btn btn-green btn-rounded btn-ef btn-ef-5 btn-ef-5b mb-10"
+												ng-click="addCompetition(competitionId,competitionName,nationName,sportId,dates.startDate,dates.endDate)">
+												<i class="fa fa-plus"></i> <span>Add</span>
+											</button>
+										</div>
+										<div class="col-md-5"></div>
+									</div>
+								</div>
+								<div class="tile-footer dvd dvd-top">
+									<div class="row"></div>
+								</div>
+							</div>
+
+						</div>
+					</section>
+				</div>
+				<!-- col -->
+
+			</div>
+
+			<div class="row">
+				<!-- col -->
+				<div class="col-md-12">
+					<section class="tile" fullscreen="isFullscreen01">
+						<div class="tile-header dvd dvd-btm">
+							<h1 class="custom-font">
+								<strong>Manage</strong> Fixtures
+							</h1>
+							<ul class="controls">
+								<li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+									<a href uib-dropdown-toggle class="dropdown-toggle settings"><i
+										class="fa fa-cog"></i></a>
+
+									<ul
+										class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+										<li><a href tile-control-toggle> <span
+												class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;{{
+													'MINIMIZE' | translate }}</span> <span class="expand"><fa
+														name="angle-up"></fa>&nbsp;&nbsp;&nbsp;{{ 'EXPAND' |
+													translate }}</span>
+										</a></li>
+										<li><a href tile-control-refresh ng-click="ajaxFaker()">
+												<fa name="refresh"></fa> {{ 'REFRESH' | translate }}
+										</a></li>
+										<li><a href tile-control-fullscreen
+											ng-click="isFullscreen01 = !isFullscreen01"> <fa
+													name="expand"></fa> {{ 'FULLSCREEN' | translate }}
+										</a></li>
+										<li><a href tile-control-lightbox> <fa name="magnet"></fa>
+												{{ 'OPEN_IN_LIGHTBOX' | translate }}
+										</a></li>
+									</ul>
+								</li>
+								<li class="remove"><a><i class="fa fa-times"></i></a></li>
+							</ul>
+						</div>
+						<div>
+							<div class="tile-widget"></div>
+							<!-- /tile widget -->
+
+							<!-- tile body -->
+							<div class="tile-body">
+
+								<table class="table table-condensed"
+									fixed-table-headers="scrollable-area">
+									<thead>
+										<tr>
+											<th>Home team</th>
+											<th>Away team</th>
+											<th>Date</th>
+											<th>score</th>
+
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="fixtureDto in fixtureDtos">
+											<td><small>{{fixtureDto.homeTeam}}</small></td>
+											<td><small>{{fixtureDto.awayTeam}}</small></td>
+											<td><small>{{fixtureDto.matchDate |
+													date:'dd/MM/yyyy HH:mm'}}</small></td>
+											<td><small>{{fixtureDto.homeGoals}} -
+													{{fixtureDto.awayGoals}}</small></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+						</div>
+						<div class="tile-footer dvd dvd-top">
+							<div class="row">
+								<div class="col-sm-12 text-right">
+									<ul class="pagination pagination-sm m-0">
+										<li ng-repeat="round in rounds"
+											ng-click="viewFixturesByRoundNumber(round)"><a href><small>{{round}}</small></a></li>
+									</ul>
+								</div>
+
+							</div>
+						</div>
+				</div>
+				</section>
+			</div>
+			<!-- col -->
+
+		</div>
+	</div>
+	<!-- /page content -->
+
+</div>
+
+

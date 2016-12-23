@@ -1,0 +1,302 @@
+		<div class="page page-tiles" ng-controller="SubscribeTournamentCtrl">
+
+
+
+
+			<!-- page header -->
+			<div class="pageheader">
+				<h2>{{ 'TOURNAMENTS' | translate}}</h2>
+			</div>
+			<!-- /page header -->
+
+			<!-- page content -->
+			<div class="pagecontent">
+				<div class="row">
+					<div class="col-md-12">
+
+						<section class="tile" fullscreen="isFullscreen01">
+
+							<!-- tile header -->
+							<div class="tile-header dvd dvd-btm">
+								<h1 class="custom-font">
+									<strong>{{ 'MY' | translate }}</strong> {{ 'TOURNAMENTS' | translate
+								}}
+							</h1>
+							<ul class="controls">
+								<li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+									<a href uib-dropdown-toggle class="dropdown-toggle settings"><i
+										class="fa fa-cog"></i></a>
+
+										<ul
+										class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+										<li><a href tile-control-toggle> <span
+											class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;{{
+											'MINIMIZE' | translate }}</span> <span class="expand"><fa
+											name="angle-up"></fa>&nbsp;&nbsp;&nbsp;{{ 'EXPAND' |
+											translate }}</span>
+										</a></li>
+										<li><a href tile-control-refresh ng-click="ajaxFaker()">
+											<fa name="refresh"></fa> {{ 'REFRESH' | translate }}
+										</a></li>
+										<li><a href tile-control-fullscreen
+											ng-click="isFullscreen01 = !isFullscreen01"> <fa
+											name="expand"></fa> {{ 'FULLSCREEN' | translate }}
+										</a></li>
+										<li><a href tile-control-lightbox> <fa name="magnet"></fa>
+											{{ 'OPEN_IN_LIGHTBOX' | translate }}
+										</a></li>
+									</ul>
+								</li>
+								<li class="remove"><a><i class="fa fa-times"></i></a></li>
+							</ul>
+						</div>
+						<!-- /tile header -->
+
+						<!-- tile widget -->
+						<div>
+							<div class="tile-widget">
+
+							</div>
+							<!-- /tile widget -->
+
+							<!-- tile body -->
+							<div class="tile-body">
+								<table class="table" fixed-table-headers="scrollable-area">
+									<thead>
+										<tr>
+											<th>Id</th>
+											<th>Name</th>
+											<th>Start Date</th>
+											<th>End Date</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="tournamentDto in tournamentDtos">
+											<td class="col-md-1"><small>{{tournamentDto.id}}</small></td>
+											<td class="col-md-2"><small>{{tournamentDto.description}}</small></td>
+											<td class="col-md-1"><small>{{tournamentDto.startDate
+												| date:'dd/MM/yyyy'}}</small></td>
+												<td class="col-md-1"><small>{{tournamentDto.endDate
+													| date:'dd/MM/yyyy'}}</small></td>
+													<td>
+														<button
+														class="btn btn-primary btn-rounded btn-ef btn-ef-5 btn-ef-5b btn-sm mb-10"
+														ng-click="viewDetails(tournamentDto.id)">
+														<i class="fa fa-list"></i> <span>{{ 'VIEW_DETAILS' | translate }}</span>
+													</button>
+
+												</td>
+
+											</tr>
+
+										</tbody>
+									</table>
+								</div>
+								<!-- /tile body -->
+
+								<!-- tile footer -->
+								<div class="tile-footer">
+									
+								</div>
+							</div>
+
+						</section>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+
+						<section class="tile" fullscreen="isFullscreen01">
+
+							<!-- tile header -->
+							<div class="tile-header dvd dvd-btm">
+								<h1 class="custom-font">
+									<strong>{{ 'SUBSCRIBE' | translate }}</strong> {{ 'TOURNAMENTS' | translate
+								}}
+							</h1>
+							<ul class="controls">
+								<li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+									<a href uib-dropdown-toggle class="dropdown-toggle settings"><i
+										class="fa fa-cog"></i></a>
+
+										<ul
+										class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+										<li><a href tile-control-toggle> <span
+											class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;{{
+											'MINIMIZE' | translate }}</span> <span class="expand"><fa
+											name="angle-up"></fa>&nbsp;&nbsp;&nbsp;{{ 'EXPAND' |
+											translate }}</span>
+										</a></li>
+										<li><a href tile-control-refresh ng-click="ajaxFaker()">
+											<fa name="refresh"></fa> {{ 'REFRESH' | translate }}
+										</a></li>
+										<li><a href tile-control-fullscreen
+											ng-click="isFullscreen01 = !isFullscreen01"> <fa
+											name="expand"></fa> {{ 'FULLSCREEN' | translate }}
+										</a></li>
+										<li><a href tile-control-lightbox> <fa name="magnet"></fa>
+											{{ 'OPEN_IN_LIGHTBOX' | translate }}
+										</a></li>
+									</ul>
+								</li>
+								<li class="remove"><a><i class="fa fa-times"></i></a></li>
+							</ul>
+						</div>
+						<!-- /tile header -->
+
+						<!-- tile widget -->
+						<div>
+							<div class="tile-widget">
+
+							</div>
+							<!-- /tile widget -->
+
+							<!-- tile body -->
+							<div class="tile-body">
+								<table class="table" fixed-table-headers="scrollable-area">
+									<thead>
+										<tr>
+											<th>Id</th>
+											<th>Name</th>
+											<th>Start Date</th>
+											<th>End Date</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="tournamentToRegister in tournamentsToRegister">
+											<td class="col-md-1"><small>{{tournamentToRegister.id}}</small></td>
+											<td class="col-md-2"><small>{{tournamentToRegister.description}}</small></td>
+											<td class="col-md-1"><small>{{tournamentToRegister.startDate
+												| date:'dd/MM/yyyy'}}</small></td>
+												<td class="col-md-1"><small>{{tournamentToRegister.endDate
+													| date:'dd/MM/yyyy'}}</small></td>
+													<td>
+														<button
+														class="btn btn-primary btn-rounded btn-ef btn-ef-5 btn-ef-5b btn-sm mb-10"
+														ng-click="tournamentPreview(tournamentToRegister)">
+														<i class="fa fa-list"></i> <span>{{ 'SHOW_INFO' | translate }}</span>
+													</button>
+
+												</td>
+
+												<td>
+													<button
+														class="btn btn-green btn-rounded btn-ef btn-ef-5 btn-ef-5b btn-sm mb-10"
+														ng-click="subscribeTournament(tournamentToRegister.id)">
+														<i class="fa fa-list"></i> <span>{{ 'SUBSCRIBE' | translate }}</span>
+													</button>
+
+												</td>
+
+
+											</tr>
+
+										</tbody>
+									</table>
+								</div>
+								<!-- /tile body -->
+
+								<!-- tile footer -->
+								<div class="tile-footer">
+
+								</div>
+							</div>
+							<!-- /tile footer -->
+
+						</section>
+					</div>
+
+
+				</div>
+				<div class="row" ng-if="fixtureDtos != null">
+					<!-- col -->
+					<div class="col-md-12">
+						<section class="tile" fullscreen="isFullscreen01">
+							<div class="tile-header dvd dvd-btm">
+								<h1 class="custom-font">
+									<strong>Manage</strong> Fixtures
+								</h1>
+								<ul class="controls">
+									<li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+										<a href uib-dropdown-toggle class="dropdown-toggle settings"><i
+											class="fa fa-cog"></i></a>
+
+											<ul
+											class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+											<li><a href tile-control-toggle> <span
+												class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;{{
+												'MINIMIZE' | translate }}</span> <span class="expand"><fa
+												name="angle-up"></fa>&nbsp;&nbsp;&nbsp;{{ 'EXPAND' |
+												translate }}</span>
+											</a></li>
+											<li><a href tile-control-refresh ng-click="ajaxFaker()">
+												<fa name="refresh"></fa> {{ 'REFRESH' | translate }}
+											</a></li>
+											<li><a href tile-control-fullscreen
+												ng-click="isFullscreen01 = !isFullscreen01"> <fa
+												name="expand"></fa> {{ 'FULLSCREEN' | translate }}
+											</a></li>
+											<li><a href tile-control-lightbox> <fa name="magnet"></fa>
+												{{ 'OPEN_IN_LIGHTBOX' | translate }}
+											</a></li>
+										</ul>
+									</li>
+									<li class="remove"><a><i class="fa fa-times"></i></a></li>
+								</ul>
+							</div>
+							<div>
+								<div class="tile-widget"></div>
+								<!-- /tile widget -->
+
+								<!-- tile body -->
+								<div class="tile-body">
+
+									<table class="table table-condensed"
+									fixed-table-headers="scrollable-area">
+									<thead>
+										<tr>
+											<th>Home team</th>
+											<th>Away team</th>
+											<th>Date</th>
+											<th>score</th>
+
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="fixtureDto in fixtureDtos">
+											<td><small>{{fixtureDto.homeTeam}}</small></td>
+											<td><small>{{fixtureDto.awayTeam}}</small></td>
+											<td><small>{{fixtureDto.matchDate |
+												date:'dd/MM/yyyy HH:mm'}}</small></td>
+												<td><small>{{fixtureDto.homeGoals}} -
+													{{fixtureDto.awayGoals}}</small></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+
+								</div>
+								<div class="tile-footer dvd dvd-top">
+									<div class="row">
+										<div class="col-sm-12 text-right">
+											<ul class="pagination pagination-sm m-0">
+												<li ng-repeat="round in rounds"
+												ng-click="viewFixturesByRoundNumber(round)"><a href><small>{{round}}</small></a></li>
+											</ul>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</section>
+					</div>
+					<!-- col -->
+
+				</div>
+			</div>
+		</div>
+
+	</div>	

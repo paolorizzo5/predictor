@@ -1,0 +1,82 @@
+	<div class="row" ng-show="bets.length > 0">
+		<div class="col-md-12">
+			<section class="tile" fullscreen="isFullscreen01">
+	
+	          <!-- tile header -->
+	          <div class="tile-header dvd dvd-btm">
+	            <h1 class="custom-font"><strong>{{'PLACE.BET' | translate}}</strong></h1>
+	            <ul class="controls">
+	              <li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+	
+	                <a href uib-dropdown-toggle class="dropdown-toggle settings"><i class="fa fa-cog"></i></a>
+	
+	                <ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+	                  <li>
+	                    <a href tile-control-toggle>
+	                      <span class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;Minimize</span>
+	                      <span class="expand"><fa name="angle-up"></fa>&nbsp;&nbsp;&nbsp;Expand</span>
+	                    </a>
+	                  </li>
+	                  <li>
+	                    <a href tile-control-refresh ng-click="ajaxFaker()">
+	                      <fa name="refresh"></fa> Refresh
+	                    </a>
+	                  </li>
+	                  <li>
+	                    <a href tile-control-fullscreen ng-click="isFullscreen01 = !isFullscreen01">
+	                      <fa name="expand"></fa> Fullscreen
+	                    </a>
+	                  </li>
+	                  <li>
+	                    <a href tile-control-lightbox>
+	                      <fa name="magnet"></fa> Open in Lightbox
+	                    </a>
+	                  </li>
+	
+	                </ul>
+	
+	              </li>
+	              <li class="remove"><a href tile-control-close><i class="fa fa-times"></i></a></li>
+	            </ul>
+	          </div>
+	          <!-- /tile header -->
+				
+	          <table class="table" >
+					<thead>
+						<tr>
+							<th>Home Team</th>
+							<th>Away team</th>
+							<th>{{'BETTYPE' | translate}}</th>
+							<th>{{'PERCENTAGE' | translate}}</th>
+							<th>{{'SUGGESTED.ODD' | translate}}</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="bet in bets">
+							<td><small>{{bet.detail.homeTeam.name}}</small></td>
+							<td><small>{{bet.detail.awayTeam.name}}</small></td>
+							<td><small>{{bet.bettype + '.SHORT' | translate}}</small></td>
+							<td><small>{{bet.percentage | number:2}}</small></td>
+							<td><small>{{(100 / bet.percentage) * 130 / 100 | number:2}}</small></td>
+							
+							<td><small><input type="text" class="form-control"></small></td>
+							<td><small>
+								<button type="button" class="btn btn-danger btn-xs mb-10" ng-click="deleteBet($index);"><small>{{'DELETE' | translate}}</small></button>
+							</small></td>
+
+						</tr>
+					</tbody>
+				</table>
+	          
+	          
+	          
+	          <div class="row" ng-repeat="bet in bets">
+	          
+	          
+	          
+	          </div>
+	          <!-- /tile footer -->
+	
+	        </section>
+		</div>
+	</div>

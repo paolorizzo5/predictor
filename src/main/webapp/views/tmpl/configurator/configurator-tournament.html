@@ -1,0 +1,198 @@
+<div ng-controller="ConfiguratorTournamentCtrl">
+
+
+	<div class="page page-tiles">
+
+
+
+
+		<!-- page header -->
+		<div class="pageheader">
+			<h2>{{'Tournament.CONFIGURATOR' | translate}}</h2>
+		</div>
+		<!-- /page header -->
+
+		<!-- page content -->
+		<div class="pagecontent">
+
+			<!-- row -->
+			<div class="row">
+				<!-- col -->
+				<div class="col-md-10">
+
+					<section class="tile" fullscreen="isFullscreen01">
+						<div class="tile-header dvd dvd-btm">
+							<h1 class="custom-font">
+								<strong>{{'Tournament.ADD' | translate}}</strong>
+							</h1>
+							<ul class="controls">
+								<li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+									<a href uib-dropdown-toggle class="dropdown-toggle settings"><i
+										class="fa fa-cog"></i></a>
+
+									<ul
+										class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+										<li><a href tile-control-toggle> <span
+												class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;{{
+													'MINIMIZE' | translate }}</span> <span class="expand"><fa
+														name="angle-up"></fa>&nbsp;&nbsp;&nbsp;{{ 'EXPAND' |
+													translate }}</span>
+										</a></li>
+										<li><a href tile-control-refresh ng-click="ajaxFaker()">
+												<fa name="refresh"></fa> {{ 'REFRESH' | translate }}
+										</a></li>
+										<li><a href tile-control-fullscreen
+											ng-click="isFullscreen01 = !isFullscreen01"> <fa
+													name="expand"></fa> {{ 'FULLSCREEN' | translate }}
+										</a></li>
+										<li><a href tile-control-lightbox> <fa name="magnet"></fa>
+												{{ 'OPEN_IN_LIGHTBOX' | translate }}
+										</a></li>
+									</ul>
+								</li>
+								<li class="remove"><a><i class="fa fa-times"></i></a></li>
+							</ul>
+						</div>
+
+						<div class="tile-widget"></div>
+						<!-- /tile widget -->
+
+						<!-- tile body -->
+						<div class="tile-body">
+							<div class="form-horizontal">
+								<div class="form-group">
+									<div class="col-md-6">Insert Tournament Id</div>
+									<div class="col-md-6">
+										<input type="text" class="form-control"
+											ng-model="addTournamentId" maxlength="20">
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-md-6">Insert Tournament Description</div>
+									<div class="col-md-6">
+										<input type="text" class="form-control"
+											ng-model="addTournamentDescription" maxlength="200">
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-md-6">
+										<small>{{ 'Competition.SELECT' | translate }}</small>
+									</div>
+									<div class="col-md-6">
+										<select ng-model="addTournamentCompetition"
+											ng-options="competitionDto.name for competitionDto in competitionDtos track by competitionDto.id"
+											multiple chosen="{width: '500px'}">
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-md-6">Insert Margin</div>
+									<div class="col-md-6">
+										<div class="col-md-2">
+											<button ng-click="lowMargin()"
+												class="btn btn-default btn-border mb-10">-</button>
+										</div>
+										<div class="col-md-8">
+											<input type="text" class="form-control"
+												ng-model="addTournamentMargin" maxlength="20">
+										</div>
+										<div class="col-md-2">
+											<button ng-click="raiseMargin()"
+												class="btn btn-default btn-border mb-10">+</button>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<div class="col-md-6">Insert Guaranteed</div>
+									<div class="col-md-6">
+										<div class="col-md-2">
+											<button ng-click="lowGuaranteed()"
+												class="btn btn-default btn-border mb-10">-</button>
+										</div>
+										<div class="col-md-8">
+											<input type="text" class="form-control"
+												ng-model="addTournamentGuaranteed" maxlength="20">
+										</div>
+										<div class="col-md-2">
+											<button ng-click="raiseGuaranteed()"
+												class="btn btn-default btn-border mb-10">+</button>
+										</div>
+									</div>
+								</div>
+								<div class="form-group" ng-controller="DatepickerDemoCtrl">
+									<div class="col-md-6">Insert start date</div>
+									<div class="col-md-6">
+										<div class="row">
+											<div class="col-md-9">
+												<input type="text" class="form-control"
+													uib-datepicker-popup="{{format}}"
+													data-ng-model="dates.startDate" is-open="opened"
+													min-date="minDate" datepicker-options="dateOptions"
+													ng-required="true" close-text="Close" /> <span
+													class="input-group-btn">
+											</div>
+											<div class="col-md-2">
+
+												<button type="button" class="btn btn-default"
+													ng-click="open($event)">
+													<i class="fa fa-calendar"></i>
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-group" ng-controller="DatepickerDemoCtrl">
+									<div class="col-md-6">Insert end date</div>
+									<div class="col-md-6">
+										<div class="row">
+											<div class="col-md-9">
+												<input type="text" class="form-control"
+													uib-datepicker-popup="{{format}}"
+													data-ng-model="dates.endDate" is-open="opened"
+													min-date="minDate" datepicker-options="dateOptions"
+													ng-required="true" close-text="Close" /> <span
+													class="input-group-btn">
+											</div>
+											<div class="col-md-2">
+												<button type="button" class="btn btn-default"
+													ng-click="open($event)">
+													<i class="fa fa-calendar"></i>
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="row"></div>
+									<div class="row">
+										<div class="col-md-5"></div>
+										<div class="col-md-2">
+											<button
+												class="btn btn-green btn-rounded btn-ef btn-ef-5 btn-ef-5b mb-10"
+												ng-click="addTournament(addTournamentId,addTournamentDescription,addTournamentCompetition,addTournamentMargin,addTournamentGuaranteed,dates.startDate,dates.endDate)">
+												<i class="fa fa-plus"></i> <span>Add</span>
+											</button>
+										</div>
+										<div class="col-md-5"></div>
+									</div>
+								</div>
+								<div class="tile-footer dvd dvd-top">
+									<div class="row"></div>
+								</div>
+							</div>
+
+						</div>
+					</section>
+				</div>
+			</div>
+			<!-- /row -->
+
+
+		</div>
+		<!-- /page content -->
+
+	</div>
+</div>
+

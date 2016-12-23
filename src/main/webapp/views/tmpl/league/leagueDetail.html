@@ -1,0 +1,257 @@
+<div class="page page-tiles" ng-controller="LeagueDetailController">
+
+	<!-- page header -->
+	<div class="pageheader">
+		<h2 ng-show="viewDetail == false">{{league.name}}</h2>
+
+		<div class="row" ng-show="viewDetail == true">
+			<div class="col-md-11">
+				<h2>{{fixture.homeTeam.name}} - {{fixture.awayTeam.name}}</h2>
+			</div>
+			<div class="col-md-1">
+				<a ng-click="backToSummary();" href
+					class="icon icon-default transparent icon-ef-1 icon-ef-1a"><i
+					class="fa fa-times"></i></a>
+
+			</div>
+		</div>
+
+
+
+	</div>
+	<!-- /page header -->
+
+	<!-- page content -->
+	<div class="pagecontent">
+		<div class="row" ng-show="viewDetail == false">
+			<!-- col -->
+			<div class="col-md-4">
+				<section class="tile" fullscreen="isFullscreen01"
+					style="max-height: 500px; overflow: auto;"
+					slimscroll="{height: '100%'}">
+					<div class="tile-header dvd dvd-btm">
+						<h1 class="custom-font">
+							<strong>{{'NEXT.MATCHES' | translate}}</strong>
+						</h1>
+						<ul class="controls">
+							<li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+								<a href uib-dropdown-toggle class="dropdown-toggle settings"><i
+									class="fa fa-cog"></i></a>
+
+								<ul
+									class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+									<li><a href tile-control-toggle> <span
+											class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;Minimize</span>
+											<span class="expand"><fa name="angle-up"></fa>&nbsp;&nbsp;&nbsp;Expand</span>
+									</a></li>
+									<li><a href tile-control-refresh ng-click="ajaxFaker()">
+											<fa name="refresh"></fa> Refresh
+									</a></li>
+									<li><a href tile-control-fullscreen
+										ng-click="isFullscreen01 = !isFullscreen01"> <fa
+												name="expand"></fa> Fullscreen
+									</a></li>
+									<li><a href tile-control-lightbox> <fa name="magnet"></fa>
+											Open in Lightbox
+									</a></li>
+
+								</ul>
+
+							</li>
+							<li class="remove"><a><i class="fa fa-times"></i></a></li>
+						</ul>
+					</div>
+					<div>
+						<div class="tile-widget"></div>
+						<!-- /tile widget -->
+
+						<!-- tile body -->
+						<div class="tile-body">
+							<table class="table">
+								<tbody>
+									<tr ng-repeat="fixture in fixtures">
+										<td><small>{{fixture.homeTeam.name}}</small></td>
+										<td><small>{{fixture.awayTeam.name}}</small></td>
+										<td><small>{{fixture.date | date:'dd-MM-yyyy
+												(HH:mm)'}}</small></td>
+										<td><small>
+												<button type="button" class="btn btn-info btn-xs mb-10"
+													ng-click="getFixturePreview(fixture);">
+													<small>{{'DETAIL' | translate}}</small>
+												</button>
+										</small></td>
+									</tr>
+								</tbody>
+							</table>
+
+
+						</div>
+						<div class="tile-footer"></div>
+					</div>
+
+				</section>
+			</div>
+			<div class="col-md-4">
+				<section class="tile" fullscreen="isFullscreen01"
+					style="max-height: 500px; overflow: auto;"
+					slimscroll="{height: '100%'}">
+					<div class="tile-header dvd dvd-btm">
+						<h1 class="custom-font">
+							<strong>{{'RESULTS' | translate}}</strong>
+						</h1>
+						<ul class="controls">
+							<li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+								<a href uib-dropdown-toggle class="dropdown-toggle settings"><i
+									class="fa fa-cog"></i></a>
+
+								<ul
+									class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+									<li><a href tile-control-toggle> <span
+											class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;Minimize</span>
+											<span class="expand"><fa name="angle-up"></fa>&nbsp;&nbsp;&nbsp;Expand</span>
+									</a></li>
+									<li><a href tile-control-refresh ng-click="ajaxFaker()">
+											<fa name="refresh"></fa> Refresh
+									</a></li>
+									<li><a href tile-control-fullscreen
+										ng-click="isFullscreen01 = !isFullscreen01"> <fa
+												name="expand"></fa> Fullscreen
+									</a></li>
+									<li><a href tile-control-lightbox> <fa name="magnet"></fa>
+											Open in Lightbox
+									</a></li>
+
+								</ul>
+
+							</li>
+							<li class="remove"><a><i class="fa fa-times"></i></a></li>
+						</ul>
+					</div>
+					<div>
+						<div class="tile-widget"></div>
+						<!-- /tile widget -->
+
+						<!-- tile body -->
+						<div class="tile-body">
+							<table class="table" id="finishedFixtureTable"">
+
+								<tbody>
+									<tr ng-repeat="finishedFixture in historicMatches">
+										<td><small>{{finishedFixture.homeTeam.name}}</small></td>
+										<td><small>{{finishedFixture.awayTeam.name}}</small></td>
+
+										<td><small>{{finishedFixture.homeGoals}} -
+												{{finishedFixture.awayGoals}}</small></td>
+										<td><small>{{finishedFixture.date |
+												date:'dd-MM-yyyy (HH:mm)'}}</small></td>
+
+
+									</tr>
+								</tbody>
+							</table>
+
+
+						</div>
+						<div class="tile-footer"></div>
+					</div>
+
+				</section>
+			</div>
+
+
+
+			<div class="col-md-4">
+				<section class="tile" fullscreen="isFullscreen01"
+					style="max-height: 640px; overflow: auto;"
+					slimscroll="{height: '100%'}">
+					<div class="tile-header dvd dvd-btm">
+						<h1 class="custom-font">
+							<strong>{{'STANDING' | translate}}</strong>
+						</h1>
+						<ul class="controls">
+							<li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+								<a href uib-dropdown-toggle class="dropdown-toggle settings"><i
+									class="fa fa-cog"></i></a>
+
+								<ul
+									class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+									<li><a href tile-control-toggle> <span
+											class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;Minimize</span>
+											<span class="expand"><fa name="angle-up"></fa>&nbsp;&nbsp;&nbsp;Expand</span>
+									</a></li>
+									<li><a href tile-control-refresh ng-click="ajaxFaker()">
+											<fa name="refresh"></fa> Refresh
+									</a></li>
+									<li><a href tile-control-fullscreen
+										ng-click="isFullscreen01 = !isFullscreen01"> <fa
+												name="expand"></fa> Fullscreen
+									</a></li>
+									<li><a href tile-control-lightbox> <fa name="magnet"></fa>
+											Open in Lightbox
+									</a></li>
+
+								</ul>
+
+							</li>
+							<li class="remove"><a><i class="fa fa-times"></i></a></li>
+						</ul>
+					</div>
+					<div>
+						<div class="tile-widget"></div>
+						<!-- /tile widget -->
+
+						<!-- tile body -->
+						<div class="tile-body">
+							<table class="table" id="finishedFixtureTable"">
+								<thead>
+									<tr>
+										<th>{{'TEAM' | translate}}</th>
+										<th>{{'POINTS.SHORT' | translate}}</th>
+										<th>{{'PLAYED.SHORT' | translate}}</th>
+										<th>{{'WINS.SHORT' | translate}}</th>
+										<th>{{'DRAWS.SHORT' | translate}}</th>
+										<th>{{'LOSSES.SHORT' | translate}}</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="standing in standings">
+										<td><small>{{standing.team.name}}</small></td>
+										<td><small>{{standing.points}}</small></td>
+										<td><small>{{standing.played}}</small></td>
+										<td><small>{{standing.won}}</small></td>
+										<td><small>{{standing.draw}}</small></td>
+										<td><small>{{standing.lost}}</small></td>
+
+
+									</tr>
+								</tbody>
+							</table>
+
+
+						</div>
+						<div class="tile-footer"></div>
+					</div>
+
+				</section>
+			</div>
+		</div>
+		<div class="row" ng-show="viewDetail == true">
+
+			<!-- tile -->
+			<div class="col-md-12">
+				<div
+					ng-include="'views/tmpl/historicMatch/historicMatchDetail.html'"></div>
+				<div
+					ng-include="'views/tmpl/historicMatch/seasonalTrend.html'"></div>
+					<div
+					ng-include="'views/tmpl/historicMatch/odds.html'"></div>
+			</div>
+		</div>
+		<!-- col -->
+	</div>
+	<!-- /row -->
+</div>
+<!-- /page content -->

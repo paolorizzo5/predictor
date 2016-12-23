@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd
+     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+     http://www.springframework.org/schema/cache https://www.springframework.org/schema/cache/spring-cache-4.3.xsd">
+
+	<bean id="contextApplicationContextProvider" class="com.paolorizzo.predictor.spring.AppContext"></bean>
+	<!-- <context:property-placeholder /> -->
+	<context:property-placeholder location="classpath:application.properties" />
+	<context:annotation-config />
+	
+	<cache:annotation-driven />
+	
+	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
+    	<property name="cacheManager" ref="ehcache"/>
+    </bean>
+    <bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+    	<property name="configLocation" value="classpath:ehcache.xml"/>
+    	<property name="shared" value="true"/>
+    </bean>
+    
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="${OPENSHIFT_MYSQL_DB_HOST}:${OPENSHIFT_MYSQL_DB_PORT}/sportstip" />
+		<property name="username" value="${OPENSHIFT_MYSQL_DB_USERNAME}" />
+		<property name="password" value="${OPENSHIFT_MYSQL_DB_PASSWORD}" />
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan">
+			<list>
+				<value>com.paolorizzo.predictor.xmlsoccer.hibernate.model</value>
+				<value>com.paolorizzo.predictor.hibernate.model</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<prop key="hibernate.show_sql">${hibernate.show_sql:false}</prop>
+				<prop key="hibernate.format_sql">${hibernate.format_sql:false}</prop>
+				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+				<prop key="hibernate.enable_lazy_load_no_trans">true</prop>
+			</props>
+		</property>
+	</bean>
+
+
+
+	<tx:annotation-driven />
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="persistenceExceptionTranslationPostProcessor"
+		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+
+	<!-- BUSINESS BEANS -->	
+	<!-- <bean id="footballDataClientBean" class="com.paolorizzo.predictor.business.FootballDataClient">
+		<constructor-arg name="competitionDao" ref="competitionDaoBean"></constructor-arg>
+		<constructor-arg name="teamDao" ref="teamDaoBean"></constructor-arg>
+		<constructor-arg name="fixtureDao" ref="fixtureDaoBean"></constructor-arg>
+		<constructor-arg name="finalScoreDao" ref="finalScoreDaoBean"></constructor-arg>
+	</bean>
+	
+	<bean id="competitionBusinessBean" class="com.paolorizzo.predictor.business.CompetitionBusiness">
+		<constructor-arg name="competitionDao" ref="competitionDaoBean"></constructor-arg>
+	</bean>
+	
+	
+	
+	
+	<bean id="bettypeBusinessBean" class="com.paolorizzo.predictor.business.BettypeBusiness">
+		<constructor-arg name="bettypeDao" ref="bettypeDaoBean"></constructor-arg>
+		<constructor-arg name="finalScoreBusiness" ref="finalScoreBusinessBean"></constructor-arg>
+	</bean>
+	
+	<bean id="bettypeGroupBusinessBean" class="com.paolorizzo.predictor.business.BettypeGroupBusiness">
+		<constructor-arg name="bettypeGroupDao" ref="bettypeGroupDaoBean"></constructor-arg>
+		<constructor-arg name="finalScoreBusiness" ref="finalScoreBusinessBean"></constructor-arg>
+	</bean>
+	
+	<bean id="fixtureBusinessBean" class="com.paolorizzo.predictor.business.FixtureBusiness">
+		<constructor-arg name="fixtureDao" ref="fixtureDaoBean"></constructor-arg>
+	</bean>
+	
+	<bean id="finalScoreBusinessBean" class="com.paolorizzo.predictor.business.FinalScoreBusiness">
+		<constructor-arg name="finalScoreDao" ref="finalScoreDaoBean"></constructor-arg>
+	</bean>
+	
+	<bean id="teamStatsBusinessBean" class="com.paolorizzo.predictor.business.TeamStatsBusiness">
+		<constructor-arg name="teamStatsDao" ref="teamStatsDaoBean"></constructor-arg>
+	</bean>
+	
+	<bean id="teamBusinessBean" class="com.paolorizzo.predictor.business.TeamBusiness">
+		<constructor-arg name="teamDao" ref="teamDaoBean"></constructor-arg>
+	</bean>
+	
+	<bean id="jobConfigurationBusinessBean" class="com.paolorizzo.predictor.business.JobConfigurationBusiness">
+		<constructor-arg name="jobConfigurationDao" ref="jobConfigurationDaoBean"></constructor-arg>
+	</bean>
+	
+	
+
+	
+
+	<bean id="competitionDaoBean" class="com.paolorizzo.predictor.dao.hibernate.impl.CompetitionDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="teamDaoBean" class="com.paolorizzo.predictor.dao.hibernate.impl.TeamDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="fixtureDaoBean" class="com.paolorizzo.predictor.dao.hibernate.impl.FixtureDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="finalScoreDaoBean" class="com.paolorizzo.predictor.dao.hibernate.impl.FinalScoreDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="teamStatsDaoBean" class="com.paolorizzo.predictor.dao.hibernate.impl.TeamStatsDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="jobConfigurationDaoBean" class="com.paolorizzo.predictor.dao.hibernate.impl.JobConfigurationDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	
+	<bean id="bettypeDaoBean" class="com.paolorizzo.predictor.dao.hibernate.impl.BettypeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="bettypeGroupDaoBean" class="com.paolorizzo.predictor.dao.hibernate.impl.BettypeGroupDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	 -->
+	<!-- XML SOCCER BEANS -->
+	
+	<bean id="xmlSoccerServiceBean" class="com.github.pabloo99.xmlsoccer.client.XmlSoccerServiceImpl">
+	</bean>
+	
+	
+	<bean id="leagueBusinessBean" class="com.paolorizzo.xmlsoccer.business.LeagueBusiness">
+		<constructor-arg name="leagueDao" ref="leagueDaoBean"></constructor-arg>
+	</bean>
+
+	<bean id="leagueDaoBean" class="com.paolorizzo.xmlsoccer.dao.hibernate.impl.LeagueDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="teamBusinessBean" class="com.paolorizzo.xmlsoccer.business.TeamBusiness">
+		<constructor-arg name="leagueDao" ref="teamDaoBean"></constructor-arg>
+	</bean>
+
+	<bean id="teamDaoBean" class="com.paolorizzo.xmlsoccer.dao.hibernate.impl.TeamDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="historicMatchBusinessBean" class="com.paolorizzo.xmlsoccer.business.HistoricMatchBusiness">
+		<constructor-arg name="historicMatchDao" ref="historicMatchDaoBean"></constructor-arg>
+	</bean>
+
+	<bean id="historicMatchDaoBean" class="com.paolorizzo.xmlsoccer.dao.hibernate.impl.HistoricMatchDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="fixtureBusinessBean" class="com.paolorizzo.xmlsoccer.business.FixtureBusiness">
+		<constructor-arg name="fixtureDao" ref="fixtureDaoBean"></constructor-arg>
+	</bean>
+
+	<bean id="fixtureDaoBean" class="com.paolorizzo.xmlsoccer.dao.hibernate.impl.FixtureDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="oddBusinessBean" class="com.paolorizzo.xmlsoccer.business.OddBusiness">
+		<constructor-arg name="oddDao" ref="oddDaoBean"></constructor-arg>
+	</bean>
+
+	<bean id="oddDaoBean" class="com.paolorizzo.xmlsoccer.dao.hibernate.impl.OddDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="standingBusinessBean" class="com.paolorizzo.xmlsoccer.business.StandingBusiness">
+		<constructor-arg name="standingDao" ref="standingDaoBean"></constructor-arg>
+	</bean>
+
+	<bean id="standingDaoBean" class="com.paolorizzo.xmlsoccer.dao.hibernate.impl.StandingDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="userBusinessBean" class="com.paolorizzo.predictor.business.UserBusiness">
+		<constructor-arg name="userDao" ref="userDaoBean"></constructor-arg>
+	</bean>
+	
+	<bean id="userDaoBean" class="com.paolorizzo.predictor.dao.hibernate.impl.UserDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="jobConfigurationBusinessBean" class="com.paolorizzo.predictor.business.JobConfigurationBusiness">
+		<constructor-arg name="jobConfigurationDao" ref="jobConfigurationDaoBean"></constructor-arg>
+	</bean>
+	
+	<bean id="jobConfigurationDaoBean" class="com.paolorizzo.predictor.dao.hibernate.impl.JobConfigurationDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<!-- BUSINESS BEANS -->	
+	<bean id="xmlSoccerClientBean" class="com.paolorizzo.xmlsoccer.XmlSoccerClient">
+		<constructor-arg name="leagueBusiness" ref="leagueBusinessBean"></constructor-arg>
+		<constructor-arg name="teamBusiness" ref="teamBusinessBean"></constructor-arg>
+		<constructor-arg name="historicMatchBusiness" ref="historicMatchBusinessBean"></constructor-arg>
+		<constructor-arg name="fixtureBusiness" ref="fixtureBusinessBean"></constructor-arg>
+		<constructor-arg name="oddBusiness" ref="oddBusinessBean"></constructor-arg>
+		<constructor-arg name="standingBusiness" ref="standingBusinessBean"></constructor-arg>
+	</bean>
+
+</beans>

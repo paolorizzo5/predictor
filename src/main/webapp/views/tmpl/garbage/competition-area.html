@@ -1,0 +1,178 @@
+<div class="page page-tiles" ng-controller="ConfiguratorAreaCtrl">
+
+
+
+
+	<!-- page header -->
+	<div class="pageheader">
+		<h2>Area Configurator</h2>
+	</div>
+	<!-- /page header -->
+
+	<!-- page content -->
+	<div class="pagecontent">
+
+		<!-- row -->
+		<div class="row">
+			<!-- col -->
+			<div class="col-md-8">
+				<section class="tile" fullscreen="isFullscreen01">
+					<div class="tile-header dvd dvd-btm">
+						<h1 class="custom-font">
+							<strong>Delete</strong> Area
+						</h1>
+						<ul class="controls">
+							<li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+								<a href uib-dropdown-toggle class="dropdown-toggle settings"><i
+									class="fa fa-cog"></i></a>
+
+								<ul
+									class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+									<li><a href tile-control-toggle> <span
+											class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;Minimize</span>
+											<span class="expand"><fa name="angle-up"></fa>&nbsp;&nbsp;&nbsp;Expand</span>
+									</a></li>
+									<li><a href tile-control-refresh ng-click="ajaxFaker()">
+											<fa name="refresh"></fa> Refresh
+									</a></li>
+									<li><a href tile-control-fullscreen
+										ng-click="isFullscreen01 = !isFullscreen01"> <fa
+												name="expand"></fa> Fullscreen
+									</a></li>
+									<li><a href tile-control-lightbox> <fa name="magnet"></fa>
+											Open in Lightbox
+									</a></li>
+
+								</ul>
+
+							</li>
+							<li class="remove"><a><i class="fa fa-times"></i></a></li>
+						</ul>
+					</div>
+					<div>
+						<div class="tile-widget"></div>
+						<!-- /tile widget -->
+
+						<!-- tile body -->
+						<div class="tile-body">
+							<table class="table"
+								fixed-table-headers="scrollable-area">
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>Delete</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="area in areas">
+										<td>{{area.name}}</td>
+										<td>
+											<button type="button" ng-click="deleteArea(area.name)"
+												class="btn btn-danger btn-xs mb-10">Delete</button>
+
+
+										</td>
+									</tr>
+								</tbody>
+							</table>
+
+
+						</div>
+						<div class="tile-footer"></div>
+					</div>
+
+				</section>
+
+			</div>
+			<div class="col-md-4">
+
+				<section class="tile" fullscreen="isFullscreen01">
+
+					<!-- tile header -->
+					<div class="tile-header dvd dvd-btm">
+						<h1 class="custom-font">
+							Add<strong> Area</strong>
+						</h1>
+						<ul class="controls">
+							<li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+								<a href uib-dropdown-toggle class="dropdown-toggle settings"><i
+									class="fa fa-cog"></i></a>
+
+								<ul
+									class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+									<li><a href tile-control-toggle> <span
+											class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;Minimize</span>
+											<span class="expand"><fa name="angle-up"></fa>&nbsp;&nbsp;&nbsp;Expand</span>
+									</a></li>
+									<li><a href tile-control-refresh ng-click="ajaxFaker()">
+											<fa name="refresh"></fa> Refresh
+									</a></li>
+									<li><a href tile-control-fullscreen
+										ng-click="isFullscreen01 = !isFullscreen01"> <fa
+												name="expand"></fa> Fullscreen
+									</a></li>
+									<li><a href tile-control-lightbox> <fa name="magnet"></fa>
+											Open in Lightbox
+									</a></li>
+
+								</ul>
+
+							</li>
+							<li class="remove"><a href tile-control-close
+								ng-click="closeAddArea()"><i class="fa fa-times"></i></a></li>
+						</ul>
+					</div>
+					<!-- /tile header -->
+
+					<!-- tile widget -->
+					<div>
+						<div class="tile-widget">
+							<p class="text-center">
+								<span data-translate="Add.Area.DESCRIPTION"></span>
+							</p>
+						</div>
+						<!-- /tile widget -->
+
+						<!-- tile body -->
+						<div class="tile-body">
+							<div class="form-group">
+								<label for="addarea.name" class="col-sm-6 control-label"><span
+									data-translate="Add.Area.TEXTLABEL"></span></label>
+								<div class="col-sm-6">
+									<input type="text" class="form-control" ng-model="addarea.name">
+								</div>
+							</div>
+						</div>
+						<!-- /tile body -->
+
+						<!-- tile footer -->
+						<div class="tile-footer">
+							<p class="text-center">
+
+
+								<button class="btn btn-submit btn-ef btn-ef-5 btn-ef-5a mb-10"
+									ng-click="addArea(addarea.name)">
+									<i class="fa fa-envelope"></i> <span data-translate="SUBMIT"></span>
+								</button>
+
+							</p>
+						</div>
+					</div>
+					<!-- /tile footer -->
+
+				</section>
+
+
+
+			</div>
+
+			<!-- col -->
+
+		</div>
+		<!-- /row -->
+
+		<!-- /page content -->
+
+	</div>

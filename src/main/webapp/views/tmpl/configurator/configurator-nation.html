@@ -1,0 +1,91 @@
+<div class="page page-tiles" ng-controller="ConfiguratorNationCtrl">
+
+	<!-- page header -->
+	<div class="pageheader">
+		<h2>{{translatedData.CONFIGURATOR_NATION}}</h2>
+	</div>
+	<div class="pagecontent">
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-4">
+				<section class="tile" fullscreen="isFullscreen01">
+					<div class="tile-header dvd dvd-btm">
+						<h1 class="custom-font">
+							<strong>Manage</strong> Nation
+						</h1>
+						<ul class="controls">
+							<li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+								<a href uib-dropdown-toggle class="dropdown-toggle settings"><i
+									class="fa fa-cog"></i></a>
+								<ul
+									class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+									<li><a href tile-control-toggle> <span
+											class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;Minimize</span>
+											<span class="expand"><fa name="angle-up"></fa>&nbsp;&nbsp;&nbsp;Expand</span>
+									</a></li>
+									<li><a href tile-control-refresh ng-click="ajaxFaker()">
+											<fa name="refresh"></fa> Refresh
+									</a></li>
+									<li><a href tile-control-fullscreen
+										ng-click="isFullscreen01 = !isFullscreen01"> <fa
+												name="expand"></fa> Fullscreen
+									</a></li>
+									<li><a href tile-control-lightbox> <fa name="magnet"></fa>
+											Open in Lightbox
+									</a></li>
+								</ul>
+							</li>
+							<li class="remove"><a><i class="fa fa-times"></i></a></li>
+						</ul>
+					</div>
+					<div>
+						<div class="tile-widget"></div>
+						<div class="tile-body">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>Area</th>
+										<th>Delete</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="nation in nationDtos">
+										<td><small>{{nation.name}}</small></td>
+										<td><small>{{nation.areaDto.name}}</small></td>
+										<td>
+											<button type="button" ng-click="deleteNation(nation.name)"
+												class="btn btn-danger btn-sm mb-10">Delete</button>
+										</td>
+									</tr>
+									<tr>
+										<td><input type="text" class="form-control"
+											ng-model="nationName"></td>
+										<td><ui-select ng-model="area" ng-disabled="disabled"
+												class="w-sm mb-10" on-select="selectArea(area.id)">
+											<ui-select-match placeholder="...">{{$select.selected.name}}</ui-select-match>
+											<ui-select-choices
+												repeat="areaDto in areaDtos | filter: $select.search">
+											<span ng-bind-html="areaDto.name | highlight: $select.search"></span>
+											</ui-select-choices> </ui-select> <!-- <span class="ui-select" class="col-sm-12"> <select
+												ng-model="addnation.area" ng-change="selectArea()"
+												ng-options="areaDto.name for areaDto in areaDtos"></select>
+										</span>
+										 --></td>
+										<td>
+											<button type="button" ng-click="addNation(areaId,nationName)"
+												class="btn btn-green mb-10">Add</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="tile-footer"></div>
+					</div>
+				</section>
+			</div>
+			<div class="col-md-4"></div>
+		</div>
+	</div>
+</div>

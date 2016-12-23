@@ -1,0 +1,420 @@
+<div class="page page-tiles" ng-controller="PlayTournamentCtrl">
+
+
+
+
+	<!-- page header -->
+	<div class="pageheader">
+		<div class="col-md-10">
+			<h2>{{tournament.tournamentDto.description | translate}}</h2>
+		</div>
+		<div class="col-md-2">
+			<h4>{{ 'CREDITS_LEFT' | translate }}: {{credits}}</h4>
+		</div>
+		
+	</div>
+	<!-- /page header -->
+
+	<!-- page content -->
+	<div class="pagecontent">
+		<div class="row" >
+			<!-- col -->
+			<div class="col-md-9">
+				
+					<section class="tile" fullscreen="isFullscreen01">
+						<div class="tile-header dvd dvd-btm">
+							<h1 class="custom-font">
+								<strong>{{'FIXTURES' | translate}}</strong>
+							</h1>
+							<ul class="controls">
+								<li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+									<a href uib-dropdown-toggle class="dropdown-toggle settings"><i
+										class="fa fa-cog"></i></a>
+
+										<ul
+										class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+										<li><a href tile-control-toggle> <span
+											class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;{{
+											'MINIMIZE' | translate }}</span> <span class="expand"><fa
+											name="angle-up"></fa>&nbsp;&nbsp;&nbsp;{{ 'EXPAND' |
+											translate }}</span>
+										</a></li>
+										<li><a href tile-control-refresh ng-click="ajaxFaker()">
+											<fa name="refresh"></fa> {{ 'REFRESH' | translate }}
+										</a></li>
+										<li><a href tile-control-fullscreen
+											ng-click="isFullscreen01 = !isFullscreen01"> <fa
+											name="expand"></fa> {{ 'FULLSCREEN' | translate }}
+										</a></li>
+										<li><a href tile-control-lightbox> <fa name="magnet"></fa>
+											{{ 'OPEN_IN_LIGHTBOX' | translate }}
+										</a></li>
+									</ul>
+								</li>
+								<li class="remove"><a><i class="fa fa-times"></i></a></li>
+							</ul>
+						</div>
+						
+						<div class="tile-widget"></div>
+						<!-- /tile widget -->
+
+						<!-- tile body -->
+						<div class="tile-body">
+
+
+							<div class="row">
+								<div class="form-group">
+									<div class="col-md-1">
+									</div>
+									<div class="col-md-8">
+										<label class="col-sm-8 control-label" for="closeable">{{ 'SELECT_DAYS_FUTURE' | translate }}</label>
+										<div class="col-sm-4">
+											<select ng-model="days" ng-change="reloadFixtures();" chosen="{width: '80px'}">
+												<optgroup label="Select days">
+													<option value="1">1</option>
+													<option value="7">7</option>
+													<option value="30">30</option>
+													<option value="60">60</option>
+												</optgroup>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-3">
+										
+										<label class="control-label" ng-if="tournament.fixtureBaseDtos.length == 0" for="closeable">{{ 'TOURNAMENT_FIXTURES_RET_0' |
+											translate }}</label>
+
+										</div>
+
+								</div>
+							</div>
+							<div class="row" style="max-height: 320px;overflow:auto;" slimscroll="{height: '100%'}">
+								<table class="table table-condensed" ng-if="tournament.fixtureBaseDtos.length > 0"
+									fixed-table-headers="scrollable-area">
+									<thead>
+										<tr>
+											<th>Home team</th>
+											<th>Away team</th>
+											<th>Date</th>
+											<th>score</th>
+											<th>Current</th>
+											<th>Quote</th>
+											<th>Values</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="fixtureDto in tournament.fixtureBaseDtos">
+											<td><small>{{fixtureDto.homeTeam}}</small></td>
+											<td><small>{{fixtureDto.awayTeam}}</small></td>
+											<td><small>{{fixtureDto.matchDate |
+												date:'dd/MM/yyyy HH:mm'}}</small></td>
+											<td><small>{{fixtureDto.homeGoals}} -
+												{{fixtureDto.awayGoals}}</small></td>
+											<td class="col-md-1">
+												<button type="button" 
+												ng-click="prepareBet(fixtureDto,'1',fixtureDto.moltiplicator1)"
+												class="btn btn-sm btn-greensea"><strong>{{ 'PLAY_1' | translate }} (
+												{{fixtureDto.moltiplicator1 | number:2}})</strong></button>
+											</td>	
+											<td class="col-md-1">
+												<button type="button" 
+												ng-click="prepareBet(fixtureDto,'X',fixtureDto.moltiplicatorX)"
+												class="btn btn-sm btn-greensea"><strong>{{ 'PLAY_X' | translate }}  ({{fixtureDto.moltiplicatorX | number:2}})</strong></button>
+											</td>	
+											<td class="col-md-1">
+												<button type="button" 
+												ng-click="prepareBet(fixtureDto,'2',fixtureDto.moltiplicator2)"
+												class="btn btn-sm btn-greensea" ><strong>{{ 'PLAY_2' | translate }}  ({{fixtureDto.moltiplicator2 | number:2}})</strong></button>
+											</td>
+
+											<td>
+												<button type="button" class="btn-sm btn btn-default"
+												ng-click="viewFixturebets(tournament.tournamentDto.id,fixtureDto.homeTeam,fixtureDto.awayTeam,fixtureDto.matchDate)">
+												{{ 'MORE' | translate }}</button>
+
+
+											</td>
+
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+						</div>
+						<div class="tile-footer dvd dvd-top">
+							<div class="row">
+								<div class="col-sm-12 text-right">
+									<ul class="pagination pagination-sm m-0">
+										<li ng-repeat="round in rounds"
+										ng-click="viewFixturesByRoundNumber(round)"><a href><small>{{round}}</small></a></li>
+									</ul>
+								</div>
+
+							</div>
+						</div>
+					</section>
+				
+					<section class="tile" fullscreen="isFullscreen01">
+						<div class="tile-header dvd dvd-btm">
+							<h1 class="custom-font">
+								<strong>{{'MY_BETS' | translate}}</strong>
+							</h1>
+							<ul class="controls">
+								<li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+									<a href uib-dropdown-toggle class="dropdown-toggle settings"><i
+										class="fa fa-cog"></i></a>
+
+										<ul
+										class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+										<li><a href tile-control-toggle> <span
+											class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;{{
+											'MINIMIZE' | translate }}</span> <span class="expand"><fa
+											name="angle-up"></fa>&nbsp;&nbsp;&nbsp;{{ 'EXPAND' |
+											translate }}</span>
+										</a></li>
+										<li><a href tile-control-refresh ng-click="ajaxFaker()">
+											<fa name="refresh"></fa> {{ 'REFRESH' | translate }}
+										</a></li>
+										<li><a href tile-control-fullscreen
+											ng-click="isFullscreen01 = !isFullscreen01"> <fa
+											name="expand"></fa> {{ 'FULLSCREEN' | translate }}
+										</a></li>
+										<li><a href tile-control-lightbox> <fa name="magnet"></fa>
+											{{ 'OPEN_IN_LIGHTBOX' | translate }}
+										</a></li>
+									</ul>
+								</li>
+								<li class="remove"><a><i class="fa fa-times"></i></a></li>
+							</ul>
+						</div>
+						
+						<div class="tile-widget"></div>
+						<!-- /tile widget -->
+
+						<!-- tile body -->
+						<div class="tile-body">
+							
+							<div class="row" style="max-height: 320px;overflow:auto;" slimscroll="{height: '100%'}">
+								<table class="table table-condensed"
+									fixed-table-headers="scrollable-area">
+									<thead>
+										<tr>
+											<th>Insert Date</th>
+											<th>Home team</th>
+											<th>Away team</th>
+											<th>Date</th>
+											<th>betType</th>
+											<th>Amount</th>
+											<th>Status</th>
+											<th>Current Quote</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="myBet in myBets">
+											<td><small>{{myBet.insertDate | date:'dd/MM/yyyy HH:mm'}}</small></td>
+											<td><small>{{myBet.fixtureDto.homeTeam}}</small></td>
+											<td><small>{{myBet.fixtureDto.awayTeam}}</small></td>
+											<td><small>{{myBet.fixtureDto.matchDate | date:'dd/MM/yyyy HH:mm'}}</small></td>
+											<td><small>{{myBet.betTypeDto.description}}</small></td>
+											<td><small>{{myBet.amount}}</small></td>
+											<td><small>{{myBet.betStatusDto.description}}</small></td>
+											<td><small>{{myBet.moltiplicator | number:2}}</small></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+						</div>
+						<div class="tile-footer dvd dvd-top">
+							
+						</div>
+					</section>
+				
+			</div>
+			<div class="col-md-3">
+
+				<div class="row" ng-if="bet != null">
+					<div class="col-md-12">
+						<section class="tile bg-greensea" fullscreen="isFullscreen01">
+							<div class="tile-header dvd dvd-btm">
+								<h1 class="custom-font">
+									<strong>{{ 'TICKET' | translate }}</strong>
+								</h1>
+								<ul class="controls">
+									<li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+										<a href uib-dropdown-toggle class="dropdown-toggle settings"><i
+											class="fa fa-cog"></i></a>
+
+											<ul
+											class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+											<li><a href tile-control-toggle> <span
+												class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;{{
+												'MINIMIZE' | translate }}</span> <span class="expand"><fa
+												name="angle-up"></fa>&nbsp;&nbsp;&nbsp;{{ 'EXPAND' |
+												translate }}</span>
+											</a></li>
+											<li><a href tile-control-refresh ng-click="ajaxFaker()">
+												<fa name="refresh"></fa> {{ 'REFRESH' | translate }}
+											</a></li>
+											<li><a href tile-control-fullscreen
+												ng-click="isFullscreen01 = !isFullscreen01"> <fa
+												name="expand"></fa> {{ 'FULLSCREEN' | translate }}
+											</a></li>
+											<li><a href tile-control-lightbox> <fa name="magnet"></fa>
+												{{ 'OPEN_IN_LIGHTBOX' | translate }}
+											</a></li>
+										</ul>
+									</li>
+									<li class="remove"><a><i class="fa fa-times"></i></a></li>
+								</ul>
+							</div>
+							
+							<div class="tile-widget"></div>
+							<div class="tile-body">
+
+								<table class="table table-condensed">
+									<tr>
+										<td>{{'EVENT' | translate}}
+										</td>
+										<td>{{bet.homeTeam}} - {{bet.awayTeam}} 
+										</td>
+									</tr>
+									<tr>
+										<td>{{'SELECTION' | translate}}
+										</td>
+										<td>{{bet.betTypeId}}
+										</td>
+									</tr>
+									<tr>
+										<td>{{'MATCHDATE' | translate}}
+										</td>
+										<td>{{bet.matchDate | date:'dd/MM/yyyy HH:mm'}}
+										</td>
+									</tr>
+									<tr>
+										<td>{{'AMOUNT' | translate}}
+										</td>
+										<td><input type="text" class="form-control"
+											ng-model="bet.amount" ui-validate=" { a:'$value >= 1', b:'$value <= 100' } " ng-change="refreshQuote(bet.amount)" required>
+										</td>
+									</tr>
+
+									<tr>
+										<td>{{'TICKET_QUOTE' | translate}}
+										</td>
+										<td>{{ticketQuote | number:2}}
+										</td>
+									</tr>
+								</table>
+							</div>
+							<div class="tile-footer">
+								<table>
+									<tr>
+										<td class="col-md-8"></td>
+										<td><button type="button"
+											ng-click="deleteBet()"
+											class="btn btn-danger mb-10">{{ 'UNDO' | translate }}</button>
+										</td>
+										<td><button type="button"
+											ng-click="confirmBet(tournament.tournamentDto.id,bet)"
+											class="btn btn-green mb-10">{{ 'PLACE_BET' | translate }}</button>
+										</td>
+									</tr>
+
+								</table>
+								<div ng-if="betResult == true">
+									{{'BET_PLACED' | translate}}
+								</div>
+							</div>
+							
+						</section>
+
+
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<section class="tile" fullscreen="isFullscreen01">
+							<div class="tile-header dvd dvd-btm">
+								<h1 class="custom-font">
+									<strong>{{ 'STANDING' | translate }}</strong>
+								</h1>
+								<ul class="controls">
+									<li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+										<a href uib-dropdown-toggle class="dropdown-toggle settings"><i
+											class="fa fa-cog"></i></a>
+
+											<ul
+											class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+											<li><a href tile-control-toggle> <span
+												class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;{{
+												'MINIMIZE' | translate }}</span> <span class="expand"><fa
+												name="angle-up"></fa>&nbsp;&nbsp;&nbsp;{{ 'EXPAND' |
+												translate }}</span>
+											</a></li>
+											<li><a href tile-control-refresh ng-click="ajaxFaker()">
+												<fa name="refresh"></fa> {{ 'REFRESH' | translate }}
+											</a></li>
+											<li><a href tile-control-fullscreen
+												ng-click="isFullscreen01 = !isFullscreen01"> <fa
+												name="expand"></fa> {{ 'FULLSCREEN' | translate }}
+											</a></li>
+											<li><a href tile-control-lightbox> <fa name="magnet"></fa>
+												{{ 'OPEN_IN_LIGHTBOX' | translate }}
+											</a></li>
+										</ul>
+									</li>
+									<li class="remove"><a><i class="fa fa-times"></i></a></li>
+								</ul>
+							</div>
+
+							<div class="tile-widget"></div>
+							<!-- /tile widget -->
+
+							<!-- tile body -->
+							<div class="tile-body">
+
+								<table class="table table-condensed" 
+								fixed-table-headers="scrollable-area">
+									<thead>
+										<tr>
+											<th>{{'NAME' | translate}}</th>
+											<th>{{'POINTS' | translate}}</th>
+
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="standingDto in tournament.tournamentDto.standingDtos">
+											<td  ng-if="standingDto.userDto.email == userDto.email"><small>
+											<strong>{{standingDto.userDto.email}}</strong> </small></td>
+											<td  ng-if="standingDto.userDto.email != userDto.email"><small>
+												{{standingDto.userDto.email}}</small></td>
+												<td><small>{{standingDto.points}}</small></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="tile-footer dvd dvd-top">
+								<div class="row">
+									<div class="col-sm-12 text-right">
+										<ul class="pagination pagination-sm m-0">
+											<li ng-repeat="round in rounds"
+											ng-click="viewFixturesByRoundNumber(round)"><a href><small>{{round}}</small></a></li>
+										</ul>
+									</div>
+
+								</div>
+							</div>
+						</section>	
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+</div>
