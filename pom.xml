@@ -256,7 +256,7 @@
                 <execution>
                     <phase>package</phase>
                     <goals>
-                        <goal>copy</goal>
+                        <goal>package</goal>
                     </goals>
                     <configuration>
                         <artifactItems>
