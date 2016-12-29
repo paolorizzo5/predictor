@@ -29,7 +29,7 @@
     
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
 		<property name="url" value="${OPENSHIFT_MYSQL_DB_HOST}:${OPENSHIFT_MYSQL_DB_PORT}/${OPENSHIFT_MYSQL_DB_NAME}" />
 		<property name="username" value="${OPENSHIFT_MYSQL_DB_USERNAME}" />
 		<property name="password" value="${OPENSHIFT_MYSQL_DB_PASSWORD}" />
