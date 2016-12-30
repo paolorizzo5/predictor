@@ -11,13 +11,15 @@ app
 						'$window',
 						'$filter',
 						'$location',
+						'$interval',
 						'FixtureService',
 						'HistoricMatchService',
 						'OddService',
 						'StandingService',
 						function($rootScope, $scope, $state, $stateParams,
-								$window, $filter, $location, FixtureService,
-								HistoricMatchService, OddService,StandingService) {
+								$window, $filter, $location, $interval, FixtureService,
+								HistoricMatchService, OddService,
+								StandingService) {
 
 							$scope.viewDetail = false;
 
@@ -51,20 +53,21 @@ app
 							$scope.season = "LAST";
 
 							$scope.getFixturePreview = function(fixture) {
-								
-								StandingService
-								.getStandingByLeagueAndSeason(
-										fixture.league.id, $scope.season,
-										$scope.configuration.serviceUrl)
-								.then(
-										function(d) {
-											if (d.data != null) {
-												$scope.standings = d.data.standings;
-											} else {
 
-											}
-										});
-									
+								StandingService
+										.getStandingByLeagueAndSeason(
+												fixture.league.id,
+												$scope.season,
+												$scope.configuration.serviceUrl)
+										.then(
+												function(d) {
+													if (d.data != null) {
+														$scope.standings = d.data.standings;
+													} else {
+
+													}
+												});
+
 								HistoricMatchService
 										.getFixturePreview(fixture.homeTeam.id,
 												fixture.awayTeam.id,
@@ -119,4 +122,24 @@ app
 							$scope.backToSummary = function(fixtureDto) {
 								$scope.viewDetail = false;
 							};
+
+							var theInterval = $interval(
+									function() {
+										console
+										.log("update livescores");
+										FixtureService
+												.getLivescores(
+														$scope.configuration.serviceUrl)
+												.then(
+														function(d) {
+															if (d.data != null) {
+
+																$scope.livescores = d.data.livescores;
+																
+															} else {
+
+															}
+														});
+									}.bind(this), 20000);
+
 						} ]);
