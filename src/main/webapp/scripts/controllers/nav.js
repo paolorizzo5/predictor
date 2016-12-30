@@ -8,7 +8,12 @@
 app.controller('NavCtrl',['$rootScope','$scope','$window','LeagueService', 
 				 function ($rootScope,$scope, $window,LeagueService) {
 	
-
+	$scope.status = {
+			isFirstOpen : true	
+	}
+	
+	
+	
 	if ($scope.leagues == null) {
 		LeagueService.list($scope.configuration.serviceUrl).then(function(d) {
 			if (d.data != null) {

@@ -153,9 +153,9 @@ var app = angular
       params: {league: null,daily:true},
       templateUrl: 'views/tmpl/league/leagueDetail.html'
     })
-     .state('app.daily-fixtures', {
+     .state('app.dailyFixtures', {
       url: '/fixture/daily/',
-      controller: 'FixtureDailyCtrl',
+      controller: 'DailyController',
       templateUrl: 'views/tmpl/fixture/daily.html'
     })
     

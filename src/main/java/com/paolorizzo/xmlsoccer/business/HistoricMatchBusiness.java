@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.paolorizzo.predictor.dto.FixturePreviewDto;
 import com.paolorizzo.predictor.dto.HistoricMatchDto;
+import com.paolorizzo.predictor.utils.SimpleUtils;
 import com.paolorizzo.predictor.xmlsoccer.hibernate.model.XmlSoccer_HistoricMatch;
 import com.paolorizzo.xmlsoccer.dao.facade.HistoricMatchDao;
 import com.paolorizzo.xmlsoccer.data.converter.HistoricMatchDataConverter;
@@ -46,6 +47,9 @@ public class HistoricMatchBusiness {
 
 	public List<HistoricMatchDto> getHistoricMatchesByLeagueAndSeason(
 			String league, String season) {
+
+		season = SimpleUtils.checkSeason(season);
+
 		List<XmlSoccer_HistoricMatch> historicMatches = historicMatchDao
 				.getHistoricMatchesByLeagueAndSeason(league, season);
 
@@ -282,6 +286,9 @@ public class HistoricMatchBusiness {
 
 	public FixturePreviewDto getSeasonStats(String homeTeamId,
 			String awayTeamId, String league, String season) {
+
+		season = SimpleUtils.checkSeason(season);
+
 		return setFixturePreviewByHistoricMatches(historicMatchDao
 				.getSeasonStats(homeTeamId, awayTeamId, league, season));
 

@@ -2,7 +2,7 @@
 
 app
 		.controller(
-				'LeagueDetailController',
+				'DailyController',
 				[
 						'$rootScope',
 						'$scope',
@@ -11,78 +11,64 @@ app
 						'$window',
 						'$filter',
 						'$location',
-						'LeagueService',
 						'FixtureService',
-						'StandingService',
 						'HistoricMatchService',
 						'OddService',
+						'StandingService',
 						function($rootScope, $scope, $state, $stateParams,
-								$window, $filter, $location, LeagueService,
-								FixtureService, StandingService,
-								HistoricMatchService, OddService) {
+								$window, $filter, $location, FixtureService,
+								HistoricMatchService, OddService,StandingService) {
 
-							$scope.margin = 20;
 							$scope.viewDetail = false;
-							if ($stateParams.league == null) {
-								$scope.league = angular
-										.fromJson($window.sessionStorage
-												.getItem("selectedLeague"));
-								// $state.go("app.dashboard");
-							} else {
-								$window.sessionStorage.setItem(
-										"selectedLeague", angular
-												.toJson($stateParams.league));
-								$scope.league = $stateParams.league;
-							}
 
-							$scope.season = "LAST";
-
-							FixtureService.getFixturesByLeagueAndSeason(
-									$scope.league.id, $scope.season,
+							FixtureService.getDailyFixtures(
 									$scope.configuration.serviceUrl).then(
 									function(d) {
 										if (d.data != null) {
+
 											$scope.fixtures = d.data.fixtures;
+											console.log($scope.fixtures);
 										} else {
 
 										}
 									});
 
-							HistoricMatchService
-									.getHistoricMatchesByLeagueAndSeason(
-											$scope.league.id, $scope.season,
+							FixtureService
+									.getLivescores(
 											$scope.configuration.serviceUrl)
 									.then(
 											function(d) {
 												if (d.data != null) {
-													$scope.historicMatches = d.data.historicMatches;
+
+													$scope.livescores = d.data.livescores;
+													console
+															.log($scope.livescores);
 												} else {
 
 												}
 											});
 
-							StandingService
-									.getStandingByLeagueAndSeason(
-											$scope.league.id, $scope.season,
-											$scope.configuration.serviceUrl)
-									.then(
-											function(d) {
-												if (d.data != null) {
-													$scope.standings = d.data.standings;
-												} else {
-
-												}
-											});
-
-							$scope.backToSummary = function(fixtureDto) {
-								$scope.viewDetail = false;
-							};
+							$scope.season = "LAST";
 
 							$scope.getFixturePreview = function(fixture) {
+								
+								StandingService
+								.getStandingByLeagueAndSeason(
+										fixture.league.id, $scope.season,
+										$scope.configuration.serviceUrl)
+								.then(
+										function(d) {
+											if (d.data != null) {
+												$scope.standings = d.data.standings;
+											} else {
+
+											}
+										});
+									
 								HistoricMatchService
 										.getFixturePreview(fixture.homeTeam.id,
 												fixture.awayTeam.id,
-												$scope.league.id,
+												fixture.league.id,
 												$scope.season,
 												$scope.configuration.serviceUrl)
 										.then(
@@ -102,17 +88,20 @@ app
 															}
 
 														}
-														
-														OddService.getOddsByFixtureId(
-															$scope.fixture.id,
-															$scope.configuration.serviceUrl).then(
-															function(d) {
-																if (d.data != null) {
-																	$scope.odds = d.data.odds;
-																} else {
 
-																}
-															});
+														OddService
+																.getOddsByFixtureId(
+																		$scope.fixture.id,
+																		$scope.configuration.serviceUrl)
+																.then(
+																		function(
+																				d) {
+																			if (d.data != null) {
+																				$scope.odds = d.data.odds;
+																			} else {
+
+																			}
+																		});
 
 														$scope.fixturePreview = d.data.fixturePreview;
 														$scope.fixturePreviewThisSeason = d.data.fixturePreviewThisSeason;
@@ -124,8 +113,10 @@ app
 
 													}
 												});
-								
 
 							};
 
+							$scope.backToSummary = function(fixtureDto) {
+								$scope.viewDetail = false;
+							};
 						} ]);

@@ -13,10 +13,15 @@ import javax.ws.rs.core.Response.Status;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
+import com.github.pabloo99.xmlsoccer.api.dto.GetLiveScoreResultDto;
 import com.google.gson.Gson;
 import com.paolorizzo.predictor.dto.FixtureDto;
+import com.paolorizzo.predictor.services.request.GetDailyFixturesRequest;
 import com.paolorizzo.predictor.services.request.GetFixturesByLeagueAndSeasonRequest;
+import com.paolorizzo.predictor.services.request.GetLivescoresRequest;
+import com.paolorizzo.predictor.services.response.GetDailyFixturesResponse;
 import com.paolorizzo.predictor.services.response.GetFixturesByLeagueAndSeasonResponse;
+import com.paolorizzo.predictor.services.response.GetLivescoresResponse;
 import com.paolorizzo.predictor.spring.AppContext;
 import com.paolorizzo.predictor.xmlsoccer.hibernate.model.XmlSoccer_Fixture;
 import com.paolorizzo.xmlsoccer.business.FixtureBusiness;
@@ -54,6 +59,60 @@ public class FixtureService {
 
 			String ret = gson.toJson(getFixturesByLeagueAndSeasonResponse)
 					.toString();
+			return Response.status(Status.OK).entity(ret).build();
+		} catch (Exception e) {
+			logger.error("list error occurred: ", e);
+			return Response.status(Status.OK).entity(null).build();
+		}
+
+	}
+
+	@POST
+	@Path("/getDailyFixtures/")
+	@Consumes("application/json")
+	public Response getDailyFixtures(String input) {
+		Gson gson = new Gson();
+		GetDailyFixturesRequest getDailyFixturesRequest = gson.fromJson(input,
+				GetDailyFixturesRequest.class);
+
+		GetDailyFixturesResponse getDailyFixturesResponse = new GetDailyFixturesResponse();
+		try {
+			logger.debug("getFixturesByLeagueAndSeason request");
+
+			List<XmlSoccer_Fixture> fixtures = fixtureBusiness
+					.getDailyFixtures();
+
+			List<FixtureDto> dtos = FixtureDataConverter.convert(fixtures);
+			Collections.sort(dtos);
+			getDailyFixturesResponse.setFixtures(dtos);
+
+			String ret = gson.toJson(getDailyFixturesResponse).toString();
+			return Response.status(Status.OK).entity(ret).build();
+		} catch (Exception e) {
+			logger.error("list error occurred: ", e);
+			return Response.status(Status.OK).entity(null).build();
+		}
+
+	}
+
+	@POST
+	@Path("/getLivescores/")
+	@Consumes("application/json")
+	public Response getLivescores(String input) {
+		Gson gson = new Gson();
+		GetLivescoresRequest getLivescoresRequest = gson.fromJson(input,
+				GetLivescoresRequest.class);
+
+		GetLivescoresResponse getDailyFixturesResponse = new GetLivescoresResponse();
+		try {
+			logger.debug("getFixturesByLeagueAndSeason request");
+
+			List<GetLiveScoreResultDto> liveScoreResultDtos = fixtureBusiness
+					.getLivescores();
+
+			getDailyFixturesResponse.setLivescores(liveScoreResultDtos);
+
+			String ret = gson.toJson(getDailyFixturesResponse).toString();
 			return Response.status(Status.OK).entity(ret).build();
 		} catch (Exception e) {
 			logger.error("list error occurred: ", e);

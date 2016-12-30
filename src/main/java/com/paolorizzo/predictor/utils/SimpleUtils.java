@@ -2,6 +2,8 @@ package com.paolorizzo.predictor.utils;
 
 import java.util.Random;
 
+import com.github.pabloo99.xmlsoccer.model.enums.Seasons;
+
 public class SimpleUtils {
 
 	public static String generateString() {
@@ -22,6 +24,15 @@ public class SimpleUtils {
 		} catch (Exception exception) {
 			return null;
 		}
+	}
+
+	public static String checkSeason(String season) {
+		if ("LAST".equals(season)) {
+			for (Seasons seasons : Seasons.values()) {
+				season = seasons.getParam();
+			}
+		}
+		return season;
 	}
 
 }

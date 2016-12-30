@@ -13,6 +13,7 @@ import com.github.pabloo99.xmlsoccer.api.dto.GetAllLeaguesResultDto;
 import com.github.pabloo99.xmlsoccer.api.dto.GetAllOddsResultDto;
 import com.github.pabloo99.xmlsoccer.api.dto.GetHistoricMatchesResultDto;
 import com.github.pabloo99.xmlsoccer.api.dto.GetLeagueStandingsResultDto;
+import com.github.pabloo99.xmlsoccer.api.dto.GetLiveScoreResultDto;
 import com.github.pabloo99.xmlsoccer.api.dto.GetTeamResultDto;
 import com.github.pabloo99.xmlsoccer.client.XmlSoccerServiceImpl;
 import com.paolorizzo.predictor.threads.PopulateFixturesThread;
@@ -158,5 +159,10 @@ public class XmlSoccerClient {
 
 	public List<GetAllOddsResultDto> getAllOddsByFixtureMatchId(Integer id) {
 		return xmlSoccerServiceBean.getAllOddsByFixtureMatchId(id);
+	}
+
+	public List<GetLiveScoreResultDto> getLivescores() {
+		return xmlSoccerServiceBean.getLiveScore();
+
 	}
 }

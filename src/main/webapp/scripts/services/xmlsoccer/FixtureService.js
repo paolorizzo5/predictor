@@ -11,6 +11,22 @@ app
 	    			'season': season
     			};
 		    	return $http.post(url, angular.toJson(fd), {transformRequest: angular.identity,headers: {'Content-Type': 'application/json'}});
+	        },
+		
+			getDailyFixtures: function (serviceUrl){
+		    	var url = "http://" + serviceUrl + "/rest/FixtureService/getDailyFixtures/";
+		    	var fd = {
+	    			'uniquecallid': new Date().getTime()
+				};
+		    	return $http.post(url, angular.toJson(fd), {transformRequest: angular.identity,headers: {'Content-Type': 'application/json'}});
+	        },
+	        
+	        getLivescores: function (serviceUrl){
+		    	var url = "http://" + serviceUrl + "/rest/FixtureService/getLivescores/";
+		    	var fd = {
+	    			'uniquecallid': new Date().getTime()
+				};
+		    	return $http.post(url, angular.toJson(fd), {transformRequest: angular.identity,headers: {'Content-Type': 'application/json'}});
 	        }
 		   
 		};

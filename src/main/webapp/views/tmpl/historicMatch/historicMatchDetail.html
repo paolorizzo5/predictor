@@ -154,6 +154,11 @@
 							<small>({{fixturePreview.homeWins}} /
 								{{fixturePreview.gamesPlayed}})</small>
 						</p>
+
+						<p class="text-center">
+							<small>{{fixturePreview.gamesPlayed /
+								fixturePreview.homeWins * (margin + 100) / 100 | number:2}} </small>
+						</p>
 					</div>
 					<div class="col-md-4">
 						<p class="text-center">
@@ -167,6 +172,10 @@
 							<small>({{fixturePreview.draws}} /
 								{{fixturePreview.gamesPlayed}})</small>
 						</p>
+						<p class="text-center">
+							<small>{{fixturePreview.gamesPlayed /
+								fixturePreview.draws * (margin + 100) / 100 | number:2}} </small>
+						</p>
 					</div>
 					<div class="col-md-4">
 						<p class="text-center">
@@ -179,6 +188,10 @@
 						<p class="text-center">
 							<small>({{fixturePreview.awayWins}} /
 								{{fixturePreview.gamesPlayed}})</small>
+						</p>
+						<p class="text-center">
+							<small>{{fixturePreview.gamesPlayed /
+								fixturePreview.awayWins * (margin + 100) / 100 | number:2}} </small>
 						</p>
 					</div>
 
@@ -245,6 +258,11 @@
 							<small>({{(fixturePreview.homeWins +
 								fixturePreview.draws)}} / {{fixturePreview.gamesPlayed}})</small>
 						</p>
+						<p class="text-center">
+							<small>{{fixturePreview.gamesPlayed /
+								(fixturePreview.homeWins + fixturePreview.draws) * (margin +
+								100) / 100 | number:2}} </small>
+						</p>
 					</div>
 					<div class="col-md-4">
 						<p class="text-center">
@@ -260,6 +278,11 @@
 							<small>({{(fixturePreview.homeWins +
 								fixturePreview.awayWins)}} / {{fixturePreview.gamesPlayed}})</small>
 						</p>
+						<p class="text-center">
+							<small>{{fixturePreview.gamesPlayed /
+								(fixturePreview.homeWins + fixturePreview.awayWins) * (margin +
+								100) / 100 | number:2}} </small>
+						</p>
 					</div>
 					<div class="col-md-4">
 						<p class="text-center">
@@ -273,6 +296,11 @@
 						<p class="text-center">
 							<small>({{(fixturePreview.draws +
 								fixturePreview.awayWins)}} / {{fixturePreview.gamesPlayed}})</small>
+						</p>
+						<p class="text-center">
+							<small>{{fixturePreview.gamesPlayed /
+								(fixturePreview.draws + fixturePreview.awayWins) * (margin +
+								100) / 100 | number:2}} </small>
 						</p>
 					</div>
 
@@ -338,6 +366,10 @@
 							<small>({{fixturePreview.goal}} /
 								{{fixturePreview.gamesPlayed}})</small>
 						</p>
+						<p class="text-center">
+							<small>{{fixturePreview.gamesPlayed / fixturePreview.goal
+								* (margin + 100) / 100 | number:2}} </small>
+						</p>
 					</div>
 					<div class="col-md-6">
 						<p class="text-center">
@@ -350,6 +382,10 @@
 						<p class="text-center">
 							<small>({{fixturePreview.noGoal}} /
 								{{fixturePreview.gamesPlayed}})</small>
+						</p>
+						<p class="text-center">
+							<small>{{fixturePreview.gamesPlayed /
+								fixturePreview.noGoal * (margin + 100) / 100 | number:2}} </small>
 						</p>
 					</div>
 
@@ -419,6 +455,10 @@
 							<small>({{fixturePreview.homeGoal}} /
 								{{fixturePreview.gamesPlayed}})</small>
 						</p>
+						<p class="text-center">
+							<small>{{fixturePreview.gamesPlayed /
+								fixturePreview.homeGoal * (margin + 100) / 100 | number:2}} </small>
+						</p>
 					</div>
 					<div class="col-md-6">
 						<p class="text-center">
@@ -431,6 +471,10 @@
 						<p class="text-center">
 							<small>({{fixturePreview.awayGoal}} /
 								{{fixturePreview.gamesPlayed}})</small>
+						</p>
+						<p class="text-center">
+							<small>{{fixturePreview.gamesPlayed /
+								fixturePreview.awayGoal * (margin + 100) / 100 | number:2}} </small>
 						</p>
 					</div>
 				</div>
@@ -497,6 +541,10 @@
 								<small>({{fixturePreview.under05}} /
 									{{fixturePreview.gamesPlayed}})</small>
 							</p>
+							<p class="text-center">
+								<small>{{fixturePreview.gamesPlayed /
+									fixturePreview.under05 * (margin + 100) / 100 | number:2}} </small>
+							</p>
 						</div>
 						<div class="col-md-2">
 							<p class="text-center">
@@ -509,6 +557,10 @@
 							<p class="text-center">
 								<small>({{fixturePreview.under15}} /
 									{{fixturePreview.gamesPlayed}})</small>
+							</p>
+							<p class="text-center">
+								<small>{{fixturePreview.gamesPlayed /
+									fixturePreview.under15 * (margin + 100) / 100 | number:2}} </small>
 							</p>
 						</div>
 						<div class="col-md-2">
@@ -523,6 +575,10 @@
 								<small>({{fixturePreview.under25}} /
 									{{fixturePreview.gamesPlayed}})</small>
 							</p>
+							<p class="text-center">
+								<small>{{fixturePreview.gamesPlayed /
+									fixturePreview.under25 * (margin + 100) / 100 | number:2}} </small>
+							</p>
 						</div>
 						<div class="col-md-2">
 							<p class="text-center">
@@ -535,6 +591,10 @@
 							<p class="text-center">
 								<small>({{fixturePreview.under35}} /
 									{{fixturePreview.gamesPlayed}})</small>
+							</p>
+							<p class="text-center">
+								<small>{{fixturePreview.gamesPlayed /
+									fixturePreview.under35 * (margin + 100) / 100 | number:2}} </small>
 							</p>
 						</div>
 						<div class="col-md-2">
@@ -549,6 +609,10 @@
 								<small>({{fixturePreview.under45}} /
 									{{fixturePreview.gamesPlayed}})</small>
 							</p>
+							<p class="text-center">
+								<small>{{fixturePreview.gamesPlayed /
+									fixturePreview.under45 * (margin + 100) / 100 | number:2}} </small>
+							</p>
 						</div>
 						<div class="col-md-2">
 							<p class="text-center">
@@ -561,6 +625,10 @@
 							<p class="text-center">
 								<small>({{fixturePreview.under55}} /
 									{{fixturePreview.gamesPlayed}})</small>
+							</p>
+							<p class="text-center">
+								<small>{{fixturePreview.gamesPlayed /
+									fixturePreview.under55 * (margin + 100) / 100 | number:2}} </small>
 							</p>
 						</div>
 					</div>
@@ -623,6 +691,10 @@
 								<small>({{fixturePreview.over05}} /
 									{{fixturePreview.gamesPlayed}})</small>
 							</p>
+							<p class="text-center">
+								<small>{{fixturePreview.gamesPlayed /
+									fixturePreview.over05 * (margin + 100) / 100 | number:2}} </small>
+							</p>
 						</div>
 						<div class="col-md-2">
 							<p class="text-center">
@@ -635,6 +707,10 @@
 							<p class="text-center">
 								<small>({{fixturePreview.over15}} /
 									{{fixturePreview.gamesPlayed}})</small>
+							</p>
+							<p class="text-center">
+								<small>{{fixturePreview.gamesPlayed /
+									fixturePreview.over15 * (margin + 100) / 100 | number:2}} </small>
 							</p>
 						</div>
 						<div class="col-md-2">
@@ -649,6 +725,10 @@
 								<small>({{fixturePreview.over25}} /
 									{{fixturePreview.gamesPlayed}})</small>
 							</p>
+							<p class="text-center">
+								<small>{{fixturePreview.gamesPlayed /
+									fixturePreview.over25 * (margin + 100) / 100 | number:2}} </small>
+							</p>
 						</div>
 						<div class="col-md-2">
 							<p class="text-center">
@@ -661,6 +741,10 @@
 							<p class="text-center">
 								<small>({{fixturePreview.over35}} /
 									{{fixturePreview.gamesPlayed}})</small>
+							</p>
+							<p class="text-center">
+								<small>{{fixturePreview.gamesPlayed /
+									fixturePreview.over35 * (margin + 100) / 100 | number:2}} </small>
 							</p>
 						</div>
 						<div class="col-md-2">
@@ -675,6 +759,10 @@
 								<small>({{fixturePreview.over45}} /
 									{{fixturePreview.gamesPlayed}})</small>
 							</p>
+							<p class="text-center">
+								<small>{{fixturePreview.gamesPlayed /
+									fixturePreview.over45 * (margin + 100) / 100 | number:2}} </small>
+							</p>
 						</div>
 						<div class="col-md-2">
 							<p class="text-center">
@@ -688,6 +776,10 @@
 								<small>({{fixturePreview.over55}} /
 									{{fixturePreview.gamesPlayed}})</small>
 							</p>
+							<p class="text-center">
+								<small>{{fixturePreview.gamesPlayed /
+									fixturePreview.over55 * (margin + 100) / 100 | number:2}} </small>
+							</p>
 						</div>
 					</div>
 				</section>
@@ -698,217 +790,265 @@
 
 	<div class="col-md-6">
 		<section class="tile bg-slategray" fullscreen="isFullscreen02"
-					id="sectionHandicap">
+			id="sectionHandicap">
 
-					<!-- tile header -->
-					<div class="tile-header dvd dvd-btm">
-						<h1 class="custom-font">
-							<strong>{{'HANDICAP' | translate}} </strong>
-						</h1>
-						<ul class="controls">
-							<li class="dropdown" uib-dropdown on-toggle="toggled(open)"><a
-								href uib-dropdown-toggle class="dropdown-toggle settings"> <i
-									class="fa fa-cog" />
-							</a>
+			<!-- tile header -->
+			<div class="tile-header dvd dvd-btm">
+				<h1 class="custom-font">
+					<strong>{{'HANDICAP' | translate}} </strong>
+				</h1>
+				<ul class="controls">
+					<li class="dropdown" uib-dropdown on-toggle="toggled(open)"><a
+						href uib-dropdown-toggle class="dropdown-toggle settings"> <i
+							class="fa fa-cog" />
+					</a>
 
-								<ul
-									class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
-									<li><a href tile-control-toggle> <span
-											class="minimize"> <fa name="angle-down" />&nbsp;&nbsp;&nbsp;Minimize
-										</span> <span class="expand"> <fa name="angle-up" />&nbsp;&nbsp;&nbsp;Expand
-										</span>
-									</a></li>
-									<li><a href tile-control-refresh ng-click="ajaxFaker()">
-											<fa name="refresh" /> Refresh
-									</a></li>
-									<li><a href tile-control-fullscreen
-										ng-click="isFullscreen02 = !isFullscreen02"> <fa
-												name="expand" /> Fullscreen
-									</a></li>
-									<li><a href tile-control-lightbox> <fa name="magnet" />
-											Open in Lightbox
-									</a></li>
-
-								</ul></li>
-							<li class="remove"><a href tile-control-close> <i
-									class="fa fa-times" />
+						<ul
+							class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+							<li><a href tile-control-toggle> <span class="minimize">
+										<fa name="angle-down" />&nbsp;&nbsp;&nbsp;Minimize
+								</span> <span class="expand"> <fa name="angle-up" />&nbsp;&nbsp;&nbsp;Expand
+								</span>
 							</a></li>
-						</ul>
-					</div>
-					<!-- /tile header -->
+							<li><a href tile-control-refresh ng-click="ajaxFaker()">
+									<fa name="refresh" /> Refresh
+							</a></li>
+							<li><a href tile-control-fullscreen
+								ng-click="isFullscreen02 = !isFullscreen02"> <fa
+										name="expand" /> Fullscreen
+							</a></li>
+							<li><a href tile-control-lightbox> <fa name="magnet" />
+									Open in Lightbox
+							</a></li>
+
+						</ul></li>
+					<li class="remove"><a href tile-control-close> <i
+							class="fa fa-times" />
+					</a></li>
+				</ul>
+			</div>
+			<!-- /tile header -->
 
 
-					<div class="row">
-						<div class="col-md-4">
-							<p class="text-center">
-								<small>{{'FULLTIME.HND.001.H2_1.SHORT' | translate}}</small>
-							</p>
-							<p class="text-center">
-								<small>{{fixturePreview.handicapHome2_1 /
-									fixturePreview.gamesPlayed * 100 | number:2}} %</small>
-							</p>
-							<p class="text-center">
-								<small>({{fixturePreview.handicapHome2_1}} /
-									{{fixturePreview.gamesPlayed}})</small>
-							</p>
-						</div>
-						<div class="col-md-4">
-							<p class="text-center">
-								<small>{{'FULLTIME.HND.002.H2_X.SHORT' | translate}}</small>
-							</p>
-							<p class="text-center">
-								<small>{{fixturePreview.handicapHome2_X /
-									fixturePreview.gamesPlayed * 100 | number:2}} %</small>
-							</p>
-							<p class="text-center">
-								<small>({{fixturePreview.handicapHome2_X}} /
-									{{fixturePreview.gamesPlayed}})</small>
-							</p>
-						</div>
-						<div class="col-md-4">
-							<p class="text-center">
-								<small>{{'FULLTIME.HND.003.H2_2.SHORT' | translate}}</small>
-							</p>
-							<p class="text-center">
-								<small>{{fixturePreview.handicapHome2_2 /
-									fixturePreview.gamesPlayed * 100 | number:2}} %</small>
-							</p>
-							<p class="text-center">
-								<small>({{fixturePreview.handicapHome2_2}} /
-									{{fixturePreview.gamesPlayed}})</small>
-							</p>
-						</div>
-					</div>
-					
-					<div class="row">
-						<div class="col-md-4">
-							<p class="text-center">
-								<small>{{'FULLTIME.HND.004.H1_1.SHORT' | translate}}</small>
-							</p>
-							<p class="text-center">
-								<small>{{fixturePreview.handicapHome1_1 /
-									fixturePreview.gamesPlayed * 100 | number:2}} %</small>
-							</p>
-							<p class="text-center">
-								<small>({{fixturePreview.handicapHome1_1}} /
-									{{fixturePreview.gamesPlayed}})</small>
-							</p>
-						</div>
-						<div class="col-md-4">
-							<p class="text-center">
-								<small>{{'FULLTIME.HND.005.H1_X.SHORT' | translate}}</small>
-							</p>
-							<p class="text-center">
-								<small>{{fixturePreview.handicapHome1_X /
-									fixturePreview.gamesPlayed * 100 | number:2}} %</small>
-							</p>
-							<p class="text-center">
-								<small>({{fixturePreview.handicapHome1_X}} /
-									{{fixturePreview.gamesPlayed}})</small>
-							</p>
-						</div>
-						<div class="col-md-4">
-							<p class="text-center">
-								<small>{{'FULLTIME.HND.006.H1_2.SHORT' | translate}}</small>
-							</p>
-							<p class="text-center">
-								<small>{{fixturePreview.handicapHome1_2 /
-									fixturePreview.gamesPlayed * 100 | number:2}} %</small>
-							</p>
-							<p class="text-center">
-								<small>({{fixturePreview.handicapHome1_2}} /
-									{{fixturePreview.gamesPlayed}})</small>
-							</p>
-						</div>
-					</div>
-					
-					<div class="row">
-						<div class="col-md-4">
-							<p class="text-center">
-								<small>{{'FULLTIME.HND.007.A1_1.SHORT' | translate}}</small>
-							</p>
-							<p class="text-center">
-								<small>{{fixturePreview.handicapAway1_1 /
-									fixturePreview.gamesPlayed * 100 | number:2}} %</small>
-							</p>
-							<p class="text-center">
-								<small>({{fixturePreview.handicapAway1_1}} /
-									{{fixturePreview.gamesPlayed}})</small>
-							</p>
-						</div>
-						<div class="col-md-4">
-							<p class="text-center">
-								<small>{{'FULLTIME.HND.008.A1_X.SHORT' | translate}}</small>
-							</p>
-							<p class="text-center">
-								<small>{{fixturePreview.handicapAway1_X /
-									fixturePreview.gamesPlayed * 100 | number:2}} %</small>
-							</p>
-							<p class="text-center">
-								<small>({{fixturePreview.handicapAway1_X}} /
-									{{fixturePreview.gamesPlayed}})</small>
-							</p>
-						</div>
-						<div class="col-md-4">
-							<p class="text-center">
-								<small>{{'FULLTIME.HND.009.A1_2.SHORT' | translate}}</small>
-							</p>
-							<p class="text-center">
-								<small>{{fixturePreview.handicapAway1_2 /
-									fixturePreview.gamesPlayed * 100 | number:2}} %</small>
-							</p>
-							<p class="text-center">
-								<small>({{fixturePreview.handicapAway1_2}} /
-									{{fixturePreview.gamesPlayed}})</small>
-							</p>
-						</div>
-					</div>
-					
-					<div class="row">
-						<div class="col-md-4">
-							<p class="text-center">
-								<small>{{'FULLTIME.HND.010.A2_1.SHORT' | translate}}</small>
-							</p>
-							<p class="text-center">
-								<small>{{fixturePreview.handicapAway2_1 /
-									fixturePreview.gamesPlayed * 100 | number:2}} %</small>
-							</p>
-							<p class="text-center">
-								<small>({{fixturePreview.handicapAway2_1}} /
-									{{fixturePreview.gamesPlayed}})</small>
-							</p>
-						</div>
-						<div class="col-md-4">
-							<p class="text-center">
-								<small>{{'FULLTIME.HND.011.A2_X.SHORT' | translate}}</small>
-							</p>
-							<p class="text-center">
-								<small>{{fixturePreview.handicapAway2_X /
-									fixturePreview.gamesPlayed * 100 | number:2}} %</small>
-							</p>
-							<p class="text-center">
-								<small>({{fixturePreview.handicapAway_X}} /
-									{{fixturePreview.gamesPlayed}})</small>
-							</p>
-						</div>
-						<div class="col-md-4">
-							<p class="text-center">
-								<small>{{'FULLTIME.HND.012.A2_2.SHORT' | translate}}</small>
-							</p>
-							<p class="text-center">
-								<small>{{fixturePreview.handicapAway_2 /
-									fixturePreview.gamesPlayed * 100 | number:2}} %</small>
-							</p>
-							<p class="text-center">
-								<small>({{fixturePreview.handicapAway_2}} /
-									{{fixturePreview.gamesPlayed}})</small>
-							</p>
-						</div>
-					</div>
+			<div class="row">
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{'FULLTIME.HND.001.H2_1.SHORT' | translate}}</small>
+					</p>
+					<p class="text-center">
+						<small>{{fixturePreview.handicapHome2_1 /
+							fixturePreview.gamesPlayed * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{fixturePreview.handicapHome2_1}} /
+							{{fixturePreview.gamesPlayed}})</small>
+					</p>
+					<p class="text-center">
+						<small>{{fixturePreview.gamesPlayed /
+							fixturePreview.handicapHome2_1 * (margin + 100) / 100 | number:2}} </small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{'FULLTIME.HND.002.H2_X.SHORT' | translate}}</small>
+					</p>
+					<p class="text-center">
+						<small>{{fixturePreview.handicapHome2_X /
+							fixturePreview.gamesPlayed * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{fixturePreview.handicapHome2_X}} /
+							{{fixturePreview.gamesPlayed}})</small>
+					</p>
+					<p class="text-center">
+						<small>{{fixturePreview.gamesPlayed /
+							fixturePreview.handicapHome2_X * (margin + 100) / 100 | number:2}} </small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{'FULLTIME.HND.003.H2_2.SHORT' | translate}}</small>
+					</p>
+					<p class="text-center">
+						<small>{{fixturePreview.handicapHome2_2 /
+							fixturePreview.gamesPlayed * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{fixturePreview.handicapHome2_2}} /
+							{{fixturePreview.gamesPlayed}})</small>
+					</p>
+					<p class="text-center">
+						<small>{{fixturePreview.gamesPlayed /
+							fixturePreview.handicapHome2_2 * (margin + 100) / 100 | number:2}} </small>
+					</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{'FULLTIME.HND.004.H1_1.SHORT' | translate}}</small>
+					</p>
+					<p class="text-center">
+						<small>{{fixturePreview.handicapHome1_1 /
+							fixturePreview.gamesPlayed * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{fixturePreview.handicapHome1_1}} /
+							{{fixturePreview.gamesPlayed}})</small>
+					</p>
+					<p class="text-center">
+						<small>{{fixturePreview.gamesPlayed /
+							fixturePreview.handicapHome1_1 * (margin + 100) / 100 | number:2}} </small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{'FULLTIME.HND.005.H1_X.SHORT' | translate}}</small>
+					</p>
+					<p class="text-center">
+						<small>{{fixturePreview.handicapHome1_X /
+							fixturePreview.gamesPlayed * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{fixturePreview.handicapHome1_X}} /
+							{{fixturePreview.gamesPlayed}})</small>
+					</p>
+					<p class="text-center">
+						<small>{{fixturePreview.gamesPlayed /
+							fixturePreview.handicapHome1_X * (margin + 100) / 100 | number:2}} </small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{'FULLTIME.HND.006.H1_2.SHORT' | translate}}</small>
+					</p>
+					<p class="text-center">
+						<small>{{fixturePreview.handicapHome1_2 /
+							fixturePreview.gamesPlayed * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{fixturePreview.handicapHome1_2}} /
+							{{fixturePreview.gamesPlayed}})</small>
+					</p>
+					<p class="text-center">
+						<small>{{fixturePreview.gamesPlayed /
+							fixturePreview.handicapHome1_2 * (margin + 100) / 100 | number:2}} </small>
+					</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{'FULLTIME.HND.007.A1_1.SHORT' | translate}}</small>
+					</p>
+					<p class="text-center">
+						<small>{{fixturePreview.handicapAway1_1 /
+							fixturePreview.gamesPlayed * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{fixturePreview.handicapAway1_1}} /
+							{{fixturePreview.gamesPlayed}})</small>
+					</p>
+					<p class="text-center">
+						<small>{{fixturePreview.gamesPlayed /
+							fixturePreview.handicapAway1_1 * (margin + 100) / 100 | number:2}} </small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{'FULLTIME.HND.008.A1_X.SHORT' | translate}}</small>
+					</p>
+					<p class="text-center">
+						<small>{{fixturePreview.handicapAway1_X /
+							fixturePreview.gamesPlayed * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{fixturePreview.handicapAway1_X}} /
+							{{fixturePreview.gamesPlayed}})</small>
+					</p>
+					<p class="text-center">
+						<small>{{fixturePreview.gamesPlayed /
+							fixturePreview.handicapAway1_X * (margin + 100) / 100 | number:2}} </small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{'FULLTIME.HND.009.A1_2.SHORT' | translate}}</small>
+					</p>
+					<p class="text-center">
+						<small>{{fixturePreview.handicapAway1_2 /
+							fixturePreview.gamesPlayed * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{fixturePreview.handicapAway1_2}} /
+							{{fixturePreview.gamesPlayed}})</small>
+					</p>
+					<p class="text-center">
+						<small>{{fixturePreview.gamesPlayed /
+							fixturePreview.handicapAway1_2 * (margin + 100) / 100 | number:2}} </small>
+					</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{'FULLTIME.HND.010.A2_1.SHORT' | translate}}</small>
+					</p>
+					<p class="text-center">
+						<small>{{fixturePreview.handicapAway2_1 /
+							fixturePreview.gamesPlayed * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{fixturePreview.handicapAway2_1}} /
+							{{fixturePreview.gamesPlayed}})</small>
+					</p>
+					<p class="text-center">
+						<small>{{fixturePreview.gamesPlayed /
+							fixturePreview.handicapAway2_1 * (margin + 100) / 100 | number:2}} </small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{'FULLTIME.HND.011.A2_X.SHORT' | translate}}</small>
+					</p>
+					<p class="text-center">
+						<small>{{fixturePreview.handicapAway2_X /
+							fixturePreview.gamesPlayed * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{fixturePreview.handicapAway2_X}} /
+							{{fixturePreview.gamesPlayed}})</small>
+					</p>
+					<p class="text-center">
+						<small>{{fixturePreview.gamesPlayed /
+							fixturePreview.handicapAway2_X * (margin + 100) / 100 | number:2}} </small>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p class="text-center">
+						<small>{{'FULLTIME.HND.012.A2_2.SHORT' | translate}}</small>
+					</p>
+					<p class="text-center">
+						<small>{{fixturePreview.handicapAway2_2 /
+							fixturePreview.gamesPlayed * 100 | number:2}} %</small>
+					</p>
+					<p class="text-center">
+						<small>({{fixturePreview.handicapAway2_2}} /
+							{{fixturePreview.gamesPlayed}})</small>
+					</p>
+					<p class="text-center">
+						<small>{{fixturePreview.gamesPlayed /
+							fixturePreview.handicapAway2_2 * (margin + 100) / 100 | number:2}} </small>
+					</p>
+				</div>
+			</div>
 
 
-				</section>
-	
-	
+		</section>
+
+
 	</div>
 </div>

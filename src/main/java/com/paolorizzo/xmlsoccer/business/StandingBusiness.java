@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.paolorizzo.predictor.utils.SimpleUtils;
 import com.paolorizzo.predictor.xmlsoccer.hibernate.model.XmlSoccer_Standing;
 import com.paolorizzo.xmlsoccer.dao.facade.StandingDao;
 
@@ -48,11 +49,16 @@ public class StandingBusiness {
 	public List<XmlSoccer_Standing> getStandingByLeagueAndSeason(String league,
 			String season) {
 
+		season = SimpleUtils.checkSeason(season);
+
 		return standingDao.getStandingByLeagueAndSeason(league, season);
 	}
 
 	@Transactional(readOnly = false)
 	public void deleteByLeagueAndSeason(String league, String season) {
+
+		season = SimpleUtils.checkSeason(season);
+
 		List<XmlSoccer_Standing> standingsToDelete = getStandingByLeagueAndSeason(
 				league, season);
 		for (XmlSoccer_Standing xmlSoccer_Standing : standingsToDelete) {

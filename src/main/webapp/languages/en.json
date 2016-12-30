@@ -18,6 +18,9 @@
 	"SCORE": "Risultato",
 	"SHOTS": "Tiri",
 	"CORNERS": "Angoli",
+	"LIVESCORE": "Diretta",
+	"NO.LIVESCORES" : "Nessun evento in corso",
+	"SAFEBET.MARGIN.EXPECTED" : "Margine di sicurezza previsto per giocare",
 
 	"LAST5": "Ultime 5 Partite",
 	"STANDING": "Classifica",

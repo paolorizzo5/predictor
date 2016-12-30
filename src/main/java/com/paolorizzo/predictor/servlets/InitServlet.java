@@ -68,38 +68,6 @@ public class InitServlet extends HttpServlet {
 					.insert("paolorizzo5@gmail.com", MD5.getMD5("Anno2010"));
 		}
 
-		// if (finalScoreBusiness.isEmpty()) {
-		//
-		// for (int homeGoals = 0; homeGoals <= 10; homeGoals++) {
-		// for (int awayGoals = 0; awayGoals <= 10; awayGoals++) {
-		// finalScoreBusiness.insert(homeGoals, awayGoals);
-		// }
-		// }
-		// }
-		//
-		// if (bettypeGroupBusiness.isEmpty()) {
-		// bettypeGroupBusiness.configure();
-		//
-		// }
-		//
-		// if (bettypeBusiness.isEmpty()) {
-		// bettypeBusiness.configure();
-		// }
-		//
-		//
-		// // INIZIALIZZAZIONE RUOLI UTENTE
-		// if (competitionBusiness.isEmpty()) {
-		// try {
-		// footballDataClient.populateDb();
-		// } catch (NumberFormatException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// } catch (ParseException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
-		// }
-		//
 		try {
 			quartzInit();
 		} catch (SchedulerException e) {
