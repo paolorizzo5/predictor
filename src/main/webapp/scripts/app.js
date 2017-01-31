@@ -149,7 +149,6 @@ var app = angular
     //competition/area
     .state('app.leagueDetail', {
       url: '/league/leagueDetail/',
-     // controller: 'CompetitionSelectCtrl',
       params: {league: null,daily:true},
       templateUrl: 'views/tmpl/league/leagueDetail.html'
     })
@@ -158,8 +157,16 @@ var app = angular
       controller: 'DailyController',
       templateUrl: 'views/tmpl/fixture/daily.html'
     })
-    
-     
+    .state('app.accountAdd', {
+      url: '/account/accountAdd/',
+      controller: 'AccountAddController',
+      templateUrl: 'views/tmpl/account/accountAdd.html'
+    })
+      .state('app.accountDetail', {
+      url: '/league/accountDetail/',
+      params: {account: null},
+      templateUrl: 'views/tmpl/account/accountDetail.html'
+    })
 
 
     //mai

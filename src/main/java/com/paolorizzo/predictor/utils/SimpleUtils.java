@@ -1,5 +1,8 @@
 package com.paolorizzo.predictor.utils;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Random;
 
 import com.github.pabloo99.xmlsoccer.model.enums.Seasons;
@@ -33,6 +36,14 @@ public class SimpleUtils {
 			}
 		}
 		return season;
+	}
+
+	public static Date tomorrow(Date startDate) {
+		GregorianCalendar c = new GregorianCalendar();
+		c.setTime(startDate);
+		c.add(Calendar.DAY_OF_MONTH, 1);
+		return c.getTime();
+		
 	}
 
 }

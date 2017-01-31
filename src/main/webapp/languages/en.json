@@ -105,8 +105,8 @@
 	"RESULTS": "Risultati",
 	"DOUBLE.CHANCE": "Doppia Chance",
 
-	"HALFTIME.SHORT": "45Â°",
-	"FULLTIME.SHORT": "90Â°",
+	"HALFTIME.SHORT": "45°",
+	"FULLTIME.SHORT": "90°",
 	"Date.till.START": "Inizia Tra",
 
 	"SUMMARY": "Riepilogo",
@@ -227,6 +227,7 @@
 		"CONFIGURATOR": "Configurator",
 		"PLAY": "Play",
 		"ADMIN_CHECK": "Admin Check",
+		"ACCOUNTS": "I miei Conti Di Gioco",
 
 		"Admin_Check": {
 			"PERFORMANCES": "Performances",
@@ -281,6 +282,76 @@
 		"LIST": "Tournaments",
 		"NAME": "Tournament Name",
 		"SELECT_COMPETITION_NAME": "Select competition associated with the tournament"
+	},
+	
+	"Account": {
+		"ADD": "Nuovo Conto di Gioco",
+		"DELETE": "Cancella Conto di gioco",
+		"INSERT_NAME": "Inserisci il nome del conto di gioco",
+		"INSERT_DESCRIPTION": "Inserisci la descrizione del conto di gioco",
+		"INSERT_FORM_TITLE": "Compila la maschera sottostante per creare un conto di gioco",
+		"DETAIL": "Dettaglio conto di gioco",
+		"OPERATIONS": "Pannello di controllo",
+		"MONEY_TRANSACTIONS" : "Versamenti / Prelievi",
+		"SHOW_BALANCE" : "Saldo",
+		"MY_PROSPECT" : "Il mio Prospetto",
+		"CREATE_PROSPECT" : "Crea Nuovo Prospetto",
+		"CREATE_BET" : "Piazza nuova Puntata",
+		"MY_BETS" : "Le mie scommesse",
+		"ARCHIVED_BETS" : "Archivio Scommesse"
+	},
+	"Prospect": {
+		"ADD": "Nuovo Conto di Gioco",
+		"DELETE": "Cancella Conto di gioco",
+		"INSERT_NAME": "Inserisci il nome del Prospetto",
+		"INSERT_DESCRIPTION": "Inserisci la descrizione del conto di gioco",
+		"INSERT_INITIAL_AMOUNT" : "Inserisci l'importo iniziale del prospetto",
+		"INSERT_DURATION" : "Inserisci la durata del prospetto (in giorni)",
+		"INSERT_DAILY_PERCENTAGE_EXPECTED" : "Inserisci la percentuale di guadagno giornaliera prevista",
+		"START_DATE": "Data inizio",
+		"END_DATE": "Data fine",
+		"ID": "id",
+		"EXPECTED_GOAL" : "Goal",
+		"LIVE_AMOUNT" : "Real-time",
+		"PUSH_POP" : "Su/Giu",
+		"PUSH" : "Giu",
+		"POP" : "Su",
+		"ASSOCIATE_PLAN" : "Associa un piano",
+		"DURATION" : "Durata",
+		"IN_PROGRESS" : "In Corso"
+		
+		
+		
+	},
+	
+	"Bet" : {
+		"INSERT_EVENT_DESCRIPTION" : "Inserisci la descrizione dell'evento",
+		"INSERT_BETTYPE_DESCRIPTION" : "Inserisci la tipologia della puntata",
+		"INSERT_AMOUNT" : "Inserisci l'importo della puntata",
+		"INSERT_MOLTIPLICATOR" : "Inserisci il moltiplicatore",
+		
+		"INSERT_DATE" : "Data",
+		"EVENT_DESCRIPTION" : "Evento",	
+		"BETTYPE_DESCRIPTION" : "Tipo",
+		"AMOUNT" : "Importo",
+		"MOLTIPLICATOR" : "Quota",
+		"STATUS" : "Stato",
+		"STATUS_PLACED" : "In corso",
+		"WINNING" : "Si",
+		"LOSING" : "No",
+		"OUTCOME" : "Esita",
+		"STATUS_WINNING" : "Vincente",
+		"STATUS_LOSING" : "Perdente",
+		"WIN" : "Vincita",
+		"ARCHIVE" : "Archivia"
+		
+	},
+	
+	"MoneyTransaction": {
+		"DEPOSIT": "Versa",
+		"WITHDRAW": "Preleva",
+		"DEPOSITED": "Versamento",
+		"WITHDRAWED": "Prelievo"
 	},
 
 	"LOGIN.ERROR": "Login Error",

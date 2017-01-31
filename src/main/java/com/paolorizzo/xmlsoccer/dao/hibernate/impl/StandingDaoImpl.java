@@ -6,7 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
+import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
 import com.paolorizzo.predictor.xmlsoccer.hibernate.model.XmlSoccer_Standing;
 import com.paolorizzo.xmlsoccer.dao.facade.StandingDao;
@@ -25,6 +25,7 @@ public class StandingDaoImpl extends HibernateDaoSupport implements StandingDao 
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<XmlSoccer_Standing> list() {
 		return (List<XmlSoccer_Standing>) getHibernateTemplate().find(
@@ -41,6 +42,7 @@ public class StandingDaoImpl extends HibernateDaoSupport implements StandingDao 
 		getHibernateTemplate().update(xmlSoccer_Standing);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public XmlSoccer_Standing getById(String id) {
 		DetachedCriteria criteria = DetachedCriteria.forClass(
@@ -50,6 +52,7 @@ public class StandingDaoImpl extends HibernateDaoSupport implements StandingDao 
 				.findByCriteria(criteria)).get(0);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<XmlSoccer_Standing> getStandingByLeagueAndSeason(String league,
 			String season) {

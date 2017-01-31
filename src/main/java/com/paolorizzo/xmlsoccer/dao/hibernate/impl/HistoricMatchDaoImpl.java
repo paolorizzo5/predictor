@@ -5,7 +5,7 @@ import java.util.List;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
+import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
 import com.paolorizzo.predictor.xmlsoccer.hibernate.model.XmlSoccer_HistoricMatch;
 import com.paolorizzo.xmlsoccer.dao.facade.HistoricMatchDao;
@@ -19,6 +19,7 @@ public class HistoricMatchDaoImpl extends HibernateDaoSupport implements
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<XmlSoccer_HistoricMatch> list() {
 		return (List<XmlSoccer_HistoricMatch>) getHibernateTemplate().find(
@@ -35,6 +36,7 @@ public class HistoricMatchDaoImpl extends HibernateDaoSupport implements
 		getHibernateTemplate().update(xmlSoccer_HistoricMatch);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public XmlSoccer_HistoricMatch getById(String id) {
 		DetachedCriteria criteria = DetachedCriteria.forClass(
@@ -44,6 +46,7 @@ public class HistoricMatchDaoImpl extends HibernateDaoSupport implements
 				.findByCriteria(criteria)).get(0);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<XmlSoccer_HistoricMatch> getHistoricMatchesByLeagueAndSeason(
 			String league, String season) {
@@ -56,6 +59,7 @@ public class HistoricMatchDaoImpl extends HibernateDaoSupport implements
 				.findByCriteria(criteria));
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<XmlSoccer_HistoricMatch> getHistoricMatchesByTeams(
 			String homeTeamId, String awayTeamId) {
@@ -70,6 +74,7 @@ public class HistoricMatchDaoImpl extends HibernateDaoSupport implements
 				.findByCriteria(criteria));
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<XmlSoccer_HistoricMatch> getLast5(String teamId) {
 		DetachedCriteria criteria = DetachedCriteria
@@ -86,6 +91,7 @@ public class HistoricMatchDaoImpl extends HibernateDaoSupport implements
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<XmlSoccer_HistoricMatch> getSeasonStats(String homeTeamId,
 			String awayTeamId, String league, String season) {

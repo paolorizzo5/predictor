@@ -1,0 +1,198 @@
+<section class="tile" fullscreen="isFullscreen01"
+	ng-if="account.bets != null">
+	<div class="tile-header dvd dvd-btm">
+		<h1 class="custom-font">
+			<strong>{{'Account.MY_BETS' | translate}}</strong>
+		</h1>
+		<ul class="controls">
+			<li class="dropdown" uib-dropdown on-toggle="toggled(open)"><a
+				href uib-dropdown-toggle class="dropdown-toggle settings"><i
+					class="fa fa-cog"></i></a>
+				<ul
+					class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+					<li><a href tile-control-toggle> <span class="minimize"><fa
+									name="angle-down"></fa>&nbsp;&nbsp;&nbsp;Minimize</span> <span
+							class="expand"><fa name="angle-up"></fa>&nbsp;&nbsp;&nbsp;Expand</span>
+					</a></li>
+					<li><a href tile-control-refresh ng-click="ajaxFaker()"> <fa
+								name="refresh"></fa> Refresh
+					</a></li>
+					<li><a href tile-control-fullscreen
+						ng-click="isFullscreen01 = !isFullscreen01"> <fa name="expand"></fa>
+							Fullscreen
+					</a></li>
+					<li><a href tile-control-lightbox> <fa name="magnet"></fa>
+							Open in Lightbox
+					</a></li>
+				</ul></li>
+			<li class="remove"><a><i class="fa fa-times"></i></a></li>
+		</ul>
+	</div>
+	<div>
+		<div class="tile-widget"></div>
+		<!-- /tile widget -->
+
+		<!-- tile body -->
+		<div class="tile-body">
+			<div class="row">
+
+
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>{{'Bet.INSERT_DATE' | translate}}</th>
+							<th>{{'Bet.EVENT_DESCRIPTION' | translate}}</th>
+							<th>{{'Bet.BETTYPE_DESCRIPTION' | translate}}</th>
+							<th>{{'Bet.AMOUNT' | translate}}</th>
+							<th>{{'Bet.MOLTIPLICATOR' | translate}}</th>
+							<th>{{'Bet.WIN' | translate}}</th>
+							<th>{{'Bet.OUTCOME' | translate}}</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="bet in account.bets">
+							
+								<td ng-if="bet.betStatus == 'WINNING'" class="text-green">{{bet.insertDate | date : 'dd/MM/yyyy HH:mm:ss'}}</td>
+								<td ng-if="bet.betStatus == 'WINNING'" class="text-green">{{bet.eventDescription}}</td>
+								<td ng-if="bet.betStatus == 'WINNING'" class="text-green">{{bet.bettypeDescription}}</td>
+								<td ng-if="bet.betStatus == 'WINNING'" class="text-green">{{bet.amount}}</td>
+								<td ng-if="bet.betStatus == 'WINNING'" class="text-green">{{bet.moltiplicator}}</td>
+								<td ng-if="bet.betStatus == 'WINNING'" class="text-green">{{bet.amount * bet.moltiplicator | number:2}}</td>
+								
+								<td ng-if="bet.betStatus == 'LOSING'" class="text-red">{{bet.insertDate | date : 'dd/MM/yyyy HH:mm:ss'}}</td>
+								<td ng-if="bet.betStatus == 'LOSING'" class="text-red">{{bet.eventDescription}}</td>
+								<td ng-if="bet.betStatus == 'LOSING'" class="text-red">{{bet.bettypeDescription}}</td>
+								<td ng-if="bet.betStatus == 'LOSING'" class="text-red">{{bet.amount}}</td>
+								<td ng-if="bet.betStatus == 'LOSING'" class="text-red">{{bet.moltiplicator}}</td>
+								<td ng-if="bet.betStatus == 'LOSING'" class="text-red">{{bet.amount * bet.moltiplicator | number:2}}</td>
+								
+								<td ng-if="bet.betStatus == 'PLACED'" >{{bet.insertDate | date : 'dd/MM/yyyy HH:mm:ss'}}</td>
+								<td ng-if="bet.betStatus == 'PLACED'" >{{bet.eventDescription}}</td>
+								<td ng-if="bet.betStatus == 'PLACED'" >{{bet.bettypeDescription}}</td>
+								<td ng-if="bet.betStatus == 'PLACED'" >{{bet.amount}}</td>
+								<td ng-if="bet.betStatus == 'PLACED'" >{{bet.moltiplicator}}</td>
+								<td ng-if="bet.betStatus == 'PLACED'" >{{bet.amount * bet.moltiplicator | number:2}}</td>
+								
+								
+								<td ng-if="bet.betStatus == 'PLACED'">
+								
+								
+								<button type="button" class="btn btn-xs btn-success"
+										ng-click="markBet(bet,true)">{{'Bet.WINNING' |
+										translate}}</button>
+									<button type="button" class="btn btn-xs btn-danger"
+										ng-click="markBet(bet,false)">{{'Bet.LOSING' |
+										translate}}</button>
+								</td>
+								<td ng-if="bet.betStatus == 'WINNING'">
+									<p class="text-green">{{"Bet.STATUS_" + bet.betStatus | translate}}</p>
+									<button type="button" class="btn btn-xs btn-info"
+										ng-click="archiveBet(bet)">{{'Bet.ARCHIVE' |
+										translate}}</button>
+								</td>
+								<td ng-if="bet.betStatus == 'LOSING'">
+									<p class="text-red">{{"Bet.STATUS_" + bet.betStatus | translate}}</p>
+									<button type="button" class="btn btn-xs btn-info"
+										ng-click="archiveBet(bet)">{{'Bet.ARCHIVE' |
+										translate}}</button>
+								</td>
+							
+						</tr>
+					</tbody>
+				</table>
+
+				<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-2"></div>
+					<div class="col-md-2"></div>
+					<div class="col-md-2"></div>
+				</div>
+			</div>
+
+		</div>
+		<div class="tile-footer"></div>
+	</div>
+</section>
+
+<section class="tile" fullscreen="isFullscreen01"
+	ng-if="account.bets != null">
+	<div class="tile-header dvd dvd-btm">
+		<h1 class="custom-font">
+			<strong>{{'Account.ARCHIVED_BETS' | translate}}</strong>
+		</h1>
+		<ul class="controls">
+			<li class="dropdown" uib-dropdown on-toggle="toggled(open)"><a
+				href uib-dropdown-toggle class="dropdown-toggle settings"><i
+					class="fa fa-cog"></i></a>
+				<ul
+					class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+					<li><a href tile-control-toggle> <span class="minimize"><fa
+									name="angle-down"></fa>&nbsp;&nbsp;&nbsp;Minimize</span> <span
+							class="expand"><fa name="angle-up"></fa>&nbsp;&nbsp;&nbsp;Expand</span>
+					</a></li>
+					<li><a href tile-control-refresh ng-click="ajaxFaker()"> <fa
+								name="refresh"></fa> Refresh
+					</a></li>
+					<li><a href tile-control-fullscreen
+						ng-click="isFullscreen01 = !isFullscreen01"> <fa name="expand"></fa>
+							Fullscreen
+					</a></li>
+					<li><a href tile-control-lightbox> <fa name="magnet"></fa>
+							Open in Lightbox
+					</a></li>
+				</ul></li>
+			<li class="remove"><a><i class="fa fa-times"></i></a></li>
+		</ul>
+	</div>
+	<div>
+		<div class="tile-widget"></div>
+		<!-- /tile widget -->
+
+		<!-- tile body -->
+		<div class="tile-body">
+			<div class="row">
+
+
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>{{'Bet.INSERT_DATE' | translate}}</th>
+							<th>{{'Bet.EVENT_DESCRIPTION' | translate}}</th>
+							<th>{{'Bet.BETTYPE_DESCRIPTION' | translate}}</th>
+							<th>{{'Bet.AMOUNT' | translate}}</th>
+							<th>{{'Bet.MOLTIPLICATOR' | translate}}</th>
+							<th>{{'Bet.WIN' | translate}}</th>
+							<th>{{'Bet.OUTCOME' | translate}}</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="bet in account.bets">
+							
+								<td ng-if="bet.betStatus == 'ARCHIVED_WIN'" class="text-green">{{bet.insertDate | date : 'dd/MM/yyyy HH:mm:ss'}}</td>
+								<td ng-if="bet.betStatus == 'ARCHIVED_WIN'" class="text-green">{{bet.eventDescription}}</td>
+								<td ng-if="bet.betStatus == 'ARCHIVED_WIN'" class="text-green">{{bet.bettypeDescription}}</td>
+								<td ng-if="bet.betStatus == 'ARCHIVED_WIN'" class="text-green">{{bet.amount}}</td>
+								<td ng-if="bet.betStatus == 'ARCHIVED_WIN'" class="text-green">{{bet.moltiplicator}}</td>
+								<td ng-if="bet.betStatus == 'ARCHIVED_WIN'" class="text-green">{{bet.amount * bet.moltiplicator | number:2}}</td>
+								<td ng-if="bet.betStatus == 'ARCHIVED_WIN'" class="text-green">{{'Bet.STATUS_WINNING' | translate}}</td>
+								
+								<td ng-if="bet.betStatus == 'ARCHIVED_LOST'" class="text-red">{{bet.insertDate | date : 'dd/MM/yyyy HH:mm:ss'}}</td>
+								<td ng-if="bet.betStatus == 'ARCHIVED_LOST'" class="text-red">{{bet.eventDescription}}</td>
+								<td ng-if="bet.betStatus == 'ARCHIVED_LOST'" class="text-red">{{bet.bettypeDescription}}</td>
+								<td ng-if="bet.betStatus == 'ARCHIVED_LOST'" class="text-red">{{bet.amount}}</td>
+								<td ng-if="bet.betStatus == 'ARCHIVED_LOST'" class="text-red">{{bet.moltiplicator}}</td>
+								<td ng-if="bet.betStatus == 'ARCHIVED_LOST'" class="text-red">{{bet.amount * bet.moltiplicator | number:2}}</td>
+								<td ng-if="bet.betStatus == 'ARCHIVED_LOST'" class="text-red">{{'Bet.STATUS_LOSING' | translate}}</td>
+
+
+
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+
+		</div>
+		<div class="tile-footer"></div>
+	</div>
+</section>

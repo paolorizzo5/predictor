@@ -1,8 +1,6 @@
 package com.paolorizzo.predictor.services.request;
 
-public class GetHistoricMatchesByLeagueAndSeasonRequest {
-
-	private String uniquecallid;
+public class GetHistoricMatchesByLeagueAndSeasonRequest  extends SimpleRequest{
 
 	private String league;
 
@@ -10,14 +8,6 @@ public class GetHistoricMatchesByLeagueAndSeasonRequest {
 
 	public GetHistoricMatchesByLeagueAndSeasonRequest() {
 		// TODO Auto-generated constructor stub
-	}
-
-	public String getUniquecallid() {
-		return uniquecallid;
-	}
-
-	public void setUniquecallid(String uniquecallid) {
-		this.uniquecallid = uniquecallid;
 	}
 
 	public String getLeague() {

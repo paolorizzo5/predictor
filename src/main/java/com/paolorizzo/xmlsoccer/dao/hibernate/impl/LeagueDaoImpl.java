@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
+import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
 import com.paolorizzo.predictor.xmlsoccer.hibernate.model.XmlSoccer_League;
 import com.paolorizzo.xmlsoccer.dao.facade.LeagueDao;
@@ -17,6 +17,7 @@ public class LeagueDaoImpl extends HibernateDaoSupport implements LeagueDao {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<XmlSoccer_League> list() {
 		return (List<XmlSoccer_League>) getHibernateTemplate().find(
@@ -33,6 +34,7 @@ public class LeagueDaoImpl extends HibernateDaoSupport implements LeagueDao {
 		getHibernateTemplate().update(league);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public XmlSoccer_League getById(String id) {
 		DetachedCriteria criteria = DetachedCriteria.forClass(

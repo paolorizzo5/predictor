@@ -13,7 +13,6 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
 import com.google.gson.Gson;
-import com.paolorizzo.predictor.services.request.ListLeagueRequest;
 import com.paolorizzo.predictor.services.response.ListLeagueResponse;
 import com.paolorizzo.predictor.spring.AppContext;
 import com.paolorizzo.predictor.xmlsoccer.hibernate.model.XmlSoccer_League;
@@ -34,9 +33,6 @@ public class LeagueService {
 	@Consumes("application/json")
 	public Response list(String input) {
 		Gson gson = new Gson();
-		ListLeagueRequest listLeagueRequest = gson.fromJson(input,
-				ListLeagueRequest.class);
-
 		ListLeagueResponse listLeagueResponse = new ListLeagueResponse();
 		try {
 			logger.debug("list request ");

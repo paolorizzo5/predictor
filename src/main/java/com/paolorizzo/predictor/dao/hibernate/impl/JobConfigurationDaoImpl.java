@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
+import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
 import com.paolorizzo.predictor.dao.facade.JobConfigurationDao;
 import com.paolorizzo.predictor.hibernate.model.JobConfiguration;
@@ -18,6 +18,7 @@ public class JobConfigurationDaoImpl extends HibernateDaoSupport implements
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<JobConfiguration> list() {
 		return (List<JobConfiguration>) getHibernateTemplate().find(
@@ -36,6 +37,7 @@ public class JobConfigurationDaoImpl extends HibernateDaoSupport implements
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public JobConfiguration getByName(String name) {
 		DetachedCriteria criteria = DetachedCriteria.forClass(
@@ -46,6 +48,7 @@ public class JobConfigurationDaoImpl extends HibernateDaoSupport implements
 		return ((List<JobConfiguration>) jobConfigurations).get(0);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public JobConfiguration getByClass(String name) {
 		DetachedCriteria criteria = DetachedCriteria.forClass(

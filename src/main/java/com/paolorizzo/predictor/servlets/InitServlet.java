@@ -84,6 +84,7 @@ public class InitServlet extends HttpServlet {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	private void quartzInit() throws SchedulerException {
 
 		List<JobConfiguration> jobConfigurations = new ArrayList<JobConfiguration>();

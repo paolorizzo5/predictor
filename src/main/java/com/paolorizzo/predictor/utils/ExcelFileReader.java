@@ -1,11 +1,9 @@
 package com.paolorizzo.predictor.utils;
 
-import java.text.SimpleDateFormat;
 
 public class ExcelFileReader {
 
-	private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat(
-			"dd/MM/yyyy hh:mm");
+	
 
 	// public static Competition readAddCompetitionFile(InputStream inputStream,
 	// String competitionName) throws IOException {

@@ -1,8 +1,6 @@
 package com.paolorizzo.predictor.services.request;
 
-public class GetFixturePreviewRequest {
-
-	private String uniquecallid;
+public class GetFixturePreviewRequest  extends SimpleRequest{
 
 	private String homeTeamId;
 
@@ -14,14 +12,6 @@ public class GetFixturePreviewRequest {
 
 	public GetFixturePreviewRequest() {
 		// TODO Auto-generated constructor stub
-	}
-
-	public String getUniquecallid() {
-		return uniquecallid;
-	}
-
-	public void setUniquecallid(String uniquecallid) {
-		this.uniquecallid = uniquecallid;
 	}
 
 	public String getHomeTeamId() {

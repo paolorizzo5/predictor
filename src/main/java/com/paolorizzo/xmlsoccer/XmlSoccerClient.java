@@ -48,8 +48,8 @@ public class XmlSoccerClient {
 	@Autowired
 	private FixtureBusiness fixtureBusiness;
 
-	@Autowired
-	private OddBusiness oddBusiness;
+//	@Autowired
+//	private OddBusiness oddBusiness;
 
 	@Autowired
 	private StandingBusiness standingBusiness;
@@ -67,7 +67,7 @@ public class XmlSoccerClient {
 		this.teamBusiness = teamBusiness;
 		this.historicMatchBusiness = historicMatchBusiness;
 		this.fixtureBusiness = fixtureBusiness;
-		this.oddBusiness = oddBusiness;
+		//this.oddBusiness = oddBusiness;
 		this.standingBusiness = standingBusiness;
 	}
 
@@ -104,6 +104,7 @@ public class XmlSoccerClient {
 		teamBusiness.insertAll(teams);
 	}
 
+	@SuppressWarnings("unused")
 	@Transactional(readOnly = false)
 	private void populateLeagues() throws InterruptedException {
 		logger.debug("populateLeagues");

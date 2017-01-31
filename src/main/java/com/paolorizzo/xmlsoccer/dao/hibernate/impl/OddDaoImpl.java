@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
+import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
 import com.paolorizzo.predictor.xmlsoccer.hibernate.model.XmlSoccer_Odd;
 import com.paolorizzo.xmlsoccer.dao.facade.OddDao;
@@ -17,6 +17,7 @@ public class OddDaoImpl extends HibernateDaoSupport implements OddDao {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<XmlSoccer_Odd> list() {
 		return (List<XmlSoccer_Odd>) getHibernateTemplate().find(
@@ -33,6 +34,7 @@ public class OddDaoImpl extends HibernateDaoSupport implements OddDao {
 		getHibernateTemplate().update(xmlSoccer_Odd);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public XmlSoccer_Odd getById(String id) {
 		DetachedCriteria criteria = DetachedCriteria.forClass(
@@ -42,6 +44,7 @@ public class OddDaoImpl extends HibernateDaoSupport implements OddDao {
 				criteria)).get(0);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<XmlSoccer_Odd> getOddsByFixtureId(String id) {
 		DetachedCriteria criteria = DetachedCriteria.forClass(

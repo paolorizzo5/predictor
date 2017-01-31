@@ -67,6 +67,7 @@ public class FixtureService {
 
 	}
 
+	@SuppressWarnings("unused")
 	@POST
 	@Path("/getDailyFixtures/")
 	@Consumes("application/json")
@@ -95,6 +96,7 @@ public class FixtureService {
 
 	}
 
+	@SuppressWarnings("unused")
 	@POST
 	@Path("/getLivescores/")
 	@Consumes("application/json")

@@ -36,7 +36,7 @@
 	</bean>
 
 	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="packagesToScan">
 			<list>
@@ -59,7 +59,7 @@
 
 	<tx:annotation-driven />
 	<bean id="transactionManager"
-		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
@@ -215,6 +215,31 @@
 	</bean>
 	
 	<bean id="jobConfigurationDaoBean" class="com.paolorizzo.predictor.dao.hibernate.impl.JobConfigurationDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="accountBusinessBean" class="com.paolorizzo.predictor.business.AccountBusiness">
+		<constructor-arg name="accountDao" ref="accountDaoBean"></constructor-arg>
+	</bean>
+	
+	<bean id="accountDaoBean" class="com.paolorizzo.predictor.dao.hibernate.impl.AccountDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="moneyTransactionBusinessBean" class="com.paolorizzo.predictor.business.MoneyTransactionBusiness">
+		<constructor-arg name="moneyTransactionDao" ref="moneyTransactionDaoBean"></constructor-arg>
+	</bean>
+	
+	<bean id="moneyTransactionDaoBean" class="com.paolorizzo.predictor.dao.hibernate.impl.MoneyTransactionDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="prospectBusinessBean" class="com.paolorizzo.predictor.business.ProspectBusiness">
+		<constructor-arg name="prospectDao" ref="prospectDaoBean"></constructor-arg>
+		<constructor-arg name="accountBusiness" ref="accountBusinessBean"></constructor-arg>	
+	</bean>
+	
+	<bean id="prospectDaoBean" class="com.paolorizzo.predictor.dao.hibernate.impl.ProspectDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	

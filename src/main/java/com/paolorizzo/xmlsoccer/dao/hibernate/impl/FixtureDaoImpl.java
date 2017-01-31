@@ -7,7 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
+import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
 import com.paolorizzo.predictor.xmlsoccer.hibernate.model.XmlSoccer_Fixture;
 import com.paolorizzo.xmlsoccer.dao.facade.FixtureDao;
@@ -26,6 +26,7 @@ public class FixtureDaoImpl extends HibernateDaoSupport implements FixtureDao {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<XmlSoccer_Fixture> list() {
 		return (List<XmlSoccer_Fixture>) getHibernateTemplate().find(
@@ -42,6 +43,7 @@ public class FixtureDaoImpl extends HibernateDaoSupport implements FixtureDao {
 		getHibernateTemplate().update(xmlSoccer_Fixture);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public XmlSoccer_Fixture getById(String id) {
 		DetachedCriteria criteria = DetachedCriteria.forClass(
@@ -51,6 +53,7 @@ public class FixtureDaoImpl extends HibernateDaoSupport implements FixtureDao {
 				.findByCriteria(criteria)).get(0);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<XmlSoccer_Fixture> getFixturesByLeagueAndSeason(String league,
 			String season) {
@@ -64,6 +67,7 @@ public class FixtureDaoImpl extends HibernateDaoSupport implements FixtureDao {
 				.findByCriteria(criteria));
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<XmlSoccer_Fixture> getFixturesByDates(Date startDate,
 			Date endDate) {

@@ -1,6 +1,5 @@
 package com.paolorizzo.predictor.services.response.dto;
 
-import java.util.List;
 
 public class TeamDto {
 

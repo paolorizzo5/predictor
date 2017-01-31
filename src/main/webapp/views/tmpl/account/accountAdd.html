@@ -1,0 +1,82 @@
+<div class="page page-tiles" ng-controller="AccountAddController">
+
+	<!-- page header -->
+	<div class="pageheader">
+		<h2>{{'Account.ADD' | translate}}</h2>
+	</div>
+	<!-- /page header -->
+
+	<!-- page content -->
+	<div class="pagecontent">
+
+		<!-- row -->
+
+
+
+		<div class="row">
+			<!-- col -->
+			<div class="col-md-12">
+				<section class="tile" fullscreen="isFullscreen01">
+					<div class="tile-header dvd dvd-btm">
+						<h1 class="custom-font">
+							<strong>{{'Account.INSERT_FORM_TITLE' | translate}}</strong>
+						</h1>
+						<ul class="controls">
+							<li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+								<a href uib-dropdown-toggle class="dropdown-toggle settings"><i
+									class="fa fa-cog"></i></a>
+
+								<ul
+									class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+									<li><a href tile-control-toggle> <span
+											class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;Minimize</span>
+											<span class="expand"><fa name="angle-up"></fa>&nbsp;&nbsp;&nbsp;Expand</span>
+									</a></li>
+									<li><a href tile-control-refresh ng-click="ajaxFaker()">
+											<fa name="refresh"></fa> Refresh
+									</a></li>
+									<li><a href tile-control-fullscreen
+										ng-click="isFullscreen01 = !isFullscreen01"> <fa
+												name="expand"></fa> Fullscreen
+									</a></li>
+									<li><a href tile-control-lightbox> <fa name="magnet"></fa>
+											Open in Lightbox
+									</a></li>
+
+								</ul>
+
+							</li>
+							<li class="remove"><a><i class="fa fa-times"></i></a></li>
+						</ul>
+					</div>
+					<div>
+						<div class="tile-widget"></div>
+						<!-- /tile widget -->
+
+						<!-- tile body -->
+						<div class="tile-body">
+							<div class="form-group">
+								<label for="account.name">{{'Account.INSERT_NAME' |
+									translate}}</label> <input type="text" class="form-control"
+									id="accountName" ng-model="accountName" maxlength="30">
+							</div>
+							<div class="form-group">
+								<label for="account.description">{{'Account.INSERT_DESCRIPTION'
+									| translate}}</label> <input type="text" class="form-control"
+									id="accountDescription" ng-model="accountDescription" maxlength="100">
+							</div>
+							<button type="button" ng-click="addAccount(accountName,accountDescription);" class="btn btn-rounded btn-success btn-sm">{{'SUBMIT' | translate}}</button>
+						</div>
+						<div class="tile-footer"></div>
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
+
+	<!-- col -->
+</div>
+<!-- /row -->
+</div>
+<!-- /page content -->

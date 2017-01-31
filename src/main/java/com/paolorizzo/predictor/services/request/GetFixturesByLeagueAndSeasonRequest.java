@@ -1,8 +1,6 @@
 package com.paolorizzo.predictor.services.request;
 
-public class GetFixturesByLeagueAndSeasonRequest {
-
-	private String uniquecallid;
+public class GetFixturesByLeagueAndSeasonRequest  extends SimpleRequest{
 
 	private String league;
 
@@ -10,14 +8,6 @@ public class GetFixturesByLeagueAndSeasonRequest {
 
 	public GetFixturesByLeagueAndSeasonRequest() {
 		// TODO Auto-generated constructor stub
-	}
-
-	public String getUniquecallid() {
-		return uniquecallid;
-	}
-
-	public void setUniquecallid(String uniquecallid) {
-		this.uniquecallid = uniquecallid;
 	}
 
 	public String getLeague() {

@@ -1,0 +1,150 @@
+2017-01-17 12:57:20,157-MSC service thread 1-3-[]-DEBUG-root      :INIT
+2017-01-17 13:01:01,955-MSC service thread 1-4-[]-DEBUG-root      :INIT
+2017-01-18 15:06:02,944-MSC service thread 1-3-[]-DEBUG-root      :INIT
+2017-01-23 12:33:38,321-MSC service thread 1-3-[]-DEBUG-root      :INIT
+2017-01-23 14:41:03,051-MSC service thread 1-5-[]-DEBUG-root      :INIT
+2017-01-23 14:51:06,458-MSC service thread 1-7-[]-DEBUG-root      :INIT
+2017-01-23 14:53:56,933-MSC service thread 1-3-[]-DEBUG-root      :INIT
+2017-01-23 15:19:41,218-MSC service thread 1-4-[]-DEBUG-root      :INIT
+2017-01-23 16:44:05,421-MSC service thread 1-1-[]-DEBUG-root      :INIT
+2017-01-23 16:54:37,304-MSC service thread 1-2-[]-DEBUG-root      :INIT
+2017-01-23 17:01:49,719-MSC service thread 1-6-[]-DEBUG-root      :INIT
+2017-01-23 17:03:25,574-MSC service thread 1-1-[]-DEBUG-root      :INIT
+2017-01-23 17:04:36,608-MSC service thread 1-3-[]-DEBUG-root      :INIT
+2017-01-23 17:06:27,246-MSC service thread 1-1-[]-DEBUG-root      :INIT
+2017-01-23 17:21:21,579-MSC service thread 1-4-[]-DEBUG-root      :INIT
+2017-01-23 17:24:26,246-MSC service thread 1-4-[]-DEBUG-root      :INIT
+2017-01-23 17:25:36,570-MSC service thread 1-8-[]-DEBUG-root      :INIT
+2017-01-23 17:55:24,074-MSC service thread 1-4-[]-DEBUG-root      :INIT
+2017-01-23 17:56:16,590-MSC service thread 1-4-[]-DEBUG-root      :INIT
+2017-01-23 18:00:10,798-MSC service thread 1-5-[]-DEBUG-root      :INIT
+2017-01-23 18:13:44,838-MSC service thread 1-8-[]-DEBUG-root      :INIT
+2017-01-23 18:49:07,295-MSC service thread 1-5-[]-DEBUG-root      :INIT
+2017-01-23 18:52:21,036-MSC service thread 1-8-[]-DEBUG-root      :INIT
+2017-01-24 12:37:13,799-ServerService Thread Pool -- 69-[]-DEBUG-root      :INIT
+2017-01-24 12:38:47,735-ServerService Thread Pool -- 62-[]-DEBUG-root      :INIT
+2017-01-24 15:00:31,118-ServerService Thread Pool -- 67-[]-DEBUG-root      :INIT
+2017-01-24 16:04:39,087-ServerService Thread Pool -- 61-[]-DEBUG-root      :INIT
+2017-01-24 17:10:28,375-ServerService Thread Pool -- 60-[]-DEBUG-root      :INIT
+2017-01-25 09:10:59,583-ServerService Thread Pool -- 65-[]-DEBUG-root      :INIT
+2017-01-25 09:49:34,926-ServerService Thread Pool -- 64-[]-DEBUG-root      :INIT
+2017-01-25 10:48:30,468-ServerService Thread Pool -- 59-[]-DEBUG-root      :INIT
+2017-01-25 11:55:35,986-ServerService Thread Pool -- 70-[]-DEBUG-root      :INIT
+2017-01-25 15:03:20,060-ServerService Thread Pool -- 58-[]-DEBUG-root      :INIT
+2017-01-25 15:08:48,008-ServerService Thread Pool -- 65-[]-DEBUG-root      :INIT
+2017-01-25 17:26:59,291-ServerService Thread Pool -- 59-[]-DEBUG-root      :INIT
+2017-01-25 17:45:30,909-ServerService Thread Pool -- 58-[]-DEBUG-root      :INIT
+2017-01-25 17:46:09,324-ServerService Thread Pool -- 66-[]-DEBUG-root      :INIT
+2017-01-26 09:29:04,501-ServerService Thread Pool -- 69-[]-DEBUG-root      :INIT
+2017-01-26 09:32:03,581-ServerService Thread Pool -- 60-[]-DEBUG-root      :INIT
+2017-01-26 09:41:37,407-ServerService Thread Pool -- 64-[]-DEBUG-root      :INIT
+2017-01-26 09:42:27,907-ServerService Thread Pool -- 62-[]-DEBUG-root      :INIT
+2017-01-26 10:03:16,051-ServerService Thread Pool -- 69-[]-DEBUG-root      :INIT
+2017-01-26 10:06:47,836-ServerService Thread Pool -- 61-[]-DEBUG-root      :INIT
+2017-01-26 10:15:58,338-ServerService Thread Pool -- 69-[]-DEBUG-root      :INIT
+2017-01-26 10:16:59,648-ServerService Thread Pool -- 64-[]-DEBUG-root      :INIT
+2017-01-26 11:16:02,302-ServerService Thread Pool -- 60-[]-DEBUG-root      :INIT
+2017-01-26 11:19:40,940-ServerService Thread Pool -- 66-[]-DEBUG-root      :INIT
+2017-01-26 11:34:01,941-ServerService Thread Pool -- 61-[]-DEBUG-root      :INIT
+2017-01-26 11:46:19,726-ServerService Thread Pool -- 63-[]-DEBUG-root      :INIT
+2017-01-26 11:47:42,503-ServerService Thread Pool -- 66-[]-DEBUG-root      :INIT
+2017-01-26 11:49:32,438-ServerService Thread Pool -- 58-[]-DEBUG-root      :INIT
+2017-01-26 11:54:12,390-ServerService Thread Pool -- 68-[]-DEBUG-root      :INIT
+2017-01-26 12:03:36,294-ServerService Thread Pool -- 62-[]-DEBUG-root      :INIT
+2017-01-26 12:12:36,464-ServerService Thread Pool -- 68-[]-DEBUG-root      :INIT
+2017-01-26 12:17:49,334-ServerService Thread Pool -- 69-[]-DEBUG-root      :INIT
+2017-01-26 12:25:20,051-ServerService Thread Pool -- 60-[]-DEBUG-root      :INIT
+2017-01-26 12:37:40,781-ServerService Thread Pool -- 62-[]-DEBUG-root      :INIT
+2017-01-26 12:40:02,161-ServerService Thread Pool -- 68-[]-DEBUG-root      :INIT
+2017-01-26 12:58:51,734-ServerService Thread Pool -- 64-[]-DEBUG-root      :INIT
+2017-01-26 15:29:14,006-ServerService Thread Pool -- 63-[]-DEBUG-root      :INIT
+2017-01-26 17:03:37,752-ServerService Thread Pool -- 66-[]-DEBUG-root      :INIT
+2017-01-26 17:14:24,823-ServerService Thread Pool -- 59-[]-DEBUG-root      :INIT
+2017-01-26 17:27:27,321-ServerService Thread Pool -- 65-[]-DEBUG-root      :INIT
+2017-01-26 17:30:50,639-ServerService Thread Pool -- 62-[]-DEBUG-root      :INIT
+2017-01-26 17:37:52,468-ServerService Thread Pool -- 69-[]-DEBUG-root      :INIT
+2017-01-26 17:41:43,182-ServerService Thread Pool -- 64-[]-DEBUG-root      :INIT
+2017-01-26 17:45:47,404-ServerService Thread Pool -- 60-[]-DEBUG-root      :INIT
+2017-01-26 17:59:23,883-ServerService Thread Pool -- 71-[]-DEBUG-root      :INIT
+2017-01-26 17:59:24,414-ServerService Thread Pool -- 71-[]-DEBUG-root      :populateTeams
+2017-01-26 17:59:25,508-ServerService Thread Pool -- 71-[]-DEBUG-root      :populateLeagues
+2017-01-26 17:59:25,737-Thread-105-[]-DEBUG-root      :populateHistoricMatches LEAGUE=3
+2017-01-26 17:59:25,753-Thread-109-[]-DEBUG-root      :populateStandings
+2017-01-26 17:59:25,753-Thread-107-[]-DEBUG-root      :populateFixtures LEAGUE=3
+2017-01-26 17:59:25,956-Thread-109-[]-DEBUG-root      :9900
+2017-01-26 17:59:42,159-Thread-109-[]-DEBUG-root      :0001
+2017-01-26 17:59:58,543-Thread-109-[]-DEBUG-root      :0102
+2017-01-26 18:00:32,982-Thread-109-[]-DEBUG-root      :0203
+2017-01-26 22:54:39,532-ServerService Thread Pool -- 63-[]-DEBUG-root      :INIT
+2017-01-26 23:06:40,134-ServerService Thread Pool -- 67-[]-DEBUG-root      :INIT
+2017-01-26 23:40:51,337-ServerService Thread Pool -- 58-[]-DEBUG-root      :INIT
+2017-01-27 00:42:39,632-ServerService Thread Pool -- 70-[]-DEBUG-root      :INIT
+2017-01-27 10:06:20,919-ServerService Thread Pool -- 59-[]-DEBUG-root      :INIT
+2017-01-27 11:29:55,956-ServerService Thread Pool -- 68-[]-DEBUG-root      :INIT
+2017-01-27 11:39:25,820-ServerService Thread Pool -- 58-[]-DEBUG-root      :INIT
+2017-01-27 11:46:22,599-ServerService Thread Pool -- 71-[]-DEBUG-root      :INIT
+2017-01-27 11:53:24,643-ServerService Thread Pool -- 59-[]-DEBUG-root      :INIT
+2017-01-27 12:06:00,848-ServerService Thread Pool -- 65-[]-DEBUG-root      :INIT
+2017-01-27 12:11:54,294-ServerService Thread Pool -- 61-[]-DEBUG-root      :INIT
+2017-01-27 13:26:49,922-ServerService Thread Pool -- 58-[]-DEBUG-root      :INIT
+2017-01-27 13:45:54,873-ServerService Thread Pool -- 61-[]-DEBUG-root      :INIT
+2017-01-27 14:56:48,375-ServerService Thread Pool -- 69-[]-DEBUG-root      :INIT
+2017-01-27 15:27:34,794-ServerService Thread Pool -- 66-[]-DEBUG-root      :INIT
+2017-01-27 15:47:24,407-ServerService Thread Pool -- 68-[]-DEBUG-root      :INIT
+2017-01-27 15:47:24,894-ServerService Thread Pool -- 68-[]-DEBUG-root      :populateTeams
+2017-01-27 15:47:26,589-ServerService Thread Pool -- 68-[]-DEBUG-root      :populateLeagues
+2017-01-27 15:47:27,281-Thread-105-[]-DEBUG-root      :populateHistoricMatches LEAGUE=3
+2017-01-27 15:47:27,285-Thread-107-[]-DEBUG-root      :populateFixtures LEAGUE=3
+2017-01-27 15:47:27,287-Thread-109-[]-DEBUG-root      :populateStandings
+2017-01-27 15:47:27,492-Thread-109-[]-DEBUG-root      :9900
+2017-01-27 15:47:43,674-Thread-109-[]-DEBUG-root      :0001
+2017-01-27 15:47:59,990-Thread-109-[]-DEBUG-root      :0102
+2017-01-27 15:48:16,247-Thread-109-[]-DEBUG-root      :0203
+2017-01-27 15:48:32,542-Thread-109-[]-DEBUG-root      :0304
+2017-01-27 15:49:15,497-ServerService Thread Pool -- 60-[]-DEBUG-root      :INIT
+2017-01-27 15:54:30,902-ServerService Thread Pool -- 66-[]-DEBUG-root      :INIT
+2017-01-27 15:55:51,800-ServerService Thread Pool -- 68-[]-DEBUG-root      :INIT
+2017-01-27 15:55:52,224-ServerService Thread Pool -- 68-[]-DEBUG-root      :populateTeams
+2017-01-27 15:55:53,708-ServerService Thread Pool -- 68-[]-DEBUG-root      :populateLeagues
+2017-01-27 15:55:53,963-Thread-110-[]-DEBUG-root      :populateHistoricMatches LEAGUE=3
+2017-01-27 15:55:53,967-Thread-114-[]-DEBUG-root      :populateStandings
+2017-01-27 15:55:53,969-Thread-112-[]-DEBUG-root      :populateFixtures LEAGUE=3
+2017-01-27 15:55:54,153-Thread-114-[]-DEBUG-root      :9900
+2017-01-27 15:56:10,347-Thread-114-[]-DEBUG-root      :0001
+2017-01-27 15:56:26,512-Thread-114-[]-DEBUG-root      :0102
+2017-01-27 15:56:42,685-Thread-114-[]-DEBUG-root      :0203
+2017-01-27 15:56:58,846-Thread-114-[]-DEBUG-root      :0304
+2017-01-27 15:57:15,030-Thread-114-[]-DEBUG-root      :0405
+2017-01-27 15:57:31,272-Thread-114-[]-DEBUG-root      :0506
+2017-01-27 15:57:50,501-Thread-114-[]-DEBUG-root      :0607
+2017-01-27 15:58:07,002-Thread-114-[]-DEBUG-root      :0708
+2017-01-27 15:58:23,362-Thread-114-[]-DEBUG-root      :0809
+2017-01-27 15:58:39,637-Thread-114-[]-DEBUG-root      :0910
+2017-01-27 15:58:55,845-Thread-114-[]-DEBUG-root      :1011
+2017-01-27 15:59:12,108-Thread-114-[]-DEBUG-root      :1112
+2017-01-27 15:59:28,410-Thread-114-[]-DEBUG-root      :1213
+2017-01-27 15:59:44,697-Thread-114-[]-DEBUG-root      :1314
+2017-01-27 16:00:01,110-Thread-114-[]-DEBUG-root      :1415
+2017-01-27 16:00:19,078-Thread-114-[]-DEBUG-root      :1516
+2017-01-27 16:00:35,619-Thread-114-[]-DEBUG-root      :1617
+2017-01-27 16:22:04,246-ServerService Thread Pool -- 61-[]-DEBUG-root      :INIT
+2017-01-30 10:33:51,308-ServerService Thread Pool -- 60-[]-DEBUG-root      :INIT
+2017-01-30 11:38:23,550-ServerService Thread Pool -- 67-[]-DEBUG-root      :INIT
+2017-01-30 11:55:51,522-ServerService Thread Pool -- 61-[]-DEBUG-root      :INIT
+2017-01-30 12:01:24,498-ServerService Thread Pool -- 66-[]-DEBUG-root      :INIT
+2017-01-30 15:41:51,244-ServerService Thread Pool -- 69-[]-DEBUG-root      :INIT
+2017-01-30 16:13:15,821-ServerService Thread Pool -- 66-[]-DEBUG-root      :INIT
+2017-01-30 16:21:34,274-ServerService Thread Pool -- 67-[]-DEBUG-root      :INIT
+2017-01-30 17:24:06,908-ServerService Thread Pool -- 70-[]-DEBUG-root      :INIT
+2017-01-30 17:31:01,331-ServerService Thread Pool -- 61-[]-DEBUG-root      :INIT
+2017-01-30 17:39:30,197-ServerService Thread Pool -- 73-[]-DEBUG-root      :INIT
+2017-01-30 17:44:03,269-ServerService Thread Pool -- 67-[]-DEBUG-root      :INIT
+2017-01-30 18:41:11,454-ServerService Thread Pool -- 63-[]-DEBUG-root      :INIT
+2017-01-30 18:48:37,953-ServerService Thread Pool -- 61-[]-DEBUG-root      :INIT
+2017-01-30 19:28:24,316-ServerService Thread Pool -- 67-[]-DEBUG-root      :INIT
+2017-01-30 22:32:05,716-ServerService Thread Pool -- 66-[]-DEBUG-root      :INIT
+2017-01-30 23:14:26,068-ServerService Thread Pool -- 75-[]-DEBUG-root      :INIT
+2017-01-31 08:50:19,794-ServerService Thread Pool -- 60-[]-DEBUG-root      :INIT
+2017-01-31 10:29:28,636-ServerService Thread Pool -- 68-[]-DEBUG-root      :INIT
+2017-01-31 11:47:51,555-ServerService Thread Pool -- 66-[]-DEBUG-root      :INIT
+2017-01-31 12:08:17,819-ServerService Thread Pool -- 66-[]-DEBUG-root      :INIT

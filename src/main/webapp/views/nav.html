@@ -32,6 +32,37 @@
 			</ul></li>
 
 	</ul>
+	
+	<ul id="navigation" nav-collapse ripple>
+		<li ui-sref-active="active"
+			ng-class="{'open':$state.includes('app.ui')}"><a
+			ui-sref="app.ui"><fa name="pencil"></fa> <span>{{
+					'Menu.ACCOUNTS' | translate }}</span></a>
+			<ul>
+				<li ui-sref-active="active"><a
+					ui-sref="app.accountAdd()"><fa
+							name="caret-right"></fa>{{
+					'Account.ADD' | translate }}</a></li>
+				<li ng-repeat="account in accounts" ui-sref-active="active"><a
+					ui-sref="app.accountDetail({account:account})"><fa
+							name="caret-right"></fa> {{account.name}}</a></li>
+							
+
+			</ul></li>
+
+	</ul>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	</uib-accordion-group> <uib-accordion-group is-open="status.isSecondOpen" class="charts">
 	<uib-accordion-heading> Orders Summary <i
 		class="pull-right fa"
