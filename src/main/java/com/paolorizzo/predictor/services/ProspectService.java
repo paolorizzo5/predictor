@@ -12,7 +12,6 @@ import org.apache.log4j.Logger;
 
 import com.google.gson.Gson;
 import com.paolorizzo.predictor.business.ProspectBusiness;
-import com.paolorizzo.predictor.hibernate.model.Account;
 import com.paolorizzo.predictor.hibernate.model.Prospect;
 import com.paolorizzo.predictor.services.request.AddProspectRequest;
 import com.paolorizzo.predictor.services.request.GetProspectRequest;
@@ -23,7 +22,6 @@ import com.paolorizzo.predictor.services.response.GetProspectResponse;
 import com.paolorizzo.predictor.services.response.PopProspectElementResponse;
 import com.paolorizzo.predictor.services.response.PushProspectElementResponse;
 import com.paolorizzo.predictor.spring.AppContext;
-import com.paolorizzo.xmlsoccer.data.converter.AccountDataConverter;
 import com.paolorizzo.xmlsoccer.data.converter.ProspectDataConverter;
 
 @Path("/ProspectService")

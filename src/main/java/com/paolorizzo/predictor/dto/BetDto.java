@@ -1,16 +1,6 @@
 package com.paolorizzo.predictor.dto;
 
 import java.math.BigDecimal;
-import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
-import javax.persistence.ManyToOne;
-
-import com.paolorizzo.predictor.hibernate.model.Account;
 
 public class BetDto {
 	

@@ -17,7 +17,6 @@ import com.paolorizzo.predictor.hibernate.model.Bet;
 import com.paolorizzo.predictor.hibernate.model.MoneyTransaction;
 import com.paolorizzo.predictor.hibernate.model.ProspectElement;
 import com.paolorizzo.predictor.hibernate.model.User;
-import com.paolorizzo.predictor.services.request.DepositAccountRequest;
 import com.paolorizzo.predictor.services.response.DepositAccountResponse;
 import com.paolorizzo.xmlsoccer.data.converter.AccountDataConverter;
 
@@ -142,7 +141,6 @@ public class AccountBusiness {
 	
 	@Transactional(readOnly = false)
 	public Account archiveBet(String accountName, String email, Long insertDate) {
-		Date now = new Date();
 		String betStatus = null;
 		BigDecimal possibleWin = null;
 		BigDecimal expense = null;
@@ -162,16 +160,15 @@ public class AccountBusiness {
 			}
 		}
 		
+		
 		//aggiorno il prospetto
 		for (ProspectElement prospectElement : account.getProspect().getProspectElements()) {
-			if(prospectElement.getEndDate().compareTo(now) > 0 && prospectElement.getStartDate().compareTo(now) < 0){
-				prospectElement.setLiveAmount(prospectElement.getLiveAmount().subtract(expense));
-				if(BetStatus.WINNING.getText().equals(betStatus)){
-					prospectElement.setLiveAmount(prospectElement.getLiveAmount().add(possibleWin));
+				if(prospectElement.getLiveAmount() != null && prospectElement.getExpectedGoal().compareTo(prospectElement.getLiveAmount()) > 0){
+					prospectElement.setLiveAmount(prospectElement.getLiveAmount().subtract(expense));
+					if(BetStatus.WINNING.getText().equals(betStatus)){
+						prospectElement.setLiveAmount(prospectElement.getLiveAmount().add(possibleWin));
+					}
 				}
-			}else{
-				
-			}
 		}
 		
 		

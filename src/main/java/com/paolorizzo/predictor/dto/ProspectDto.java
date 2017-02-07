@@ -4,17 +4,6 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
-import com.paolorizzo.predictor.dao.facade.UserDao;
-import com.paolorizzo.predictor.hibernate.model.ProspectElement;
-import com.paolorizzo.predictor.hibernate.model.User;
-import com.paolorizzo.predictor.services.response.user.dto.UserDto;
-
 public class ProspectDto {
 	
 	private String name;
@@ -28,6 +17,8 @@ public class ProspectDto {
 	private BigDecimal dailyPercentageExpected;
 	
 	private List<ProspectElementDto> prospectElements;
+
+	private List<ProspectElementDto> visibleProspectElements;
 
 
 	public String getName() {
@@ -87,6 +78,16 @@ public class ProspectDto {
 
 	public void setProspectElements(List<ProspectElementDto> prospectElements) {
 		this.prospectElements = prospectElements;
+	}
+
+
+	public List<ProspectElementDto> getVisibleProspectElements() {
+		return visibleProspectElements;
+	}
+
+
+	public void setVisibleProspectElements(List<ProspectElementDto> visibleProspectElements) {
+		this.visibleProspectElements = visibleProspectElements;
 	}
 
 

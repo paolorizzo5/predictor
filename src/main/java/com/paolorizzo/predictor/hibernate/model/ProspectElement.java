@@ -17,6 +17,11 @@ import javax.persistence.Table;
 @Table(name = "PROSPECT_ELEMENTS")
 public class ProspectElement implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3143043293647515476L;
+
 	@Id
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumns({

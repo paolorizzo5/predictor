@@ -3,9 +3,7 @@ package com.paolorizzo.predictor.business;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,7 +78,10 @@ public class ProspectBusiness {
 
 
 	public Prospect get(String accountName, String email) {
-		return prospectDao.get(accountName,email);
+		Prospect prospect = prospectDao.get(accountName,email);
+		
+		
+		return prospect;
 	}
 
 
@@ -112,7 +113,7 @@ public class ProspectBusiness {
 				getNextElement = false;
 			}
 			
-			if(prospectElement.getEndDate().compareTo(now) > 0 && prospectElement.getStartDate().compareTo(now) < 0){
+			if(prospectElement.getLiveAmount() != null && prospectElement.getLiveAmount().compareTo(prospectElement.getExpectedGoal()) > 0 && prospectElement.getTerminationDate() == null){
 				prospectElement.setTerminationDate(now);
 				prospectElement.setEndDate(now);
 				updateUpcomingElements = true;
@@ -151,6 +152,7 @@ public class ProspectBusiness {
 				
 				account.getProspect().getProspectElements().get(i).setEndDate(SimpleUtils.tomorrow(startDate));
 				account.getProspect().getProspectElements().get(i).setStartDate(startDate);
+				account.getProspect().getProspectElements().get(i).setTerminationDate(null);
 				startDate = SimpleUtils.tomorrow(startDate);
 				
 			}

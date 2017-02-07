@@ -148,3 +148,12 @@
 2017-01-31 10:29:28,636-ServerService Thread Pool -- 68-[]-DEBUG-root      :INIT
 2017-01-31 11:47:51,555-ServerService Thread Pool -- 66-[]-DEBUG-root      :INIT
 2017-01-31 12:08:17,819-ServerService Thread Pool -- 66-[]-DEBUG-root      :INIT
+2017-01-31 16:42:09,258-ServerService Thread Pool -- 64-[]-DEBUG-root      :INIT
+2017-02-01 12:16:46,434-ServerService Thread Pool -- 60-[]-DEBUG-root      :INIT
+2017-02-01 14:28:47,618-ServerService Thread Pool -- 69-[]-DEBUG-root      :INIT
+2017-02-01 14:36:56,223-ServerService Thread Pool -- 65-[]-DEBUG-root      :INIT
+2017-02-04 13:09:37,697-ServerService Thread Pool -- 70-[]-DEBUG-root      :INIT
+2017-02-04 20:17:44,301-DefaultQuartzScheduler_Worker-8-[]-WARN -root      :warning inserting in history.
+2017-02-06 10:52:42,016-ServerService Thread Pool -- 65-[]-DEBUG-root      :INIT
+2017-02-06 14:52:45,349-ServerService Thread Pool -- 68-[]-DEBUG-root      :INIT
+2017-02-06 17:20:14,344-ServerService Thread Pool -- 62-[]-DEBUG-root      :INIT

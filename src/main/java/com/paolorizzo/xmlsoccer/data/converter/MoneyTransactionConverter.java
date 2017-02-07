@@ -6,7 +6,6 @@ import java.util.List;
 
 import com.paolorizzo.predictor.dto.MoneyTransactionDto;
 import com.paolorizzo.predictor.hibernate.model.MoneyTransaction;
-import com.paolorizzo.predictor.services.request.SimpleRequest;
 
 public class MoneyTransactionConverter {
 	

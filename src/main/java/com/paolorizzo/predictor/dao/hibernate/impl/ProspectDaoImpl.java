@@ -1,6 +1,5 @@
 package com.paolorizzo.predictor.dao.hibernate.impl;
 
-import java.util.Date;
 import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
@@ -9,7 +8,6 @@ import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
 import com.paolorizzo.predictor.dao.facade.ProspectDao;
 import com.paolorizzo.predictor.hibernate.model.Prospect;
-import com.paolorizzo.predictor.hibernate.model.ProspectElement;
 
 public class ProspectDaoImpl extends HibernateDaoSupport implements ProspectDao {
  
@@ -46,6 +44,7 @@ public class ProspectDaoImpl extends HibernateDaoSupport implements ProspectDao 
 		return ((List<Prospect>) prospects).get(0);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public Prospect get(String accountName, String email) {
 		DetachedCriteria criteria = DetachedCriteria.forClass(

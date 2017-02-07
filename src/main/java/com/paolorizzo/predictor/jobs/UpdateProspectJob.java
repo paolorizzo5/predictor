@@ -9,7 +9,6 @@ import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 
 import com.paolorizzo.predictor.business.AccountBusiness;
-import com.paolorizzo.predictor.business.JobConfigurationBusiness;
 import com.paolorizzo.predictor.business.ProspectBusiness;
 import com.paolorizzo.predictor.enums.BetStatus;
 import com.paolorizzo.predictor.hibernate.model.Account;

@@ -14,8 +14,10 @@ public class ProspectElementDto {
 	
 	private BigDecimal previousExpectedGoal;
 	
-	
 	private BigDecimal liveAmount;
+	
+	private Boolean current;
+	
 	public BigDecimal getLiveAmount() {
 		return liveAmount;
 	}
@@ -65,6 +67,16 @@ public class ProspectElementDto {
 
 	public void setPreviousExpectedGoal(BigDecimal previousExpectedGoal) {
 		this.previousExpectedGoal = previousExpectedGoal;
+	}
+
+
+	public Boolean getCurrent() {
+		return current;
+	}
+
+
+	public void setCurrent(Boolean current) {
+		this.current = current;
 	}
 	
 	

@@ -24,5 +24,23 @@ public class BetBusiness {
 		this.betDao = betDao;
 	}
 
+	public BetDao getBetDao() {
+		return betDao;
+	}
+
+	public void setBetDao(BetDao betDao) {
+		this.betDao = betDao;
+	}
+
+	public MoneyTransactionBusiness getMoneyTransactionBusiness() {
+		return moneyTransactionBusiness;
+	}
+
+	public void setMoneyTransactionBusiness(MoneyTransactionBusiness moneyTransactionBusiness) {
+		this.moneyTransactionBusiness = moneyTransactionBusiness;
+	}
+	
+	
+
 	
 }

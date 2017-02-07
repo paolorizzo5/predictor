@@ -3,7 +3,6 @@ package com.paolorizzo.predictor.dao.facade;
 import java.util.List;
 
 import com.paolorizzo.predictor.hibernate.model.Prospect;
-import com.paolorizzo.predictor.hibernate.model.ProspectElement;
 
 public interface ProspectDao {
 	

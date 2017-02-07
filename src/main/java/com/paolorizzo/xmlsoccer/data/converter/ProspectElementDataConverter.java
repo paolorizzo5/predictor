@@ -12,18 +12,25 @@ public class ProspectElementDataConverter {
 	public static List<ProspectElementDto> convert(List<ProspectElement> prospectElements) {
 		List<ProspectElementDto> list = new ArrayList<ProspectElementDto>();
 		BigDecimal previousExpectedGoal = new BigDecimal(0);
+		
 		if(prospectElements != null){
-			for (ProspectElement prospectElement : prospectElements) {
+			
+			for (int i = 0;i<prospectElements.size(); i++){
 				ProspectElementDto dto = new ProspectElementDto();
-				dto.setEndDate(prospectElement.getEndDate().getTime());
-				dto.setExpectedGoal(prospectElement.getExpectedGoal());
-				dto.setIncremental(prospectElement.getIncremental());
-				dto.setStartDate(prospectElement.getStartDate().getTime());
-				dto.setLiveAmount(prospectElement.getLiveAmount());
+				dto.setEndDate(prospectElements.get(i).getEndDate().getTime());
+				dto.setExpectedGoal(prospectElements.get(i).getExpectedGoal());
+				dto.setIncremental(prospectElements.get(i).getIncremental());
+				dto.setStartDate(prospectElements.get(i).getStartDate().getTime());
+				dto.setLiveAmount(prospectElements.get(i).getLiveAmount());
 				dto.setPreviousExpectedGoal(previousExpectedGoal);
 				previousExpectedGoal = dto.getExpectedGoal();
+				if(i < prospectElements.size() -1){
+					dto.setCurrent(prospectElements.get(i).getLiveAmount() != null && prospectElements.get(i+1).getLiveAmount() == null);
+				}else{
+					dto.setCurrent(prospectElements.get(i).getLiveAmount() != null);
+				}
 				list.add(dto);
-			}	
+			}
 		}
 		
 		

@@ -1,7 +1,6 @@
 package com.paolorizzo.predictor.dto;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 
 public class MoneyTransactionDto {

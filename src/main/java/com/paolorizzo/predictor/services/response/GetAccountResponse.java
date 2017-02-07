@@ -3,7 +3,6 @@ package com.paolorizzo.predictor.services.response;
 import java.io.Serializable;
 
 import com.paolorizzo.predictor.dto.AccountDto;
-import com.paolorizzo.predictor.hibernate.model.Account;
 
 public class GetAccountResponse  extends SimpleAccountResponse implements Serializable{
 	

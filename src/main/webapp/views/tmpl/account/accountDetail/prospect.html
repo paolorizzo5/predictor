@@ -144,10 +144,10 @@
 						<tr
 							ng-repeat="prospectElement in selectedProspect.prospectElements">
 							<td><h5>
-									<span ng-if="currentTimeInMillis >= prospectElement.endDate"
-										class="badge bg-greensea">{{prospectElement.incremental}}</span>
-										<span ng-if="prospectElement.startDate <= currentTimeInMillis && currentTimeInMillis <= prospectElement.endDate"
-										class="badge bg-yellow">{{prospectElement.incremental}}</span>
+									<span ng-if="prospectElement.liveAmount > prospectElement.previousExpectedGoal" class="badge bg-greensea">{{prospectElement.incremental}}</span>
+									<span ng-if="prospectElement.liveAmount <= prospectElement.previousExpectedGoal" class="badge bg-danger">{{prospectElement.incremental}}</span>
+									<span ng-if="prospectElement.liveAmount == nul" class="badge bg-info">{{prospectElement.incremental}}</span>
+
 								</h5></td>
 							<td><h5>{{prospectElement.startDate | date :
 									'dd/MM/yyyy HH:mm:ss'}}</h5></td>
@@ -165,12 +165,12 @@
 							<td><h5>
 
 									<button type="button"
-										ng-if="prospectElement.liveAmount >= prospectElement.expectedGoal && prospectElement.startDate <= currentTimeInMillis && currentTimeInMillis <= prospectElement.endDate"
+										ng-if="prospectElement.current  && prospectElement.liveAmount > prospectElement.expectedGoal"
 										class="btn btn-xs btn-success"
 										ng-click="pushProspectElement(selectedProspect.name,prospectElement.incremental)">{{'Prospect.PUSH'
 										| translate}}</button>
 									<button type="button"
-										ng-if="prospectElement.liveAmount <= prospectElement.previousExpectedGoal && prospectElement.startDate <= currentTimeInMillis && currentTimeInMillis <= prospectElement.endDate"
+										ng-if="prospectElement.current && prospectElement.liveAmount < prospectElement.previousExpectedGoal"
 										class="btn btn-xs btn-danger"
 										ng-click="popProspectElement(selectedProspect.name,prospectElement.incremental)">{{'Prospect.POP'
 										| translate}}</button>

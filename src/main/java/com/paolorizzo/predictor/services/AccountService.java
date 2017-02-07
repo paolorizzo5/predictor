@@ -1,6 +1,5 @@
 package com.paolorizzo.predictor.services;
 
-import java.util.Collections;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
@@ -13,11 +12,9 @@ import javax.ws.rs.core.Response.Status;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
-import com.github.pabloo99.xmlsoccer.api.dto.GetLiveScoreResultDto;
 import com.google.gson.Gson;
 import com.paolorizzo.predictor.business.AccountBusiness;
 import com.paolorizzo.predictor.dto.AccountDto;
-import com.paolorizzo.predictor.dto.FixtureDto;
 import com.paolorizzo.predictor.hibernate.model.Account;
 import com.paolorizzo.predictor.services.request.AddAccountRequest;
 import com.paolorizzo.predictor.services.request.AddBetRequest;
@@ -25,29 +22,18 @@ import com.paolorizzo.predictor.services.request.ArchiveBetRequest;
 import com.paolorizzo.predictor.services.request.DeleteAccountRequest;
 import com.paolorizzo.predictor.services.request.DepositAccountRequest;
 import com.paolorizzo.predictor.services.request.GetAccountRequest;
-import com.paolorizzo.predictor.services.request.GetDailyFixturesRequest;
-import com.paolorizzo.predictor.services.request.GetFixturesByLeagueAndSeasonRequest;
-import com.paolorizzo.predictor.services.request.GetLivescoresRequest;
 import com.paolorizzo.predictor.services.request.ListAccountRequest;
 import com.paolorizzo.predictor.services.request.MakBetRequest;
-import com.paolorizzo.predictor.services.request.PushProspectElementRequest;
 import com.paolorizzo.predictor.services.response.AddAccountResponse;
 import com.paolorizzo.predictor.services.response.AddBetResponse;
 import com.paolorizzo.predictor.services.response.ArchiveBetResponse;
 import com.paolorizzo.predictor.services.response.DeleteAccountResponse;
 import com.paolorizzo.predictor.services.response.DepositAccountResponse;
 import com.paolorizzo.predictor.services.response.GetAccountResponse;
-import com.paolorizzo.predictor.services.response.GetDailyFixturesResponse;
-import com.paolorizzo.predictor.services.response.GetFixturesByLeagueAndSeasonResponse;
-import com.paolorizzo.predictor.services.response.GetLivescoresResponse;
 import com.paolorizzo.predictor.services.response.ListAccountResponse;
 import com.paolorizzo.predictor.services.response.MarkBetResponse;
-import com.paolorizzo.predictor.services.response.PushProspectElementResponse;
 import com.paolorizzo.predictor.spring.AppContext;
-import com.paolorizzo.predictor.xmlsoccer.hibernate.model.XmlSoccer_Fixture;
-import com.paolorizzo.xmlsoccer.business.FixtureBusiness;
 import com.paolorizzo.xmlsoccer.data.converter.AccountDataConverter;
-import com.paolorizzo.xmlsoccer.data.converter.FixtureDataConverter;
 
 @Path("/AccountService")
 @RequestScoped
