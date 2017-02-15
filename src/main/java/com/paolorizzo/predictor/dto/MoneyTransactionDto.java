@@ -10,6 +10,8 @@ public class MoneyTransactionDto {
 	private String direction;
 	
 	private BigDecimal amount;
+	
+	private String reason;
 
 	
 	
@@ -36,6 +38,14 @@ public class MoneyTransactionDto {
 
 	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
+	}
+
+	public String getReason() {
+		return reason;
+	}
+
+	public void setReason(String reason) {
+		this.reason = reason;
 	}
 	
 	

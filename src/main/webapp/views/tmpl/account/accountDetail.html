@@ -6,12 +6,16 @@
 			<h2>{{'Account.DETAIL' | translate}} - {{account.name}}</h2>
 		</div>
 		<div class="col-md-1">
-			<button ng-click="deleteAccount(account.name);" class="btn btn-greensea btn-rounded btn-icon-only btn-ef btn-ef-7 btn-ef-7d mb-10" activate-button><i class="fa fa-trash"></i> Delete</button>
+			<button ng-click="deleteAccount(account.name);"
+				class="btn btn-greensea btn-rounded btn-icon-only btn-ef btn-ef-7 btn-ef-7d mb-10"
+				activate-button>
+				<i class="fa fa-trash"></i> Delete
+			</button>
 		</div>
-		
-		
-		
-		
+
+
+
+
 	</div>
 	<!-- /page header -->
 
@@ -19,14 +23,98 @@
 	<div class="pagecontent">
 
 		<!-- row -->
-
 		<div class="row">
-			<!-- col -->
+			<div class="col-md-12">
+				<div class="btn-group mb-20">
+					<button type="button" class="btn btn-default dropdown-toggle"
+						data-toggle="dropdown">
+						{{'MENU' | translate}} <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href ng-click="viewDiv('showSummary');">{{'Account.SUMMARY'
+								| translate}}</a></li>
+								<li class="divider"></li>
+						<li><a href ng-click="viewDiv('showProspect');">{{'Account.MY_PROSPECT'
+								| translate}}</a></li>
+						<li><a href ng-click="viewDiv('showBets');">{{'Account.MY_BETS'
+								| translate}}</a></li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+		<div class="row" ng-show="visibleDiv == 'showSummary'">
+			<div class="col-md-6">
+				<div class="row">
+					<div ng-include="'views/tmpl/account/accountDetail/prospectSummary.html'"></div>
+				</div>
+				<div class="row">
+					<div ng-include="'views/tmpl/account/accountDetail/accountStats.html'"></div>
+				</div>
+				
+			</div>
+			<div class="col-md-6">
+				<div
+					ng-include="'views/tmpl/account/accountDetail/moneyTransactions.html'"></div>
+			</div>
+		</div>
+
+		<div class="row" ng-show="visibleDiv == 'showProspect'">
+			<div class="col-md-6">
+				<div
+					ng-include="'views/tmpl/account/accountDetail/prospectSummary.html'"></div>
+			</div>
 			<div class="col-md-6">
 				<div ng-include="'views/tmpl/account/accountDetail/prospect.html'"></div>
 			</div>
-
+		</div>
+		<div class="row" ng-show="visibleDiv == 'showBets'">
 			<div class="col-md-6">
+				<div class="row">
+					<div class="col-md-12">
+						<div ng-include="'views/tmpl/account/accountDetail/addBet.html'"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div ng-include="'views/tmpl/account/accountDetail/bets.html'"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div ng-include="'views/tmpl/account/accountDetail/betStats.html'"></div>
+				</div>
+				
+			</div>
+			<div class="col-md-6">
+				<div class="row">
+					<div class="col-md-12">
+						<div ng-include="'views/tmpl/account/accountDetail/prospectSummary.html'"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div
+							ng-include="'views/tmpl/account/accountDetail/archivedBets.html'"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- <div class="row">
+			col
+			<div class="col-md-5">
+				<div class="row">
+					<div class="col-md-12">
+						<div
+							ng-include="'views/tmpl/account/accountDetail/prospectSummary.html'"></div>
+					</div>
+					<div class="col-md-12">
+						<div ng-include="'views/tmpl/account/accountDetail/prospect.html'"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4">
 				<div class="row">
 					<div class="col-md-12">
 						<div ng-include="'views/tmpl/account/accountDetail/addBet.html'"></div>
@@ -37,21 +125,8 @@
 				</div>
 			</div>
 
-
-			<!-- <div class="col-md-3">
-				<div
-					ng-include="'views/tmpl/account/accountDetail/moneyTransactions.html'"></div>
-			</div>
-			<div class="col-md-2">
-				<div ng-include="'views/tmpl/account/accountDetail/balance.html'"></div>
-			</div>
-			<div class="col-md-3">
-				<div
-					ng-include="'views/tmpl/account/accountDetail/controlPanel.html'"></div>
-			</div>
-			<div class="col-md-6"></div> -->
-
-		</div>
+			
+		</div> -->
 		<div class="row"></div>
 
 	</div>

@@ -26,6 +26,7 @@ import org.quartz.impl.StdSchedulerFactory;
 import com.paolorizzo.predictor.business.JobConfigurationBusiness;
 import com.paolorizzo.predictor.business.UserBusiness;
 import com.paolorizzo.predictor.hibernate.model.JobConfiguration;
+import com.paolorizzo.predictor.jobs.AccountStatsJob;
 import com.paolorizzo.predictor.jobs.XmlSoccerUpdateJob;
 import com.paolorizzo.predictor.spring.AppContext;
 import com.paolorizzo.predictor.utils.MD5;
@@ -95,10 +96,21 @@ public class InitServlet extends HttpServlet {
 		// jobConfigurations.add(new JobConfiguration("StatsEngineJob",
 		// "0 0/5 * 1/1 * ? *", "scores", StatsEngineJob.class.getName()));
 
-		jobConfigurations.add(new JobConfiguration("XmlSoccerUpdateJob",
-				"0 0/10 * 1/1 * ? *", "scores", XmlSoccerUpdateJob.class
-						.getName(), new Date()));
+//		jobConfigurations.add(new JobConfiguration("XmlSoccerUpdateJob",
+//				"0 0/10 * 1/1 * ? *", "scores", XmlSoccerUpdateJob.class
+//						.getName(), new Date()));
 
+//		jobConfigurations.add(new JobConfiguration("AccountStatsJob",
+//				"0 0/1 * 1/1 * ? *", "scores", AccountStatsJob.class
+//						.getName(), new Date()));
+//		
+		jobConfigurations.add(new JobConfiguration("AccountStatsJob",
+				"0 0/1 12,15,18,21,0 * * ?", "scores", AccountStatsJob.class
+						.getName(), new Date()));
+		
+		
+		jobConfigurationBusiness.clear();
+		
 		if (jobConfigurationBusiness.isEmpty()) {
 			jobConfigurationBusiness.insertAll(jobConfigurations);
 		}

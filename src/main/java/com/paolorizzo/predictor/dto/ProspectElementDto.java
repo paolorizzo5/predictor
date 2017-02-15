@@ -14,18 +14,9 @@ public class ProspectElementDto {
 	
 	private BigDecimal previousExpectedGoal;
 	
-	private BigDecimal liveAmount;
-	
 	private Boolean current;
 	
-	public BigDecimal getLiveAmount() {
-		return liveAmount;
-	}
-
-
-	public void setLiveAmount(BigDecimal liveAmount) {
-		this.liveAmount = liveAmount;
-	}
+	private Long terminationDate;
 
 	public Long getStartDate() {
 		return startDate;
@@ -77,6 +68,14 @@ public class ProspectElementDto {
 
 	public void setCurrent(Boolean current) {
 		this.current = current;
+	}
+
+	public Long getTerminationDate() {
+		return terminationDate;
+	}
+
+	public void setTerminationDate(Long terminationDate) {
+		this.terminationDate = terminationDate;
 	}
 	
 	

@@ -19,7 +19,10 @@ public class ProspectDto {
 	private List<ProspectElementDto> prospectElements;
 
 	private List<ProspectElementDto> visibleProspectElements;
+	
+	private BigDecimal nextGoal;
 
+	private Long nextGoalExpiration;
 
 	public String getName() {
 		return name;
@@ -88,6 +91,26 @@ public class ProspectDto {
 
 	public void setVisibleProspectElements(List<ProspectElementDto> visibleProspectElements) {
 		this.visibleProspectElements = visibleProspectElements;
+	}
+
+
+	public BigDecimal getNextGoal() {
+		return nextGoal;
+	}
+
+
+	public void setNextGoal(BigDecimal nextGoal) {
+		this.nextGoal = nextGoal;
+	}
+
+
+	public Long getNextGoalExpiration() {
+		return nextGoalExpiration;
+	}
+
+
+	public void setNextGoalExpiration(Long nextGoalExpiration) {
+		this.nextGoalExpiration = nextGoalExpiration;
 	}
 
 

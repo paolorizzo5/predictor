@@ -11,16 +11,49 @@ app
 						'$window',
 						'$filter',
 						'$location',
+						'$timeout',
 						'AccountService',
 						'ProspectService',
 						function($rootScope, $scope, $state, $stateParams,
-								$window, $filter, $location, AccountService, ProspectService) {
+								$window, $filter, $location, $timeout, AccountService, ProspectService) {
+							
+							$scope.visibleDiv = "showSummary";
 							
 							$scope.storeAccountInSession = function(account) {
 								console.log ("metto in sessione l'account");
 								console.log (account);
 								$window.sessionStorage.setItem("selectedAccount", angular.toJson(account));
 								$scope.account = account;
+								
+								/*
+								 * recupero prospetto linkatto all'account
+								 * 
+								 */
+								$scope.setProspect($scope.account);
+								
+							};
+							
+							$scope.setProspect = function(account){
+								if($scope.selectedProspect == null){
+									ProspectService.get(account.name,$scope.userDto.email,$scope.configuration.serviceUrl)
+									.then(
+											function(d) {
+												if (d.data != null) {
+													$scope.selectedProspect = d.data.prospect;
+													$scope.dayDiff($scope.selectedProspect.nextGoalExpiration);
+												}
+											});
+								}
+							};
+							
+ 							
+							$scope.storeUserInSession = function(user) {
+								console.log ("metto in sessione l'user");
+								console.log (user);
+								$window.sessionStorage.setItem("userDto", angular.toJson(user));
+								$scope.userDto = user;
+								$scope.user = user;
+								
 							};
 
 							/*
@@ -35,6 +68,10 @@ app
 								}
 								else{
 									$scope.userDto = userDto;
+									$scope.user = userDto;
+									console.log("$scope.user");
+									console.log($scope.user);
+									
 								}
 							}
 							
@@ -52,11 +89,11 @@ app
 												.getItem("selectedAccount"));
 								
 								console.log ("scope.account: " + $scope.account);
-								
+								$scope.setProspect($scope.account);
 								
 							} else {
 								console.log ("$stateParams.account valorizzato");
-								$scope.account = $stateParams.account;
+								//$scope.account = $stateParams.account;
 								console.log ("scope.account: " + $scope.account);
 								AccountService.get($stateParams.account.name,$scope.userDto.email,$scope.configuration.serviceUrl)
 								.then(
@@ -71,20 +108,7 @@ app
 									});
 							}
 							
-							/*
-							 * recupero prospetto linkatto all'account
-							 * 
-							 */
-							if($scope.selectedProspect == null){
-								ProspectService.get($scope.account.name,$scope.userDto.email,$scope.configuration.serviceUrl)
-								.then(
-										function(d) {
-											if (d.data != null) {
-												$scope.selectedProspect = d.data.prospect;
-											}
-										});
-								
-							}
+							
 							
 							/*
 							 * funzionalità di cancellazione account
@@ -108,13 +132,14 @@ app
 							 * funzionalità di aggiunta prospetto
 							 * 
 							 */
-							$scope.addProspect = function(name,initialAmount,duration,dailyPercentageExpected) {
-								ProspectService.add(name,initialAmount,duration,dailyPercentageExpected,$scope.account.name,$scope.userDto.email,$scope.configuration.serviceUrl)
+							$scope.addProspect = function(name,initialAmount,duration,dailyPercentageExpected,stepFrequency) {
+								ProspectService.add(name,initialAmount,duration,dailyPercentageExpected,stepFrequency,$scope.account.name,$scope.userDto.email,$scope.configuration.serviceUrl)
 									.then(
 										function(d) {
 											if (d.data != null) {
 												if(d.data.result == true){
 													$scope.selectedProspect = d.data.prospect;
+													dayDiff($scope.selectedProspect.nextGoalExpiration);
 												}
 											}
 										});
@@ -131,6 +156,7 @@ app
 											if (d.data != null) {
 												if(d.data.result == true){
 													$scope.storeAccountInSession(d.data.account);
+													
 												}
 											}
 										});
@@ -178,6 +204,8 @@ app
 												if (d.data != null) {
 													if(d.data.result == true){
 														$scope.storeAccountInSession(d.data.account);
+														$scope.storeUserInSession(d.data.user);
+														
 													}
 												} else {
 												}
@@ -195,6 +223,8 @@ app
 												if (d.data != null) {
 													if(d.data.result == true){
 														$scope.storeAccountInSession(d.data.account);
+														$scope.storeUserInSession(d.data.user);
+														
 													}
 												} else {
 
@@ -225,7 +255,6 @@ app
 												if (d.data != null) {
 													if(d.data.result == true){
 														$scope.currentTimeInMillis = new Date().getTime();
-														
 														$scope.selectedProspect = d.data.prospect;
 													}
 												} else {
@@ -234,9 +263,14 @@ app
 											});
 							};
 							
+							
+							
 							$scope.dayDiff = function(endDate,startDate){
+								console.log("daydiff");
+
 								var ms = endDate - startDate;
-								
+								console.log(ms);
+
 								var date = new Date(ms);
 								
 								var days = Math.floor(ms / 86400000);
@@ -268,6 +302,53 @@ app
 								}
 								
 							};
+							
+							
+							
+							$scope.dayDiff = function(endDate){
+								
+								$timeout(function() {
+									var startDate = new Date().getTime();
+									
+									var ms = endDate - startDate;
+									
+									var date = new Date(ms);
+									
+									var days = Math.floor(ms / 86400000);
+									
+									
+									var hours;
+									if(date.getUTCHours() < 10){
+										hours = "0" + date.getUTCHours();
+									}else{
+										hours = date.getUTCHours();
+									}
+									var minutes;
+									if(date.getUTCMinutes() < 10){
+										minutes = "0" + date.getUTCMinutes();
+									}else{
+										minutes = date.getUTCMinutes();
+									}
+									
+									var seconds;
+									if(date.getUTCSeconds() < 10){
+										seconds = "0" + date.getUTCSeconds();
+									}else{
+										seconds = date.getUTCSeconds();
+									}
+									if (days == 0){
+										$scope.nextGoalExpiration = hours + ":" + minutes + ":" + seconds;
+									}else{
+										$scope.nextGoalExpiration = days + "d " + hours + ":" + minutes + ":" + seconds;
+									}
+									$scope.dayDiff(endDate);
+								    }, 1000)
+							};
+							
+							$scope.viewDiv = function(divToShow){
+								$scope.visibleDiv = divToShow;
+							};
+							
 							
 							
 

@@ -14,4 +14,6 @@ public interface UserDao {
 
 	User findByEmail(String email);
 
+	Boolean update(User user);
+
 }

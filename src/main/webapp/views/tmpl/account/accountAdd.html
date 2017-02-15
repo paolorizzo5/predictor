@@ -56,19 +56,37 @@
 
 						<!-- tile body -->
 						<div class="tile-body">
-							<div class="form-group">
-								<label for="account.name">{{'Account.INSERT_NAME' |
-									translate}}</label> <input type="text" class="form-control"
-									id="accountName" ng-model="accountName" maxlength="30">
-							</div>
-							<div class="form-group">
-								<label for="account.description">{{'Account.INSERT_DESCRIPTION'
-									| translate}}</label> <input type="text" class="form-control"
-									id="accountDescription" ng-model="accountDescription" maxlength="100">
-							</div>
-							<button type="button" ng-click="addAccount(accountName,accountDescription);" class="btn btn-rounded btn-success btn-sm">{{'SUBMIT' | translate}}</button>
+							<form name="myForm">
+								<div class="form-group" ng-class="{ 'has-error' : !myForm.$valid, 'has-success' : myForm.$valid}">
+									<label for="account.name">{{'Account.INSERT_NAME' |
+										translate}}</label> <input type="text" class="form-control"
+										id="accountName" ng-model="accountName" maxlength="30"
+										required>
+										
+								</div>
+								
+								<div class="form-group">
+									<label for="account.description">{{'Account.INSERT_DESCRIPTION'
+										| translate}}</label> <input type="text" class="form-control"
+										id="accountDescription" ng-model="accountDescription"
+										maxlength="100">
+								</div>
+								<button type="button" ng-disabled="!myForm.$valid"
+									ng-click="addAccount(accountName,accountDescription);"
+									class="btn btn-rounded btn-success btn-sm">{{'SUBMIT'
+									| translate}}</button>
+							</form>
 						</div>
-						<div class="tile-footer"></div>
+						<div class="tile-footer">
+
+							<blockquote class="filled bg-default lter">
+								<p>
+									<i class="fa fa-quote-left pull-left"></i>{{'Account.ADD_HOWTO'
+									| translate}}
+								</p>
+							</blockquote>
+
+						</div>
 					</div>
 				</section>
 			</div>

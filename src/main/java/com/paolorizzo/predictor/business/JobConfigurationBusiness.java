@@ -58,4 +58,11 @@ public class JobConfigurationBusiness {
 	public void update(JobConfiguration jobConfiguration) {
 		jobConfigurationDao.update(jobConfiguration);
 	}
+
+	@Transactional(readOnly = false)
+	public void clear() {
+		for (JobConfiguration jobConfiguration : list()) {
+			jobConfigurationDao.delete(jobConfiguration);
+		}
+	}
 }

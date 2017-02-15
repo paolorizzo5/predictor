@@ -1,0 +1,102 @@
+<section class="tile" fullscreen="isFullscreen01">
+	<div class="tile-header dvd dvd-btm">
+		<h1 class="custom-font">
+			<strong>{{'Account.SUMMARY' | translate}}</strong>
+		</h1>
+		<ul class="controls">
+			<li class="dropdown" uib-dropdown on-toggle="toggled(open)"><a
+				href uib-dropdown-toggle class="dropdown-toggle settings"><i
+					class="fa fa-cog"></i></a>
+				<ul
+					class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+					<li><a href tile-control-toggle> <span class="minimize"><fa
+									name="angle-down"></fa>&nbsp;&nbsp;&nbsp;Minimize</span> <span
+							class="expand"><fa name="angle-up"></fa>&nbsp;&nbsp;&nbsp;Expand</span>
+					</a></li>
+					<li><a href tile-control-refresh ng-click="ajaxFaker()"> <fa
+								name="refresh"></fa> Refresh
+					</a></li>
+					<li><a href tile-control-fullscreen
+						ng-click="isFullscreen01 = !isFullscreen01"> <fa name="expand"></fa>
+							Fullscreen
+					</a></li>
+					<li><a href tile-control-lightbox> <fa name="magnet"></fa>
+							Open in Lightbox
+					</a></li>
+				</ul></li>
+			<li class="remove"><a><i class="fa fa-times"></i></a></li>
+		</ul>
+	</div>
+	<div>
+		<div class="tile-widget"></div>
+		<!-- /tile widget -->
+
+		<!-- tile body -->
+		<div class="tile-body">
+			<div class="row">
+				<div class="form-group">
+					<label class="col-sm-8 control-label">{{'User.PORTFOLIO_AMOUNT'
+						| translate}}</label>
+					<div class="col-sm-4">{{user.portFolioAmount}}</div>
+				</div>
+			</div>
+			<hr />
+			<div class="row">
+				<div class="form-group">
+					<label class="col-sm-8 control-label">{{'Account.AMOUNT' |
+						translate}}</label>
+					<div class="col-sm-4">{{account.liveAmount}}</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group" ng-show="selectedProspect != null">
+					<label class="col-sm-8 control-label">{{'Prospect.NEXT_GOAL'
+						| translate}}</label>
+					<div class="col-sm-4">{{selectedProspect.nextGoal}}</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group" ng-show="selectedProspect != null">
+					<label class="col-sm-8 control-label">{{'Prospect.NEXT_GOAL_EXPIRATION'
+						| translate}}</label>
+					<div class="col-sm-4">{{nextGoalExpiration}}</div>
+				</div>
+			</div>
+			<hr />
+			<div class="row">
+				<div class="form-group">
+					<label class="col-sm-8 control-label">{{'Bet.COUNT' |
+						translate}}</label>
+					<div class="col-sm-4">{{account.betStatistics.count}}</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+					<label class="col-sm-8 control-label">{{'Bet.WINS' |
+						translate}}</label>
+					<div class="col-sm-2">{{account.betStatistics.win}}</div>
+					<div class="col-sm-2">{{(account.betStatistics.win / account.betStatistics.count * 100) | number:2}}%</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+					<label class="col-sm-8 control-label">{{'Bet.LOST' |
+						translate}}</label>
+					<div class="col-sm-2">{{account.betStatistics.lost}} </div>
+					<div class="col-sm-2">{{(account.betStatistics.lost / account.betStatistics.count * 100) | number:2}}%</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+					<label class="col-sm-8 control-label">{{'Bet.PLACED' |
+						translate}}</label>
+					<div class="col-sm-2">{{account.betStatistics.placed}}</div>
+					<div class="col-sm-2">{{(account.betStatistics.placed / account.betStatistics.count * 100) | number:2}}%</div>
+				</div>
+			</div>
+			<div class="row"></div>
+
+		</div>
+		<div class="tile-footer"></div>
+	</div>
+</section>

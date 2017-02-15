@@ -46,4 +46,11 @@ public class SimpleUtils {
 		
 	}
 
+	public static Date nextDate(Date startDate, Integer stepFrequency) {
+		GregorianCalendar c = new GregorianCalendar();
+		c.setTime(startDate);
+		c.add(Calendar.DAY_OF_MONTH, stepFrequency);
+		return c.getTime();
+	}
+
 }

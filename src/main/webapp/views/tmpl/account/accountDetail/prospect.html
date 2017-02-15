@@ -73,6 +73,16 @@
 							required>
 					</div>
 				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-8 control-label">{{'Prospect.INSERT_STEP_FREQUENCY'
+						| translate}}</label>
+					<div class="col-sm-4">
+						<input type="text" name="fc6" class="form-control"
+							ng-model="prospect.stepFrequency" maxlength="10"
+							required>
+					</div>
+				</div>
 
 				<div class="form-group">
 					<div class="col-sm-12"></div>
@@ -83,7 +93,7 @@
 		<div class="tile-footer">
 			<button type="button" class="btn btn-success"
 				ng-if="selectedProspect == null"
-				ng-click="addProspect(prospect.name,prospect.initialAmount,prospect.duration,prospect.dailyPercentageExpected)">{{'SUBMIT'
+				ng-click="addProspect(prospect.name,prospect.initialAmount,prospect.duration,prospect.dailyPercentageExpected,prospect.stepFrequency)">{{'SUBMIT'
 				| translate}}</button>
 		</div>
 	</div>
@@ -136,8 +146,8 @@
 							<th><h5>{{'Prospect.END_DATE' | translate}}</h5></th>
 							<th><h5>{{'Prospect.DURATION' | translate}}</h5></th>
 							<th><h5>{{'Prospect.EXPECTED_GOAL' | translate}}</h5></th>
-							<th><h5>{{'Prospect.LIVE_AMOUNT' | translate}}</h5></th>
-							<th><h5>{{'Prospect.PUSH_POP' | translate}}</h5></th>
+							<!-- <th><h5>{{'Prospect.TERMINATION_DATE' | translate}}</h5></th> -->
+							<!-- <th><h5>{{'Prospect.PUSH_POP' | translate}}</h5></th> -->
 						</tr>
 					</thead>
 					<tbody>
@@ -151,18 +161,18 @@
 								</h5></td>
 							<td><h5>{{prospectElement.startDate | date :
 									'dd/MM/yyyy HH:mm:ss'}}</h5></td>
-							<td><h5>{{prospectElement.endDate | date : 'dd/MM/yyyy HH:mm:ss'}}</h5></td>
+							<td ng-if="prospectElement.terminationDate == null"><h5>{{prospectElement.endDate | date : 'dd/MM/yyyy HH:mm:ss'}}</h5></td>
+							<td ng-if="prospectElement.terminationDate != null"><h5><b>{{prospectElement.terminationDate | date : 'dd/MM/yyyy HH:mm:ss'}}</b></h5></td>
 
 							<td
 								ng-if="prospectElement.liveAmount != null  && prospectElement.startDate <= currentTimeInMillis && currentTimeInMillis <= prospectElement.endDate"><h5>{{'Prospect.IN_PROGRESS'
 									| translate}}</h5></td>
 							<td
-								ng-if="prospectElement.liveAmount != null  && currentTimeInMillis >= prospectElement.endDate"><h5>{{dayDiff(prospectElement.endDate,prospectElement.startDate)
-									}}</h5></td>
-							<td ng-if="prospectElement.liveAmount == null"></td>
+								ng-if="prospectElement.terminationDate != null"><h5></h5></td>
+							<td ng-if="prospectElement.terminationDate == null"></td>
 							<td><h5>{{prospectElement.expectedGoal}}</h5></td>
-							<td><h5>{{prospectElement.liveAmount}}</h5></td>
-							<td><h5>
+							<!-- <td><h5>{{prospectElement.terminationDate | date : 'dd/MM/yyyy HH:mm:ss'}}</h5></td> -->
+							<!-- <td><h5>
 
 									<button type="button"
 										ng-if="prospectElement.current  && prospectElement.liveAmount > prospectElement.expectedGoal"
@@ -174,7 +184,7 @@
 										class="btn btn-xs btn-danger"
 										ng-click="popProspectElement(selectedProspect.name,prospectElement.incremental)">{{'Prospect.POP'
 										| translate}}</button>
-								</h5></td>
+								</h5></td> -->
 
 						</tr>
 					</tbody>

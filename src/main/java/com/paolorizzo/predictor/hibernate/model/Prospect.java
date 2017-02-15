@@ -48,9 +48,11 @@ public class Prospect implements Serializable{
 	
 	@Column(name = "DAILY_PERCENTAGE_EXPECTED", nullable = false)
 	private BigDecimal dailyPercentageExpected;
+	
+	@Column(name = "STEP_FREQUENCY", nullable = false)
+	private Integer stepFrequency;
+	
 
-	
-	
 	@OneToOne(fetch = FetchType.LAZY)
 	private Account account;
 	
@@ -124,5 +126,15 @@ public class Prospect implements Serializable{
 	public void setProspectElements(List<ProspectElement> prospectElements) {
 		this.prospectElements = prospectElements;
 	}
+
+	public Integer getStepFrequency() {
+		return stepFrequency;
+	}
+
+	public void setStepFrequency(Integer stepFrequency) {
+		this.stepFrequency = stepFrequency;
+	}
+	
+	
 	
 }

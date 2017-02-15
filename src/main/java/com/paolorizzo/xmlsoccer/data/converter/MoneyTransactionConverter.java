@@ -19,6 +19,7 @@ public class MoneyTransactionConverter {
 			dto.setAmount(moneyTransaction.getAmount());
 			dto.setDirection(moneyTransaction.getDirection());
 			dto.setInsertDate(simpleDateFormat.format(moneyTransaction.getInsertDate()));
+			dto.setReason(moneyTransaction.getReason());
 			moneyTransactionDtos.add(dto);
 		}
 		return moneyTransactionDtos;

@@ -15,7 +15,11 @@ public class AddProspectRequest extends SimpleRequest{
 	
 	private BigDecimal dailyPercentageExpected;
 	
+	private Integer stepFrequency;
+	
 	private String accountName;
+	
+	
 
 	public String getName() {
 		return name;
@@ -63,6 +67,14 @@ public class AddProspectRequest extends SimpleRequest{
 
 	public void setAccountName(String accountName) {
 		this.accountName = accountName;
+	}
+
+	public Integer getStepFrequency() {
+		return stepFrequency;
+	}
+
+	public void setStepFrequency(Integer stepFrequency) {
+		this.stepFrequency = stepFrequency;
 	} 
 	
 	

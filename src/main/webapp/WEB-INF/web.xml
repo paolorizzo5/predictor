@@ -1,41 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app>
-<welcome-file-list>
-  	<welcome-file>index.html</welcome-file>
-  </welcome-file-list>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
 
 	<context-param>
-        <param-name>log4j-config-location</param-name>
-        <param-value>WEB-INF/classes/log4j.properties</param-value>
-    </context-param>
-    
- <context-param>
-   <param-name>contextConfigLocation</param-name>
-   <param-value>/WEB-INF/classes/applicationContext.xml</param-value>
- </context-param>
- 
- <listener>
-   <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
- </listener>
-  
-  <servlet>
-    <display-name>StartupServlet</display-name>
-    <servlet-name>StartupServlet</servlet-name>
-    <servlet-class>com.paolorizzo.predictor.servlets.InitServlet</servlet-class>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  
-  
-  
-  <filter>
-    <filter-name>hibernateFilter</filter-name>
-    <filter-class>org.springframework.orm.hibernate5.support.OpenSessionInViewFilter</filter-class>
-    <init-param>
-      <param-name>singleSession</param-name>
-      <param-value>false</param-value>
-    </init-param>
-  </filter>
- 
- 
+		<param-name>log4j-config-location</param-name>
+		<param-value>WEB-INF/classes/log4j.properties</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/classes/applicationContext.xml</param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+
+
+
+
+	<filter>
+		<filter-name>hibernateFilter</filter-name>
+		<filter-class>org.springframework.orm.hibernate5.support.OpenSessionInViewFilter
+		</filter-class>
+		<init-param>
+			<param-name>singleSession</param-name>
+			<param-value>false</param-value>
+		</init-param>
+	</filter>
+
+
+	
+	
+	<servlet>
+		<display-name>StartupServlet</display-name>
+		<servlet-name>StartupServlet</servlet-name>
+		<servlet-class>com.paolorizzo.predictor.servlets.InitServlet
+		</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+
+	<servlet>
+		<servlet-name>jersey-serlvet</servlet-name>
+		<servlet-class>
+                     com.sun.jersey.spi.container.servlet.ServletContainer
+                </servlet-class>
+		<init-param>
+		     <param-name>com.sun.jersey.config.property.packages</param-name>
+		     <param-value>com.paolorizzo.predictor.services</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>jersey-serlvet</servlet-name>
+		<url-pattern>/rest/*</url-pattern>
+	</servlet-mapping>
+
 </web-app>
 

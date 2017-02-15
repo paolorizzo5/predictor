@@ -4,7 +4,7 @@ app
 	
 		return{
 			getFixturesByLeagueAndSeason: function (league,season,serviceUrl){
-		    	var url = "http://" + serviceUrl + "/rest/FixtureService/getFixturesByLeagueAndSeason/";
+		    	var url = serviceUrl + "/rest/FixtureService/getFixturesByLeagueAndSeason/";
 		    	var fd = {
 	    			'uniquecallid': new Date().getTime(),
 	    			'league': league,
@@ -14,7 +14,7 @@ app
 	        },
 		
 			getDailyFixtures: function (serviceUrl){
-		    	var url = "http://" + serviceUrl + "/rest/FixtureService/getDailyFixtures/";
+		    	var url = serviceUrl + "/rest/FixtureService/getDailyFixtures/";
 		    	var fd = {
 	    			'uniquecallid': new Date().getTime()
 				};
@@ -22,7 +22,7 @@ app
 	        },
 	        
 	        getLivescores: function (serviceUrl){
-		    	var url = "http://" + serviceUrl + "/rest/FixtureService/getLivescores/";
+		    	var url = serviceUrl + "/rest/FixtureService/getLivescores/";
 		    	var fd = {
 	    			'uniquecallid': new Date().getTime()
 				};

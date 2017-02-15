@@ -4,7 +4,7 @@ app
 	
 		return{
 			getStandingByLeagueAndSeason: function (league,season,serviceUrl){
-		    	var url = "http://" + serviceUrl + "/rest/StandingService/getStandingByLeagueAndSeason/";
+		    	var url = serviceUrl + "/rest/StandingService/getStandingByLeagueAndSeason/";
 		    	var fd = {
 	    			'uniquecallid': new Date().getTime(),
 	    			'league': league,

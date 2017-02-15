@@ -6,7 +6,8 @@
 	"FULLTIME.1X2.004.HOME_TEAM_WINS_OR_DRAW.SHORT": "1X",
 	"FULLTIME.1X2.005.HOME_TEAM_WINS_OR_AWAY_TEAM_WINS.SHORT": "12",
 	"FULLTIME.1X2.006.DRAW_OR_AWAY_TEAM_WINS.SHORT": "X2",
-
+	
+	"MENU" : "Menu",
 
 
 	"GNG": "Goal / No Goal",
@@ -105,8 +106,8 @@
 	"RESULTS": "Risultati",
 	"DOUBLE.CHANCE": "Doppia Chance",
 
-	"HALFTIME.SHORT": "45°",
-	"FULLTIME.SHORT": "90°",
+	"HALFTIME.SHORT": "45Â°",
+	"FULLTIME.SHORT": "90Â°",
 	"Date.till.START": "Inizia Tra",
 
 	"SUMMARY": "Riepilogo",
@@ -288,7 +289,7 @@
 		"ADD": "Nuovo Conto di Gioco",
 		"DELETE": "Cancella Conto di gioco",
 		"INSERT_NAME": "Inserisci il nome del conto di gioco",
-		"INSERT_DESCRIPTION": "Inserisci la descrizione del conto di gioco",
+		"INSERT_DESCRIPTION": "Inserisci la descrizione del conto di gioco (non obbligatoria)",
 		"INSERT_FORM_TITLE": "Compila la maschera sottostante per creare un conto di gioco",
 		"DETAIL": "Dettaglio conto di gioco",
 		"OPERATIONS": "Pannello di controllo",
@@ -298,7 +299,12 @@
 		"CREATE_PROSPECT" : "Crea Nuovo Prospetto",
 		"CREATE_BET" : "Piazza nuova Puntata",
 		"MY_BETS" : "Le mie scommesse",
-		"ARCHIVED_BETS" : "Archivio Scommesse"
+		"ARCHIVED_BETS" : "Archivio Scommesse",
+		"SUMMARY" : "Riepilogo",
+		"AMOUNT" : "Il mio saldo",
+		"STATS" : "Statistiche Conto",
+		"ADD_HOWTO" :"Compila la maschera per creare un conto di gioco, il conto di gioco servirÃ  per effettuare una simulazione, o per gestire in tempo reale le tue scommesse, e l'avanzamento, e le scommesse da effettuare",
+		"VALIDATION_NAME_REQUIRED" : "Il nome del conto di gioco deve esseere inserito"
 	},
 	"Prospect": {
 		"ADD": "Nuovo Conto di Gioco",
@@ -307,7 +313,8 @@
 		"INSERT_DESCRIPTION": "Inserisci la descrizione del conto di gioco",
 		"INSERT_INITIAL_AMOUNT" : "Inserisci l'importo iniziale del prospetto",
 		"INSERT_DURATION" : "Inserisci la durata del prospetto (in giorni)",
-		"INSERT_DAILY_PERCENTAGE_EXPECTED" : "Inserisci la percentuale di guadagno giornaliera prevista",
+		"INSERT_DAILY_PERCENTAGE_EXPECTED" : "Inserisci la percentuale di guadagno prevista per frequenza",
+		"INSERT_STEP_FREQUENCY" : "Inserisci la Frequenza",
 		"START_DATE": "Data inizio",
 		"END_DATE": "Data fine",
 		"ID": "id",
@@ -318,7 +325,10 @@
 		"POP" : "Su",
 		"ASSOCIATE_PLAN" : "Associa un piano",
 		"DURATION" : "Durata",
-		"IN_PROGRESS" : "In Corso"
+		"IN_PROGRESS" : "In Corso",
+		"NEXT_GOAL" : "Prossimo Traguardo",
+		"NEXT_GOAL_EXPIRATION" : "Scade Tra",
+		"TERMINATION_DATE" : "Terminata il"
 		
 		
 		
@@ -343,15 +353,33 @@
 		"STATUS_WINNING" : "Vincente",
 		"STATUS_LOSING" : "Perdente",
 		"WIN" : "Vincita",
-		"ARCHIVE" : "Archivia"
+		"ARCHIVE" : "Archivia",
+		"COUNT" : "Scommesse Totali",
+		"WINS" : "Scommesse Vinte",
+		"LOST" : "Scommesse Perse",
+		"PLACED" : "Scommesse In corso"
 		
+	},
+	
+	"User": {
+		"PORTFOLIO_AMOUNT": "Portafoglio Utente"
 	},
 	
 	"MoneyTransaction": {
 		"DEPOSIT": "Versa",
 		"WITHDRAW": "Preleva",
 		"DEPOSITED": "Versamento",
-		"WITHDRAWED": "Prelievo"
+		"WITHDRAWED": "Prelievo",
+		"ACTION_DEPOSIT" : "Versamento",
+		"ACTION_WITHDRAW" : "Prelievo",
+		"ACTION_WIN" : "Vincita",
+		"ACTION_BONUS" : "Bonus",
+		"ACTION_BET" : "Giocata",
+		
+		"INSERT_DATE" : "Data",
+		"REASON" : "Motivo",	
+		"AMOUNT" : "Importo"
+		
 	},
 
 	"LOGIN.ERROR": "Login Error",

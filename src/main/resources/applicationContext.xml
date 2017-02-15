@@ -220,6 +220,9 @@
 	
 	<bean id="accountBusinessBean" class="com.paolorizzo.predictor.business.AccountBusiness">
 		<constructor-arg name="accountDao" ref="accountDaoBean"></constructor-arg>
+		<constructor-arg name="userBusiness" ref="userBusinessBean"></constructor-arg>
+		<constructor-arg name="moneyTransactionBusiness" ref="moneyTransactionBusinessBean"></constructor-arg>
+		
 	</bean>
 	
 	<bean id="accountDaoBean" class="com.paolorizzo.predictor.dao.hibernate.impl.AccountDaoImpl">

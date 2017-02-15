@@ -3,10 +3,10 @@
 	monitoring="autodetect" dynamicConfig="true">
 
 	<!-- By default, Ehcache stored the cached files in temp folder. -->
-	<!-- <diskStore path="java.io.tmpdir" /> -->
+	<diskStore path="java.io.tmpdir" />
 
 	<!-- Ask Ehcache to store cache in this path -->
-	<diskStore path="./cache" />
+	<!-- <diskStore path="/var/log/cache" /> -->
 
 	<!-- Sample cache named cache1
     This cache contains a maximum in memory of 10000 elements, and will expire

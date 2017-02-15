@@ -45,9 +45,6 @@ public class ProspectElement implements Serializable{
 	@Column(name = "AMOUNT_ACHIEVED")
 	private BigDecimal amountAchieved;
 	
-	@Column(name = "LIVE_AMOUNT")
-	private BigDecimal liveAmount;
-	
 	@Column(name = "TERMINATION_DATE", nullable = true)
 	private Date terminationDate;
 	
@@ -106,20 +103,5 @@ public class ProspectElement implements Serializable{
 	public void setAmountAchieved(BigDecimal amountAchieved) {
 		this.amountAchieved = amountAchieved;
 	}
-
-	public BigDecimal getLiveAmount() {
-		return liveAmount;
-	}
-
-	public void setLiveAmount(BigDecimal liveAmount) {
-		this.liveAmount = liveAmount;
-	}
-	
-	
-	
-	
-	
-	
-	
 
 }

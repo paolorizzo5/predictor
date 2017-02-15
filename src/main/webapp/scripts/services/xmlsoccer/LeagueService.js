@@ -4,7 +4,7 @@ app
 	
 		return{
 			list: function (serviceUrl){
-		    	var url = "http://" + serviceUrl + "/rest/LeagueService/list/";
+		    	var url = serviceUrl + "/rest/LeagueService/list/";
 		    	var fd = {
 	    			'uniquecallid': new Date().getTime()
     			};

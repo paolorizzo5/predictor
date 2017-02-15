@@ -65,4 +65,14 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 		}
 	}
 
+	@Override
+	public Boolean update(User user) {
+		try {
+			getHibernateTemplate().update(user);
+			return true;
+		} catch (Exception exception) {
+			return false;
+		}
+	}
+
 }

@@ -34,7 +34,7 @@ public class ProspectBusiness {
 
 
 	@Transactional(readOnly=false)
-	public Prospect add(String name, String accountName, BigDecimal dailyPercentageExpected, Integer duration,
+	public Prospect add(String name, String accountName, BigDecimal dailyPercentageExpected, Integer stepFrequency, Integer duration,
 			String email,BigDecimal initialAmount) {
 		Account account = accountBusiness.get(accountName,email);
 		Prospect prospect = new Prospect();
@@ -44,6 +44,7 @@ public class ProspectBusiness {
 		prospect.setInitialAmount(initialAmount);
 		prospect.setInsertDate(new Date());
 		prospect.setName(name);
+		prospect.setStepFrequency(stepFrequency);
 		prospect.setUser(new User(email, null));
 		BigDecimal expectedGoal = initialAmount;
 		Date startDate = new Date();
@@ -52,17 +53,15 @@ public class ProspectBusiness {
 		
 		for(int i = 1;i<=duration; i++){
 			ProspectElement prospectElement = new ProspectElement();
-			prospectElement.setEndDate(SimpleUtils.tomorrow(startDate));
-			if (i == 1){
-				prospectElement.setLiveAmount(prospect.getInitialAmount());
-			}
+			prospectElement.setEndDate(SimpleUtils.nextDate(startDate,stepFrequency));
+			
 			expectedGoal= expectedGoal.multiply((new BigDecimal(100).add(dailyPercentageExpected))).divide(new BigDecimal(100),RoundingMode.DOWN).setScale(2, RoundingMode.DOWN);
 			
 			//expectedGoal = expectedGoal.multiply(new BigDecimal(100).add(prospect.getDailyPercentageExpected()).divide(new BigDecimal(100),RoundingMode.DOWN));
 			prospectElement.setExpectedGoal(expectedGoal);
 			prospectElement.setIncremental(i);
 			prospectElement.setStartDate(startDate);
-			startDate = SimpleUtils.tomorrow(startDate);
+			startDate = SimpleUtils.nextDate(startDate,stepFrequency);
 			prospectElement.setProspect(prospect);
 			prospectElements.add(prospectElement);
 			
@@ -71,7 +70,7 @@ public class ProspectBusiness {
 		prospect.setProspectElements(prospectElements);
 		prospectDao.insert(prospect);
 		
-		accountBusiness.deposit(account.getName(), initialAmount.toPlainString(), email);
+		//accountBusiness.deposit(account.getName(), initialAmount.toPlainString(), email);
 		
 		return prospect;
 	}
@@ -98,7 +97,6 @@ public class ProspectBusiness {
 		
 		Boolean updateUpcomingElements = false;
 		Boolean getNextElement = false;
-		BigDecimal liveAmount = null;
 		for (ProspectElement prospectElement : account.getProspect().getProspectElements()) {
 			
 			
@@ -109,16 +107,15 @@ public class ProspectBusiness {
 			}
 			
 			if(getNextElement){
-				prospectElement.setLiveAmount(liveAmount);
 				getNextElement = false;
 			}
 			
-			if(prospectElement.getLiveAmount() != null && prospectElement.getLiveAmount().compareTo(prospectElement.getExpectedGoal()) > 0 && prospectElement.getTerminationDate() == null){
+			if(account.getLiveAmount().compareTo(prospectElement.getExpectedGoal()) > 0 && prospectElement.getTerminationDate() == null){
 				prospectElement.setTerminationDate(now);
 				prospectElement.setEndDate(now);
 				updateUpcomingElements = true;
 				getNextElement = true;
-				liveAmount = prospectElement.getLiveAmount();
+				
 			}
 		}
 		
@@ -135,7 +132,6 @@ public class ProspectBusiness {
 		boolean changeDate = false;
 		boolean updateLiveAmount = false;
 		
-		BigDecimal liveAmount = new BigDecimal(0);
 		Date startDateToRestore = null;
 		Integer indexToRestore = null;
 		
@@ -145,7 +141,6 @@ public class ProspectBusiness {
 			if(changeDate){
 				if(updateLiveAmount){
 					updateLiveAmount = false;
-					account.getProspect().getProspectElements().get(i).setLiveAmount(liveAmount);
 					startDateToRestore = account.getProspect().getProspectElements().get(i).getStartDate();
 					indexToRestore = i;
 				}
@@ -162,8 +157,6 @@ public class ProspectBusiness {
 				i = i-2;
 				changeDate = true;
 				updateLiveAmount = true;
-				liveAmount = prospectElement.getLiveAmount();
-				prospectElement.setLiveAmount(null);
 				if(i >= 0){
 					account.getProspect().getProspectElements().get(i).setEndDate(now);
 				}

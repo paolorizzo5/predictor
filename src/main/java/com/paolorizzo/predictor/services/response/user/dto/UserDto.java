@@ -1,6 +1,7 @@
 package com.paolorizzo.predictor.services.response.user.dto;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import com.paolorizzo.predictor.hibernate.model.User;
 
@@ -14,6 +15,8 @@ public class UserDto implements Serializable {
 	private String email;
 
 	private String password;
+	
+	private BigDecimal portFolioAmount;
 
 	public UserDto() {
 		// TODO Auto-generated constructor stub
@@ -50,7 +53,18 @@ public class UserDto implements Serializable {
 		UserDto userDto = new UserDto();
 		userDto.setEmail(user.getEmail());
 		userDto.setPassword(user.getPassword());
+		userDto.setPortFolioAmount(user.getPortFolioAmount());
 		return userDto;
 	}
+
+	public BigDecimal getPortFolioAmount() {
+		return portFolioAmount;
+	}
+
+	public void setPortFolioAmount(BigDecimal portFolioAmount) {
+		this.portFolioAmount = portFolioAmount;
+	}
+	
+	
 
 }

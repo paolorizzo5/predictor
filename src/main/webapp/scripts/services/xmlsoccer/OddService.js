@@ -4,7 +4,7 @@ app
 	
 		return{
 			getOddsByFixtureId: function (id,serviceUrl){
-		    	var url = "http://" + serviceUrl + "/rest/OddService/getOddsByFixtureId/";
+		    	var url = serviceUrl + "/rest/OddService/getOddsByFixtureId/";
 		    	var fd = {
 	    			'uniquecallid': new Date().getTime(),
 	    			'id': id

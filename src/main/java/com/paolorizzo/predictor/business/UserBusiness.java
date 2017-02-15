@@ -100,4 +100,8 @@ public class UserBusiness {
 		}
 	}
 
+	public Boolean update(User user) {
+		return userDao.update(user);
+	}
+
 }

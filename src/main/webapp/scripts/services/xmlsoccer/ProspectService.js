@@ -3,9 +3,9 @@ app
 			function ProspectService($http){
 	
 		return{
-			add: function (name,initialAmount,duration,dailyPercentageExpected,accountName,email,serviceUrl){
+			add: function (name,initialAmount,duration,dailyPercentageExpected,stepFrequency,accountName,email,serviceUrl){
 				
-		    	var url = "http://" + serviceUrl + "/rest/ProspectService/add/";
+		    	var url = serviceUrl + "/rest/ProspectService/add/";
 		    	console.log(url);
 		    	var fd = {
 	    			'uniquecallid': new Date().getTime(),
@@ -13,6 +13,8 @@ app
 	    			'initialAmount': initialAmount,
 	    			'duration': duration,
 	    			'dailyPercentageExpected': dailyPercentageExpected,
+	    			'stepFrequency': stepFrequency,
+	    			
 	    			'accountName': accountName,
 	    			'email': email
 	    			
@@ -22,7 +24,7 @@ app
 	        
 	        get: function (accountName,email,serviceUrl){
 				
-		    	var url = "http://" + serviceUrl + "/rest/ProspectService/get/";
+		    	var url = serviceUrl + "/rest/ProspectService/get/";
 		    	console.log(url);
 		    	var fd = {
 	    			'uniquecallid': new Date().getTime(),
@@ -33,7 +35,7 @@ app
 		    	return $http.post(url, angular.toJson(fd), {transformRequest: angular.identity,headers: {'Content-Type': 'application/json'}});
 	        },
 	        pushProspectElement: function (prospectName,incremental,accountName,email,serviceUrl){
-		    	var url = "http://" + serviceUrl + "/rest/ProspectService/pushProspectElement/";
+		    	var url = serviceUrl + "/rest/ProspectService/pushProspectElement/";
 		    	var fd = {
 	    			'uniquecallid': new Date().getTime(),
 	    			'prospectName': prospectName,
@@ -44,7 +46,7 @@ app
 		    	return $http.post(url, angular.toJson(fd), {transformRequest: angular.identity,headers: {'Content-Type': 'application/json'}});
 	        },
 	        popProspectElement: function (prospectName,incremental,accountName,email,serviceUrl){
-		    	var url = "http://" + serviceUrl + "/rest/ProspectService/popProspectElement/";
+		    	var url = serviceUrl + "/rest/ProspectService/popProspectElement/";
 		    	var fd = {
 	    			'uniquecallid': new Date().getTime(),
 	    			'prospectName': prospectName,

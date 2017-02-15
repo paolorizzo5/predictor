@@ -1,4 +1,4 @@
-<section class="tile" fullscreen="isFullscreen01" style="max-height: 300px;overflow:auto;height: 300px;" slimscroll="{height: '100%'}">
+<section class="tile" fullscreen="isFullscreen01">
 	<div class="tile-header dvd dvd-btm">
 		<h1 class="custom-font">
 			<strong>{{'Account.CREATE_BET' | translate}}</strong>
@@ -33,47 +33,35 @@
 
 		<!-- tile body -->
 		<div class="tile-body">
-			<div class="row">
-				<div class="form-group">
-					<label class="col-sm-8 control-label">{{'Bet.INSERT_EVENT_DESCRIPTION'
-						| translate}}</label>
-					<div class="col-sm-4">
-						<input type="text" name="fc6" class="form-control"
+
+			<form class="form" role="form">
+				<div class="row">
+					<div class="col-md-6">
+						<label for="bet.eventDescription">{{'Bet.INSERT_EVENT_DESCRIPTION'
+							| translate}}</label> <input type="text" name="fc6" class="form-control"
 							ng-model="bet.eventDescription" maxlength="30" required>
 					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="col-sm-8 control-label">{{'Bet.INSERT_BETTYPE_DESCRIPTION'
-						| translate}}</label>
-					<div class="col-sm-4">
-						<input type="text" name="fc6" class="form-control"
+					<div class="col-md-6">
+						<label for="bet.bettypeDescription">{{'Bet.INSERT_BETTYPE_DESCRIPTION'
+							| translate}}</label> <input type="text" name="fc6" class="form-control"
 							ng-model="bet.bettypeDescription" maxlength="30" required>
 					</div>
 				</div>
-
-				<div class="form-group">
-					<label class="col-sm-8 control-label">{{'Bet.INSERT_AMOUNT'
-						| translate}}</label>
-					<div class="col-sm-4">
-						<input type="text" name="fc6" class="form-control"
+				
+				<div class="row">
+					<div class="col-md-6">
+						<label for="exampleInputPassword2">{{'Bet.INSERT_AMOUNT' |
+							translate}}</label> <input type="text" name="fc6" class="form-control"
 							ng-model="bet.amount" maxlength="30" required>
 					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="col-sm-8 control-label">{{'Bet.INSERT_MOLTIPLICATOR'
-						| translate}}</label>
-					<div class="col-sm-4">
-						<input type="text" name="fc6" class="form-control"
+					<div class="col-md-6">
+						<label for="exampleInputPassword2">{{'Bet.INSERT_MOLTIPLICATOR'
+							| translate}}</label> <input type="text" name="fc6" class="form-control"
 							ng-model="bet.moltiplicator" maxlength="10" required>
+
 					</div>
 				</div>
-				<div class="form-group">
-					<div class="col-sm-12"></div>
-				</div>
-			</div>
-
+			</form>
 		</div>
 		<div class="tile-footer">
 			<button type="button" class="btn btn-success"

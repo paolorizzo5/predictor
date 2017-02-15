@@ -1,6 +1,7 @@
 package com.paolorizzo.predictor.hibernate.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -15,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
 
 import org.hibernate.annotations.Cascade;
 
@@ -53,11 +55,30 @@ public class Account implements Serializable{
 	@Column(name = "INSERT_DATE", nullable = false)
 	private Date insertDate;
 	
+	@Column(name = "LIVE_AMOUNT", nullable = false)
+	private BigDecimal liveAmount;
+	
 	
 	@OneToOne(fetch = FetchType.LAZY, mappedBy = "account", cascade = CascadeType.ALL)
 	private Prospect prospect;
 	
+	@OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "account")
+	@Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
+	private List<AccountStats> accountStats;
 	
+	
+	
+	
+	public Account(String name, User user) {
+		super();
+		this.name = name;
+		this.user = user;
+	}
+
+	public Account() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -118,6 +139,25 @@ public class Account implements Serializable{
 
 	public void setProspect(Prospect prospect) {
 		this.prospect = prospect;
+	}
+
+	public BigDecimal getLiveAmount() {
+		return liveAmount;
+	}
+
+	public void setLiveAmount(BigDecimal liveAmount) {
+		this.liveAmount = liveAmount;
+	}
+
+	public List<AccountStats> getAccountStats() {
+		if (accountStats == null){
+			return new ArrayList<AccountStats>();
+		}
+		return accountStats;
+	}
+
+	public void setAccountStats(List<AccountStats> accountStats) {
+		this.accountStats = accountStats;
 	}
 	
 	

@@ -1,75 +1,94 @@
-<section class="tile" fullscreen="isFullscreen01" style="overflow:auto;height: 300px;" slimscroll="{height: '100%'}">
-					<div class="tile-header dvd dvd-btm">
-						<h1 class="custom-font">
-							<strong>{{'Account.MONEY_TRANSACTIONS' | translate}}</strong>
-						</h1>
-						<ul class="controls">
-							<li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+<section class="tile" fullscreen="isFullscreen01"
+	style="overflow: auto; height: 300px;" slimscroll="{height: '100%'}">
+	<div class="tile-header dvd dvd-btm">
+		<h1 class="custom-font">
+			<strong>{{'Account.MONEY_TRANSACTIONS' | translate}}</strong>
+		</h1>
+		<ul class="controls">
+			<li class="dropdown" uib-dropdown on-toggle="toggled(open)"><a
+				href uib-dropdown-toggle class="dropdown-toggle settings"><i
+					class="fa fa-cog"></i></a>
 
-								<a href uib-dropdown-toggle class="dropdown-toggle settings"><i
-									class="fa fa-cog"></i></a>
+				<ul
+					class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+					<li><a href tile-control-toggle> <span class="minimize"><fa
+									name="angle-down"></fa>&nbsp;&nbsp;&nbsp;Minimize</span> <span
+							class="expand"><fa name="angle-up"></fa>&nbsp;&nbsp;&nbsp;Expand</span>
+					</a></li>
+					<li><a href tile-control-refresh ng-click="ajaxFaker()"> <fa
+								name="refresh"></fa> Refresh
+					</a></li>
+					<li><a href tile-control-fullscreen
+						ng-click="isFullscreen01 = !isFullscreen01"> <fa name="expand"></fa>
+							Fullscreen
+					</a></li>
+					<li><a href tile-control-lightbox> <fa name="magnet"></fa>
+							Open in Lightbox
+					</a></li>
+				</ul></li>
+			<li class="remove"><a><i class="fa fa-times"></i></a></li>
+		</ul>
+	</div>
+	<div>
+		<div class="tile-widget">
+			<div class="row">
+				<div class="col-xs-4">
+					<input type="text" class="form-control" ng-model="amount"
+						maxlength="5">
+				</div>
+				<div class="col-md-2" align="center">
+					<button type="button" ng-click="deposit(account.name,amount);"
+						class="btn btn-rounded btn-info btn-sm">{{'MoneyTransaction.DEPOSIT'
+						| translate}}</button>
+				</div>
+				<div class="col-md-2" align="center">
+					<button type="button" ng-click="withdraw(account.name,amount);"
+						class="btn btn-rounded btn-info btn-sm">{{'MoneyTransaction.WITHDRAW'
+						| translate}}</button>
+				</div>
+			</div>
+		
+		</div>
+		<!-- /tile widget -->
 
-								<ul
-									class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
-									<li><a href tile-control-toggle> <span
-											class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;Minimize</span>
-											<span class="expand"><fa name="angle-up"></fa>&nbsp;&nbsp;&nbsp;Expand</span>
-									</a></li>
-									<li><a href tile-control-refresh ng-click="ajaxFaker()">
-											<fa name="refresh"></fa> Refresh
-									</a></li>
-									<li><a href tile-control-fullscreen
-										ng-click="isFullscreen01 = !isFullscreen01"> <fa
-												name="expand"></fa> Fullscreen
-									</a></li>
-									<li><a href tile-control-lightbox> <fa name="magnet"></fa>
-											Open in Lightbox
-									</a></li>
-								</ul>
-							</li>
-							<li class="remove"><a><i class="fa fa-times"></i></a></li>
-						</ul>
-					</div>
-					<div>
-						<div class="tile-widget"></div>
-						<!-- /tile widget -->
+		<!-- tile body -->
+		<div class="tile-body">
 
-						<!-- tile body -->
-						<div class="tile-body">
-							<div class="row"
-								ng-repeat="moneyTransaction in account.moneyTransactions">
-								<div class="col-md-5">{{moneyTransaction.insertDate |
-									date:'dd/MM/yyyy hh:mm:ss'}}</div>
-								<div class="col-md-1">{{moneyTransaction.amount}}</div>
-								<div class="col-md-4"
-									ng-show="moneyTransaction.direction == '+'">
-									{{'MoneyTransaction.DEPOSITED' | translate}}</div>
-								<div class="col-md-4"
-									ng-show="moneyTransaction.direction == '-'">
-									{{'MoneyTransaction.WITHDRAWED' | translate}}</div>
-								<div class="col-md-2">
-									<button type="button"
-										ng-click="deleteMoneyTransaction(account.name,moneyTransaction);"
-										class="btn btn-rounded btn-danger btn-sm">{{'DELETE'
-										| translate}}</button>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-4">
-									<input type="text" ng-model="amount" maxlength="5">
-								</div>
-								<div class="col-md-4" align="center">
-									<button type="button" ng-click="deposit(account.name,amount);"
-										class="btn btn-rounded btn-info btn-sm">{{'MoneyTransaction.DEPOSIT'
-										| translate}}</button>
-								</div>
-								<div class="col-md-4" align="center">
-									<button type="button" ng-click="withdraw(account.name,amount);"
-										class="btn btn-rounded btn-info btn-sm">{{'MoneyTransaction.WITHDRAW'
-										| translate}}</button>
-								</div>
-							</div>
-						</div>
-						<div class="tile-footer"></div>
-					</div>
-				</section>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>{{'MoneyTransaction.INSERT_DATE' | translate}}</th>
+						<th>{{'MoneyTransaction.AMOUNT' | translate}}</th>
+						<th>{{'MoneyTransaction.REASON' | translate}}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="moneyTransaction in account.moneyTransactionDtos">
+						<td ng-if="moneyTransaction.direction == '+'" class="text-greensea"><b>{{moneyTransaction.insertDate
+							| date:'dd-MM-yy hh:mm'}}</b></td>
+							<td ng-if="moneyTransaction.direction == '-'" class="text-danger"><b>{{moneyTransaction.insertDate
+							| date:'dd-MM-yy hh:mm'}}</b></td>
+							
+						<td ng-if="moneyTransaction.direction == '+'" class="text-greensea"><b>{{moneyTransaction.direction}}
+							{{moneyTransaction.amount}}</b></td>
+							<td ng-if="moneyTransaction.direction == '-'" class="text-danger"><b>{{moneyTransaction.direction}}
+							{{moneyTransaction.amount}}</b></td>
+						<td ng-if="moneyTransaction.direction == '+'" class="text-greensea"><b>{{'MoneyTransaction.ACTION_'
+							+ moneyTransaction.reason | translate}}</b></td>
+							<td ng-if="moneyTransaction.direction == '-'" class="text-danger"><b>{{'MoneyTransaction.ACTION_'
+							+ moneyTransaction.reason | translate}}</b></td>
+
+					</tr>
+			</table>
+
+
+
+
+
+
+			
+			
+		</div>
+		<div class="tile-footer"></div>
+	</div>
+</section>

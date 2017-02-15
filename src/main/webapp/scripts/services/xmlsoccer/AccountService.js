@@ -4,7 +4,7 @@ app
 	
 		return{
 			add: function (name,description,email,serviceUrl){
-		    	var url = "http://" + serviceUrl + "/rest/AccountService/add/";
+		    	var url = serviceUrl + "/rest/AccountService/add/";
 		    	var fd = {
 	    			'uniquecallid': new Date().getTime(),
 	    			'name': name,
@@ -15,7 +15,7 @@ app
 		    	return $http.post(url, angular.toJson(fd), {transformRequest: angular.identity,headers: {'Content-Type': 'application/json'}});
 	        },
 	        delete: function (name,email,serviceUrl){
-		    	var url = "http://" + serviceUrl + "/rest/AccountService/delete/";
+		    	var url = serviceUrl + "/rest/AccountService/delete/";
 		    	var fd = {
 	    			'uniquecallid': new Date().getTime(),
 	    			'name': name,
@@ -25,7 +25,7 @@ app
 	        },
 	        
 	        get: function (name,email,serviceUrl){
-		    	var url = "http://" + serviceUrl + "/rest/AccountService/get/";
+		    	var url = serviceUrl + "/rest/AccountService/get/";
 		    	var fd = {
 	    			'uniquecallid': new Date().getTime(),
 	    			'name': name,
@@ -35,7 +35,7 @@ app
 	        },
 		
 			list: function (email,serviceUrl){
-		    	var url = "http://" + serviceUrl + "/rest/AccountService/list/";
+		    	var url = serviceUrl + "/rest/AccountService/list/";
 		    	var fd = {
 	    			'uniquecallid': new Date().getTime(),
 	    			'email': email
@@ -44,7 +44,7 @@ app
 	        },
 	        
 	        deposit: function (accountName,amount,email,serviceUrl){
-		    	var url = "http://" + serviceUrl + "/rest/AccountService/deposit/";
+		    	var url = serviceUrl + "/rest/AccountService/deposit/";
 		    	var fd = {
 	    			'uniquecallid': new Date().getTime(),
 	    			'accountName':accountName,
@@ -54,7 +54,7 @@ app
 		    	return $http.post(url, angular.toJson(fd), {transformRequest: angular.identity,headers: {'Content-Type': 'application/json'}});
 	        },
 	        withdraw: function (accountName,amount,email,serviceUrl){
-		    	var url = "http://" + serviceUrl + "/rest/AccountService/withdraw/";
+		    	var url = serviceUrl + "/rest/AccountService/withdraw/";
 		    	var fd = {
 	    			'uniquecallid': new Date().getTime(),
 	    			'accountName':accountName,
@@ -64,7 +64,7 @@ app
 		    	return $http.post(url, angular.toJson(fd), {transformRequest: angular.identity,headers: {'Content-Type': 'application/json'}});
 	        },
 	        addBet: function (eventDescription,bettypeDescription,amount,moltiplicator,accountName,email,serviceUrl){
-		    	var url = "http://" + serviceUrl + "/rest/AccountService/addBet/";
+		    	var url = serviceUrl + "/rest/AccountService/addBet/";
 		    	var fd = {
 	    			'uniquecallid': new Date().getTime(),
 	    			'eventDescription': eventDescription,
@@ -77,7 +77,7 @@ app
 		    	return $http.post(url, angular.toJson(fd), {transformRequest: angular.identity,headers: {'Content-Type': 'application/json'}});
 	        },
 	        markBet: function (insertDate,isWinning,accountName,email,serviceUrl){
-		    	var url = "http://" + serviceUrl + "/rest/AccountService/markBet/";
+		    	var url = serviceUrl + "/rest/AccountService/markBet/";
 		    	var fd = {
 	    			'uniquecallid': new Date().getTime(),
 	    			'insertDate': insertDate,
@@ -88,7 +88,7 @@ app
 		    	return $http.post(url, angular.toJson(fd), {transformRequest: angular.identity,headers: {'Content-Type': 'application/json'}});
 	        },
 	        archiveBet: function (insertDate,accountName,email,serviceUrl){
-		    	var url = "http://" + serviceUrl + "/rest/AccountService/archiveBet/";
+		    	var url = serviceUrl + "/rest/AccountService/archiveBet/";
 		    	var fd = {
 	    			'uniquecallid': new Date().getTime(),
 	    			'insertDate': insertDate,

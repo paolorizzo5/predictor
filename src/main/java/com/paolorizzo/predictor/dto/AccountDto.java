@@ -1,6 +1,7 @@
 package com.paolorizzo.predictor.dto;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 
 public class AccountDto implements Serializable{
@@ -18,6 +19,15 @@ public class AccountDto implements Serializable{
 	private List<BetDto> bets;
 	
 	private ProspectDto prospect;
+	
+	private BigDecimal liveAmount;
+	
+	private BetStatisticsDto betStatistics;
+	
+	private List<AccountStatsDto> accountStats;
+	
+	
+	
 	
 	
 	public String getName() {
@@ -67,6 +77,30 @@ public class AccountDto implements Serializable{
 
 	public void setProspect(ProspectDto prospect) {
 		this.prospect = prospect;
+	}
+
+	public BigDecimal getLiveAmount() {
+		return liveAmount;
+	}
+
+	public void setLiveAmount(BigDecimal liveAmount) {
+		this.liveAmount = liveAmount;
+	}
+
+	public BetStatisticsDto getBetStatistics() {
+		return betStatistics;
+	}
+
+	public void setBetStatistics(BetStatisticsDto betStatistics) {
+		this.betStatistics = betStatistics;
+	}
+
+	public List<AccountStatsDto> getAccountStats() {
+		return accountStats;
+	}
+
+	public void setAccountStats(List<AccountStatsDto> accountStats) {
+		this.accountStats = accountStats;
 	}
 
 }

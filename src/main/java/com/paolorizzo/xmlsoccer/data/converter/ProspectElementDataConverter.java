@@ -2,6 +2,7 @@ package com.paolorizzo.xmlsoccer.data.converter;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.paolorizzo.predictor.dto.ProspectElementDto;
@@ -21,14 +22,12 @@ public class ProspectElementDataConverter {
 				dto.setExpectedGoal(prospectElements.get(i).getExpectedGoal());
 				dto.setIncremental(prospectElements.get(i).getIncremental());
 				dto.setStartDate(prospectElements.get(i).getStartDate().getTime());
-				dto.setLiveAmount(prospectElements.get(i).getLiveAmount());
+				if(prospectElements.get(i).getTerminationDate() != null){
+					dto.setTerminationDate(prospectElements.get(i).getTerminationDate().getTime());
+				}
 				dto.setPreviousExpectedGoal(previousExpectedGoal);
 				previousExpectedGoal = dto.getExpectedGoal();
-				if(i < prospectElements.size() -1){
-					dto.setCurrent(prospectElements.get(i).getLiveAmount() != null && prospectElements.get(i+1).getLiveAmount() == null);
-				}else{
-					dto.setCurrent(prospectElements.get(i).getLiveAmount() != null);
-				}
+				dto.setCurrent(prospectElements.get(i).getStartDate().before(new Date()) &&prospectElements.get(i).getEndDate().after(new Date()));
 				list.add(dto);
 			}
 		}

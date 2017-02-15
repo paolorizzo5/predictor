@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="DEBUG">
 	<Properties>
-		<Property name="log-path">C:/Users/rizzopa/git/predictor/logs</Property>
+		<Property name="log-path">/var/log</Property>
 	</Properties>
 	<Appenders>
-		<RollingFile name="RollingFile" fileName="${log-path}/myexample.log"
-filePattern="${log-path}/myexample-%d{yyyy-MM-dd}-%i.log" >
+		<RollingFile name="RollingFile" fileName="${log-path}/predictor.log"
+filePattern="${log-path}/predictor-%d{yyyy-MM-dd}-%i.log" >
 			<PatternLayout>
 				<pattern>%d{yyyy-MM-dd HH:mm:ss,SSS}-%t-%x-%-5p-%-10c:%m%n</pattern>
 			</PatternLayout>

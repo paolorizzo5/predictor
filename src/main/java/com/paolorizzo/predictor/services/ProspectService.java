@@ -11,7 +11,9 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
 import com.google.gson.Gson;
+import com.paolorizzo.predictor.business.AccountBusiness;
 import com.paolorizzo.predictor.business.ProspectBusiness;
+import com.paolorizzo.predictor.hibernate.model.Account;
 import com.paolorizzo.predictor.hibernate.model.Prospect;
 import com.paolorizzo.predictor.services.request.AddProspectRequest;
 import com.paolorizzo.predictor.services.request.GetProspectRequest;
@@ -32,6 +34,9 @@ public class ProspectService {
 
 	ProspectBusiness prospectBusiness = AppContext.getApplicationContext()
 			.getBean("prospectBusinessBean", ProspectBusiness.class);
+	
+	AccountBusiness accountBusiness = AppContext.getApplicationContext()
+			.getBean("accountBusinessBean", AccountBusiness.class);
 
 	@POST
 	@Path("/add/")
@@ -45,9 +50,9 @@ public class ProspectService {
 		try {
 			logger.debug("addProspect request");
 
-			Prospect prospect = prospectBusiness.add(addProspectRequest.getName(),addProspectRequest.getAccountName(),addProspectRequest.getDailyPercentageExpected(),addProspectRequest.getDuration(),addProspectRequest.getEmail(),addProspectRequest.getInitialAmount());
+			Prospect prospect = prospectBusiness.add(addProspectRequest.getName(),addProspectRequest.getAccountName(),addProspectRequest.getDailyPercentageExpected(),addProspectRequest.getStepFrequency(),addProspectRequest.getDuration(),addProspectRequest.getEmail(),addProspectRequest.getInitialAmount());
 			if(prospect != null){
-				addProspectResponse.setProspect(ProspectDataConverter.convert(prospect));
+				addProspectResponse.setProspect(ProspectDataConverter.convert(prospect,null));
 				addProspectResponse.setResult(true);
 			}else{
 				addProspectResponse.setResult(false);
@@ -74,8 +79,9 @@ public class ProspectService {
 		try {
 			logger.debug("getProspect request");
 			Prospect prospect = prospectBusiness.get(getProspectRequest.getAccountName(),getProspectRequest.getEmail());
-
-			getProspectResponse.setProspect(ProspectDataConverter.convert(prospect));
+			Account account = accountBusiness.get(getProspectRequest.getAccountName(), getProspectRequest.getEmail());
+			
+			getProspectResponse.setProspect(ProspectDataConverter.convert(prospect,account.getLiveAmount()));
 			
 			String ret = gson.toJson(getProspectResponse)
 					.toString();
@@ -99,9 +105,10 @@ public class ProspectService {
 			logger.debug("makBetRequest");
 
 			Prospect prospect = prospectBusiness.pushProspectElement(pushProspectElementRequest.getAccountName(),pushProspectElementRequest.getEmail(),pushProspectElementRequest.getIncremental(),pushProspectElementRequest.getProspectName());
+			Account account = accountBusiness.get(pushProspectElementRequest.getAccountName(), pushProspectElementRequest.getEmail());
 			
 			if(prospect != null){
-				pushProspectElementResponse.setProspect(ProspectDataConverter.convert(prospect));
+				pushProspectElementResponse.setProspect(ProspectDataConverter.convert(prospect,account.getLiveAmount()));
 				pushProspectElementResponse.setResult(true);
 			}else{
 				pushProspectElementResponse.setResult(false);
@@ -129,9 +136,10 @@ public class ProspectService {
 			logger.debug("makBetRequest");
 
 			Prospect prospect = prospectBusiness.popProspectElement(popProspectElementRequest.getAccountName(),popProspectElementRequest.getEmail(),popProspectElementRequest.getIncremental(),popProspectElementRequest.getProspectName());
+			Account account = accountBusiness.get(popProspectElementRequest.getAccountName(), popProspectElementRequest.getEmail());
 			
 			if(prospect != null){
-				popProspectElementResponse.setProspect(ProspectDataConverter.convert(prospect));
+				popProspectElementResponse.setProspect(ProspectDataConverter.convert(prospect,account.getLiveAmount()));
 				popProspectElementResponse.setResult(true);
 			}else{
 				popProspectElementResponse.setResult(false);

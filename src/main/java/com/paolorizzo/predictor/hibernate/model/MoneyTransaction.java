@@ -38,6 +38,10 @@ public class MoneyTransaction implements Serializable {
 	
 	@Column(name = "AMOUNT", nullable = false)
 	private BigDecimal amount;
+	
+	@Column(name = "REASON", nullable = false, length = 10)
+	private String reason;
+	
 
 	public Account getAccount() {
 		return account;
@@ -69,6 +73,14 @@ public class MoneyTransaction implements Serializable {
 
 	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
+	}
+
+	public String getReason() {
+		return reason;
+	}
+
+	public void setReason(String reason) {
+		this.reason = reason;
 	}
 	
 
