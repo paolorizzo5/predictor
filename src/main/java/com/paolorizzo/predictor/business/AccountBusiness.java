@@ -54,7 +54,7 @@ public class AccountBusiness {
 		account.setName(name);
 		account.setDescription(description);
 		account.setInsertDate(new Date());
-		account.setUser(new User(email, null));
+		account.setUser(new User(email));
 		account.setLiveAmount(new BigDecimal(0));
 		accountDao.insert(account);
 		return account;
@@ -67,7 +67,7 @@ public class AccountBusiness {
 	@Transactional(readOnly=false)
 	public DepositAccountResponse deposit(String accountName, String amount, String email) {
 		Account account = get(accountName,email);
-		account.setUser(new User(email, null));
+		account.setUser(new User(email));
 		
 		//effettuo la transazione diretta su conto di gioco
 		MoneyTransaction moneyTransaction = new MoneyTransaction();
@@ -98,7 +98,7 @@ public class AccountBusiness {
 	@Transactional(readOnly=false)
 	public DepositAccountResponse withdraw(String accountName, String amount, String email) {
 		Account account = get(accountName,email);
-		account.setUser(new User(email, null));
+		account.setUser(new User(email));
 		
 		MoneyTransaction moneyTransaction = new MoneyTransaction();
 		moneyTransaction.setAmount(new BigDecimal(amount));
@@ -132,7 +132,7 @@ public class AccountBusiness {
 		account.setMoneyTransactions(null);
 		account.setName(accountName);
 		account.setMoneyTransactions(null);
-		account.setUser(new User(email, null));
+		account.setUser(new User(email));
 		accountDao.delete(account);
 		return account;
 	}

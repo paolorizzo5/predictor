@@ -91,13 +91,13 @@ public class HistoricMatchService {
 			getFixturePreviewResponse
 					.setLast5Home(HistoricMatchDataConverter
 							.convert(historicMatchBusiness
-									.getLast5(getFixturePreviewRequest
-											.getHomeTeamId())));
+									.getLastMatches(getFixturePreviewRequest
+											.getHomeTeamId(),5)));
 			getFixturePreviewResponse
 					.setLast5Away(HistoricMatchDataConverter
 							.convert(historicMatchBusiness
-									.getLast5(getFixturePreviewRequest
-											.getAwayTeamId())));
+									.getLastMatches(getFixturePreviewRequest
+											.getAwayTeamId(),5)));
 
 			getFixturePreviewResponse
 					.setFixturePreviewThisSeason(historicMatchBusiness

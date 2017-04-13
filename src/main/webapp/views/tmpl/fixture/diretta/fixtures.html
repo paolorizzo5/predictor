@@ -1,0 +1,73 @@
+<section class="tile" fullscreen="isFullscreen01">
+	<div class="tile-header dvd dvd-btm">
+		<h1 class="custom-font">
+			<strong>{{'FIXTURES' | translate}}</strong>
+		</h1>
+		<ul class="controls">
+			<li class="dropdown" uib-dropdown on-toggle="toggled(open)"><a
+				href uib-dropdown-toggle class="dropdown-toggle settings"><i
+					class="fa fa-cog"></i></a>
+
+				<ul
+					class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+					<li><a href tile-control-toggle> <span class="minimize"><fa
+									name="angle-down"></fa>&nbsp;&nbsp;&nbsp;Minimize</span> <span
+							class="expand"><fa name="angle-up"></fa>&nbsp;&nbsp;&nbsp;Expand</span>
+					</a></li>
+					<li><a href tile-control-refresh ng-click="ajaxFaker()"> <fa
+								name="refresh"></fa> Refresh
+					</a></li>
+					<li><a href tile-control-fullscreen
+						ng-click="isFullscreen01 = !isFullscreen01"> <fa name="expand"></fa>
+							Fullscreen
+					</a></li>
+					<li><a href tile-control-lightbox> <fa name="magnet"></fa>
+							Open in Lightbox
+					</a></li>
+
+				</ul></li>
+			<li class="remove"><a><i class="fa fa-times"></i></a></li>
+		</ul>
+	</div>
+	<div class="tile-widget"></div>
+	<!-- /tile widget -->
+
+	<!-- tile body -->
+	<div class="tile-body">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>{{'DATE' | translate}}</th>
+					<th>{{'HA.HOMEGOAL.SHORT' | translate}}</th>
+					<th>{{'HA.AWAYGOAL.SHORT' | translate}}</th>
+					<th>{{'FINAL.RESULT' | translate}}</th>
+					<th>{{'001_1.SHORT' | translate}}</th>
+					<th>{{'002_X.SHORT' | translate}}</th>
+					<th>{{'003_2.SHORT' | translate}}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="direttaFixture in direttaFixtures">
+					<td>{{direttaFixture.date | date:'MM/dd/yyyy'}}</td>
+					<td>{{direttaFixture.homeTeam}}</td>
+					<td>{{direttaFixture.awayTeam}}</td>
+					<td>{{direttaFixture.homeGoals}} -
+						{{direttaFixture.awayGoals}}</td>
+					<td ng-show="direttaFixture.homeGoals > direttaFixture.awayGoals"><span
+						class="label bg-greensea">{{direttaFixture.quota1}}</span></td>
+					<td ng-show="direttaFixture.homeGoals <= direttaFixture.awayGoals">{{direttaFixture.quota1}}</td>
+					<td ng-show="direttaFixture.homeGoals == direttaFixture.awayGoals"><span
+						class="label bg-greensea">{{direttaFixture.quotaX}}</span></td>
+					<td ng-show="direttaFixture.homeGoals != direttaFixture.awayGoals">{{direttaFixture.quotaX}}</td>
+					<td ng-show="direttaFixture.homeGoals < direttaFixture.awayGoals"><span
+						class="label bg-greensea">{{direttaFixture.quota2}}</span></td>
+					<td ng-show="direttaFixture.homeGoals >= direttaFixture.awayGoals">{{direttaFixture.quota2}}</td>
+
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="tile-footer"></div>
+
+</section>

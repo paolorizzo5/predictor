@@ -23,11 +23,11 @@ import org.quartz.Trigger;
 import org.quartz.TriggerBuilder;
 import org.quartz.impl.StdSchedulerFactory;
 
+import com.paolorizzo.predictor.business.BetTypeBusiness;
 import com.paolorizzo.predictor.business.JobConfigurationBusiness;
 import com.paolorizzo.predictor.business.UserBusiness;
 import com.paolorizzo.predictor.hibernate.model.JobConfiguration;
 import com.paolorizzo.predictor.jobs.AccountStatsJob;
-import com.paolorizzo.predictor.jobs.XmlSoccerUpdateJob;
 import com.paolorizzo.predictor.spring.AppContext;
 import com.paolorizzo.predictor.utils.MD5;
 import com.paolorizzo.xmlsoccer.XmlSoccerClient;
@@ -47,6 +47,8 @@ public class InitServlet extends HttpServlet {
 	private UserBusiness userBusiness;
 
 	private JobConfigurationBusiness jobConfigurationBusiness;
+	
+	private BetTypeBusiness betTypeBusiness;
 
 	//
 	// private AreaBusiness areaBusiness;
@@ -54,6 +56,7 @@ public class InitServlet extends HttpServlet {
 	public InitServlet() {
 
 		logger.debug("INIT");
+		
 
 		xmlSoccerClient = AppContext.getApplicationContext().getBean(
 				"xmlSoccerClientBean", XmlSoccerClient.class);
@@ -63,10 +66,20 @@ public class InitServlet extends HttpServlet {
 
 		jobConfigurationBusiness = AppContext.getApplicationContext().getBean(
 				"jobConfigurationBusinessBean", JobConfigurationBusiness.class);
+		
+		betTypeBusiness = AppContext.getApplicationContext().getBean(
+				"betTypeBusinessBean", BetTypeBusiness.class);
+		
+		
 
 		if (userBusiness.isEmpty()) {
 			userBusiness
 					.insert("paolorizzo5@gmail.com", MD5.getMD5("Anno2010"));
+		}
+		
+		if (betTypeBusiness.isEmpty()) {
+			betTypeBusiness
+					.populate();
 		}
 
 		try {
@@ -105,7 +118,7 @@ public class InitServlet extends HttpServlet {
 //						.getName(), new Date()));
 //		
 		jobConfigurations.add(new JobConfiguration("AccountStatsJob",
-				"0 0/1 12,15,18,21,0 * * ?", "scores", AccountStatsJob.class
+				"	0 0 0/6 1/1 * ? *", "scores", AccountStatsJob.class
 						.getName(), new Date()));
 		
 		

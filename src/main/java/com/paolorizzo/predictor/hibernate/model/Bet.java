@@ -35,10 +35,10 @@ public class Bet implements Serializable{
 	@Column(name = "INSERT_DATE", nullable = false)
 	private Date insertDate;
 	
-	@Column(name = "EVENT_DESCRIPTION", length = 100,nullable = false)
+	@Column(name = "EVENT_DESCRIPTION", length = 40,nullable = false)
 	private String eventDescription;
 	
-	@Column(name = "BETTYPE_DESCRIPTION", length = 30,nullable = false)
+	@Column(name = "BETTYPE_DESCRIPTION", length = 100,nullable = false)
 	private String bettypeDescription;
 	
 	@Column(name = "AMOUNT",nullable = false)

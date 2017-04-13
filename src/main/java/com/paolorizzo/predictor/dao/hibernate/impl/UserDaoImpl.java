@@ -8,6 +8,7 @@ import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
 import com.paolorizzo.predictor.dao.facade.UserDao;
+import com.paolorizzo.predictor.enums.UserStatus;
 import com.paolorizzo.predictor.hibernate.model.User;
 
 public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
@@ -38,7 +39,8 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 		try {
 			DetachedCriteria criteria = DetachedCriteria.forClass(User.class)
 					.add(Restrictions.eq("email", email))
-					.add(Restrictions.eq("password", password));
+					.add(Restrictions.eq("password", password))
+					.add(Restrictions.eq("status", UserStatus.ON.name()));
 
 			List<?> users = getHibernateTemplate().findByCriteria(criteria);
 			return (User) users.get(0);
@@ -72,6 +74,21 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 			return true;
 		} catch (Exception exception) {
 			return false;
+		}
+	}
+
+	@Override
+	public User firstLogin(String email, String password) {
+		try {
+			DetachedCriteria criteria = DetachedCriteria.forClass(User.class)
+					.add(Restrictions.eq("email", email))
+					.add(Restrictions.eq("password", password))
+					.add(Restrictions.eq("status", UserStatus.STANDBY.name()));
+
+			List<?> users = getHibernateTemplate().findByCriteria(criteria);
+			return (User) users.get(0);
+		} catch (Exception exception) {
+			return null;
 		}
 	}
 

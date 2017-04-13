@@ -30,6 +30,7 @@ app
 								 * 
 								 */
 								$scope.setProspect($scope.account);
+								console.log("donut Stats1");
 								
 							};
 							
@@ -88,12 +89,12 @@ app
 										.fromJson($window.sessionStorage
 												.getItem("selectedAccount"));
 								
-								console.log ("scope.account: " + $scope.account);
 								$scope.setProspect($scope.account);
+								console.log("donut Stats2");
 								
 							} else {
 								console.log ("$stateParams.account valorizzato");
-								//$scope.account = $stateParams.account;
+								// $scope.account = $stateParams.account;
 								console.log ("scope.account: " + $scope.account);
 								AccountService.get($stateParams.account.name,$scope.userDto.email,$scope.configuration.serviceUrl)
 								.then(
@@ -101,6 +102,7 @@ app
 										if (d.data != null) {
 											if(d.data.result == true){
 												$scope.storeAccountInSession(d.data.account);
+												console.log("donut Stats3");
 											}
 										} else {
 
@@ -348,11 +350,5 @@ app
 							$scope.viewDiv = function(divToShow){
 								$scope.visibleDiv = divToShow;
 							};
-							
-							
-							
 
 						} ]);
-
-
-

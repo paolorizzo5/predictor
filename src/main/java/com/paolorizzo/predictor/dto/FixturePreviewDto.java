@@ -50,6 +50,8 @@ public class FixturePreviewDto {
 	private Integer handicapAway1_2;
 
 	private List<HistoricMatchDto> previousMatches;
+	
+	
 
 	public FixturePreviewDto() {
 		this.gamesPlayed = 0;

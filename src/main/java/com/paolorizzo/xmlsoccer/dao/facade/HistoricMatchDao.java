@@ -22,7 +22,7 @@ public interface HistoricMatchDao {
 	List<XmlSoccer_HistoricMatch> getHistoricMatchesByTeams(String homeTeamId,
 			String awayTeamId);
 
-	List<XmlSoccer_HistoricMatch> getLast5(String teamId);
+	List<XmlSoccer_HistoricMatch> getLastMatches(String teamId,Integer number);
 
 	List<XmlSoccer_HistoricMatch> getSeasonStats(String homeTeamId,
 			String awayTeamId, String league, String season);

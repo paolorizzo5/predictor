@@ -1,0 +1,180 @@
+<section class="tile" fullscreen="isFullscreen01">
+	<div class="tile-header dvd dvd-btm">
+		<h1 class="custom-font">
+			<strong>{{'STATS' | translate}}</strong>
+		</h1>
+		<ul class="controls">
+			<li class="dropdown" uib-dropdown on-toggle="toggled(open)"><a
+				href uib-dropdown-toggle class="dropdown-toggle settings"><i
+					class="fa fa-cog"></i></a>
+
+				<ul
+					class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+					<li><a href tile-control-toggle> <span class="minimize"><fa
+									name="angle-down"></fa>&nbsp;&nbsp;&nbsp;Minimize</span> <span
+							class="expand"><fa name="angle-up"></fa>&nbsp;&nbsp;&nbsp;Expand</span>
+					</a></li>
+					<li><a href tile-control-refresh ng-click="ajaxFaker()"> <fa
+								name="refresh"></fa> Refresh
+					</a></li>
+					<li><a href tile-control-fullscreen
+						ng-click="isFullscreen01 = !isFullscreen01"> <fa name="expand"></fa>
+							Fullscreen
+					</a></li>
+					<li><a href tile-control-lightbox> <fa name="magnet"></fa>
+							Open in Lightbox
+					</a></li>
+
+				</ul></li>
+			<li class="remove"><a><i class="fa fa-times"></i></a></li>
+		</ul>
+	</div>
+	<div class="tile-widget"></div>
+	<!-- /tile widget -->
+
+	<!-- tile body -->
+	<div class="tile-body">
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>{{'ITEM' | translate}}</th>
+					<th>{{'ITEM' | translate}}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>{{'DirettaStats.TOTAL_MATCHES' | translate}}</td>
+					<td>{{stats._matches}}</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>{{'DirettaStats._1' | translate}}</td>
+					<td>{{stats._1}}</td>
+					<td>{{stats._1 / stats._matches * 100 | number : 2}}</td>
+				</tr>
+				<tr>
+					<td>{{'DirettaStats._X' | translate}}</td>
+					<td>{{stats._X}}</td>
+					<td>{{stats._X / stats._matches * 100 | number : 2}}</td>
+				</tr>
+				<tr>
+					<td>{{'DirettaStats._2' | translate}}</td>
+					<td>{{stats._2}}</td>
+					<td>{{stats._2 / stats._matches * 100 | number : 2}}</td>
+				</tr>
+				<tr>
+					<td>{{'DirettaStats.EVEN' | translate}}</td>
+					<td>{{stats._even}}</td>
+					<td>{{stats._even / stats._matches * 100 | number : 2}}</td>
+				</tr>
+				<tr>
+					<td>{{'DirettaStats.ODD' | translate}}</td>
+					<td>{{stats._odd}}</td>
+					<td>{{stats._odd / stats._matches * 100 | number : 2}}</td>
+				</tr>
+				<tr>
+					<td>{{'DirettaStats.HOME_EVEN' | translate}}</td>
+					<td>{{stats._homeEven}}</td>
+					<td>{{stats._homeEven / stats._matches * 100 | number : 2}}</td>
+				</tr>
+				<tr>
+					<td>{{'DirettaStats.HOME_ODD' | translate}}</td>
+					<td>{{stats._homeOdd}}</td>
+					<td>{{stats._homeOdd / stats._matches * 100 | number : 2}}</td>
+				</tr>
+				<tr>
+					<td>{{'DirettaStats.AWAY_EVEN' | translate}}</td>
+					<td>{{stats._awayEven}}</td>
+					<td>{{stats._awayEven / stats._matches * 100 | number : 2}}</td>
+				</tr>
+				<tr>
+					<td>{{'DirettaStats.AWAY_ODD' | translate}}</td>
+					<td>{{stats._awayOdd}}</td>
+					<td>{{stats._awayOdd / stats._matches * 100 | number : 2}}</td>
+				</tr>
+				
+				
+				<tr>
+					<td>{{'DirettaStats.HANDICAPHOME2_1' | translate}}</td>
+					<td>{{stats._handicapHome2_1}}</td>
+					<td>{{stats._handicapHome2_1 / stats._matches * 100 | number : 2}}</td>
+				</tr>
+				
+				<tr>
+					<td>{{'DirettaStats.HANDICAPHOME2_X' | translate}}</td>
+					<td>{{stats._handicapHome2_X}}</td>
+					<td>{{stats._handicapHome2_X / stats._matches * 100 | number : 2}}</td>
+				</tr>
+				
+				<tr>
+					<td>{{'DirettaStats.HANDICAPHOME2_2' | translate}}</td>
+					<td>{{stats._handicapHome2_2}}</td>
+					<td>{{stats._handicapHome2_2 / stats._matches * 100 | number : 2}}</td>
+				</tr>
+				
+				<tr>
+					<td>{{'DirettaStats.HANDICAPHOME1_1' | translate}}</td>
+					<td>{{stats._handicapHome1_1}}</td>
+					<td>{{stats._handicapHome1_1 / stats._matches * 100 | number : 2}}</td>
+				</tr>
+				
+				<tr>
+					<td>{{'DirettaStats.HANDICAPHOME1_X' | translate}}</td>
+					<td>{{stats._handicapHome1_X}}</td>
+					<td>{{stats._handicapHome1_X / stats._matches * 100 | number : 2}}</td>
+				</tr>
+				
+				<tr>
+					<td>{{'DirettaStats.HANDICAPHOME1_2' | translate}}</td>
+					<td>{{stats._handicapHome1_2}}</td>
+					<td>{{stats._handicapHome1_2 / stats._matches * 100 | number : 2}}</td>
+				</tr>
+				
+				<tr>
+					<td>{{'DirettaStats.HANDICAPAWAY1_1' | translate}}</td>
+					<td>{{stats._handicapAway1_1}}</td>
+					<td>{{stats._handicapAway1_1 / stats._matches * 100 | number : 2}}</td>
+				</tr>
+				
+				<tr>
+					<td>{{'DirettaStats.HANDICAPAWAY1_X' | translate}}</td>
+					<td>{{stats._handicapAway1_X}}</td>
+					<td>{{stats._handicapAway1_X / stats._matches * 100 | number : 2}}</td>
+				</tr>
+				
+				<tr>
+					<td>{{'DirettaStats.HANDICAPAWAY1_2' | translate}}</td>
+					<td>{{stats._handicapAway1_2}}</td>
+					<td>{{stats._handicapAway1_2 / stats._matches * 100 | number : 2}}</td>
+				</tr>
+				
+				<tr>
+					<td>{{'DirettaStats.HANDICAPAWAY2_1' | translate}}</td>
+					<td>{{stats._handicapAway2_1}}</td>
+					<td>{{stats._handicapAway2_1 / stats._matches * 100 | number : 2}}</td>
+				</tr>
+				
+				<tr>
+					<td>{{'DirettaStats.HANDICAPAWAY2_X' | translate}}</td>
+					<td>{{stats._handicapAway2_X}}</td>
+					<td>{{stats._handicapAway2_X / stats._matches * 100 | number : 2}}</td>
+				</tr>
+				
+				<tr>
+					<td>{{'DirettaStats.HANDICAPAWAY2_2' | translate}}</td>
+					<td>{{stats._handicapAway2_2}}</td>
+					<td>{{stats._handicapAway2_2 / stats._matches * 100 | number : 2}}</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<table class="table table-bordered">
+
+
+		</table>
+	</div>
+
+	<div class="tile-footer"></div>
+
+</section>

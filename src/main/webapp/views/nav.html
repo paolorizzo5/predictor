@@ -15,7 +15,9 @@
 				<li ui-sref-active="active"><a
 					ui-sref="app.dailyFixtures({league:league,daily:true})"><fa
 							name="caret-right"></fa>{{ 'DAILY.MATCHES' | translate }}</a></li>
-				
+				<li ui-sref-active="active"><a
+					ui-sref="app.direttaFixtures()"><fa
+							name="caret-right"></fa>{{ 'HISTORIC.MATCHES.PANEL' | translate }}</a></li>
 			</ul></li>
 
 	</ul>
@@ -53,7 +55,19 @@
 	</ul>
 	
 	
-	
+	<ul id="navigation" nav-collapse ripple>
+		<li ui-sref-active="active"
+			ng-class="{'open':$state.includes('app.ui')}"><a
+			ui-sref="app.ui"><fa name="pencil"></fa> <span>{{
+					'Menu.ADMINISTRATION' | translate }}</span></a>
+			<ul>
+				<li ui-sref-active="active"><a
+					ui-sref="app.uploadExcelFixtures()"><fa
+							name="caret-right"></fa>{{ 'Administration.UPLOAD_FIXTURES' | translate }}</a></li>
+				
+			</ul></li>
+
+	</ul>
 	
 	
 	

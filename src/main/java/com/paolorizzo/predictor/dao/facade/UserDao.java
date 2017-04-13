@@ -16,4 +16,6 @@ public interface UserDao {
 
 	Boolean update(User user);
 
+	User firstLogin(String email, String password);
+
 }

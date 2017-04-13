@@ -7,6 +7,10 @@
 	"FULLTIME.1X2.005.HOME_TEAM_WINS_OR_AWAY_TEAM_WINS.SHORT": "12",
 	"FULLTIME.1X2.006.DRAW_OR_AWAY_TEAM_WINS.SHORT": "X2",
 	
+	"UTILITIES" : "Servizi",
+	
+	"HISTORIC.MATCHES.PANEL": "Storico Risultati e Quote",
+	
 	"MENU" : "Menu",
 
 
@@ -97,6 +101,8 @@
 
 
 	"DETAIL": "Dettaglio",
+	"FILTER": "Filtro",
+	"FIXTURES": "Partite",
 
 	"GOAL": "Goal",
 	"UNDER": "Under",
@@ -140,7 +146,8 @@
 	"UNDO": "Undo",
 	"CREDITS_LEFT": "Credits Left",
 	"DAILY.MATCHES": "Palinsesto giornaliero",
-
+	"SELECT.COMPETITION": "Competizione",
+	
 
 
 	"ITA_TOURNAMENT_YEAR_DESC": "Italian Serie a 2016 / 17 - One vs All",
@@ -229,7 +236,8 @@
 		"PLAY": "Play",
 		"ADMIN_CHECK": "Admin Check",
 		"ACCOUNTS": "I miei Conti Di Gioco",
-
+		"ADMINISTRATION": "Amministrazione",
+		
 		"Admin_Check": {
 			"PERFORMANCES": "Performances",
 			"ALERTS": "Alerts"
@@ -381,6 +389,45 @@
 		"AMOUNT" : "Importo"
 		
 	},
+	"Administration": {
+		"UPLOAD_FIXTURES": "Carica partite da file excel"
+	},
+	
+	"DirettaStats": {
+		"TOTAL_MATCHES": "Numero di Incontri",
+		"_1" :"1",
+		"_X" :"X",
+		"_2" :"2",
+		"EVEN" :"Pari",
+		"ODD" :"Dispari",
+		"HOME_EVEN" : "Pari Casa",
+		"HOME_ODD" : "Dispari Casa",
+		"AWAY_EVEN" : "Goal Pari Trasferta",
+		"AWAY_ODD" : "Goal Dispari Casa",
+		"HANDICAPHOME2_1" :" -2 goal Casa (1)",
+		"HANDICAPHOME2_X" :" -2 goal Casa (X)",
+		"HANDICAPHOME2_2" :" -2 goal Casa (2)",
+		"HANDICAPHOME1_1" :" -1 goal Casa (1)",
+		"HANDICAPHOME1_X" :" -1 goal Casa (X)",
+		"HANDICAPHOME1_2" :" -1 goal Casa (2)",
+		"HANDICAPAWAY1_1" :" -1 goal Trasferta (1)",
+		"HANDICAPAWAY1_X" :" -1 goal Trasferta (X)",
+		"HANDICAPAWAY1_2" :" -1 goal Trasferta (2)",
+		"HANDICAPAWAY2_1" :" -2 goal Trasferta (1)",
+		"HANDICAPAWAY2_X" :" -2 goal Trasferta (X)",
+		"HANDICAPAWAY2_2" :" -2 goal Trasferta (2)"
+	},
+	"Masaniello": {
+		"INSERT_NAME": "Dai un nome al tuo Masaniello",
+		"INSERT_AMOUNT": "Inserisci l'importo",
+		"INSERT_ROUNDS": "Inserisci il numero massimo di eventi",
+		"INSERT_EVENT_TO_WIN": "Inserisci il numero di prese previste",
+		"INSERT_BETTYPE": "Seleziona la tipologia di evento",
+		"INSERT_AVERAGE_QUOTE": "Inserisci la quota media",
+		"INSERT_PERCENTAGE": "Inserisci la percentuale di profitto",
+		"INSERT_PATRIMONY_PERCENTAGE" : "Inserisci la percentuale di patrimonio da rischiare"
+	},
+	
 
 	"LOGIN.ERROR": "Login Error",
 	"SUBMIT": "Submit",

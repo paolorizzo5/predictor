@@ -1,0 +1,56 @@
+<div class="page page-tiles" ng-controller="DirettaFixturesController">
+
+	<!-- page header -->
+	<div class="pageheader">
+		<h2>{{'HISTORIC.MATCHES.PANEL' | translate}}</h2>
+	</div>
+	<!-- /page header -->
+
+	<!-- page content -->
+	<div class="pagecontent">
+
+		<!-- row -->
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="btn-group mb-20">
+					<button type="button" class="btn btn-default dropdown-toggle"
+						data-toggle="dropdown">
+						{{'MENU' | translate}} <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href ng-click="viewDiv('showSummary');">{{'Account.SUMMARY'
+								| translate}}</a></li>
+						<li class="divider"></li>
+						<li><a href ng-click="viewDiv('showProspect');">{{'Account.MY_PROSPECT'
+								| translate}}</a></li>
+						<li><a href ng-click="viewDiv('showBets');">{{'Account.MY_BETS'
+								| translate}}</a></li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="row">
+			<!-- col -->
+			<div class="col-md-3">
+				<div ng-include="'views/tmpl/fixture/diretta/filter.html'"></div>
+				
+					<div ng-include="'views/tmpl/fixture/diretta/masaniello.html'"></div>
+			</div>
+
+			<div class="col-md-6" ng-show="direttaFixtures != null">
+				<div ng-include="'views/tmpl/fixture/diretta/fixtures.html'"></div>
+					
+			</div>
+			<div class="col-md-3" ng-show="direttaFixtures != null">
+					<div ng-include="'views/tmpl/fixture/diretta/stats.html'"></div>
+			</div>
+		</div>
+
+		<!-- col -->
+	</div>
+	<!-- /row -->
+</div>
+<!-- /page content -->

@@ -30,11 +30,19 @@ public class User implements Serializable {
 	@Column(name = "PASSWORD", nullable = false, length = 32)
 	private String password;
 	
+	@Column(name = "STATUS", nullable = false, length = 10)
+	private String status;
+	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
 	private List<Prospect> prospects;
 	
+	
 	@Column(name = "PORTFOLIO_AMOUNT", nullable = false)
 	private BigDecimal portFolioAmount;
+	
+	@OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "user")
+	@Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
+	private List<Masaniello> masaniellos;
 	
 
 	public User() {
@@ -50,10 +58,11 @@ public class User implements Serializable {
 
 
 
-	public User(String email, String password) {
+	public User(String email, String password,String status) {
 		super();
 		this.email = email;
 		this.password = password;
+		this.status = status;
 		this.portFolioAmount = new BigDecimal(0);
 	}
 
@@ -100,6 +109,18 @@ public class User implements Serializable {
 
 	public void setPortFolioAmount(BigDecimal portFolioAmount) {
 		this.portFolioAmount = portFolioAmount;
+	}
+
+
+
+	public String getStatus() {
+		return status;
+	}
+
+
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 

@@ -153,6 +153,13 @@
 	<bean id="xmlSoccerServiceBean" class="com.github.pabloo99.xmlsoccer.client.XmlSoccerServiceImpl">
 	</bean>
 	
+	<bean id="webServiceApiDetailBusinessBean" class="com.paolorizzo.predictor.business.WebServiceApiDetailBusiness">
+		<constructor-arg name="webServiceApiDetailDao" ref="webServiceApiDetailDaoBean"></constructor-arg>
+	</bean>
+	
+	<bean id="webServiceApiDetailDaoBean" class="com.paolorizzo.predictor.dao.hibernate.impl.WebServiceApiDetailDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 	
 	<bean id="leagueBusinessBean" class="com.paolorizzo.xmlsoccer.business.LeagueBusiness">
 		<constructor-arg name="leagueDao" ref="leagueDaoBean"></constructor-arg>
@@ -163,7 +170,9 @@
 	</bean>
 	
 	<bean id="teamBusinessBean" class="com.paolorizzo.xmlsoccer.business.TeamBusiness">
-		<constructor-arg name="leagueDao" ref="teamDaoBean"></constructor-arg>
+		<constructor-arg name="teamDao" ref="teamDaoBean"></constructor-arg>
+		<constructor-arg name="historicMatchBusiness" ref="historicMatchBusinessBean"></constructor-arg>
+		
 	</bean>
 
 	<bean id="teamDaoBean" class="com.paolorizzo.xmlsoccer.dao.hibernate.impl.TeamDaoImpl">
@@ -180,6 +189,8 @@
 	
 	<bean id="fixtureBusinessBean" class="com.paolorizzo.xmlsoccer.business.FixtureBusiness">
 		<constructor-arg name="fixtureDao" ref="fixtureDaoBean"></constructor-arg>
+		<constructor-arg name="webServiceApiDetailBusiness" ref="webServiceApiDetailBusinessBean"></constructor-arg>
+		<constructor-arg name="xmlSoccerServiceBean" ref="xmlSoccerServiceBean"></constructor-arg>
 	</bean>
 
 	<bean id="fixtureDaoBean" class="com.paolorizzo.xmlsoccer.dao.hibernate.impl.FixtureDaoImpl">
@@ -246,14 +257,63 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
+	<bean id="teamProgressionStatsBusinessBean" class="com.paolorizzo.xmlsoccer.business.TeamProgressionStatsBusiness">
+		<constructor-arg name="teamProgressionStatsDao" ref="teamProgressionStatsDaoBean"></constructor-arg>
+		
+	</bean>
+	
+	<bean id="teamProgressionStatsDaoBean" class="com.paolorizzo.xmlsoccer.dao.hibernate.impl.TeamProgressionStatsDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="direttaFixtureBusinessBean" class="com.paolorizzo.predictor.business.DirettaFixtureBusiness">
+		<constructor-arg name="direttaFixtureBusinessDao" ref="direttaFixtureBusinessDaoBean"></constructor-arg>
+		<constructor-arg name="accountBusiness" ref="accountBusinessBean"></constructor-arg>	
+		<constructor-arg name="betMatcherBusiness" ref="betMatcherBusinessBean"></constructor-arg>	
+		<constructor-arg name="masanielloBusiness" ref="masanielloBusinessBean"></constructor-arg>	
+		
+	</bean>
+	
+	<bean id="direttaFixtureBusinessDaoBean" class="com.paolorizzo.predictor.dao.hibernate.impl.DirettaFixtureDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	
+	<bean id="betMatcherBusinessBean" class="com.paolorizzo.predictor.business.BetMatcherBusiness">
+		<constructor-arg name="betMatcherDao" ref="betMatcherDaoBean"></constructor-arg>
+	</bean>
+
+	<bean id="betMatcherDaoBean" class="com.paolorizzo.predictor.dao.hibernate.impl.BetMatcherDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="masanielloBusinessBean" class="com.paolorizzo.predictor.business.MasanielloBusiness">
+		<constructor-arg name="masanielloDao" ref="masanielloDaoBean"></constructor-arg>
+	</bean>
+	
+	<bean id="masanielloDaoBean" class="com.paolorizzo.predictor.dao.hibernate.impl.MasanielloDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="betTypeBusinessBean" class="com.paolorizzo.predictor.business.BetTypeBusiness">
+		<constructor-arg name="betTypeDao" ref="betTypeDaoBean"></constructor-arg>
+		<constructor-arg name="betMatcherBusiness" ref="betMatcherBusinessBean"></constructor-arg>
+	</bean>
+	
+	<bean id="betTypeDaoBean" class="com.paolorizzo.predictor.dao.hibernate.impl.BetTypeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+		
 	<!-- BUSINESS BEANS -->	
 	<bean id="xmlSoccerClientBean" class="com.paolorizzo.xmlsoccer.XmlSoccerClient">
 		<constructor-arg name="leagueBusiness" ref="leagueBusinessBean"></constructor-arg>
 		<constructor-arg name="teamBusiness" ref="teamBusinessBean"></constructor-arg>
 		<constructor-arg name="historicMatchBusiness" ref="historicMatchBusinessBean"></constructor-arg>
 		<constructor-arg name="fixtureBusiness" ref="fixtureBusinessBean"></constructor-arg>
-		<constructor-arg name="oddBusiness" ref="oddBusinessBean"></constructor-arg>
 		<constructor-arg name="standingBusiness" ref="standingBusinessBean"></constructor-arg>
+		<constructor-arg name="teamProgressionStatsBusiness" ref="teamProgressionStatsBusinessBean"></constructor-arg>
+		<constructor-arg name="webServiceApiDetailBusiness" ref="webServiceApiDetailBusinessBean"></constructor-arg>
+		<constructor-arg name="xmlSoccerServiceBean" ref="xmlSoccerServiceBean"></constructor-arg>
 	</bean>
 
 </beans>

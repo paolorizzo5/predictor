@@ -280,8 +280,8 @@ public class HistoricMatchBusiness {
 		return fixturePreviewDto;
 	}
 
-	public List<XmlSoccer_HistoricMatch> getLast5(String teamId) {
-		return historicMatchDao.getLast5(teamId);
+	public List<XmlSoccer_HistoricMatch> getLastMatches(String teamId,Integer number) {
+		return historicMatchDao.getLastMatches(teamId,number);
 	}
 
 	public FixturePreviewDto getSeasonStats(String homeTeamId,

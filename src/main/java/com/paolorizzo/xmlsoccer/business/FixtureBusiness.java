@@ -1,5 +1,6 @@
 package com.paolorizzo.xmlsoccer.business;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -11,6 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.github.pabloo99.xmlsoccer.api.dto.GetLiveScoreResultDto;
+import com.github.pabloo99.xmlsoccer.client.XmlSoccerServiceImpl;
+import com.paolorizzo.predictor.business.WebServiceApiDetailBusiness;
+import com.paolorizzo.predictor.constants.WebServiceApiDetailConstants;
+import com.paolorizzo.predictor.dto.WebServiceApiDetailDto;
 import com.paolorizzo.predictor.utils.SimpleUtils;
 import com.paolorizzo.predictor.xmlsoccer.hibernate.model.XmlSoccer_Fixture;
 import com.paolorizzo.xmlsoccer.XmlSoccerClient;
@@ -18,18 +23,23 @@ import com.paolorizzo.xmlsoccer.dao.facade.FixtureDao;
 
 public class FixtureBusiness {
 
-	static Logger logger = LogManager
-			.getLogger(FixtureBusiness.class.getName());
-
+	Logger logger = LogManager.getLogger("root");
+	
 	@Autowired
 	private FixtureDao fixtureDao;
 
 	@Autowired
-	private XmlSoccerClient xmlSoccerClient;
+	private WebServiceApiDetailBusiness webServiceApiDetailBusiness;
 
-	public FixtureBusiness(FixtureDao fixtureDao) {
+	@Autowired
+	private XmlSoccerServiceImpl xmlSoccerServiceBean;
+
+	public FixtureBusiness(FixtureDao fixtureDao, WebServiceApiDetailBusiness webServiceApiDetailBusiness,
+			XmlSoccerServiceImpl xmlSoccerServiceBean) {
 		super();
 		this.fixtureDao = fixtureDao;
+		this.webServiceApiDetailBusiness = webServiceApiDetailBusiness;  
+		this.xmlSoccerServiceBean = xmlSoccerServiceBean;
 	}
 
 	@Transactional(readOnly = false)
@@ -97,7 +107,17 @@ public class FixtureBusiness {
 	}
 
 	public List<GetLiveScoreResultDto> getLivescores() {
-		return xmlSoccerClient.getLivescores();
+		WebServiceApiDetailDto  webServiceApiDetailDto = webServiceApiDetailBusiness.canMakeCall(WebServiceApiDetailConstants.GET_LIVESCORE);
+		
+		if(webServiceApiDetailDto.getCanMakeCall()){
+			return xmlSoccerServiceBean.getLiveScore();
+		}else{
+			logger.debug("impossibile effettuare la chiamata a " + WebServiceApiDetailConstants.GET_LIVESCORE);
+			return new ArrayList<GetLiveScoreResultDto>();
+		}
+		
 	}
+	
+	
 
 }

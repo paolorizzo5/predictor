@@ -1,9 +1,12 @@
 package com.paolorizzo.predictor.business;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.paolorizzo.predictor.dao.facade.UserDao;
+import com.paolorizzo.predictor.enums.UserStatus;
 import com.paolorizzo.predictor.hibernate.model.User;
 import com.paolorizzo.predictor.services.response.user.UserLoginResponse;
 import com.paolorizzo.predictor.services.response.user.dto.UserDto;
@@ -15,6 +18,10 @@ public class UserBusiness {
 
 	@Autowired
 	private UserDao userDao;
+	
+	static Logger logger = LogManager.getLogger(JobConfigurationBusiness.class
+			.getName());
+
 
 	public UserBusiness(UserDao userDao) {
 		super();
@@ -25,7 +32,7 @@ public class UserBusiness {
 	public boolean insert(String email, String password) {
 		try {
 			boolean b = false;
-			User user = new User(email, password);
+			User user = new User(email, password,UserStatus.ON.name());
 			b = userDao.insert(user);
 			return b;
 		} catch (Exception exception) {
@@ -36,7 +43,7 @@ public class UserBusiness {
 	}
 
 	public boolean delete(String email) throws Exception {
-		User user = new User(email, null);
+		User user = new User(email);
 		return userDao.delete(user);
 	}
 
@@ -44,6 +51,13 @@ public class UserBusiness {
 
 		try {
 			User user = userDao.login(email, password);
+			if(user == null){
+				user = userDao.firstLogin(email, password);
+				if(user != null){
+					user.setStatus(UserStatus.ON.name());
+					update(user);
+				}
+			}
 
 			UserLoginResponse loginResponse = new UserLoginResponse(
 					UserDto.fromUser(user));
@@ -53,13 +67,13 @@ public class UserBusiness {
 		}
 	}
 
-	public User signup(String email) {
+	public Boolean signup(String email) {
 
 		boolean b;
 		try {
 			String password = SimpleUtils.generateString();
 
-			User user = new User(email, MD5.getMD5(password));
+			User user = new User(email, MD5.getMD5(password),UserStatus.STANDBY.name());
 			b = userDao.insert(user);
 			if (b) {
 				try {
@@ -69,13 +83,15 @@ public class UserBusiness {
 									"Hi,\r\nin order to complete your registration please enter the password shown below \r\n"
 											+ password);
 				} catch (Exception exception) {
+					logger.error("An error occured during email signup process");
 				}
 
 			}
-			return user;
+			return b;
 		} catch (Exception exception) {
+			logger.error("An error occured during signup process");
 		}
-		return null;
+		return false;
 
 	}
 

@@ -1,0 +1,27 @@
+<div class="page page-tiles" 
+	ng-controller="UploadExcelFixturesController" >
+
+	<!-- page header -->
+	<div class="pageheader">
+		<h2>{{'UTILITIES' | translate}}</h2>
+	</div>
+	<!-- /page header -->
+
+	<!-- page content -->
+	<div class="pagecontent">
+
+		<div class="row">
+			<div class="col-md-6">
+				{{'Administration.UPLOAD_FIXTURES' | translate}}
+			</div>
+			<div class="col-md-6">
+
+
+				<input type="file" name="file"
+					onchange="angular.element(this).scope().uploadFile(this.files)" />
+			</div>
+
+		</div>
+	</div>
+
+</div>

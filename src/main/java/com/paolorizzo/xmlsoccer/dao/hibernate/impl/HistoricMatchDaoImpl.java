@@ -76,7 +76,7 @@ public class HistoricMatchDaoImpl extends HibernateDaoSupport implements
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<XmlSoccer_HistoricMatch> getLast5(String teamId) {
+	public List<XmlSoccer_HistoricMatch> getLastMatches(String teamId,Integer number) {
 		DetachedCriteria criteria = DetachedCriteria
 				.forClass(XmlSoccer_HistoricMatch.class)
 				.add(Restrictions.or(Restrictions.eq("homeTeam.id",
@@ -84,9 +84,13 @@ public class HistoricMatchDaoImpl extends HibernateDaoSupport implements
 						"awayTeam.id", Integer.parseInt(teamId))))
 
 				.addOrder(Order.desc("date"));
-
 		List<XmlSoccer_HistoricMatch> list = ((List<XmlSoccer_HistoricMatch>) getHibernateTemplate()
-				.findByCriteria(criteria)).subList(0, 5);
+				.findByCriteria(criteria));
+		
+		if(list.size() > 50){
+			list = list.subList(0, number);
+		}
+		
 		return list;
 
 	}

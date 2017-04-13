@@ -45,7 +45,7 @@ public class ProspectBusiness {
 		prospect.setInsertDate(new Date());
 		prospect.setName(name);
 		prospect.setStepFrequency(stepFrequency);
-		prospect.setUser(new User(email, null));
+		prospect.setUser(new User(email));
 		BigDecimal expectedGoal = initialAmount;
 		Date startDate = new Date();
 		

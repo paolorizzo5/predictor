@@ -1,8 +1,15 @@
 package com.paolorizzo.predictor.xmlsoccer.hibernate.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -27,6 +34,9 @@ public class XmlSoccer_Team {
 
 	@Column(name = "WIKI_LINK", length = 300)
 	private String wikiLink;
+	
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "team", cascade = CascadeType.ALL)
+	private XmlSoccer_TeamProgressionStats teamProgressionStats;
 
 	public XmlSoccer_Team(int id) {
 		super();
@@ -85,4 +95,16 @@ public class XmlSoccer_Team {
 		this.wikiLink = wikiLink;
 	}
 
+	public XmlSoccer_TeamProgressionStats getTeamProgressionStats() {
+		return teamProgressionStats;
+	}
+
+	public void setTeamProgressionStats(XmlSoccer_TeamProgressionStats teamProgressionStats) {
+		this.teamProgressionStats = teamProgressionStats;
+	}
+
+	
+
+
+	
 }

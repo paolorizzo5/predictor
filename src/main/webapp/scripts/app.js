@@ -157,6 +157,11 @@ var app = angular
       controller: 'DailyController',
       templateUrl: 'views/tmpl/fixture/daily.html'
     })
+      .state('app.direttaFixtures', {
+      url: '/fixture/diretta/',
+      controller: 'DirettaFixturesController',
+      templateUrl: 'views/tmpl/fixture/diretta.html'
+    })
     .state('app.accountAdd', {
       url: '/account/accountAdd/',
       controller: 'AccountAddController',
@@ -166,6 +171,11 @@ var app = angular
       url: '/league/accountDetail/',
       params: {account: null},
       templateUrl: 'views/tmpl/account/accountDetail.html'
+    })
+     .state('app.uploadExcelFixtures', {
+      url: '/administration/uploadExcelFixtures/',
+      params: {league: null,daily:true},
+      templateUrl: 'views/tmpl/administration/uploadExcelFixtures.html'
     })
 
 

@@ -66,9 +66,6 @@ public class Account implements Serializable{
 	@Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
 	private List<AccountStats> accountStats;
 	
-	
-	
-	
 	public Account(String name, User user) {
 		super();
 		this.name = name;

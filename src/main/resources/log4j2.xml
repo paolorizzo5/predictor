@@ -19,6 +19,8 @@ filePattern="${log-path}/predictor-%d{yyyy-MM-dd}-%i.log" >
 		<Logger name="root" level="debug" additivity="false">
 			<appender-ref ref="RollingFile" level="debug"/>
 		</Logger>
+		<logger name="org.hibernate" level="OFF" additivity="false">
+		</logger>
 		<Root level="debug" additivity="false">
 			<AppenderRef ref="RollingFile"/>
 		</Root>

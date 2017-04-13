@@ -23,6 +23,7 @@ import com.paolorizzo.xmlsoccer.business.FixtureBusiness;
 import com.paolorizzo.xmlsoccer.business.HistoricMatchBusiness;
 import com.paolorizzo.xmlsoccer.business.OddBusiness;
 import com.paolorizzo.xmlsoccer.business.StandingBusiness;
+import com.paolorizzo.xmlsoccer.business.TeamBusiness;
 import com.paolorizzo.xmlsoccer.data.converter.OddDataConverter;
 import com.paolorizzo.xmlsoccer.data.converter.StandingDataConverter;
 
@@ -39,6 +40,8 @@ public class XmlSoccerUpdateJob implements Job {
 	private StandingBusiness standingBusiness;
 
 	private OddBusiness oddBusiness;
+
+	private TeamBusiness teamBusiness;
 
 	Logger logger = LogManager.getLogger("root");
 
@@ -60,6 +63,9 @@ public class XmlSoccerUpdateJob implements Job {
 
 		oddBusiness = AppContext.getApplicationContext().getBean(
 				"oddBusinessBean", OddBusiness.class);
+		
+		teamBusiness = AppContext.getApplicationContext().getBean(
+				"teamBusinessBean", TeamBusiness.class);
 
 		xmlSoccerClient = AppContext.getApplicationContext().getBean(
 				"xmlSoccerClientBean", XmlSoccerClient.class);
@@ -115,6 +121,8 @@ public class XmlSoccerUpdateJob implements Job {
 			if (historicMatch != null) {
 				try {
 					historicMatchBusiness.insert(historicMatch);
+					teamBusiness.updateTeamProgressionStats(historicMatch.getHomeTeam());
+					teamBusiness.updateTeamProgressionStats(historicMatch.getAwayTeam());
 					try {
 						leagueSeasonDtos.add(new LeagueSeasonDto(
 								xmlSoccer_Fixture.getLeague().getId() + "",
