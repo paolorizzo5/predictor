@@ -3,10 +3,13 @@ package com.paolorizzo.predictor.hibernate.model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.paolorizzo.predictor.dto.FixtureDto;
@@ -46,6 +49,8 @@ public class DirettaFixture implements Serializable,Comparable<DirettaFixture> {
 	@Column(name = "CURRENT_COMPETITION",length = 100)
 	private String currentCompetition;
 
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "direttaFixtures")
+	private List<MasanielloRound> masanielloRounds;
 
 	public Date getDate() {
 		return date;
@@ -124,12 +129,22 @@ public class DirettaFixture implements Serializable,Comparable<DirettaFixture> {
 	public int compareTo(DirettaFixture o) {
 		return this.getDate().compareTo(o.getDate());
 	}
+	
+	
+
+	public List<MasanielloRound> getMasanielloRounds() {
+		return masanielloRounds;
+	}
+
+	public void setMasanielloRounds(List<MasanielloRound> masanielloRounds) {
+		this.masanielloRounds = masanielloRounds;
+	}
 
 	@Override
 	public String toString() {
-		return "DirettaFixture [date=" + date + ", homeTeam=" + homeTeam + ", awayTeam=" + awayTeam + ", homeGoals="
-				+ homeGoals + ", awayGoals=" + awayGoals + ", quota1=" + quota1 + ", quotaX=" + quotaX + ", quota2="
-				+ quota2 + ", currentCompetition=" + currentCompetition + "]";
+		return "DirettaFixture [date=" +  date + ", " + homeTeam + " - " + awayTeam + " "
+				+ homeGoals + " - " + awayGoals + " Quote:	" + quota1 + "	" + quotaX + "	"
+				+ quota2 + "	" + currentCompetition + "]";
 	}
 	
 	

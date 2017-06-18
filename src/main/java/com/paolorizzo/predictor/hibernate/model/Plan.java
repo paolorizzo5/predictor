@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+
 @Entity
 @Table(name="PLANS")
 public class Plan implements Serializable{
@@ -21,7 +23,8 @@ public class Plan implements Serializable{
 	private static final long serialVersionUID = 1199298712640421931L;
 
 	@Id
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "plan", cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "plan")
+	@Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
 	private Prospect prospect;
 	
 	@Id

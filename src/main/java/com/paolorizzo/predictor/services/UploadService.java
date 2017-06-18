@@ -16,6 +16,7 @@ import org.apache.log4j.Logger;
 
 import com.google.gson.Gson;
 import com.paolorizzo.predictor.business.DirettaFixtureBusiness;
+import com.paolorizzo.predictor.business.TennisFixtureBusiness;
 import com.paolorizzo.predictor.spring.AppContext;
 import com.sun.jersey.core.header.FormDataContentDisposition;
 import com.sun.jersey.multipart.FormDataParam;
@@ -28,6 +29,27 @@ public class UploadService {
 	DirettaFixtureBusiness direttaFixtureBusiness = AppContext.getApplicationContext().getBean(
 			"direttaFixtureBusinessBean", DirettaFixtureBusiness.class);
 
+	TennisFixtureBusiness tennisFixtureBusiness = AppContext.getApplicationContext().getBean(
+			"tennisFixtureBusinessBean", TennisFixtureBusiness.class);
+
+	@POST
+	@Path("/uploadTennisFixtures")
+	@Consumes(MediaType.MULTIPART_FORM_DATA)
+	public Response uploadTennisFixtures(@FormDataParam("file") InputStream inputStream,
+		    @FormDataParam("file") FormDataContentDisposition fileDetails) {
+	       
+		@SuppressWarnings("unused")
+		Gson gson = new Gson();
+		tennisFixtureBusiness.addFromFile(inputStream,fileDetails);
+		try {
+			inputStream.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return Response.status(Status.OK).entity("MOCK").build();
+	}
+	
 	@POST
 	@Path("/uploadFixtures")
 	@Consumes(MediaType.MULTIPART_FORM_DATA)

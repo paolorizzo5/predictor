@@ -3,8 +3,8 @@ package com.paolorizzo.predictor.hibernate.model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 @Entity
 @Table(name = "USERS")
@@ -33,7 +34,8 @@ public class User implements Serializable {
 	@Column(name = "STATUS", nullable = false, length = 10)
 	private String status;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+	@Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
 	private List<Prospect> prospects;
 	
 	
@@ -41,8 +43,8 @@ public class User implements Serializable {
 	private BigDecimal portFolioAmount;
 	
 	@OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "user")
-	@Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
-	private List<Masaniello> masaniellos;
+	@Cascade({ CascadeType.ALL, CascadeType.DELETE_ORPHAN })
+	private Set<MasanielloPlan> masanielloPlans;
 	
 
 	public User() {
@@ -121,6 +123,18 @@ public class User implements Serializable {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+
+
+	public Set<MasanielloPlan> getMasanielloPlans() {
+		return masanielloPlans;
+	}
+
+
+
+	public void setMasanielloPlans(Set<MasanielloPlan> masanielloPlans) {
+		this.masanielloPlans = masanielloPlans;
 	}
 
 

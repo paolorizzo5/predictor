@@ -1,6 +1,7 @@
 package com.paolorizzo.predictor.dao.hibernate.impl;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
@@ -12,6 +13,7 @@ import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 import com.paolorizzo.predictor.dao.facade.DirettaFixtureDao;
 import com.paolorizzo.predictor.hibernate.model.DirettaFixture;
 import com.paolorizzo.predictor.hibernate.model.JobConfiguration;
+import com.paolorizzo.predictor.utils.SimpleUtils;
 
 public class DirettaFixtureDaoImpl extends HibernateDaoSupport implements DirettaFixtureDao {
 
@@ -62,7 +64,7 @@ public class DirettaFixtureDaoImpl extends HibernateDaoSupport implements Dirett
 
 	@Override
 	public List<DirettaFixture> getDirettaFixtures(String competition,String homeTeam,String awayTeam, BigDecimal quota1From, BigDecimal quota1To,
-			BigDecimal quotaXFrom, BigDecimal quotaXTo, BigDecimal quota2From, BigDecimal quota2To) {
+			BigDecimal quotaXFrom, BigDecimal quotaXTo, BigDecimal quota2From, BigDecimal quota2To,Date dateFrom,Date dateTo,Integer limit,boolean shuffle) {
 		DetachedCriteria criteria = DetachedCriteria.forClass(
 				DirettaFixture.class);
 		
@@ -93,11 +95,25 @@ public class DirettaFixtureDaoImpl extends HibernateDaoSupport implements Dirett
 				if(awayTeam != null){
 					criteria = criteria.add(Restrictions.eq("awayTeam", awayTeam));
 				}
+				if(dateFrom != null){
+					criteria = criteria.add(Restrictions.gt("date", dateFrom));
+				}
+				
+				if(dateTo != null){
+					criteria = criteria.add(Restrictions.lt("date", dateTo));
+				}
 				
 				criteria = criteria.addOrder(Order.desc("date"));
-				List<?> direttaFixtures = getHibernateTemplate().findByCriteria(
+				List<?> list = getHibernateTemplate().findByCriteria(
 						criteria);
 				
+				List<DirettaFixture> direttaFixtures = (List<DirettaFixture>) list;
+				if(shuffle){
+					direttaFixtures = SimpleUtils.shuffleList((List<DirettaFixture>)direttaFixtures);
+				}
+				
+				if(limit != null && limit < direttaFixtures.size())
+					direttaFixtures = direttaFixtures.subList(0, limit);
 				
 				
 				return (List<DirettaFixture>) direttaFixtures;

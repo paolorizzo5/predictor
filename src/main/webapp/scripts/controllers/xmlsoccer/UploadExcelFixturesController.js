@@ -70,6 +70,10 @@ app
 	    	UploadService.uploadFixtures(files[0],$scope.configuration.serviceUrl);
 	    };
 	    
+	    $scope.uploadTennisFile = function(files) {
+	    	UploadService.uploadTennisFixtures(files[0],$scope.configuration.serviceUrl);
+	    };
+	    
 	 
     
   }]);

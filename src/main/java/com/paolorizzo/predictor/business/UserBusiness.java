@@ -1,5 +1,8 @@
 package com.paolorizzo.predictor.business;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.paolorizzo.predictor.dao.facade.UserDao;
 import com.paolorizzo.predictor.enums.UserStatus;
+import com.paolorizzo.predictor.hibernate.model.MasanielloPlan;
 import com.paolorizzo.predictor.hibernate.model.User;
 import com.paolorizzo.predictor.services.response.user.UserLoginResponse;
 import com.paolorizzo.predictor.services.response.user.dto.UserDto;
@@ -19,13 +23,21 @@ public class UserBusiness {
 	@Autowired
 	private UserDao userDao;
 	
+	@Autowired
+	private MasanielloPlanBusiness masanielloPlanBusiness;
+	
+	@Autowired
+	private SimpleUtils simpleUtils;
+	
 	static Logger logger = LogManager.getLogger(JobConfigurationBusiness.class
 			.getName());
 
 
-	public UserBusiness(UserDao userDao) {
+	public UserBusiness(UserDao userDao,MasanielloPlanBusiness masanielloPlanBusiness, SimpleUtils simpleUtils) {
 		super();
 		this.userDao = userDao;
+		this.setMasanielloPlanBusiness(masanielloPlanBusiness);
+		this.simpleUtils = simpleUtils;
 	}
 
 	@Transactional(readOnly = false)
@@ -71,7 +83,7 @@ public class UserBusiness {
 
 		boolean b;
 		try {
-			String password = SimpleUtils.generateString();
+			String password = simpleUtils.generateString();
 
 			User user = new User(email, MD5.getMD5(password),UserStatus.STANDBY.name());
 			b = userDao.insert(user);
@@ -118,6 +130,34 @@ public class UserBusiness {
 
 	public Boolean update(User user) {
 		return userDao.update(user);
+	}
+
+	@Transactional(readOnly = false)
+	public Boolean deleteMasanielloPlan(String email, String name) {
+		try {
+			User user = findByEmail(email);
+			user.getMasanielloPlans().remove(masanielloPlanBusiness.getPlan(email, name));
+			update(user);
+			return true;
+		} catch (Exception exception) {
+			return false;
+		}
+	}
+
+	public MasanielloPlanBusiness getMasanielloPlanBusiness() {
+		return masanielloPlanBusiness;
+	}
+
+	public void setMasanielloPlanBusiness(MasanielloPlanBusiness masanielloPlanBusiness) {
+		this.masanielloPlanBusiness = masanielloPlanBusiness;
+	}
+
+	public SimpleUtils getSimpleUtils() {
+		return simpleUtils;
+	}
+
+	public void setSimpleUtils(SimpleUtils simpleUtils) {
+		this.simpleUtils = simpleUtils;
 	}
 
 }

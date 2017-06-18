@@ -1,29 +1,19 @@
 package com.paolorizzo.predictor.services.request;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
-public class CreateMasanielloRequest extends SimpleRequest {
+public class CreateMasanielloRequest  extends SimpleRequest implements Serializable{
 	
-	private String competition;
-	
-	private String homeTeam;
-	private String awayTeam;
-	
-	private BigDecimal quota1From;
-	private BigDecimal quotaXFrom;
-	private BigDecimal quota2From;
-	
-	private BigDecimal quota1To;
-	private BigDecimal quotaXTo;
-	private BigDecimal quota2To;
-	
-	
+	private ArrayList<PlanFilterDto> filtersBase;
+	private ArrayList<PlanFilterDto> filtersAdvanced;
 	private String masanielloUserEmail;
 	
 	
 	private String masanielloName;
-	
-	private String masanielloEventType;
 	
 	private BigDecimal masanielloAmount;
 	
@@ -33,80 +23,31 @@ public class CreateMasanielloRequest extends SimpleRequest {
 	
 	private BigDecimal masanielloAverageQuote;
 	
+	private BigDecimal masanielloAdditionalQuote;
+	
 	private BigDecimal masanielloPercentage;
 	
 	private BigDecimal initialAmount;
 	
 	private BigDecimal patrimonyPercentage;
+	
+
+	private BigDecimal lowerByWin;
+
+	private BigDecimal raiseByLoss;
+	
+	private Integer id;
 
 	
 	
-	public BigDecimal getQuota1From() {
-		return quota1From;
-	}
-	public void setQuota1From(BigDecimal quota1From) {
-		this.quota1From = quota1From;
-	}
-	public BigDecimal getQuotaXFrom() {
-		return quotaXFrom;
-	}
-	public void setQuotaXFrom(BigDecimal quotaXFrom) {
-		this.quotaXFrom = quotaXFrom;
-	}
-	public BigDecimal getQuota2From() {
-		return quota2From;
-	}
-	public void setQuota2From(BigDecimal quota2From) {
-		this.quota2From = quota2From;
-	}
-	public BigDecimal getQuota1To() {
-		return quota1To;
-	}
-	public void setQuota1To(BigDecimal quota1To) {
-		this.quota1To = quota1To;
-	}
-	public BigDecimal getQuotaXTo() {
-		return quotaXTo;
-	}
-	public void setQuotaXTo(BigDecimal quotaXTo) {
-		this.quotaXTo = quotaXTo;
-	}
-	public BigDecimal getQuota2To() {
-		return quota2To;
-	}
-	public void setQuota2To(BigDecimal quota2To) {
-		this.quota2To = quota2To;
-	}
-	public String getHomeTeam() {
-		return homeTeam;
-	}
-	public void setHomeTeam(String homeTeam) {
-		this.homeTeam = homeTeam;
-	}
-	public String getAwayTeam() {
-		return awayTeam;
-	}
-	public void setAwayTeam(String awayTeam) {
-		this.awayTeam = awayTeam;
-	}
-	public String getCompetition() {
-		return competition;
-	}
-	public void setCompetition(String competition) {
-		this.competition = competition;
-	}
+	
 	public String getMasanielloName() {
 		return masanielloName;
 	}
 	public void setMasanielloName(String masanielloName) {
 		this.masanielloName = masanielloName;
 	}
-	public String getMasanielloEventType() {
-		return masanielloEventType;
-	}
-	public void setMasanielloEventType(String masanielloEventType) {
-		this.masanielloEventType = masanielloEventType;
-	}
+	
 	public BigDecimal getMasanielloAmount() {
 		return masanielloAmount;
 	}
@@ -155,6 +96,44 @@ public class CreateMasanielloRequest extends SimpleRequest {
 	}
 	public void setPatrimonyPercentage(BigDecimal patrimonyPercentage) {
 		this.patrimonyPercentage = patrimonyPercentage;
+	}
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
+	public BigDecimal getMasanielloAdditionalQuote() {
+		return masanielloAdditionalQuote;
+	}
+	public void setMasanielloAdditionalQuote(BigDecimal masanielloAdditionalQuote) {
+		this.masanielloAdditionalQuote = masanielloAdditionalQuote;
+	}
+	public ArrayList<PlanFilterDto> getFiltersBase() {
+		return filtersBase;
+	}
+	public void setFiltersBase(ArrayList<PlanFilterDto> filtersBase) {
+		this.filtersBase = filtersBase;
+	}
+	public ArrayList<PlanFilterDto> getFiltersAdvanced() {
+		return filtersAdvanced;
+	}
+	public void setFiltersAdvanced(ArrayList<PlanFilterDto> filtersAdvanced) {
+		this.filtersAdvanced = filtersAdvanced;
+	}
+	public BigDecimal getLowerByWin() {
+		return lowerByWin;
+	}
+	public void setLowerByWin(BigDecimal lowerByWin) {
+		this.lowerByWin = lowerByWin;
+	}
+	public BigDecimal getRaiseByLoss() {
+		return raiseByLoss;
+	}
+	public void setRaiseByLoss(BigDecimal raiseByLoss) {
+		this.raiseByLoss = raiseByLoss;
 	}
 	
 	

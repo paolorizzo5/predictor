@@ -17,12 +17,7 @@ public class StandingDaoImpl extends HibernateDaoSupport implements StandingDao 
 
 	@Override
 	public void insert(XmlSoccer_Standing standing) {
-		try {
-			getHibernateTemplate().save(standing);
-		} catch (Exception exception) {
-			logger.error("Error inserting standing", exception);
-		}
-
+		getHibernateTemplate().save(standing);
 	}
 
 	@SuppressWarnings("unchecked")

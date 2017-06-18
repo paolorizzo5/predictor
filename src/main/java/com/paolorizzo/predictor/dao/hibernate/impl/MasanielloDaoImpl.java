@@ -2,6 +2,8 @@ package com.paolorizzo.predictor.dao.hibernate.impl;
 
 import java.util.List;
 
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
 import com.paolorizzo.predictor.dao.facade.MasanielloDao;
@@ -30,6 +32,19 @@ public class MasanielloDaoImpl extends HibernateDaoSupport implements Masaniello
 	public void update(Masaniello masaniello) {
 		getHibernateTemplate().update(masaniello);
 
+	}
+
+	@Override
+	public Masaniello find(String name, String planName) {
+		DetachedCriteria criteria = DetachedCriteria.forClass(
+				Masaniello.class)
+				.add(Restrictions.eq("name", name))
+				.add(Restrictions.eq("masanielloPlan.name", planName))
+				;
+		
+		List<?> masaniellos = getHibernateTemplate().findByCriteria(
+				criteria);
+		return (Masaniello) masaniellos.get(0);
 	}
 
 }

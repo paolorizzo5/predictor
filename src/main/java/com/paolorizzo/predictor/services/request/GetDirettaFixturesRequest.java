@@ -1,6 +1,7 @@
 package com.paolorizzo.predictor.services.request;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 public class GetDirettaFixturesRequest extends SimpleRequest {
 	
@@ -17,6 +18,12 @@ public class GetDirettaFixturesRequest extends SimpleRequest {
 	private BigDecimal quota1To;
 	private BigDecimal quotaXTo;
 	private BigDecimal quota2To;
+	
+	private Date dateFrom;
+	private Date dateTo;
+	
+	private Boolean fullSearch;
+	
 	public String getCompetition() {
 		return competition;
 	}
@@ -70,6 +77,24 @@ public class GetDirettaFixturesRequest extends SimpleRequest {
 	}
 	public void setAwayTeam(String awayTeam) {
 		this.awayTeam = awayTeam;
+	}
+	public Boolean getFullSearch() {
+		return fullSearch;
+	}
+	public void setFullSearch(Boolean fullSearch) {
+		this.fullSearch = fullSearch;
+	}
+	public Date getDateFrom() {
+		return dateFrom;
+	}
+	public void setDateFrom(Date dateFrom) {
+		this.dateFrom = dateFrom;
+	}
+	public Date getDateTo() {
+		return dateTo;
+	}
+	public void setDateTo(Date dateTo) {
+		this.dateTo = dateTo;
 	}
 	
 	

@@ -18,12 +18,7 @@ public class FixtureDaoImpl extends HibernateDaoSupport implements FixtureDao {
 
 	@Override
 	public void insert(XmlSoccer_Fixture fixture) {
-		try {
-			getHibernateTemplate().save(fixture);
-		} catch (Exception exception) {
-			logger.error("Error inserting fixture", exception);
-		}
-
+		getHibernateTemplate().save(fixture);
 	}
 
 	@SuppressWarnings("unchecked")

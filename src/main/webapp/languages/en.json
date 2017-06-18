@@ -1,7 +1,7 @@
 {
-	"001_1": "Risultato Finale - Vince la squadra di casa",
-	"003_2": "Risultato Finale - Vince la squadra ospite",
-	"002_X": "Risultato Finale - Pareggio",
+	"001_1": "1",
+	"003_2": "2",
+	"002_X": "X",
 
 	"FULLTIME.1X2.004.HOME_TEAM_WINS_OR_DRAW.SHORT": "1X",
 	"FULLTIME.1X2.005.HOME_TEAM_WINS_OR_AWAY_TEAM_WINS.SHORT": "12",
@@ -10,9 +10,9 @@
 	"UTILITIES" : "Servizi",
 	
 	"HISTORIC.MATCHES.PANEL": "Storico Risultati e Quote",
-	
+	"FIND": "Cerca",
 	"MENU" : "Menu",
-
+	"GET_STATISTICS" : "Gurda Statistiche",
 
 	"GNG": "Goal / No Goal",
 	"HA": "Segna Squadra",
@@ -26,6 +26,7 @@
 	"LIVESCORE": "Diretta",
 	"NO.LIVESCORES" : "Nessun evento in corso",
 	"SAFEBET.MARGIN.EXPECTED" : "Margine di sicurezza previsto per giocare",
+	"LOADING":"Attendere - Caricamento in corso...",
 
 	"LAST5": "Ultime 5 Partite",
 	"STANDING": "Classifica",
@@ -48,6 +49,7 @@
 	"GOALS.FOR": "Reti Segnate",
 	"GOALS.AGAINST": "Reti Subite",
 	"ODDS": "Quote",
+	"ODD": "Quota",
 
 
 
@@ -114,8 +116,7 @@
 
 	"HALFTIME.SHORT": "45°",
 	"FULLTIME.SHORT": "90°",
-	"Date.till.START": "Inizia Tra",
-
+	
 	"SUMMARY": "Riepilogo",
 
 	"MANAGE": "Manage",
@@ -155,6 +156,7 @@
 
 
 	"Menu": {
+	
 		"SHORTCUTS": "Scorciatoie",
 		"COMPETITIONS": "Competizioni",
 		"DASHBOARD": "Dashboard",
@@ -390,7 +392,8 @@
 		
 	},
 	"Administration": {
-		"UPLOAD_FIXTURES": "Carica partite da file excel"
+		"UPLOAD_SOCCER_FIXTURES": "CALCIO - Carica partite da file excel",
+		"UPLOAD_TENNIS_FIXTURES": "TENNIS - Carica partite da file excel"		
 	},
 	
 	"DirettaStats": {
@@ -398,12 +401,23 @@
 		"_1" :"1",
 		"_X" :"X",
 		"_2" :"2",
+		"1X2": "Risultato Finale",
 		"EVEN" :"Pari",
 		"ODD" :"Dispari",
 		"HOME_EVEN" : "Pari Casa",
 		"HOME_ODD" : "Dispari Casa",
 		"AWAY_EVEN" : "Goal Pari Trasferta",
 		"AWAY_ODD" : "Goal Dispari Casa",
+		"ODDEVEN" : "Pari / Dispari",
+		"HANDICAP" : "Handicap",
+		"HANDICAPHOME2" :" -2 goal Casa",
+		"HANDICAPHOME1" :" -1 goal Casa",
+		"HANDICAPAWAY2" :" -2 goal Trasferta",
+		"HANDICAPAWAY1" :" -1 goal Trasferta",
+		"TOTAL": "Tutte",
+		"HOME": "Casa",
+		"AWAY": "Fuori",
+		
 		"HANDICAPHOME2_1" :" -2 goal Casa (1)",
 		"HANDICAPHOME2_X" :" -2 goal Casa (X)",
 		"HANDICAPHOME2_2" :" -2 goal Casa (2)",
@@ -418,16 +432,47 @@
 		"HANDICAPAWAY2_2" :" -2 goal Trasferta (2)"
 	},
 	"Masaniello": {
+		"ID" : "ID",
+		"PLAN" : "Piano",
 		"INSERT_NAME": "Dai un nome al tuo Masaniello",
 		"INSERT_AMOUNT": "Inserisci l'importo",
 		"INSERT_ROUNDS": "Inserisci il numero massimo di eventi",
 		"INSERT_EVENT_TO_WIN": "Inserisci il numero di prese previste",
 		"INSERT_BETTYPE": "Seleziona la tipologia di evento",
 		"INSERT_AVERAGE_QUOTE": "Inserisci la quota media",
+		"INSERT_ADDITIONAL_QUOTE" : "Inserisci la quota addizionale di rischio",
 		"INSERT_PERCENTAGE": "Inserisci la percentuale di profitto",
-		"INSERT_PATRIMONY_PERCENTAGE" : "Inserisci la percentuale di patrimonio da rischiare"
-	},
+		"INSERT_PATRIMONY_PERCENTAGE" : "Inserisci la percentuale di patrimonio da rischiare",
+		"CREATE": "Crea nuovo Masaniello",
+		"MINE" : "I miei Masaniello",
+		"SHOW" : "Mostra pannello di creazione Masaniello",
+		"HIDE" : "Nascondi pannello di creazione Masaniello",
+		"ROUND_ID" : "ID",
+		"ROUND_MATCHES" : "Eventi",
+		"ROUND_SUCCESS": "Vincita",
+		"ROUND_INITIAL_AMOUNT": "Importo iniziale",
+		"ROUND_FINAL_AMOUNT": "Importo finale",
+		"ROUND_BALANCE" : "Bilancio",
+		"SELECT_PLAN" : "Seleziona il tuo piano di gioco",
+		"BASE" : "Crea nuovo Masaniello - BASE",
+		"ADVANCED" : "Crea nuovo Masaniello - AVANZATA",
+		
+		"MASANIELLO_DETAIL" : ">>",
+		"NAME" : "Nome",
+		"MATCHES" :"N° Eventi",
+		"PERCENTAGE_PROFIT" : "% di profitto",
+		"INSERT_TESTS" : "Inserisci il numero di ripetizioni che vuoi creare",
+		"ADD_FILTER" : "Aggiungi Filtro",
+		"REMOVE_FILTER" : "Rimuovi Filtro",
+		"RESET_FILTERS" : "Rimuovi Tutti i Filtri"
 	
+		
+	},
+	"FilterDate": {
+		"FROM" : "Da",
+		"TO" : "A",
+		"till.START": "Inizia Tra"
+	},
 
 	"LOGIN.ERROR": "Login Error",
 	"SUBMIT": "Submit",

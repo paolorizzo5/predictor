@@ -2,6 +2,7 @@ package com.paolorizzo.predictor.hibernate.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -30,10 +31,15 @@ public class Masaniello implements Serializable{
 	private String name;
 	
 	@Id
+	@Column(name = "ID", nullable = false)
+	private Integer id;
+	
+	@Id
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumns({
-		@JoinColumn(name="USER_EMAIL")})
-	private User user;
+		@JoinColumn(name="MASANIELLOPLAN_NAME")
+	})
+	private MasanielloPlan masanielloPlan;
 	
 	@OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "masaniello")
 	@Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
@@ -45,25 +51,25 @@ public class Masaniello implements Serializable{
 	@Column(name = "ROUNDS", nullable = false)
 	private Integer rounds;
 	
-	@Column(name = "EVENT_TO_WIN", nullable = false)
+	@Column(name = "EVENT_TO_WIN", nullable = true)
 	private Integer eventToWin;
 	
-	@Column(name = "EVENT_TYPE", nullable = false)
-	private String eventType;
-	
-	@Column(name = "PERCENTAGE", nullable = false)
+	@Column(name = "PERCENTAGE", nullable = true)
 	private BigDecimal percentage;
 	
-	@Column(name = "AVERAGE_QUOTE", nullable = false)
+	@Column(name = "AVERAGE_QUOTE", nullable = true)
 	private BigDecimal averageQuote;
+
+	@Column(name = "ADDITIONAL_QUOTE", nullable = true)
+	private BigDecimal additionalQuote;
 
 	
 	
-	
-	public Masaniello(String name, User user) {
+	public Masaniello(String name,Integer id, MasanielloPlan masanielloPlan) {
 		super();
 		this.name = name;
-		this.user = user;
+		this.masanielloPlan = masanielloPlan;
+		this.id = id;
 	}
 
 	public Masaniello() {
@@ -80,15 +86,18 @@ public class Masaniello implements Serializable{
 
 	
 
-	public User getUser() {
-		return user;
+
+	public MasanielloPlan getMasanielloPlan() {
+		return masanielloPlan;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setMasanielloPlan(MasanielloPlan masanielloPlan) {
+		this.masanielloPlan = masanielloPlan;
 	}
 
 	public List<MasanielloRound> getMasanielloRounds() {
+		if(masanielloRounds == null)
+			return new ArrayList<MasanielloRound>();
 		return masanielloRounds;
 	}
 
@@ -128,14 +137,6 @@ public class Masaniello implements Serializable{
 		this.percentage = percentage;
 	}
 
-	public String getEventType() {
-		return eventType;
-	}
-
-	public void setEventType(String eventType) {
-		this.eventType = eventType;
-	}
-
 	public BigDecimal getAverageQuote() {
 		return averageQuote;
 	}
@@ -143,6 +144,23 @@ public class Masaniello implements Serializable{
 	public void setAverageQuote(BigDecimal averageQuote) {
 		this.averageQuote = averageQuote;
 	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public BigDecimal getAdditionalQuote() {
+		return additionalQuote;
+	}
+
+	public void setAdditionalQuote(BigDecimal additionalQuote) {
+		this.additionalQuote = additionalQuote;
+	}
+	
 	
 	
 	

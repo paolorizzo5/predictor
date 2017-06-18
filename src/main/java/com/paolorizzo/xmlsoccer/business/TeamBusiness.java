@@ -24,12 +24,14 @@ public class TeamBusiness {
 	@Autowired
 	private HistoricMatchBusiness historicMatchBusiness;
 	
+	@Autowired
+	FixtureUtils fixtureUtils;
 	
-	
-	public TeamBusiness(TeamDao teamDao, HistoricMatchBusiness historicMatchBusiness) {
+	public TeamBusiness(TeamDao teamDao, HistoricMatchBusiness historicMatchBusiness,FixtureUtils fixtureUtils) {
 		super();
 		this.teamDao = teamDao;
 		this.historicMatchBusiness = historicMatchBusiness;
+		this.fixtureUtils = fixtureUtils;
 	}
 
 	@Transactional(readOnly=false)
@@ -64,11 +66,11 @@ public class TeamBusiness {
 		for (XmlSoccer_HistoricMatch xmlSoccer_HistoricMatch : historicMatches) {
 			if(xmlSoccer_HistoricMatch.getHomeTeam().getId() == team.getId()){
 				//SQUARDA DI CASA
-				if(FixtureUtils.homeTeamWins(xmlSoccer_HistoricMatch.getHomeGoals(),xmlSoccer_HistoricMatch.getAwayGoals())){
+				if(fixtureUtils.homeTeamWins(xmlSoccer_HistoricMatch.getHomeGoals(),xmlSoccer_HistoricMatch.getAwayGoals())){
 					consecutiveNotWinningStreak = 0;
 					consecutiveNotDrawingStreak++;
 					consecutiveNotLosingStreak++;
-				}else if(FixtureUtils.isDraw(xmlSoccer_HistoricMatch.getHomeGoals(),xmlSoccer_HistoricMatch.getAwayGoals())){
+				}else if(fixtureUtils.isDraw(xmlSoccer_HistoricMatch.getHomeGoals(),xmlSoccer_HistoricMatch.getAwayGoals())){
 					consecutiveNotWinningStreak++;
 					consecutiveNotDrawingStreak = 0;
 					consecutiveNotLosingStreak++;
@@ -79,11 +81,11 @@ public class TeamBusiness {
 				}
 			}else{
 				//SQUADRA DI TRASFERTA
-				if(FixtureUtils.homeTeamWins(xmlSoccer_HistoricMatch.getHomeGoals(),xmlSoccer_HistoricMatch.getAwayGoals())){
+				if(fixtureUtils.homeTeamWins(xmlSoccer_HistoricMatch.getHomeGoals(),xmlSoccer_HistoricMatch.getAwayGoals())){
 					consecutiveNotWinningStreak++;
 					consecutiveNotDrawingStreak++;
 					consecutiveNotLosingStreak = 0;
-				}else if(FixtureUtils.isDraw(xmlSoccer_HistoricMatch.getHomeGoals(),xmlSoccer_HistoricMatch.getAwayGoals())){
+				}else if(fixtureUtils.isDraw(xmlSoccer_HistoricMatch.getHomeGoals(),xmlSoccer_HistoricMatch.getAwayGoals())){
 					consecutiveNotWinningStreak++;
 					consecutiveNotDrawingStreak = 0;
 					consecutiveNotLosingStreak++;

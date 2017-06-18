@@ -1,6 +1,7 @@
 package com.paolorizzo.predictor.dao.facade;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 import com.paolorizzo.predictor.hibernate.model.DirettaFixture;
@@ -22,7 +23,7 @@ public interface DirettaFixtureDao {
 	List<String> getCompetitions();
 	
 	List<DirettaFixture> getDirettaFixtures(String competition, String homeTeam, String awayTeam, BigDecimal quota1From,
-			BigDecimal quota1To, BigDecimal quotaXFrom, BigDecimal quotaXTo, BigDecimal quota2From,
-			BigDecimal quota2To);
+			BigDecimal quota1To, BigDecimal quotaXFrom, BigDecimal quotaXTo, BigDecimal quota2From, BigDecimal quota2To,
+			Date dateFromDate, Date dateToDate, Integer limit, boolean shuffle);
 
 }

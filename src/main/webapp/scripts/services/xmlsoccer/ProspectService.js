@@ -6,7 +6,6 @@ app
 			add: function (name,initialAmount,duration,dailyPercentageExpected,stepFrequency,accountName,email,serviceUrl){
 				
 		    	var url = serviceUrl + "/rest/ProspectService/add/";
-		    	console.log(url);
 		    	var fd = {
 	    			'uniquecallid': new Date().getTime(),
 	    			'name': name,
@@ -25,7 +24,7 @@ app
 	        get: function (accountName,email,serviceUrl){
 				
 		    	var url = serviceUrl + "/rest/ProspectService/get/";
-		    	console.log(url);
+		    	
 		    	var fd = {
 	    			'uniquecallid': new Date().getTime(),
 	    			'accountName': accountName,

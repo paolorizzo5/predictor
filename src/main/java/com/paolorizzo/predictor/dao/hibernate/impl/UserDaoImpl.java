@@ -15,38 +15,27 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 
 	@Override
 	public boolean insert(User user) throws Exception {
-		try {
-			getHibernateTemplate().save(user);
-			return true;
-		} catch (Exception exception) {
-			return false;
-		}
-
+		getHibernateTemplate().save(user);
+		return true;
 	}
 
 	@Override
 	public boolean delete(User user) throws Exception {
-		try {
 			getHibernateTemplate().delete(user);
 			return true;
-		} catch (Exception exception) {
-			return false;
-		}
+		
 	}
 
 	@Override
 	public User login(String email, String password) throws Exception {
-		try {
-			DetachedCriteria criteria = DetachedCriteria.forClass(User.class)
-					.add(Restrictions.eq("email", email))
-					.add(Restrictions.eq("password", password))
-					.add(Restrictions.eq("status", UserStatus.ON.name()));
+		DetachedCriteria criteria = DetachedCriteria.forClass(User.class)
+				.add(Restrictions.eq("email", email))
+				.add(Restrictions.eq("password", password))
+				.add(Restrictions.eq("status", UserStatus.ON.name()));
 
-			List<?> users = getHibernateTemplate().findByCriteria(criteria);
-			return (User) users.get(0);
-		} catch (Exception exception) {
-			return null;
-		}
+		List<?> users = getHibernateTemplate().findByCriteria(criteria);
+		return (User) users.get(0);
+		
 	}
 
 	@Override
@@ -57,39 +46,29 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 
 	@Override
 	public User findByEmail(String email) {
-		try {
-			DetachedCriteria criteria = DetachedCriteria.forClass(User.class)
-					.add(Restrictions.eq("email", email));
-			List<?> users = getHibernateTemplate().findByCriteria(criteria);
-			return (User) users.get(0);
-		} catch (Exception exception) {
-			return null;
-		}
+		DetachedCriteria criteria = DetachedCriteria.forClass(User.class)
+				.add(Restrictions.eq("email", email));
+		List<?> users = getHibernateTemplate().findByCriteria(criteria);
+		return (User) users.get(0);
 	}
 
 	@Override
 	public Boolean update(User user) {
-		try {
-			getHibernateTemplate().update(user);
-			return true;
-		} catch (Exception exception) {
-			return false;
-		}
+		getHibernateTemplate().update(user);
+		return true;
+		
 	}
 
 	@Override
 	public User firstLogin(String email, String password) {
-		try {
-			DetachedCriteria criteria = DetachedCriteria.forClass(User.class)
-					.add(Restrictions.eq("email", email))
-					.add(Restrictions.eq("password", password))
-					.add(Restrictions.eq("status", UserStatus.STANDBY.name()));
+		DetachedCriteria criteria = DetachedCriteria.forClass(User.class)
+				.add(Restrictions.eq("email", email))
+				.add(Restrictions.eq("password", password))
+				.add(Restrictions.eq("status", UserStatus.STANDBY.name()));
 
-			List<?> users = getHibernateTemplate().findByCriteria(criteria);
-			return (User) users.get(0);
-		} catch (Exception exception) {
-			return null;
-		}
+		List<?> users = getHibernateTemplate().findByCriteria(criteria);
+		return (User) users.get(0);
+		
 	}
 
 }

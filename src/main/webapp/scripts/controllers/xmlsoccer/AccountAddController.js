@@ -35,7 +35,6 @@ app
 												function(d) {
 													if (d.data != null) {
 														if(d.data.result == true){
-															console.log("inserimento avvenuto con successo");
 															$scope.accountDescription = null;
 															$rootScope.$broadcast("onAccountCreated");
 														}

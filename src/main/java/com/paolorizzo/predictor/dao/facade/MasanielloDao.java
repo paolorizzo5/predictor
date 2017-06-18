@@ -14,4 +14,6 @@ public interface MasanielloDao {
 
 	void update(Masaniello masaniello);
 
+	Masaniello find(String name, String email);
+
 }

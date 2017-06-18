@@ -35,10 +35,273 @@
 
 	<!-- tile body -->
 	<div class="tile-body">
-		<form class="form-horizontal" role="form">
-			
-		</form>
-	</div>
+		<div class="row">
+			<div class="form-group">
+				<label class="col-sm-3 control-label">{{'Masaniello.SELECT_PLAN'
+					| translate}}</label>
+				<div class="col-sm-3">
+					<select ng-model="planName" ng-change="viewPlanDetail(planName);"
+						data-ng-options="plan as plan for plan in planNames"
+						class="form-control mb-4" />
+				</div>
+				<div class="col-sm-3">
+					<button type="submit" ng-show="masaniellos != null"
+						ng-click="deleteMasaniello(planName);"
+						class="btn btn-rounded btn-danger btn-sm">{{'Masaniello.DELETE'
+						| translate}}</button>
+				</div>
 
-	<div class="tile-footer"></div>
+			</div>
+		</div>
+		<table class="table table-hover"
+			ng-if="selectedPlan.planFilterDtos != null">
+			<thead>
+				<tr>
+					<th>{{'SELECT.COMPETITION' | translate}}</th>
+					<th>{{'HA.HOMEGOAL.SHORT' | translate}}</th>
+					<th>{{'HA.AWAYGOAL.SHORT' | translate}}</th>
+					<th>{{'Masaniello.INSERT_BETTYPE' | translate}}</th>
+					<th>{{'FilterDate.FROM' | translate}}</th>
+					<th>{{'FilterDate.TO' | translate}}</th>
+					<th>{{'ODD'| translate}} {{'001_1.SHORT'| translate}}
+						({{'FilterDate.FROM'| translate}} - {{'FilterDate.TO' |
+						translate}})</th>
+					<th>{{'ODD'| translate}} {{'002_X.SHORT'| translate}}
+						({{'FilterDate.FROM'| translate}} - {{'FilterDate.TO' |
+						translate}})</th>
+					<th>{{'ODD'| translate}} {{'003_2.SHORT'| translate}}
+						({{'FilterDate.FROM'| translate}} - {{'FilterDate.TO' |
+						translate}})</th>
+					<th>{{'AMOUNT'| translate}}</th>
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr ng-repeat="filter in selectedPlan.planFilterDtos">
+					<td>{{filter.competition}}</td>
+					<td>{{filter.homeTeam}}</td>
+					<td>{{filter.awayTeam}}</td>
+					<td>{{filter.betType | translate}}</td>
+					<td>{{filter.dateFrom | date: 'dd/MM/yyyy'}}</td>
+					<td>{{filter.dateTo | date: 'dd/MM/yyyy'}}</td>
+					<td><span
+						ng-if="filter.quota1From != null && filter.quota1To != null && filter.betType == '001_1'">
+							{{((parseFloat(filter.quota1From) + parseFloat(filter.quota1To))
+							/ 2) | number : 2}} </span>({{filter.quota1From}} - {{filter.quota1To}})</td> 
+					<td><span
+						ng-if="filter.quotaXFrom != null && filter.quotaXTo != null && filter.betType == '002_X'">
+							{{(parseFloat(filter.quotaXFrom) + parseFloat(filter.quotaXTo)) /
+							2 | number : 2}} </span>({{filter.quotaXFrom}} - {{filter.quotaXTo}})</td> 
+
+					<td><span
+						ng-if="filter.quota2From != null && filter.quota2To != null && filter.betType == '003_2'">
+							{{(parseFloat(filter.quota2From) + parseFloat(filter.quota2To)) /
+							2 | number : 2}} </span>({{filter.quota2From}} - {{filter.quota2To}})</td> 
+
+
+					<td><input type="text" class="form-control"
+						ng-model="filter.amount"></td>
+
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+
+		<div class="row">
+			<div class="col-sm-4" ng-show="masaniellos != null">
+				<h3>{{'Masaniello.PLAN' | translate}} {{planName}}</h3>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+
+							<th>{{'Masaniello.NAME' | translate}}</th>
+							<th>{{'Masaniello.ID' | translate}}</th>
+							<th>{{'Masaniello.ROUND_INITIAL_AMOUNT' | translate}}</th>
+							<th>{{'Masaniello.ROUND_FINAL_AMOUNT' | translate}}</th>
+							<th>{{'Masaniello.PERCENTAGE_PROFIT' | translate}}</th>
+							<th></th>
+
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="masaniello in masaniellos">
+
+							<td><p class="text-greensea"
+									ng-show="masaniello.finalAmount >= masaniello.amount">{{masaniello.name}}</p>
+								<p class="text-red"
+									ng-show="masaniello.finalAmount < masaniello.amount">{{masaniello.name}}</p></td>
+							<td><p class="text-greensea"
+									ng-show="masaniello.finalAmount >= masaniello.amount">{{masaniello.id}}</p>
+								<p class="text-red"
+									ng-show="masaniello.finalAmount < masaniello.amount">{{masaniello.id}}</p></td>
+							<td><p class="text-greensea"
+									ng-show="masaniello.finalAmount >= masaniello.amount">{{masaniello.amount}}</p>
+								<p class="text-red"
+									ng-show="masaniello.finalAmount < masaniello.amount">{{masaniello.amount}}</p></td>
+							<td><p class="text-greensea"
+									ng-show="masaniello.finalAmount >= masaniello.amount">{{masaniello.finalAmount}}</p>
+								<p class="text-red"
+									ng-show="masaniello.finalAmount < masaniello.amount">{{masaniello.finalAmount}}</p></td>
+							<td><p class="text-greensea"
+									ng-show="masaniello.finalAmount >= masaniello.amount">+{{((masaniello.finalAmount
+									/ masaniello.amount * 100) - 100) | number:2}} %</p>
+								<p class="text-red"
+									ng-show="masaniello.amount > masaniello.finalAmount">{{((masaniello.finalAmount
+									/ masaniello.amount * 100) - 100) | number:2 }}%</td>
+
+							<td><button type="submit"
+									ng-click="showMasanielloDetail(masaniello);"
+									class="btn btn-rounded btn-greensea btn-sm">{{'Masaniello.MASANIELLO_DETAIL'
+									| translate}}</button></td>
+
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-sm-5" ng-show="selectedMasanielloRounds != null">
+				<h3>{{selectedMasaniello.name}}</h3>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>{{'Masaniello.ROUND_ID' | translate}}</th>
+							<th>{{'Masaniello.MATCHES' | translate}}</th>
+							<th>{{'Masaniello.ROUND_INITIAL_AMOUNT' | translate}}</th>
+							<th>{{'Masaniello.ROUND_FINAL_AMOUNT' | translate}}</th>
+
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="round in selectedMasanielloRounds">
+							<td><p class="text-greensea"
+									ng-show="round.finalAmount >= round.initialAmount">{{round.roundId}}
+								</p>
+								<p class="text-red"
+									ng-show="round.initialAmount > round.finalAmount">{{round.roundId}}
+								</p></td>
+							<td><p class="text-greensea"
+									ng-show="round.finalAmount >= round.initialAmount">{{round.matches}}
+								</p>
+								<p class="text-red"
+									ng-show="round.initialAmount > round.finalAmount">{{round.matches}}
+								</p></td>
+							<td><p class="text-greensea"
+									ng-show="round.finalAmount >= round.initialAmount">{{round.initialAmount}}
+								</p>
+								<p class="text-red"
+									ng-show="round.initialAmount > round.finalAmount">{{round.initialAmount}}
+								</p></td>
+							<td><p class="text-greensea"
+									ng-show="round.finalAmount >= round.initialAmount">{{round.finalAmount}}</p>
+								<p class="text-red"
+									ng-show="round.initialAmount > round.finalAmount">{{round.finalAmount}}
+								</td>
+
+							<td><p class="text-greensea"
+									ng-show="round.finalAmount >= selectedMasaniello.amount">+{{((round.finalAmount
+									/ selectedMasaniello.amount * 100) - 100) | number:2}} %</p>
+								<p class="text-red"
+									ng-show="selectedMasaniello.amount > round.finalAmount">{{((round.finalAmount
+									/ selectedMasaniello.amount * 100) - 100) | number:2 }}%</td>
+
+							<td><p class="text-greensea"
+									ng-show="round.finalAmount >= selectedMasaniello.amount">{{round.percentageInvested | number:2}} %</p>
+								<p class="text-red"
+									ng-show="selectedMasaniello.amount > round.finalAmount">{{round.percentageInvested | number:2}} %</td>
+
+							<td><button type="submit"
+									ng-click="showMasanielloRoundDetail(round);"
+									class="btn btn-rounded btn-greensea btn-sm">{{'Masaniello.MASANIELLO_DETAIL'
+									| translate}}</button></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="col-sm-4" ng-show="selectedDirettaFixtures != null">
+				<h3>{{selectedMasaniello.name}}</h3>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>{{'Masaniello.ROUND_ID' | translate}}</th>
+							<th>{{'Masaniello.MATCHES' | translate}}</th>
+							<th>{{'Masaniello.ROUND_INITIAL_AMOUNT' | translate}}</th>
+							<th>{{'Masaniello.ROUND_FINAL_AMOUNT' | translate}}</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="dfi in selectedDirettaFixtures">
+							<td>{{dfi.homeTeam}}</td>
+							<td>{{dfi.awayTeam}}</td>
+							<td>{{dfi.homeGoals}} - {{dfi.awayGoals}}</td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+
+			<!-- <uib-accordion 
+				> <uib-accordion-group
+				class="{{masaniello.panelClass}}"
+				heading=" {{masaniello.finalAmount - }}"
+				is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+
+			<button type="submit" ng-show="masaniello.showDetail == false"
+				ng-click="showMasanielloDetail(masaniello);"
+				class="btn btn-rounded btn-greensea btn-sm">{{'Masaniello.MASANIELLO_DETAIL'
+				| translate}}</button>
+
+			<table class="table table-hover"
+				ng-show="masaniello.showDetail == true">
+				<thead>
+					<tr>
+						<th>{{'Masaniello.ROUND_ID' | translate}}</th>
+						<th>{{'Masaniello.ROUND_MATCHES' | translate}}</th>
+						<th>{{'Masaniello.ROUND_SUCCESS' | translate}}</th>
+						<th>{{'Masaniello.ROUND_INITIAL_AMOUNT' | translate}}</th>
+						<th>{{'Masaniello.ROUND_FINAL_AMOUNT' | translate}}</th>
+						<th>{{'Masaniello.ROUND_BALANCE' | translate}}</th>
+
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="dto in masaniello.masanielloRoundDtos">
+						<td><p class="text-greensea"
+								ng-show="dto.finalAmount >= dto.initialAmount">{{dto.roundId}}</p>
+							<p class="text-red" ng-show="dto.finalAmount < dto.initialAmount">{{dto.roundId}}</p></td>
+						<td><p class="text-greensea"
+								ng-show="dto.finalAmount >= dto.initialAmount">{{dto.matches}}</p>
+							<p class="text-red" ng-show="dto.finalAmount < dto.initialAmount">{{dto.matches}}</p></td>
+						<td><p class="text-greensea"
+								ng-show="dto.finalAmount >= dto.initialAmount">{{dto.success}}</p>
+							<p class="text-red" ng-show="dto.finalAmount < dto.initialAmount">{{dto.success}}</p></td>
+						<td><p class="text-greensea"
+								ng-show="dto.finalAmount >= dto.initialAmount">{{dto.initialAmount}}</p>
+							<p class="text-red" ng-show="dto.finalAmount < dto.initialAmount">{{dto.initialAmount}}</p></td>
+						<td><p class="text-greensea"
+								ng-show="dto.finalAmount >= dto.initialAmount">{{dto.finalAmount}}</p>
+							<p class="text-red" ng-show="dto.finalAmount < dto.initialAmount">{{dto.finalAmount}}</p></td>
+						<td><p class="text-greensea"
+								ng-show="dto.finalAmount >= dto.initialAmount">{{dto.finalAmount
+								- dto.initialAmount}}</p>
+							<p class="text-red" ng-show="dto.finalAmount < dto.initialAmount">{{dto.finalAmount
+								- dto.initialAmount | number:2}}</p></td>
+
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	</uib-accordion-group>
+	</uib-accordion> -->
+
+
+			<div class="tile-footer"></div>
 </section>

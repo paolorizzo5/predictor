@@ -29,7 +29,7 @@ app
 										if (d.data != null) {
 
 											$scope.fixtures = d.data.fixtures;
-											console.log($scope.fixtures);
+											
 										} else {
 
 										}

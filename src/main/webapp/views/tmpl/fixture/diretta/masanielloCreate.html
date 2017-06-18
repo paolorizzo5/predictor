@@ -1,0 +1,90 @@
+<div id="divMasaniello" ng-show="viewMasaniello == true">
+	<hr>
+	<div class="form-group">
+		<label class="col-sm-5 control-label">{{'Masaniello.INSERT_NAME'
+			| translate}}</label>
+		<div class="col-sm-7">
+			<input type="text" class="form-control" ng-model="masanielloName">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="input01" class="col-sm-5 control-label">{{'Masaniello.INSERT_AMOUNT'
+			| translate}}</label>
+		<div class="col-sm-7">
+			<input type="text" class="form-control" ng-model="masanielloAmount">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="input01" class="col-sm-5 control-label">{{'Masaniello.INSERT_ROUNDS'
+			| translate}}</label>
+		<div class="col-sm-7">
+			<input type="text" class="form-control" ng-model="masanielloRounds">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="input01" class="col-sm-5 control-label">{{'Masaniello.INSERT_EVENT_TO_WIN'
+			| translate}}</label>
+		<div class="col-sm-7">
+			<input type="text" class="form-control"
+				ng-model="masanielloEventToWin">
+		</div>
+	</div>
+
+
+	<div class="form-group">
+		<label for="input01" class="col-sm-5 control-label">{{'Masaniello.INSERT_AVERAGE_QUOTE'
+			| translate}}</label>
+		<div class="col-sm-7">
+			<input type="text" class="form-control"
+				ng-model="masanielloAverageQuote">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="input01" class="col-sm-5 control-label">{{'Masaniello.INSERT_ADDITIONAL_QUOTE'
+			| translate}}</label>
+		<div class="col-sm-7">
+			<input type="text" class="form-control" value="1"
+				ng-model="masanielloAdditionalQuote">
+			{{masanielloAverageQuote * masanielloAdditionalQuote | number : 2}}
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="input01" class="col-sm-5 control-label">{{'Masaniello.INSERT_PERCENTAGE'
+			| translate}}</label>
+		<div class="col-sm-7">
+			<input type="text" class="form-control"
+				ng-model="masanielloPercentage">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="input01" class="col-sm-5 control-label">{{'Masaniello.INSERT_PATRIMONY_PERCENTAGE'
+			| translate}}</label>
+		<div class="col-sm-7">
+			<input type="text" class="form-control"
+				ng-model="patrimonyPercentage">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="input01" class="col-sm-5 control-label">{{'Masaniello.INSERT_TESTS'
+			| translate}}</label>
+		<div class="col-sm-7">
+			<input type="text" class="form-control" ng-model="masanielloTests">
+		</div>
+	</div>
+
+
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<button type="submit"
+				ng-click="createPlan(masanielloName,masanielloAmount,masanielloRounds,masanielloEventToWin,masanielloAverageQuote,masanielloAdditionalQuote,masanielloPercentage,patrimonyPercentage,masanielloTests);"
+				class="btn btn-rounded btn-success btn-sm">{{'Masaniello.CREATE'
+				| translate}}</button>
+		</div>
+	</div>
+
+</div>

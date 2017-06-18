@@ -40,13 +40,9 @@ public class WebServiceApiDetailDaoImpl extends HibernateDaoSupport implements W
 	public WebServiceApiDetail get(String name) {
 		DetachedCriteria criteria = DetachedCriteria.forClass(
 				WebServiceApiDetail.class).add(Restrictions.eq("name", name));
-		try{
 			WebServiceApiDetail webServiceApiDetail = (WebServiceApiDetail) (getHibernateTemplate().findByCriteria(
 					criteria)).get(0);
 			return webServiceApiDetail;
-		}catch(Exception exception){
-			return null;
-		}
 		
 	}
 

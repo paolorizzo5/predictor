@@ -59,7 +59,8 @@ public class Account implements Serializable{
 	private BigDecimal liveAmount;
 	
 	
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "account", cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "account")
+	@Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
 	private Prospect prospect;
 	
 	@OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "account")

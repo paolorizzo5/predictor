@@ -22,10 +22,15 @@ public class HistoricMatchBusiness {
 
 	@Autowired
 	private HistoricMatchDao historicMatchDao;
+	
+	@Autowired
+	private SimpleUtils simpleUtils;
+	
 
-	public HistoricMatchBusiness(HistoricMatchDao historicMatchDao) {
+	public HistoricMatchBusiness(HistoricMatchDao historicMatchDao,SimpleUtils simpleUtils) {
 		super();
 		this.historicMatchDao = historicMatchDao;
+		this.simpleUtils = simpleUtils;
 	}
 
 	@Transactional(readOnly = false)
@@ -48,7 +53,7 @@ public class HistoricMatchBusiness {
 	public List<HistoricMatchDto> getHistoricMatchesByLeagueAndSeason(
 			String league, String season) {
 
-		season = SimpleUtils.checkSeason(season);
+		season = simpleUtils.checkSeason(season);
 
 		List<XmlSoccer_HistoricMatch> historicMatches = historicMatchDao
 				.getHistoricMatchesByLeagueAndSeason(league, season);
@@ -287,11 +292,19 @@ public class HistoricMatchBusiness {
 	public FixturePreviewDto getSeasonStats(String homeTeamId,
 			String awayTeamId, String league, String season) {
 
-		season = SimpleUtils.checkSeason(season);
+		season = simpleUtils.checkSeason(season);
 
 		return setFixturePreviewByHistoricMatches(historicMatchDao
 				.getSeasonStats(homeTeamId, awayTeamId, league, season));
 
+	}
+
+	public SimpleUtils getSimpleUtils() {
+		return simpleUtils;
+	}
+
+	public void setSimpleUtils(SimpleUtils simpleUtils) {
+		this.simpleUtils = simpleUtils;
 	}
 
 }

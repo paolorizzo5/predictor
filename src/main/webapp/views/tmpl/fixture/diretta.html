@@ -19,34 +19,98 @@
 						{{'MENU' | translate}} <span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href ng-click="viewDiv('showSummary');">{{'Account.SUMMARY'
+						<li><a href ng-click="viewDiv('showMasanielloDetails');">{{'Masaniello.MINE'
 								| translate}}</a></li>
 						<li class="divider"></li>
-						<li><a href ng-click="viewDiv('showProspect');">{{'Account.MY_PROSPECT'
+						<li><a href ng-click="viewDiv('showBase');">{{'Masaniello.BASE'
 								| translate}}</a></li>
-						<li><a href ng-click="viewDiv('showBets');">{{'Account.MY_BETS'
+						<li><a href ng-click="viewDiv('showAdvanced');">{{'Masaniello.ADVANCED'
 								| translate}}</a></li>
+						<li><a href ng-click="viewDiv('showParallel');">{{'Masaniello.PARALLEL'
+								| translate}}</a></li>
+						<li class="divider"></li>
+
 					</ul>
 				</div>
 			</div>
 
 		</div>
 
-		<div class="row">
-			<!-- col -->
-			<div class="col-md-3">
-				<div ng-include="'views/tmpl/fixture/diretta/filter.html'"></div>
-				
-					<div ng-include="'views/tmpl/fixture/diretta/masaniello.html'"></div>
+		<div class="row" ng-show="visibleDiv == 'showBase'">
+			<div class="col-md-12">
+				<div ng-include="'views/tmpl/fixture/diretta/filterBase.html'"></div>
 			</div>
 
 			<div class="col-md-6" ng-show="direttaFixtures != null">
 				<div ng-include="'views/tmpl/fixture/diretta/fixtures.html'"></div>
-					
 			</div>
-			<div class="col-md-3" ng-show="direttaFixtures != null">
-					<div ng-include="'views/tmpl/fixture/diretta/stats.html'"></div>
+
+			<div class="col-md-3" ng-show="stats  != null">
+				<div ng-include="'views/tmpl/fixture/diretta/stats.html'"></div>
 			</div>
+		</div>
+
+		<div class="row" ng-show="visibleDiv == 'showAdvanced'">
+			<div class="col-md-12">
+				<div ng-include="'views/tmpl/fixture/diretta/filterAdvanced.html'"></div>
+			</div>
+
+			<div class="col-md-6" ng-show="direttaFixtures != null">
+				<div ng-include="'views/tmpl/fixture/diretta/fixtures.html'"></div>
+			</div>
+
+			<div class="col-md-3" ng-show="stats  != null">
+				<div ng-include="'views/tmpl/fixture/diretta/stats.html'"></div>
+			</div>
+		</div>
+
+		<div class="row" ng-show="visibleDiv == 'showParallel'">
+			<div class="col-md-12">
+				<div ng-include="'views/tmpl/fixture/diretta/filterParallel.html'"></div>
+			</div>
+
+			<div class="col-md-6" ng-show="direttaFixtures != null">
+				<div ng-include="'views/tmpl/fixture/diretta/fixtures.html'"></div>
+			</div>
+
+			<div class="col-md-3" ng-show="stats  != null">
+				<div ng-include="'views/tmpl/fixture/diretta/stats.html'"></div>
+			</div>
+		</div>
+
+		<div class="row" ng-show="visibleDiv == 'showMasanielloDetails'">
+			<div class="col-md-12">
+				<div ng-include="'views/tmpl/fixture/diretta/masaniello.html'"></div>
+			</div>
+
+		</div>
+
+		<div class="row" ng-show="visibleDiv == 'showMasanielloRoundsDetails'">
+			<div class="col-md-12">
+				<div ng-include="'views/tmpl/fixture/diretta/masanielloRounds.html'"></div>
+			</div>
+
+		</div>
+
+		<div class="row" ng-show="visibleDiv == 'showLoading'">
+
+			<section class="tile tile-simple">
+
+				<!-- tile widget -->
+				<div class="tile-widget bg-dutch text-center p-30">
+					<i class="fa fa-clock-o fa-3x"></i>
+				</div>
+				<!-- /tile widget -->
+
+				<!-- tile body -->
+				<div class="tile-body text-center">
+
+					<h1 class="m-0">{{'LOADING' | translate}}</h1>
+
+				</div>
+				<!-- /tile body -->
+
+			</section>
 		</div>
 
 		<!-- col -->

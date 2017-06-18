@@ -18,10 +18,14 @@ public class StandingBusiness {
 
 	@Autowired
 	private StandingDao standingDao;
+	
+	private SimpleUtils simpleUtils;
 
-	public StandingBusiness(StandingDao standingDao) {
+	public StandingBusiness(StandingDao standingDao,SimpleUtils simpleUtils) {
 		super();
 		this.standingDao = standingDao;
+		this.simpleUtils = simpleUtils;
+		
 	}
 
 	@Transactional(readOnly = false)
@@ -49,7 +53,7 @@ public class StandingBusiness {
 	public List<XmlSoccer_Standing> getStandingByLeagueAndSeason(String league,
 			String season) {
 
-		season = SimpleUtils.checkSeason(season);
+		season = simpleUtils.checkSeason(season);
 
 		return standingDao.getStandingByLeagueAndSeason(league, season);
 	}
@@ -57,7 +61,7 @@ public class StandingBusiness {
 	@Transactional(readOnly = false)
 	public void deleteByLeagueAndSeason(String league, String season) {
 
-		season = SimpleUtils.checkSeason(season);
+		season = simpleUtils.checkSeason(season);
 
 		List<XmlSoccer_Standing> standingsToDelete = getStandingByLeagueAndSeason(
 				league, season);
@@ -65,6 +69,14 @@ public class StandingBusiness {
 			standingDao.delete(xmlSoccer_Standing);
 		}
 
+	}
+
+	public SimpleUtils getSimpleUtils() {
+		return simpleUtils;
+	}
+
+	public void setSimpleUtils(SimpleUtils simpleUtils) {
+		this.simpleUtils = simpleUtils;
 	}
 
 }

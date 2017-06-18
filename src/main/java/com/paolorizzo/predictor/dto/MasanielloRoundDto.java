@@ -1,17 +1,9 @@
 package com.paolorizzo.predictor.dto;
 
 import java.math.BigDecimal;
+import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
-import javax.persistence.ManyToOne;
-
-import com.paolorizzo.predictor.hibernate.model.Masaniello;
-
-public class MasanielloRoundDto {
+public class MasanielloRoundDto implements Comparable<MasanielloRoundDto> {
 	
 	
 	private Integer roundId;
@@ -23,6 +15,10 @@ public class MasanielloRoundDto {
 	private BigDecimal initialAmount;
 	
 	private BigDecimal finalAmount;
+	
+	private BigDecimal percentageInvested;
+	
+	private List<DirettaFixtureDto> fixtures;
 	
 	
 	public Integer getMatches() {
@@ -63,6 +59,27 @@ public class MasanielloRoundDto {
 
 	public void setRoundId(Integer roundId) {
 		this.roundId = roundId;
+	}
+
+	@Override
+	public int compareTo(MasanielloRoundDto o) {
+		return this.getRoundId().compareTo(o.getRoundId());
+	}
+
+	public List<DirettaFixtureDto> getFixtures() {
+		return fixtures;
+	}
+
+	public void setFixtures(List<DirettaFixtureDto> fixtures) {
+		this.fixtures = fixtures;
+	}
+
+	public BigDecimal getPercentageInvested() {
+		return percentageInvested;
+	}
+
+	public void setPercentageInvested(BigDecimal percentageInvested) {
+		this.percentageInvested = percentageInvested;
 	}
 
 }

@@ -33,13 +33,17 @@ public class FixtureBusiness {
 
 	@Autowired
 	private XmlSoccerServiceImpl xmlSoccerServiceBean;
+	
+	@Autowired
+	private SimpleUtils simpleUtils;
 
 	public FixtureBusiness(FixtureDao fixtureDao, WebServiceApiDetailBusiness webServiceApiDetailBusiness,
-			XmlSoccerServiceImpl xmlSoccerServiceBean) {
+			XmlSoccerServiceImpl xmlSoccerServiceBean,SimpleUtils simpleUtils) {
 		super();
 		this.fixtureDao = fixtureDao;
 		this.webServiceApiDetailBusiness = webServiceApiDetailBusiness;  
 		this.xmlSoccerServiceBean = xmlSoccerServiceBean;
+		this.simpleUtils = simpleUtils;
 	}
 
 	@Transactional(readOnly = false)
@@ -68,7 +72,7 @@ public class FixtureBusiness {
 			String season) {
 		try {
 
-			season = SimpleUtils.checkSeason(season);
+			season = simpleUtils.checkSeason(season);
 
 			return fixtureDao.getFixturesByLeagueAndSeason(league, season);
 		} catch (Exception exception) {
@@ -116,6 +120,14 @@ public class FixtureBusiness {
 			return new ArrayList<GetLiveScoreResultDto>();
 		}
 		
+	}
+
+	public SimpleUtils getSimpleUtils() {
+		return simpleUtils;
+	}
+
+	public void setSimpleUtils(SimpleUtils simpleUtils) {
+		this.simpleUtils = simpleUtils;
 	}
 	
 	

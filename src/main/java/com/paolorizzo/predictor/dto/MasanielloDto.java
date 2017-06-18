@@ -3,39 +3,33 @@ package com.paolorizzo.predictor.dto;
 import java.math.BigDecimal;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-
-import org.hibernate.annotations.Cascade;
-
-import com.paolorizzo.predictor.hibernate.model.Account;
-import com.paolorizzo.predictor.hibernate.model.MasanielloRound;
-import com.paolorizzo.predictor.services.response.user.dto.UserDto;
-
 public class MasanielloDto {
-	
+
 	private String name;
-	
+
+	private Integer id;
+
 	private String eventType;
-	
-	private UserDto userDto;
-	
+
+	private MasanielloPlanDto masanielloPlanDto;
+
 	private List<MasanielloRoundDto> masanielloRoundDtos;
-	
+
 	private BigDecimal amount;
-	
+
 	private Integer rounds;
-	
+
 	private Integer eventToWin;
-	
+
 	private BigDecimal percentage;
-	
+
 	private BigDecimal averageQuote;
+
+	private BigDecimal finalAmount;
+
+	private String panelClass;
+
+	private Boolean showDetail;
 
 	public String getName() {
 		return name;
@@ -45,15 +39,20 @@ public class MasanielloDto {
 		this.name = name;
 	}
 
-	
-
-
-	public UserDto getUserDto() {
-		return userDto;
+	public String getEventType() {
+		return eventType;
 	}
 
-	public void setUserDto(UserDto userDto) {
-		this.userDto = userDto;
+	public void setEventType(String eventType) {
+		this.eventType = eventType;
+	}
+
+	public MasanielloPlanDto getMasanielloPlanDto() {
+		return masanielloPlanDto;
+	}
+
+	public void setMasanielloPlanDto(MasanielloPlanDto masanielloPlanDto) {
+		this.masanielloPlanDto = masanielloPlanDto;
 	}
 
 	public List<MasanielloRoundDto> getMasanielloRoundDtos() {
@@ -103,7 +102,37 @@ public class MasanielloDto {
 	public void setAverageQuote(BigDecimal averageQuote) {
 		this.averageQuote = averageQuote;
 	}
-	
-	
+
+	public BigDecimal getFinalAmount() {
+		return finalAmount;
+	}
+
+	public void setFinalAmount(BigDecimal finalAmount) {
+		this.finalAmount = finalAmount;
+	}
+
+	public String getPanelClass() {
+		return panelClass;
+	}
+
+	public void setPanelClass(String panelClass) {
+		this.panelClass = panelClass;
+	}
+
+	public Boolean getShowDetail() {
+		return showDetail;
+	}
+
+	public void setShowDetail(Boolean showDetail) {
+		this.showDetail = showDetail;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 }

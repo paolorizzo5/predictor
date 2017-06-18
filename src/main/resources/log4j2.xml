@@ -5,24 +5,48 @@
 	</Properties>
 	<Appenders>
 		<RollingFile name="RollingFile" fileName="${log-path}/predictor.log"
-filePattern="${log-path}/predictor-%d{yyyy-MM-dd}-%i.log" >
+			filePattern="${log-path}/predictor-%d{yyyy-MM-dd}-%i.log">
 			<PatternLayout>
 				<pattern>%d{yyyy-MM-dd HH:mm:ss,SSS}-%t-%x-%-5p-%-10c:%m%n</pattern>
 			</PatternLayout>
 			<Policies>
 				<SizeBasedTriggeringPolicy size="5000 KB" />
 			</Policies>
-			<DefaultRolloverStrategy max="4"/>
+			<DefaultRolloverStrategy max="4" />
 		</RollingFile>
+
+		<RollingFile name="FILE-ENGINE" fileName="${log-path}/masaniellos/${masaniello.name}.log"
+			filePattern="${log-path}/predictor-%d{yyyy-MM-dd}-%i.log">
+			
+			<PatternLayout>
+				<pattern>%d{yyyy-MM-dd HH:mm:ss,SSS}-%t-%x-%-5p-%-10c:%m%n</pattern>
+			</PatternLayout>
+			<Policies>
+				<SizeBasedTriggeringPolicy size="5000 KB" />
+			</Policies>
+			<DefaultRolloverStrategy max="4" />
+		</RollingFile>
+
+
+
 	</Appenders>
 	<Loggers>
 		<Logger name="root" level="debug" additivity="false">
-			<appender-ref ref="RollingFile" level="debug"/>
+			<appender-ref ref="RollingFile" level="debug" />
 		</Logger>
+
 		<logger name="org.hibernate" level="OFF" additivity="false">
 		</logger>
+
+		<Logger name="dino" level="debug" additivity="false">
+			<appender-ref ref="FILE-ENGINE" />
+		</Logger>
+
+
 		<Root level="debug" additivity="false">
-			<AppenderRef ref="RollingFile"/>
+			<!-- <AppenderRef ref="RollingFile" /> -->
+			<AppenderRef ref="FILE-ENGINE" />
+
 		</Root>
 	</Loggers>
 </Configuration>

@@ -39,13 +39,17 @@ public class AccountBusiness {
 	@Autowired
 	private MoneyTransactionBusiness moneyTransactionBusiness;
 	
+	@Autowired
+	private SimpleUtils simpleUtils;
+	
 	
 	public AccountBusiness(AccountDao accountDao, UserBusiness userBusiness,
-			MoneyTransactionBusiness moneyTransactionBusiness) {
+			MoneyTransactionBusiness moneyTransactionBusiness,SimpleUtils simpleUtils) {
 		super();
 		this.accountDao = accountDao;
 		this.userBusiness = userBusiness;
 		this.moneyTransactionBusiness = moneyTransactionBusiness;
+		this.simpleUtils = simpleUtils;
 	}
 
 	@Transactional(readOnly=false)
@@ -234,19 +238,19 @@ public class AccountBusiness {
 			if(prospectElement.getExpectedGoal().compareTo(account.getLiveAmount()) > 0){
 				if(terminationDateUpdated){
 					prospectElement.setStartDate(today);
-					prospectElement.setEndDate(SimpleUtils.tomorrow(today));
-					today = SimpleUtils.tomorrow(today);
+					prospectElement.setEndDate(simpleUtils.tomorrow(today));
+					today = simpleUtils.tomorrow(today);
 				}
 				
 				if(prospectElement.getTerminationDate() != null){
 					if(terminationDateUpdated){
 						prospectElement.setEndDate(today);
 					}else{
-						prospectElement.setEndDate(SimpleUtils.tomorrow(today));
+						prospectElement.setEndDate(simpleUtils.tomorrow(today));
 					}
 					prospectElement.setTerminationDate(null);
 					
-					today = SimpleUtils.tomorrow(today);
+					today = simpleUtils.tomorrow(today);
 					terminationDateUpdated = true;
 				}
 			}else{
@@ -268,6 +272,14 @@ public class AccountBusiness {
 	public List<Account> list() {
 		return accountDao.list();
 		
+	}
+
+	public SimpleUtils getSimpleUtils() {
+		return simpleUtils;
+	}
+
+	public void setSimpleUtils(SimpleUtils simpleUtils) {
+		this.simpleUtils = simpleUtils;
 	}
 
 }

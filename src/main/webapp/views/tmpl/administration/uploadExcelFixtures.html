@@ -12,13 +12,24 @@
 
 		<div class="row">
 			<div class="col-md-6">
-				{{'Administration.UPLOAD_FIXTURES' | translate}}
+				{{'Administration.UPLOAD_SOCCER_FIXTURES' | translate}}
 			</div>
 			<div class="col-md-6">
 
 
 				<input type="file" name="file"
 					onchange="angular.element(this).scope().uploadFile(this.files)" />
+			</div>
+
+		</div>
+		
+		<div class="row">
+			<div class="col-md-6">
+				{{'Administration.UPLOAD_TENNIS_FIXTURES' | translate}}
+			</div>
+			<div class="col-md-6">
+				<input type="file" name="file"
+					onchange="angular.element(this).scope().uploadTennisFile(this.files)" />
 			</div>
 
 		</div>

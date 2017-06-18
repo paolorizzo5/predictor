@@ -3,14 +3,15 @@
 	xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:cache="http://www.springframework.org/schema/cache"
-	
+	xmlns:task="http://www.springframework.org/schema/task" 
 	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd
      http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
      http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
-     http://www.springframework.org/schema/cache https://www.springframework.org/schema/cache/spring-cache-4.3.xsd">
+     http://www.springframework.org/schema/cache https://www.springframework.org/schema/cache/spring-cache-4.3.xsd
+     http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
 
 	<bean id="contextApplicationContextProvider" class="com.paolorizzo.predictor.spring.AppContext"></bean>
 	<!-- <context:property-placeholder /> -->
@@ -18,6 +19,8 @@
 	<context:annotation-config />
 	
 	<cache:annotation-driven />
+	
+	<task:annotation-driven /> 
 	
 	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
     	<property name="cacheManager" ref="ehcache"/>
@@ -172,6 +175,7 @@
 	<bean id="teamBusinessBean" class="com.paolorizzo.xmlsoccer.business.TeamBusiness">
 		<constructor-arg name="teamDao" ref="teamDaoBean"></constructor-arg>
 		<constructor-arg name="historicMatchBusiness" ref="historicMatchBusinessBean"></constructor-arg>
+		<constructor-arg name="fixtureUtils" ref="fixtureUtils"></constructor-arg>
 		
 	</bean>
 
@@ -181,6 +185,7 @@
 	
 	<bean id="historicMatchBusinessBean" class="com.paolorizzo.xmlsoccer.business.HistoricMatchBusiness">
 		<constructor-arg name="historicMatchDao" ref="historicMatchDaoBean"></constructor-arg>
+		<constructor-arg name="simpleUtils" ref="simpleUtils"></constructor-arg>
 	</bean>
 
 	<bean id="historicMatchDaoBean" class="com.paolorizzo.xmlsoccer.dao.hibernate.impl.HistoricMatchDaoImpl">
@@ -191,6 +196,7 @@
 		<constructor-arg name="fixtureDao" ref="fixtureDaoBean"></constructor-arg>
 		<constructor-arg name="webServiceApiDetailBusiness" ref="webServiceApiDetailBusinessBean"></constructor-arg>
 		<constructor-arg name="xmlSoccerServiceBean" ref="xmlSoccerServiceBean"></constructor-arg>
+		<constructor-arg name="simpleUtils" ref="simpleUtils"></constructor-arg>
 	</bean>
 
 	<bean id="fixtureDaoBean" class="com.paolorizzo.xmlsoccer.dao.hibernate.impl.FixtureDaoImpl">
@@ -215,6 +221,8 @@
 	
 	<bean id="userBusinessBean" class="com.paolorizzo.predictor.business.UserBusiness">
 		<constructor-arg name="userDao" ref="userDaoBean"></constructor-arg>
+		<constructor-arg name="masanielloPlanBusiness" ref="masanielloPlanBusinessBean"></constructor-arg>
+		
 	</bean>
 	
 	<bean id="userDaoBean" class="com.paolorizzo.predictor.dao.hibernate.impl.UserDaoImpl">
@@ -233,7 +241,7 @@
 		<constructor-arg name="accountDao" ref="accountDaoBean"></constructor-arg>
 		<constructor-arg name="userBusiness" ref="userBusinessBean"></constructor-arg>
 		<constructor-arg name="moneyTransactionBusiness" ref="moneyTransactionBusinessBean"></constructor-arg>
-		
+		<constructor-arg name="simpleUtils" ref="simpleUtils"></constructor-arg>
 	</bean>
 	
 	<bean id="accountDaoBean" class="com.paolorizzo.predictor.dao.hibernate.impl.AccountDaoImpl">
@@ -251,6 +259,7 @@
 	<bean id="prospectBusinessBean" class="com.paolorizzo.predictor.business.ProspectBusiness">
 		<constructor-arg name="prospectDao" ref="prospectDaoBean"></constructor-arg>
 		<constructor-arg name="accountBusiness" ref="accountBusinessBean"></constructor-arg>	
+		<constructor-arg name="simpleUtils" ref="simpleUtils"></constructor-arg>
 	</bean>
 	
 	<bean id="prospectDaoBean" class="com.paolorizzo.predictor.dao.hibernate.impl.ProspectDaoImpl">
@@ -270,11 +279,33 @@
 		<constructor-arg name="direttaFixtureBusinessDao" ref="direttaFixtureBusinessDaoBean"></constructor-arg>
 		<constructor-arg name="accountBusiness" ref="accountBusinessBean"></constructor-arg>	
 		<constructor-arg name="betMatcherBusiness" ref="betMatcherBusinessBean"></constructor-arg>	
-		<constructor-arg name="masanielloBusiness" ref="masanielloBusinessBean"></constructor-arg>	
-		
+		<constructor-arg name="masanielloPlanBusiness" ref="masanielloPlanBusinessBean"></constructor-arg>	
+		<constructor-arg name="dateUtils" ref="dateUtils"></constructor-arg>	
+	</bean>
+	
+	<bean id="masanielloBaseBusinessBean" class="com.paolorizzo.predictor.business.MasanielloBaseBusiness">
+		<constructor-arg name="direttaFixtureBusinessDao" ref="direttaFixtureBusinessDaoBean"></constructor-arg>
+		<constructor-arg name="masanielloPlanBusiness" ref="masanielloPlanBusinessBean"></constructor-arg>	
+		<constructor-arg name="betMatcherBusiness" ref="betMatcherBusinessBean"></constructor-arg>	
+		<constructor-arg name="dateUtils" ref="dateUtils"></constructor-arg>	
+	</bean>
+	
+	<bean id="masanielloAdvancedBusinessBean" class="com.paolorizzo.predictor.business.MasanielloAdvancedBusiness">
+		<constructor-arg name="direttaFixtureBusinessDao" ref="direttaFixtureBusinessDaoBean"></constructor-arg>
+		<constructor-arg name="masanielloPlanBusiness" ref="masanielloPlanBusinessBean"></constructor-arg>	
+		<constructor-arg name="betMatcherBusiness" ref="betMatcherBusinessBean"></constructor-arg>	
+		<constructor-arg name="dateUtils" ref="dateUtils"></constructor-arg>	
 	</bean>
 	
 	<bean id="direttaFixtureBusinessDaoBean" class="com.paolorizzo.predictor.dao.hibernate.impl.DirettaFixtureDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="tennisFixtureBusinessBean" class="com.paolorizzo.predictor.business.TennisFixtureBusiness">
+		<constructor-arg name="direttaFixtureBusinessDao" ref="tennisFixtureBusinessDaoBean"></constructor-arg>
+	</bean>
+	
+	<bean id="tennisFixtureBusinessDaoBean" class="com.paolorizzo.predictor.dao.hibernate.impl.TennisFixtureDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
@@ -292,6 +323,14 @@
 	</bean>
 	
 	<bean id="masanielloDaoBean" class="com.paolorizzo.predictor.dao.hibernate.impl.MasanielloDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="masanielloPlanBusinessBean" class="com.paolorizzo.predictor.business.MasanielloPlanBusiness">
+		<constructor-arg name="masanielloPlanDao" ref="masanielloPlanDaoBean"></constructor-arg>
+	</bean>
+	
+	<bean id="masanielloPlanDaoBean" class="com.paolorizzo.predictor.dao.hibernate.impl.MasanielloPlanDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
@@ -315,5 +354,11 @@
 		<constructor-arg name="webServiceApiDetailBusiness" ref="webServiceApiDetailBusinessBean"></constructor-arg>
 		<constructor-arg name="xmlSoccerServiceBean" ref="xmlSoccerServiceBean"></constructor-arg>
 	</bean>
+	
+	<!-- UTLITY BEANS -->
+	<bean id="dateUtils" class="com.paolorizzo.predictor.utils.DateUtils" />
+	<bean id="fixtureUtils" class="com.paolorizzo.predictor.utils.FixtureUtils" />
+	<bean id="simpleUtils" class="com.paolorizzo.predictor.utils.SimpleUtils" />
+	
 
 </beans>

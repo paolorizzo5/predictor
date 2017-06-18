@@ -20,8 +20,6 @@ app
 							$scope.visibleDiv = "showSummary";
 							
 							$scope.storeAccountInSession = function(account) {
-								console.log ("metto in sessione l'account");
-								console.log (account);
 								$window.sessionStorage.setItem("selectedAccount", angular.toJson(account));
 								$scope.account = account;
 								
@@ -30,7 +28,6 @@ app
 								 * 
 								 */
 								$scope.setProspect($scope.account);
-								console.log("donut Stats1");
 								
 							};
 							
@@ -49,8 +46,6 @@ app
 							
  							
 							$scope.storeUserInSession = function(user) {
-								console.log ("metto in sessione l'user");
-								console.log (user);
 								$window.sessionStorage.setItem("userDto", angular.toJson(user));
 								$scope.userDto = user;
 								$scope.user = user;
@@ -70,8 +65,6 @@ app
 								else{
 									$scope.userDto = userDto;
 									$scope.user = userDto;
-									console.log("$scope.user");
-									console.log($scope.user);
 									
 								}
 							}
@@ -84,25 +77,21 @@ app
 							 * 
 							 */
 							if ($stateParams.account == null) {
-								console.log ("$stateParams.account nullo");
 								$scope.account = angular
 										.fromJson($window.sessionStorage
 												.getItem("selectedAccount"));
 								
 								$scope.setProspect($scope.account);
-								console.log("donut Stats2");
 								
 							} else {
-								console.log ("$stateParams.account valorizzato");
 								// $scope.account = $stateParams.account;
-								console.log ("scope.account: " + $scope.account);
 								AccountService.get($stateParams.account.name,$scope.userDto.email,$scope.configuration.serviceUrl)
 								.then(
 									function(d) {
 										if (d.data != null) {
 											if(d.data.result == true){
 												$scope.storeAccountInSession(d.data.account);
-												console.log("donut Stats3");
+												
 											}
 										} else {
 
@@ -268,11 +257,9 @@ app
 							
 							
 							$scope.dayDiff = function(endDate,startDate){
-								console.log("daydiff");
-
+								
 								var ms = endDate - startDate;
-								console.log(ms);
-
+								
 								var date = new Date(ms);
 								
 								var days = Math.floor(ms / 86400000);

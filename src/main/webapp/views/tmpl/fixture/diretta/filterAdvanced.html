@@ -1,0 +1,219 @@
+<section class="tile" fullscreen="isFullscreen01">
+	<div class="tile-header dvd dvd-btm">
+		<h1 class="custom-font">
+			<strong>{{'FILTER' | translate}}</strong>
+		</h1>
+		<ul class="controls">
+			<li class="dropdown" uib-dropdown on-toggle="toggled(open)"><a
+				href uib-dropdown-toggle class="dropdown-toggle settings"><i
+					class="fa fa-cog"></i></a>
+
+				<ul
+					class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+					<li><a href tile-control-toggle> <span class="minimize"><fa
+									name="angle-down"></fa>&nbsp;&nbsp;&nbsp;Minimize</span> <span
+							class="expand"><fa name="angle-up"></fa>&nbsp;&nbsp;&nbsp;Expand</span>
+					</a></li>
+					<li><a href tile-control-refresh ng-click="ajaxFaker()"> <fa
+								name="refresh"></fa> Refresh
+					</a></li>
+					<li><a href tile-control-fullscreen
+						ng-click="isFullscreen01 = !isFullscreen01"> <fa name="expand"></fa>
+							Fullscreen
+					</a></li>
+					<li><a href tile-control-lightbox> <fa name="magnet"></fa>
+							Open in Lightbox
+					</a></li>
+
+				</ul></li>
+			<li class="remove"><a><i class="fa fa-times"></i></a></li>
+		</ul>
+	</div>
+
+	<div class="tile-widget"></div>
+	<!-- /tile widget -->
+
+	<!-- tile body -->
+	<div class="tile-body">
+		<form class="form-horizontal" role="form">
+
+
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>{{'SELECT.COMPETITION' | translate}}</th>
+						<th>{{'HA.HOMEGOAL.SHORT' | translate}}</th>
+						<th>{{'HA.AWAYGOAL.SHORT' | translate}}</th>
+						<th>{{'Masaniello.INSERT_BETTYPE' | translate}}</th>
+						<th>{{'FilterDate.FROM' | translate}}</th>
+						<th>{{'FilterDate.TO' | translate}}</th>
+						<th>{{'ODD'| translate}} {{'001_1.SHORT'| translate}}
+							({{'FilterDate.FROM'| translate}} - {{'FilterDate.TO' |
+							translate}})</th>
+						<th>{{'ODD'| translate}} {{'002_X.SHORT'| translate}}
+							({{'FilterDate.FROM'| translate}} - {{'FilterDate.TO' |
+							translate}})</th>
+						<th>{{'ODD'| translate}} {{'003_2.SHORT'| translate}}
+							({{'FilterDate.FROM'| translate}} - {{'FilterDate.TO' |
+							translate}})</th>
+						<th>{{'AMOUNT'| translate}}</th>
+						<th></th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><select ng-model="competition"
+							data-ng-options="c as c for c in competitions"
+							class="form-control mb-4" /></td>
+						<td><input type="text" class="form-control"
+							ng-model="homeTeam"></td>
+						<td><input type="text" class="form-control"
+							ng-model="awayTeam"></td>
+						<td><select ng-model="betType"
+							data-ng-options="b.name as b.name | translate  for b in bettypes"
+							class="form-control mb-4" /></td>
+						<td><input type="text" class="form-control input-sm"
+							uib-datepicker-popup="{{format}}" ng-model="dateFrom"
+							is-open="openedDateFrom" min-date="minDate"
+							datepicker-options="dateOptions"
+							date-disabled="disabled(date, mode)" close-text="Close" /> <span
+							class="input-group-bt n">
+								<button type="button" class="btn btn-default"
+									ng-click="openDateFrom($event)">
+									<i class="fa fa-calendar"></i>
+								</button></td>
+
+						<td><input type="text" class="form-control input-sm"
+							uib-datepicker-popup="{{format}}" ng-model="dateTo"
+							is-open="openedDateTo" min-date="minDate"
+							datepicker-options="dateOptions"
+							date-disabled="disabled(date, mode)" close-text="Close" /> <span
+							class="input-group-btn">
+								<button type="button" class="btn btn-default"
+									ng-click="openDateTo($event)">
+									<i class="fa fa-calendar"></i>
+								</button>
+						</span></td>
+						<td><input type="text" class="form-control"
+							ng-model="quota1From"><input type="text"
+							class="form-control" ng-model="quota1To"></td>
+						<td><input type="text" class="form-control"
+							ng-model="quotaXFrom"><input type="text"
+							class="form-control" ng-model="quotaXTo"></td>
+						<td><input type="text" class="form-control"
+							ng-model="quota2From"><input type="text"
+							class="form-control" ng-model="quota2To"></td>
+						<td></td>
+						<td><button type="submit"
+								ng-click="addFilterAdvanced(competition,homeTeam,awayTeam,quota1From,quota1To,quotaXFrom,quotaXTo,quota2From,quota2To,dateFrom,dateTo,betType);"
+								class="btn btn-rounded btn-success btn-sm glyphicon glyphicon-plus"></button></td>
+						<td>
+							<button type="submit"
+								ng-click="getDirettaFixtures(competition,homeTeam,awayTeam,quota1From,quota1To,quotaXFrom,quotaXTo,quota2From,quota2To,true,dateFrom,dateTo,'showAdvanced');"
+								class="btn btn-rounded btn-success btn-sm glyphicon glyphicon-search"></button>
+						</td>
+						<td>
+							<button type="submit"
+								ng-click="getDirettaFixtures(competition,homeTeam,awayTeam,quota1From,quota1To,quotaXFrom,quotaXTo,quota2From,quota2To,false,dateFrom,dateTo,'showAdvanced');"
+								class="btn btn-rounded btn-success btn-sm glyphicon glyphicon-stats"></button>
+						</td>
+					</tr>
+					<tr ng-repeat="filter in filtersAdvanced">
+						<td>{{filter.competition}}</td>
+						<td>{{filter.homeTeam}}</td>
+						<td>{{filter.awayTeam}}</td>
+						<td>{{filter.betType | translate}}</td>
+						<td>{{filter.dateFrom | date: 'dd/MM/yyyy'}}</td>
+						<td>{{filter.dateTo | date: 'dd/MM/yyyy'}}</td>
+						<td><span
+							ng-if="filter.quota1From != null && filter.quota1To != null && filter.betType == '001_1'">
+							{{((parseFloat(filter.quota1From) + parseFloat(filter.quota1To)) / 2) | number : 2}} </span></td>
+
+						<td><span
+							ng-if="filter.quotaXFrom != null && filter.quotaXTo != null && filter.betType == '002_X'">
+								{{(parseFloat(filter.quotaXFrom) + parseFloat(filter.quotaXTo)) / 2 | number : 2}} </span></td>
+
+
+						<td><span
+							ng-if="filter.quota2From != null && filter.quota2To != null && filter.betType == '003_2'">
+								{{(parseFloat(filter.quota2From) + parseFloat(filter.quota2To)) / 2 | number : 2}} </span></td>
+
+
+
+						<td><input type="text" class="form-control"
+							ng-model="filter.amount"></td>
+						<td>
+
+							<button type="submit" ng-click="removeFilterAdvanced(filter);"
+								class="btn btn-rounded btn-danger btn-sm  glyphicon glyphicon-minus"></button>
+						</td>
+						<td>
+							<button type="submit"
+								ng-click="getDirettaFixtures(filter.competition,filter.homeTeam,filter.awayTeam,filter.quota1From,filter.quota1To,filter.quotaXFrom,filter.quotaXTo,filter.quota2From,filter.quota2To,true,filter.dateFrom,filter.dateTo,'showAdvanced');"
+								class="btn btn-rounded btn-success btn-sm glyphicon glyphicon-search"></button>
+						</td>
+						<td>
+							<button type="submit"
+								ng-click="getDirettaFixtures(filter.competition,filter.homeTeam,filter.awayTeam,filter.quota1From,filter.quota1To,filter.quotaXFrom,filter.quotaXTo,filter.quota2From,filter.quota2To,false,filter.dateFrom,filter.dateTo,'showAdvanced');"
+								class="btn btn-rounded btn-success btn-sm glyphicon glyphicon-stats"></button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<div class="row">
+				<div class="form-group"></div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<button type="submit" ng-click="resetFilters();"
+								class="btn btn-rounded btn-danger btn-sm">{{'Masaniello.RESET_FILTERS'
+								| translate}}</button>
+							<button type="submit" ng-show="viewMasaniello == false"
+								ng-click="showMasaniello();"
+								class="btn btn-rounded btn-primary btn-sm">{{'Masaniello.SHOW'
+								| translate}}</button>
+							<button type="submit" ng-show="viewMasaniello == true"
+								ng-click="hideMasaniello();"
+								class="btn btn-rounded btn-primary btn-sm">{{'Masaniello.HIDE'
+								| translate}}</button>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
+			<!-- <table>
+				<thead>
+					<tr>
+						<th>{{'Masaniello.INSERT_NAME_SHORT' | translate}}</th>
+						<th>{{'Masaniello.INSERT_AMOUNT_SHORT' | translate}}</th>
+						<th>{{'Masaniello.INSERT_ROUNDS_SHORT' | translate}}</th>
+						<th>{{'Masaniello.INSERT_EVENT_TO_WIN' | translate}}</th>
+						<th>{{'Masaniello.INSERT_AVERAGE_QUOTE' | translate}}</th>
+						<th>{{'Masaniello.INSERT_ADDITIONAL_QUOTE' | translate}}</th>
+						<th>{{'Masaniello.INSERT_PERCENTAGE' | translate}}</th>
+						<th>{{'Masaniello.INSERT_PATRIMONY_PERCENTAGE' | translate}}</th>
+						<th>{{'Masaniello.INSERT_TESTS' | translate}}</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td></td>
+						</tr>
+						
+					</tbody>
+			</table> -->
+
+			<div ng-include="'views/tmpl/fixture/diretta/masanielloCreateAdvanced.html'"></div>
+		</form>
+	</div>
+	<div></div>
+	<div class="tile-footer"></div>
+</section>

@@ -24,12 +24,16 @@ public class ProspectBusiness {
 	@Autowired
 	private AccountBusiness accountBusiness;
 	
+	@Autowired
+	private SimpleUtils simpleUtils;
+	
 
 	
-	public ProspectBusiness(ProspectDao prospectDao, AccountBusiness accountBusiness) {
+	public ProspectBusiness(ProspectDao prospectDao, AccountBusiness accountBusiness,SimpleUtils simpleUtils) {
 		super();
 		this.prospectDao = prospectDao;
 		this.accountBusiness = accountBusiness;
+		this.simpleUtils = simpleUtils;
 	}
 
 
@@ -101,9 +105,9 @@ public class ProspectBusiness {
 			
 			
 			if (updateUpcomingElements){
-				prospectElement.setEndDate(SimpleUtils.tomorrow(startDate));
+				prospectElement.setEndDate(simpleUtils.tomorrow(startDate));
 				prospectElement.setStartDate(startDate);
-				startDate = SimpleUtils.tomorrow(startDate);
+				startDate = simpleUtils.tomorrow(startDate);
 			}
 			
 			if(getNextElement){
@@ -145,10 +149,10 @@ public class ProspectBusiness {
 					indexToRestore = i;
 				}
 				
-				account.getProspect().getProspectElements().get(i).setEndDate(SimpleUtils.tomorrow(startDate));
+				account.getProspect().getProspectElements().get(i).setEndDate(simpleUtils.tomorrow(startDate));
 				account.getProspect().getProspectElements().get(i).setStartDate(startDate);
 				account.getProspect().getProspectElements().get(i).setTerminationDate(null);
-				startDate = SimpleUtils.tomorrow(startDate);
+				startDate = simpleUtils.tomorrow(startDate);
 				
 			}
 			
@@ -170,6 +174,16 @@ public class ProspectBusiness {
 		
 		prospectDao.update(account.getProspect());
 		return (account.getProspect());
+	}
+
+
+	public SimpleUtils getSimpleUtils() {
+		return simpleUtils;
+	}
+
+
+	public void setSimpleUtils(SimpleUtils simpleUtils) {
+		this.simpleUtils = simpleUtils;
 	}
 
 }

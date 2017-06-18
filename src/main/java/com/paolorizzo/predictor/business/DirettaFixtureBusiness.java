@@ -6,37 +6,40 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
-import org.openxmlformats.schemas.drawingml.x2006.main.STAdjAngle;
+import org.junit.rules.DisableOnDebug;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.mysql.cj.jdbc.Driver;
+import com.paolorizzo.predictor.constants.BettypeConstants;
 import com.paolorizzo.predictor.dao.facade.DirettaFixtureDao;
 import com.paolorizzo.predictor.dto.DirettaStatsDto;
-import com.paolorizzo.predictor.hibernate.model.Account;
 import com.paolorizzo.predictor.hibernate.model.DirettaFixture;
 import com.paolorizzo.predictor.hibernate.model.Masaniello;
+import com.paolorizzo.predictor.hibernate.model.MasanielloPlan;
 import com.paolorizzo.predictor.hibernate.model.MasanielloRound;
+import com.paolorizzo.predictor.hibernate.model.PlanFilter;
 import com.paolorizzo.predictor.hibernate.model.User;
+import com.paolorizzo.predictor.services.request.PlanFilterDto;
 import com.paolorizzo.predictor.services.response.GetDirettaFixturesResponse;
+import com.paolorizzo.predictor.utils.DateUtils;
+import com.paolorizzo.predictor.utils.SimpleUtils;
 import com.paolorizzo.xmlsoccer.data.converter.DirettaFixtureConverter;
+import com.paolorizzo.xmlsoccer.data.converter.PlanFilterDataConverter;
 import com.sun.jersey.core.header.FormDataContentDisposition;
-import com.sun.jersey.core.spi.scanning.ScannerListener;
 
 
 
@@ -52,20 +55,22 @@ public class DirettaFixtureBusiness {
 	private BetMatcherBusiness betMatcherBusiness;
 	
 	@Autowired
-	private MasanielloBusiness masanielloBusiness;
+	private MasanielloPlanBusiness masanielloPlanBusiness;
+	
+	@Autowired
+	DateUtils dateUtils;
+	
+	Logger logger = LogManager.getLogger("dino");
 	
 	
-	static Logger logger = LogManager.getLogger("root");
-
 	
-	private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-	
-	public DirettaFixtureBusiness(DirettaFixtureDao direttaFixtureDao,AccountBusiness accountBusiness,BetMatcherBusiness betMatcherBusiness,MasanielloBusiness masanielloBusiness) {
+	public DirettaFixtureBusiness(DirettaFixtureDao direttaFixtureDao,AccountBusiness accountBusiness,BetMatcherBusiness betMatcherBusiness,MasanielloPlanBusiness masanielloPlanBusiness,DateUtils dateUtils) {
 		super();
 		this.direttaFixtureDao = direttaFixtureDao;
-		this.accountBusiness = accountBusiness;
+		this.setAccountBusiness(accountBusiness);
 		this.betMatcherBusiness = betMatcherBusiness;
-		this.masanielloBusiness = masanielloBusiness;
+		this.masanielloPlanBusiness = masanielloPlanBusiness;
+		this.dateUtils = dateUtils;
 	}
 
 	@Transactional(readOnly=false)
@@ -80,29 +85,33 @@ public class DirettaFixtureBusiness {
 	        String currentCompetition = "";
 	        List<DirettaFixture> direttaFixtures = new ArrayList<DirettaFixture>();
 	        
-	        Date matchDate = simpleDateFormat.parse(fileDetails.getFileName());
+	        Date matchDate = DateUtils.simpleDateFormat_yyyy_MM_dd.parse(fileDetails.getFileName());
 			
 	        while (iterator.hasNext()) {
 	            Row nextRow = iterator.next();
 	            try{
+	            	int i = 0;
 	            	if(nextRow.getCell(1).getStringCellValue() == null || nextRow.getCell(1).getStringCellValue().equals("")){
 	            		currentCompetition = nextRow.getCell(0).getStringCellValue();
 	            	}else{
+//	            		if("".equals(nextRow.getCell(0).getStringCellValue())){
+//	            			i = 1;
+//	            		}
 	            		DirettaFixture direttaFixture = new DirettaFixture();
-	            		direttaFixture.setHomeTeam(nextRow.getCell(1).getStringCellValue());
-	            		direttaFixture.setAwayTeam(nextRow.getCell(2).getStringCellValue());
+	            		direttaFixture.setHomeTeam(nextRow.getCell(i + 1).getStringCellValue());
+	            		direttaFixture.setAwayTeam(nextRow.getCell(i + 2).getStringCellValue());
 	            		
-	            		String fullScore = nextRow.getCell(3).getStringCellValue();
-	            		byte[] byteList = removeWhiteSpaces(fullScore.getBytes());
+	            		String fullScore = nextRow.getCell(i + 3).getStringCellValue();
+	            		byte[] byteList = SimpleUtils.removeWhiteSpaces(fullScore.getBytes());
             			fullScore = new String(byteList, StandardCharsets.UTF_8);
             			
 	            		String[] score = fullScore.split(":");
 	            		direttaFixture.setHomeGoals(Integer.parseInt(score[0]));
 	            		direttaFixture.setAwayGoals(Integer.parseInt(score[1]));
 	            		
-	            		direttaFixture.setQuota1(new BigDecimal(nextRow.getCell(4).getStringCellValue()));
-	            		direttaFixture.setQuotaX(new BigDecimal(nextRow.getCell(5).getStringCellValue()));
-	            		direttaFixture.setQuota2(new BigDecimal(nextRow.getCell(6).getStringCellValue()));
+	            		direttaFixture.setQuota1(new BigDecimal(nextRow.getCell(i + 4).getStringCellValue()));
+	            		direttaFixture.setQuotaX(new BigDecimal(nextRow.getCell(i + 5).getStringCellValue()));
+	            		direttaFixture.setQuota2(new BigDecimal(nextRow.getCell(i + 6).getStringCellValue()));
 	            		
 	            		direttaFixture.setCurrentCompetition(currentCompetition);
 	            		direttaFixture.setDate(matchDate);
@@ -130,19 +139,7 @@ public class DirettaFixtureBusiness {
 		return 0;
 	}
 
-	private byte[] removeWhiteSpaces(byte[] bytes) {
-		List<Byte> list = new ArrayList<Byte>();
-		for (byte b : bytes) {
-			if (b != -96 && b != 0){
-				list.add(b);
-			}
-		}
-		byte[] ret = new byte[list.size()];
-		for (int i = 0;i<list.size();i++){
-			ret[i] = list.get(i);
-		}
-		return ret;
-	}
+	
 
 	@Transactional(readOnly=false)
 	public void addAll(List<DirettaFixture> direttaFixtures) {
@@ -155,9 +152,34 @@ public class DirettaFixtureBusiness {
 		return direttaFixtureDao.getCompetitions();
 	}
 
-	public List<DirettaFixture> getDirettaFixtures(String competition,String homeTeam,String awayTeam, BigDecimal quota1From, BigDecimal quota1To,
-			BigDecimal quotaXFrom, BigDecimal quotaXTo, BigDecimal quota2From, BigDecimal quota2To) {
-		return direttaFixtureDao.getDirettaFixtures(competition,homeTeam,awayTeam,quota1From,quota1To,quotaXFrom,quotaXTo,quota2From,quota2To);
+	public List<DirettaFixture> getDirettaFixtures(
+			String competition,
+			String homeTeam,
+			String awayTeam, 
+			BigDecimal quota1From, 
+			BigDecimal quota1To,
+			BigDecimal quotaXFrom, 
+			BigDecimal quotaXTo, 
+			BigDecimal quota2From, 
+			BigDecimal quota2To, 
+			Date dateFromDate, 
+			Date dateToDate) throws ParseException {
+		
+		dateFromDate = dateUtils.truncYesterdayDate(dateFromDate);
+		dateToDate = dateUtils.truncTomorrowDate(dateToDate);
+//		
+		return direttaFixtureDao.getDirettaFixtures(
+				competition,
+				homeTeam,
+				awayTeam,
+				quota1From,
+				quota1To,
+				quotaXFrom,
+				quotaXTo,
+				quota2From,
+				quota2To,
+				dateFromDate,dateToDate,
+				null,false);
 	}
 
 	public GetDirettaFixturesResponse getStats(List<DirettaFixture> direttaFixtures) {
@@ -186,6 +208,33 @@ public class DirettaFixtureBusiness {
 		Integer _handicapAway1_1 = 0;
 		Integer _handicapAway1_X = 0;
 		Integer _handicapAway1_2 = 0;
+		
+		Integer _0_0 = 0;
+		Integer _0_1 = 0;
+		Integer _0_2 = 0;
+		Integer _0_3 = 0;
+		Integer _0_4 = 0;
+		Integer _1_0 = 0;
+		Integer _1_2 = 0;
+		Integer _1_3 = 0;
+		Integer _1_4 = 0;
+		Integer _2_0 = 0;
+		Integer _2_3 = 0;
+		Integer _2_4 = 0;
+		Integer _3_0 = 0;
+		Integer _4_0 = 0;
+		Integer _1_1 = 0;
+		Integer _2_1 = 0;
+		Integer _3_1 = 0;
+		Integer _4_1 = 0;
+		Integer _2_2 = 0;
+		Integer _3_2 = 0;
+		Integer _4_2 = 0;
+		Integer _3_3 = 0;
+		Integer _3_4 = 0;
+		Integer _4_3 = 0;
+		Integer _4_4 = 0;
+		
 		
 		Integer _matches = 0;
 		
@@ -280,6 +329,22 @@ public class DirettaFixtureBusiness {
 				break;
 			}
 			
+			switch (direttaFixture.getHomeGoals()) {
+			case 0:
+				break;
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+
+			default:
+				break;
+			}
+			
 		}
 		
 		DirettaStatsDto statsDto = new DirettaStatsDto();
@@ -312,88 +377,50 @@ public class DirettaFixtureBusiness {
 		return getDirettaFixturesResponse;
 	}
 
-	public Masaniello createMasaniello(String competition, String homeTeam, String awayTeam, BigDecimal quota1From,
-			BigDecimal quota1To, BigDecimal quotaXFrom, BigDecimal quotaXTo, BigDecimal quota2From,
-			BigDecimal quota2To, String masanielloUserEmail, BigDecimal masanielloAmount, Integer masanielloEventToWin, String masanielloEventType, String msanielloName,  BigDecimal masanielloAverageQuote, BigDecimal masanielloPercentage, Integer masanielloRounds, BigDecimal patrimonyPercentage) {
-		
-		//patrimonyPercentage = new BigDecimal(100).divide(patrimonyPercentage,2, RoundingMode.DOWN);
-		
-		Masaniello masaniello = new Masaniello();
-		masaniello.setUser(new User(masanielloUserEmail));
-		masaniello.setName(msanielloName);
-		masaniello.setEventToWin(masanielloEventToWin);
-		masaniello.setAmount(masanielloAmount);
-		masaniello.setPercentage(masanielloPercentage);
-		masaniello.setRounds(masanielloRounds);
-		masaniello.setEventType(masanielloEventType);
-		masaniello.setAverageQuote(masanielloAverageQuote);
-		masaniello.setMasanielloRounds(new ArrayList<MasanielloRound>());
-		
-		BigDecimal initialAmount = masanielloAmount;
-		
-		BigDecimal amountToInvest = masanielloAmount.multiply(patrimonyPercentage).divide(new BigDecimal(100),2,RoundingMode.FLOOR);
-		
-		Integer matches = 0;
-		Integer roundId = 1;
-		Integer wins = 0;
-		List<DirettaFixture> direttaFixtures = direttaFixtureDao.getDirettaFixtures(competition,homeTeam,awayTeam,quota1From,quota1To,quotaXFrom,quotaXTo,quota2From,quota2To);
-		
-		Collections.sort(direttaFixtures);
-		
-		for (DirettaFixture direttaFixture : direttaFixtures) {
-			matches++;
-			if(matches <= masanielloRounds){
-				if(isWinningEvent(direttaFixture.getHomeGoals(),direttaFixture.getAwayGoals(),masanielloEventType)){
-					wins++;
-				}else{
-					
-				}
-				
-				if(wins == masanielloEventToWin){
-					wins = 0;
-					MasanielloRound masanielloRound = new MasanielloRound();
-					masanielloRound.setInitialAmount(initialAmount);
-					masanielloRound.setFinalAmount(initialAmount.add(amountToInvest.multiply(masanielloPercentage).subtract(amountToInvest)));
-					initialAmount = masanielloRound.getFinalAmount();
-					masanielloRound.setMatches(matches);
-					matches = 0;
-					masanielloRound.setRoundId(roundId);
-					roundId++;
-					masanielloRound.setSuccess(true);
-					masanielloRound.setMasaniello(new Masaniello(masaniello.getName(),masaniello.getUser()));
-					masaniello.getMasanielloRounds().add(masanielloRound);
-					amountToInvest = initialAmount.multiply(patrimonyPercentage).divide(new BigDecimal(100),2,RoundingMode.FLOOR);
-				}else if(matches == masanielloRounds){
-					MasanielloRound masanielloRound = new MasanielloRound();
-					masanielloRound.setInitialAmount(initialAmount);
-					masanielloRound.setFinalAmount(initialAmount.subtract(amountToInvest));
-					initialAmount = masanielloRound.getFinalAmount();
-					masanielloRound.setMatches(matches);
-					matches = 0;
-					masanielloRound.setRoundId(roundId);
-					roundId++;
-					masanielloRound.setSuccess(false);
-					masanielloRound.setMasaniello(new Masaniello(masaniello.getName(),masaniello.getUser()));
-					masaniello.getMasanielloRounds().add(masanielloRound);
-					amountToInvest = initialAmount.multiply(patrimonyPercentage).divide(new BigDecimal(100),2,RoundingMode.FLOOR);
-				}
-			}
-		}
-		
-		masanielloBusiness.add(masaniello);
-		return masaniello;
-	}
-
-	private boolean isWinningEvent(Integer homeGoals, Integer awayGoals, String masanielloEventType) {
-		return betMatcherBusiness.isWinningEvent(homeGoals,awayGoals,masanielloEventType);
-	}
-
 	public BetMatcherBusiness getBetMatcherBusiness() {
 		return betMatcherBusiness;
 	}
 
 	public void setBetMatcherBusiness(BetMatcherBusiness betMatcherBusiness) {
 		this.betMatcherBusiness = betMatcherBusiness;
+	}
+
+	@Transactional(readOnly=false)
+	public MasanielloPlan createPlan(List<PlanFilterDto> filters,String masanielloUserEmail, 
+			BigDecimal masanielloAmount, Integer masanielloEventToWin, String msanielloName,  
+			BigDecimal masanielloAverageQuote, BigDecimal masanielloAdditionalQuote, BigDecimal masanielloPercentage, Integer masanielloRounds, BigDecimal patrimonyPercentage
+			) throws ParseException {
+		try{
+			MasanielloPlan masanielloPlan = new MasanielloPlan(msanielloName, new User(masanielloUserEmail),masanielloAmount,masanielloRounds,masanielloEventToWin,masanielloPercentage,masanielloAverageQuote,masanielloAdditionalQuote,null);
+			masanielloPlanBusiness.add(masanielloPlan);
+			return masanielloPlan;
+		}catch (Exception exception){
+			return null;
+		}
+	}
+
+	public AccountBusiness getAccountBusiness() {
+		return accountBusiness;
+	}
+
+	public void setAccountBusiness(AccountBusiness accountBusiness) {
+		this.accountBusiness = accountBusiness;
+	}
+
+	public MasanielloPlan createPlan(ArrayList<PlanFilterDto> filters, String masanielloUserEmail,
+			BigDecimal masanielloAmount, String masanielloName, Integer masanielloRounds,
+			BigDecimal patrimonyPercentage) {
+		try{
+			MasanielloPlan masanielloPlan = new MasanielloPlan(masanielloName, new User(masanielloUserEmail),masanielloAmount,masanielloRounds,1,BigDecimal.ZERO,BigDecimal.ZERO,BigDecimal.ZERO,null);
+			masanielloPlan.setPlanFilters(PlanFilterDataConverter.convert(filters,masanielloPlan));
+			
+			masanielloPlanBusiness.add(masanielloPlan);
+			
+			
+			return masanielloPlan;
+		}catch (Exception exception){
+			return null;
+		}
 	}
 	
 }

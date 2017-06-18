@@ -1,7 +1,263 @@
-<section class="tile" fullscreen="isFullscreen01">
+<div class="row">
+	<div class="col-md-12">
+		<section class="tile" fullscreen="isFullscreen01">
+			<div class="tile-header dvd dvd-btm">
+				<h1 class="custom-font">
+					<strong>{{'DirettaStats.1X2' | translate}}</strong>
+				</h1>
+				<ul class="controls">
+					<li class="dropdown" uib-dropdown on-toggle="toggled(open)"><a
+						href uib-dropdown-toggle class="dropdown-toggle settings"><i
+							class="fa fa-cog"></i></a>
+
+						<ul
+							class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+							<li><a href tile-control-toggle> <span class="minimize"><fa
+											name="angle-down"></fa>&nbsp;&nbsp;&nbsp;Minimize</span> <span
+									class="expand"><fa name="angle-up"></fa>&nbsp;&nbsp;&nbsp;Expand</span>
+							</a></li>
+							<li><a href tile-control-refresh ng-click="ajaxFaker()">
+									<fa name="refresh"></fa> Refresh
+							</a></li>
+							<li><a href tile-control-fullscreen
+								ng-click="isFullscreen01 = !isFullscreen01"> <fa
+										name="expand"></fa> Fullscreen
+							</a></li>
+							<li><a href tile-control-lightbox> <fa name="magnet"></fa>
+									Open in Lightbox
+							</a></li>
+
+						</ul></li>
+					<li class="remove"><a><i class="fa fa-times"></i></a></li>
+				</ul>
+			</div>
+			<div class="tile-widget"></div>
+			<!-- /tile widget -->
+
+			<!-- tile body -->
+			<div class="tile-body">
+
+				<table class="table">
+					<thead>
+						<tr>
+							<th>{{'DirettaStats._1' | translate}}</th>
+							<th>{{'DirettaStats._X' | translate}}</th>
+							<th>{{'DirettaStats._2' | translate}}</th>
+						</tr>
+					</thead>
+					<tbody>
+
+						<tr>
+							<td>{{stats._1}} ({{stats._1 / stats._matches * 100 | number
+								: 2}}%)</td>
+
+							<td>{{stats._X}} ({{stats._X / stats._matches * 100 | number
+								: 2}}%)</td>
+							<td>{{stats._2}} ({{stats._2 / stats._matches * 100 | number
+								: 2}}%)</td>
+
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="tile-footer"></div>
+
+		</section>
+	</div>
+	<div class="col-md-12">
+		<section class="tile" fullscreen="isFullscreen01">
+			<div class="tile-header dvd dvd-btm">
+				<h1 class="custom-font">
+					<strong>{{'DirettaStats.ODDEVEN' | translate}}</strong>
+				</h1>
+				<ul class="controls">
+					<li class="dropdown" uib-dropdown on-toggle="toggled(open)"><a
+						href uib-dropdown-toggle class="dropdown-toggle settings"><i
+							class="fa fa-cog"></i></a>
+
+						<ul
+							class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+							<li><a href tile-control-toggle> <span class="minimize"><fa
+											name="angle-down"></fa>&nbsp;&nbsp;&nbsp;Minimize</span> <span
+									class="expand"><fa name="angle-up"></fa>&nbsp;&nbsp;&nbsp;Expand</span>
+							</a></li>
+							<li><a href tile-control-refresh ng-click="ajaxFaker()">
+									<fa name="refresh"></fa> Refresh
+							</a></li>
+							<li><a href tile-control-fullscreen
+								ng-click="isFullscreen01 = !isFullscreen01"> <fa
+										name="expand"></fa> Fullscreen
+							</a></li>
+							<li><a href tile-control-lightbox> <fa name="magnet"></fa>
+									Open in Lightbox
+							</a></li>
+
+						</ul></li>
+					<li class="remove"><a><i class="fa fa-times"></i></a></li>
+				</ul>
+			</div>
+			<div class="tile-widget"></div>
+			<!-- /tile widget -->
+
+			<!-- tile body -->
+			<div class="tile-body">
+
+				<table class="table">
+					<thead>
+						<tr>
+							<th></th>
+							<th>{{'DirettaStats.ODD' | translate}}</th>
+							<th>{{'DirettaStats.EVEN' | translate}}</th>
+						</tr>
+					</thead>
+					<tbody>
+
+						<tr>
+							<td>{{'DirettaStats.TOTAL' | translate}}</td>
+							<td>{{stats._odd}} ({{stats._odd / stats._matches * 100 |
+								number : 2}}%)</td>
+							<td>{{stats._even}} ({{stats._even / stats._matches * 100 |
+								number : 2}}%)</td>
+
+						</tr>
+
+						<tr>
+							<td>{{'DirettaStats.HOME' | translate}}</td>
+							<td>{{stats._homeOdd}} ({{stats._homeOdd / stats._matches *
+								100 | number : 2}}%)</td>
+							<td>{{stats._homeEven}} ({{stats._homeEven / stats._matches
+								* 100 | number : 2}}%)</td>
+
+						</tr>
+						<tr>
+							<td>{{'DirettaStats.AWAY' | translate}}</td>
+							<td>{{stats._awayOdd}} ({{stats._awayOdd / stats._matches *
+								100 | number : 2}}%)</td>
+							<td>{{stats._awayEven}} ({{stats._awayEven / stats._matches
+								* 100 | number : 2}}%)</td>
+							<td></td>
+						</tr>
+
+					</tbody>
+				</table>
+
+			</div>
+
+			<div class="tile-footer"></div>
+
+		</section>
+	</div>
+
+	<div class="col-md-12">
+		<section class="tile" fullscreen="isFullscreen01">
+			<div class="tile-header dvd dvd-btm">
+				<h1 class="custom-font">
+					<strong>{{'DirettaStats.HANDICAP' | translate}}</strong>
+				</h1>
+				<ul class="controls">
+					<li class="dropdown" uib-dropdown on-toggle="toggled(open)"><a
+						href uib-dropdown-toggle class="dropdown-toggle settings"><i
+							class="fa fa-cog"></i></a>
+
+						<ul
+							class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+							<li><a href tile-control-toggle> <span class="minimize"><fa
+											name="angle-down"></fa>&nbsp;&nbsp;&nbsp;Minimize</span> <span
+									class="expand"><fa name="angle-up"></fa>&nbsp;&nbsp;&nbsp;Expand</span>
+							</a></li>
+							<li><a href tile-control-refresh ng-click="ajaxFaker()">
+									<fa name="refresh"></fa> Refresh
+							</a></li>
+							<li><a href tile-control-fullscreen
+								ng-click="isFullscreen01 = !isFullscreen01"> <fa
+										name="expand"></fa> Fullscreen
+							</a></li>
+							<li><a href tile-control-lightbox> <fa name="magnet"></fa>
+									Open in Lightbox
+							</a></li>
+
+						</ul></li>
+					<li class="remove"><a><i class="fa fa-times"></i></a></li>
+				</ul>
+			</div>
+			<div class="tile-widget"></div>
+			<!-- /tile widget -->
+
+			<!-- tile body -->
+			<div class="tile-body">
+
+				<table class="table">
+					<thead>
+						<tr>
+							<th></th>
+							<th>{{'DirettaStats._1' | translate}}</th>
+							<th>{{'DirettaStats._X' | translate}}</th>
+							<th>{{'DirettaStats._2' | translate}}</th>
+						</tr>
+					</thead>
+					<tbody>
+
+						<tr>
+							<td>{{'DirettaStats.HANDICAPHOME2' | translate}}</td>
+							<td>{{stats._handicapHome2_1}}<br>
+								({{stats._handicapHome2_1 / stats._matches * 100 | number :
+								2}}%)
+							</td>
+							<td>{{stats._handicapHome2_X}} <br>({{stats._handicapHome2_X
+								/ stats._matches * 100 | number : 2}}%)
+							</td>
+							<td>{{stats._handicapHome2_2}} <br>({{stats._handicapHome2_2
+								/ stats._matches * 100 | number : 2}}%)
+							</td>
+						</tr>
+
+						<tr>
+							<td>{{'DirettaStats.HANDICAPHOME1' | translate}}</td>
+							<td>{{stats._handicapHome1_1}} <br>({{stats._handicapHome1_1 /
+								stats._matches * 100 | number : 2}}%)</td>
+							<td>{{stats._handicapHome1_X}}<br> ({{stats._handicapHome1_X /
+								stats._matches * 100 | number : 2}}%)</td>
+							<td>{{stats._handicapHome1_2}} <br>({{stats._handicapHome1_2 /
+								stats._matches * 100 | number : 2}}%)</td>
+						</tr>
+
+						<tr>
+							<td>{{'DirettaStats.HANDICAPAWAY1' | translate}}</td>
+							<td>{{stats._handicapAway1_1}}<br> ({{stats._handicapAway1_1 /
+								stats._matches * 100 | number : 2}}%)</td>
+							<td>{{stats._handicapAway1_X}} <br>({{stats._handicapAway1_X /
+								stats._matches * 100 | number : 2}}%)</td>
+							<td>{{stats._handicapAway1_2}} <br>({{stats._handicapAway1_2 /
+								stats._matches * 100 | number : 2}}%)</td>
+						</tr>
+
+						<tr>
+							<td>{{'DirettaStats.HANDICAPAWAY2' | translate}}</td>
+							<td>{{stats._handicapAway2_1}}<br> ({{stats._handicapAway2_1 /
+								stats._matches * 100 | number : 2}}%)</td>
+							<td>{{stats._handicapAway2_X}} <br>({{stats._handicapAway2_X /
+								stats._matches * 100 | number : 2}}%)</td>
+							<td>{{stats._handicapAway2_2}} <br>({{stats._handicapAway2_2 /
+								stats._matches * 100 | number : 2}}%)</td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+
+			<div class="tile-footer"></div>
+
+		</section>
+	</div>
+</div>
+
+
+
+<!-- <section class="tile" fullscreen="isFullscreen01">
 	<div class="tile-header dvd dvd-btm">
 		<h1 class="custom-font">
-			<strong>{{'STATS' | translate}}</strong>
+			<strong>{{'STATS_1X2' | translate}}</strong>
 		</h1>
 		<ul class="controls">
 			<li class="dropdown" uib-dropdown on-toggle="toggled(open)"><a
@@ -30,9 +286,9 @@
 		</ul>
 	</div>
 	<div class="tile-widget"></div>
-	<!-- /tile widget -->
+	/tile widget
 
-	<!-- tile body -->
+	tile body
 	<div class="tile-body">
 
 		<table class="table">
@@ -93,78 +349,90 @@
 					<td>{{stats._awayOdd}}</td>
 					<td>{{stats._awayOdd / stats._matches * 100 | number : 2}}</td>
 				</tr>
-				
-				
+
+
 				<tr>
 					<td>{{'DirettaStats.HANDICAPHOME2_1' | translate}}</td>
 					<td>{{stats._handicapHome2_1}}</td>
-					<td>{{stats._handicapHome2_1 / stats._matches * 100 | number : 2}}</td>
+					<td>{{stats._handicapHome2_1 / stats._matches * 100 | number :
+						2}}</td>
 				</tr>
-				
+
 				<tr>
 					<td>{{'DirettaStats.HANDICAPHOME2_X' | translate}}</td>
 					<td>{{stats._handicapHome2_X}}</td>
-					<td>{{stats._handicapHome2_X / stats._matches * 100 | number : 2}}</td>
+					<td>{{stats._handicapHome2_X / stats._matches * 100 | number :
+						2}}</td>
 				</tr>
-				
+
 				<tr>
 					<td>{{'DirettaStats.HANDICAPHOME2_2' | translate}}</td>
 					<td>{{stats._handicapHome2_2}}</td>
-					<td>{{stats._handicapHome2_2 / stats._matches * 100 | number : 2}}</td>
+					<td>{{stats._handicapHome2_2 / stats._matches * 100 | number :
+						2}}</td>
 				</tr>
-				
+
 				<tr>
 					<td>{{'DirettaStats.HANDICAPHOME1_1' | translate}}</td>
 					<td>{{stats._handicapHome1_1}}</td>
-					<td>{{stats._handicapHome1_1 / stats._matches * 100 | number : 2}}</td>
+					<td>{{stats._handicapHome1_1 / stats._matches * 100 | number :
+						2}}</td>
 				</tr>
-				
+
 				<tr>
 					<td>{{'DirettaStats.HANDICAPHOME1_X' | translate}}</td>
 					<td>{{stats._handicapHome1_X}}</td>
-					<td>{{stats._handicapHome1_X / stats._matches * 100 | number : 2}}</td>
+					<td>{{stats._handicapHome1_X / stats._matches * 100 | number :
+						2}}</td>
 				</tr>
-				
+
 				<tr>
 					<td>{{'DirettaStats.HANDICAPHOME1_2' | translate}}</td>
 					<td>{{stats._handicapHome1_2}}</td>
-					<td>{{stats._handicapHome1_2 / stats._matches * 100 | number : 2}}</td>
+					<td>{{stats._handicapHome1_2 / stats._matches * 100 | number :
+						2}}</td>
 				</tr>
-				
+
 				<tr>
 					<td>{{'DirettaStats.HANDICAPAWAY1_1' | translate}}</td>
 					<td>{{stats._handicapAway1_1}}</td>
-					<td>{{stats._handicapAway1_1 / stats._matches * 100 | number : 2}}</td>
+					<td>{{stats._handicapAway1_1 / stats._matches * 100 | number :
+						2}}</td>
 				</tr>
-				
+
 				<tr>
 					<td>{{'DirettaStats.HANDICAPAWAY1_X' | translate}}</td>
 					<td>{{stats._handicapAway1_X}}</td>
-					<td>{{stats._handicapAway1_X / stats._matches * 100 | number : 2}}</td>
+					<td>{{stats._handicapAway1_X / stats._matches * 100 | number :
+						2}}</td>
 				</tr>
-				
+
 				<tr>
 					<td>{{'DirettaStats.HANDICAPAWAY1_2' | translate}}</td>
 					<td>{{stats._handicapAway1_2}}</td>
-					<td>{{stats._handicapAway1_2 / stats._matches * 100 | number : 2}}</td>
+					<td>{{stats._handicapAway1_2 / stats._matches * 100 | number :
+						2}}</td>
 				</tr>
-				
+
 				<tr>
 					<td>{{'DirettaStats.HANDICAPAWAY2_1' | translate}}</td>
 					<td>{{stats._handicapAway2_1}}</td>
-					<td>{{stats._handicapAway2_1 / stats._matches * 100 | number : 2}}</td>
+					<td>{{stats._handicapAway2_1 / stats._matches * 100 | number :
+						2}}</td>
 				</tr>
-				
+
 				<tr>
 					<td>{{'DirettaStats.HANDICAPAWAY2_X' | translate}}</td>
 					<td>{{stats._handicapAway2_X}}</td>
-					<td>{{stats._handicapAway2_X / stats._matches * 100 | number : 2}}</td>
+					<td>{{stats._handicapAway2_X / stats._matches * 100 | number :
+						2}}</td>
 				</tr>
-				
+
 				<tr>
 					<td>{{'DirettaStats.HANDICAPAWAY2_2' | translate}}</td>
 					<td>{{stats._handicapAway2_2}}</td>
-					<td>{{stats._handicapAway2_2 / stats._matches * 100 | number : 2}}</td>
+					<td>{{stats._handicapAway2_2 / stats._matches * 100 | number :
+						2}}</td>
 				</tr>
 			</tbody>
 		</table>
@@ -177,4 +445,4 @@
 
 	<div class="tile-footer"></div>
 
-</section>
+</section> -->
